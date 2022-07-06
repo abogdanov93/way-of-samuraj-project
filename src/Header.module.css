@@ -1,0 +1,21 @@
+.Header{
+    display:grid;
+    grid-template-columns: 20% 30%;
+    grid-column-gap: 50%;
+    grid-template-areas: "logo searcher";
+}
+
+.logo{
+    grid-area: logo;
+    margin: 15px;
+}
+
+.logo img{
+    width: 50%;
+}
+
+.searcher{
+    grid-area: searcher;
+    margin: auto;
+}
+

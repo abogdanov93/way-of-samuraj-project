@@ -6,21 +6,19 @@
     grid-template-rows: 2fr 8fr;
     grid-template-columns: 2fr 8fr;
     grid-gap: 10px 10px;
-
-
 }
 
-.header{
+.header {
     grid-area: header;
     background-color: linen;
 }
 
-.profile{
+.profile {
     grid-area: profile;
-    background-color: linen;
+    background-color: whitesmoke;
 }
 
-.navbar{
+.navbar {
     grid-area: navbar;
     background-color: linen;
 }
