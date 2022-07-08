@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./Header";
-import Profile from "./Profile";
-import Navbar from "./Navbar";
+import Header from "./Header/Header";
+import Profile from "./Profile/Profile";
+import Navbar from "./Navbar/Navbar";
 import "./App.css"
 
 function App() {

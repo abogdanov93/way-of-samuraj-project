@@ -1,11 +1,25 @@
 .App {
     display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 10px 10px;
     grid-template-areas:
             "header header"
             "navbar profile";
-    grid-template-rows: 2fr 8fr;
-    grid-template-columns: 2fr 8fr;
-    grid-gap: 10px 10px;
+
+}
+
+@media(max-width: 360px){
+    .App{
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 1fr;
+        grid-gap: 10px 10px;
+        grid-template-areas:
+            "header"
+            "profile"
+            "navbar";
+    }
 }
 
 .header {

@@ -1,0 +1,13 @@
+.newPost{
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    grid-gap: 10px;
+}
+
+.newPost textarea{
+    max-width: 300px;
+}
+
+.newPost button{
+    max-width: 60px;
+}

@@ -1,7 +1,6 @@
 .Header{
     display:grid;
-    grid-template-columns: 20% 30%;
-    grid-column-gap: 50%;
+    grid-template-columns: 1fr 2fr;
     grid-template-areas: "logo searcher";
 }
 
@@ -11,11 +10,10 @@
 }
 
 .logo img{
-    width: 50%;
+    width: 100px;
 }
 
 .searcher{
     grid-area: searcher;
     margin: auto;
 }
-
