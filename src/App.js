@@ -14,11 +14,16 @@ function App(props) {
                 <Navbar/>
                 <div className="content">
                     <Routes>
-                        <Route path="/profile/*" element={<Profile/>}/>
-                        <Route path="/dialogs/*" element={<Dialogs />}/>
-                        <Route path="/communities/*" element={<Dialogs/>}/>
-                        <Route path="/news/*" element={<Dialogs />}/>
-                        <Route path="/settings/*" element={<Dialogs/>}/>
+                        <Route path="/profile/*"
+                               element={<Profile state={props.state.profile}/>}/>
+                        <Route path="/dialogs/*"
+                               element={<Dialogs state={props.state.dialogs}/>}/>
+                        <Route path="/communities/*"
+                               element={<Dialogs/>}/>
+                        <Route path="/news/*"
+                               element={<Dialogs/>}/>
+                        <Route path="/settings/*"
+                               element={<Dialogs/>}/>
                     </Routes>
                 </div>
             </div>
