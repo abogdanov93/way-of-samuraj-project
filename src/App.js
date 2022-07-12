@@ -11,11 +11,11 @@ function App(props) {
         <BrowserRouter>
             <div className="App">
                 <Header/>
-                <Navbar/>
+                <Navbar friends={props.state.friends}/>
                 <div className="content">
                     <Routes>
                         <Route path="/profile/*"
-                               element={<Profile state={props.state.profile}/>}/>
+                               element={<Profile state={props.state.profile} />}/>
                         <Route path="/dialogs/*"
                                element={<Dialogs state={props.state.dialogs}/>}/>
                         <Route path="/communities/*"

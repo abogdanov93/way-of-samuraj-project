@@ -1,9 +1,10 @@
 .navbar {
     grid-area: navbar;
-    background-color: linen;
-    margin-left: 10px;
+    background-color: white;
+    margin-left: 40px;
     padding: 20px;
     border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 }
 
 @media (max-width: 360px) {
@@ -21,4 +22,8 @@
 .activeLink {
     color: gray;
     text-decoration: none;
+}
+
+.friends {
+    color: gray;
 }

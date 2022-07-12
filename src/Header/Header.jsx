@@ -5,7 +5,7 @@ const Header = () => {
     return (
        <header className={style.header}>
            <div className={style.logo}>
-               <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/FortniteLogo.svg"/>
+               <img src="../../public/logo.png"/>
            </div>
            <div className={style.searcher}>
                <input type="text" required placeholder="Search" />

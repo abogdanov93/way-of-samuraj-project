@@ -3,12 +3,13 @@
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "logo searcher";
     grid-area: header;
-    background-color: linen;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 }
 
 .logo {
     grid-area: logo;
-    margin: 15px auto 15px 25px;
+    margin: 15px auto 15px 45px;
 }
 
 @media (max-width: 360px) {
