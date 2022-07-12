@@ -13,3 +13,7 @@
 /*.posts{*/
 /*    grid-area: myPosts;*/
 /*}*/
+
+.profile {
+    grid-area: profile;
+}

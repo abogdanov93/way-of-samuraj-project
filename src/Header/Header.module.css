@@ -1,19 +1,27 @@
-.Header{
-    display:grid;
+.header {
+    display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "logo searcher";
+    grid-area: header;
+    background-color: linen;
 }
 
-.logo{
+.logo {
     grid-area: logo;
-    margin: 15px;
+    margin: 15px auto 15px 25px;
 }
 
-.logo img{
+@media (max-width: 360px) {
+    .logo {
+        margin: 5px;
+    }
+}
+
+.logo img {
     width: 100px;
 }
 
-.searcher{
+.searcher {
     grid-area: searcher;
     margin: auto;
 }

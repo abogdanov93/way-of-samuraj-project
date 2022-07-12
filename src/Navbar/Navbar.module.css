@@ -1,4 +1,24 @@
-.Navbar{
-    color: #303030;
+.navbar {
+    grid-area: navbar;
+    background-color: linen;
+    margin-left: 10px;
+    padding: 20px;
+    border-radius: 7px;
 }
 
+@media (max-width: 360px) {
+    .navbar {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+.link {
+    color: lightgray;
+    text-decoration: none;
+}
+
+.activeLink {
+    color: gray;
+    text-decoration: none;
+}

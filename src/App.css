@@ -9,8 +9,8 @@
 
 }
 
-@media(max-width: 360px){
-    .App{
+@media (max-width: 360px) {
+    .App {
         display: grid;
         grid-template-rows: auto 1fr auto;
         grid-template-columns: 1fr;
@@ -20,19 +20,15 @@
             "profile"
             "navbar";
     }
+    .content {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }
 
-.header {
-    grid-area: header;
-    background-color: linen;
-}
-
-.profile {
-    grid-area: profile;
+.content {
     background-color: whitesmoke;
-}
-
-.navbar {
-    grid-area: navbar;
-    background-color: linen;
+    margin-right: 10px;
+    padding: 20px;
+    border-radius: 7px;
 }

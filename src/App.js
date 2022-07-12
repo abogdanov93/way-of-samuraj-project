@@ -1,16 +1,28 @@
 import React from "react";
+import {Route, Routes, BrowserRouter} from "react-router-dom";
 import Header from "./Header/Header";
 import Profile from "./Profile/Profile";
 import Navbar from "./Navbar/Navbar";
+import Dialogs from "./Dialogs/Dialogs";
 import "./App.css"
 
-function App() {
+function App(props) {
     return (
-        <div className="App">
-            <div className="header"><Header /></div>
-            <div className="profile"><Profile /></div>
-            <div className="navbar"><Navbar /></div>
-        </div>
+        <BrowserRouter>
+            <div className="App">
+                <Header/>
+                <Navbar/>
+                <div className="content">
+                    <Routes>
+                        <Route path="/profile/*" element={<Profile/>}/>
+                        <Route path="/dialogs/*" element={<Dialogs />}/>
+                        <Route path="/communities/*" element={<Dialogs/>}/>
+                        <Route path="/news/*" element={<Dialogs />}/>
+                        <Route path="/settings/*" element={<Dialogs/>}/>
+                    </Routes>
+                </div>
+            </div>
+        </BrowserRouter>
     );
 }
 
