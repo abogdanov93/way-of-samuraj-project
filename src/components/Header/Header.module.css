@@ -3,8 +3,7 @@
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "logo searcher";
     grid-area: header;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    background-color: transparent;
 }
 
 .logo {
@@ -19,7 +18,7 @@
 }
 
 .logo img {
-    width: 100px;
+    width: 125px;
 }
 
 .searcher {

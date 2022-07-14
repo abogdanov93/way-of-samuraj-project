@@ -1,10 +1,8 @@
 .navbar {
     grid-area: navbar;
-    background-color: white;
     margin-left: 40px;
     padding: 20px;
     border-radius: 7px;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 }
 
 @media (max-width: 360px) {
@@ -15,15 +13,22 @@
 }
 
 .link {
-    color: lightgray;
+    color: #fafeff;
     text-decoration: none;
 }
 
 .activeLink {
-    color: gray;
+    color: #fafeff;
     text-decoration: none;
 }
 
 .friends {
-    color: gray;
+    color: #fafeff;
+}
+
+.friendsItem {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    justify-content: center;
 }

@@ -1,11 +1,12 @@
 import React from "react";
-import style from "./Header.module.css"
+import style from "./Header.module.css";
+import logo from "../../images/logo.png";
 
 const Header = () => {
     return (
        <header className={style.header}>
            <div className={style.logo}>
-               <img src="../../public/logo.png"/>
+               <img src={logo}/>
            </div>
            <div className={style.searcher}>
                <input type="text" required placeholder="Search" />

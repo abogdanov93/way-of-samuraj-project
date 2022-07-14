@@ -2,11 +2,13 @@
     display: grid;
     grid-template-rows: auto 1fr;
     grid-template-columns: 1fr 4fr;
-    grid-gap: 20px 40px;
+    grid-gap: 15px 40px;
     grid-template-areas:
             "header header"
             "navbar profile";
-    background-color: #FAFAFA;
+    background: rgb(37,78,184);
+    background: linear-gradient(0deg, rgba(37,78,184,1) 0%, rgba(29,111,195,1) 100%);
+    font-family: 'DM Sans', sans-serif;
 }
 
 @media (max-width: 360px) {
@@ -27,9 +29,6 @@
 }
 
 .content {
-    background-color: white;
     margin-right: 40px;
-    padding: 20px;
     border-radius: 7px;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 }

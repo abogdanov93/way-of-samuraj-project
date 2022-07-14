@@ -26,7 +26,7 @@ const Navbar = (props) => {
             </div>
             <div>
                 <h4 className={style.friends}>Friends:</h4>
-                {friendElement}
+                <div className={style.friendsItem}>{friendElement}</div>
             </div>
         </nav>
     );

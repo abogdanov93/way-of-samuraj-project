@@ -3,7 +3,7 @@
     grid-template-columns: 1fr 2fr;
     grid-gap: 10px;
     grid-template-areas:
-    "avatar about"
+    "avatar about";
 }
 
 .avatar {
