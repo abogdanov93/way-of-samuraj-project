@@ -1,11 +1,12 @@
 .App {
     display: grid;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: 1fr 4fr;
-    grid-gap: 15px 40px;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 1fr 3fr 1fr;
     grid-template-areas:
-            "header header"
-            "navbar profile";
+            "header header header"
+            "navbar profileInfo friendsBlock"
+            ". newPost ."
+            ". posts .";
     background: rgb(37,78,184);
     background: linear-gradient(0deg, rgba(37,78,184,1) 0%, rgba(29,111,195,1) 100%);
     font-family: 'DM Sans', sans-serif;
@@ -29,6 +30,6 @@
 }
 
 .content {
-    margin-right: 40px;
     border-radius: 7px;
+    color: #475156;
 }

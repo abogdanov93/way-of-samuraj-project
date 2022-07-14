@@ -6,12 +6,14 @@ import Navbar from "./components/Navbar/Navbar";
 import Dialogs from "./components/Dialogs/Dialogs";
 import "./App.css"
 import {updatePostText} from "./state";
+import FriendsBlock from "./components/FriendsBlock/FriendsBlock";
 
 function App(props) {
     return (
         <div className="App">
             <Header/>
-            <Navbar friends={props.state.friends}/>
+            <Navbar />
+            <FriendsBlock friends={props.state.friends}/>
             <div className="content">
                 <Routes>
                     <Route path="/profile/*"

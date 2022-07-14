@@ -1,7 +1,6 @@
 .navbar {
     grid-area: navbar;
-    margin-left: 40px;
-    padding: 20px;
+    padding: 25px 25px 10px 65px;
     border-radius: 7px;
 }
 
@@ -20,15 +19,4 @@
 .activeLink {
     color: #fafeff;
     text-decoration: none;
-}
-
-.friends {
-    color: #fafeff;
-}
-
-.friendsItem {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 5px;
-    justify-content: center;
 }
