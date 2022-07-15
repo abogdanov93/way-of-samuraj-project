@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import state, {addPost, subscribe, updatePostText} from "./state";
+import store from "./store";
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from "react-dom/client";
 import {BrowserRouter} from "react-router-dom";
@@ -14,14 +14,14 @@ let rerenderEntireTree = (state) => {
             <BrowserRouter>
                 <App
                     state={state}
-                    addPost={addPost}
-                    updatePostText={updatePostText}/>
+                    addPost={store.addPost.bind(store)}
+                    updatePostText={store.updatePostText.bind(store)}/>
             </BrowserRouter>
         </React.StrictMode>
     );
 }
 
-rerenderEntireTree(state);
-subscribe(rerenderEntireTree);
+rerenderEntireTree(store.getState());
+store.subscribe(rerenderEntireTree);
 
 reportWebVitals();
