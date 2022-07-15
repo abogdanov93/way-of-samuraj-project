@@ -10,17 +10,15 @@ const Profile = (props) => {
         .map(p => <Posts avatar={friend.avatar} id={p.id} post={p.post} likeCounter={p.likeCounter}/>)
 
     return (
-        <div>
+        <div className={style.profile}>
             <div className={style.boxes}><ProfileInfo/></div>
             <div className={style.boxes}>
-                <div>
-                    <NewPost
-                        newPostText={props.profile.newPostText}
-                        addPost={props.addPost}
-                        updatePostText={props.updatePostText}/>
-                </div>
-                <div>{postElement}</div>
+                <NewPost
+                    newPostText={props.profile.newPostText}
+                    addPost={props.addPost}
+                    updatePostText={props.updatePostText}/>
             </div>
+            <div className={style.boxes}>{postElement}</div>
         </div>
     )
         ;

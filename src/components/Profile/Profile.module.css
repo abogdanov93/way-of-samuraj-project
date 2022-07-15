@@ -1,6 +1,11 @@
+.profile {
+    display:grid;
+    grid-template-rows: 3fr 1fr 5fr;
+}
+
 .boxes {
     background-color: white;
     border-radius: 7px;
-    margin: 16px;
+    margin: 0px 16px 16px 16px;
     padding: 20px;
 }

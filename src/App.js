@@ -5,7 +5,6 @@ import Profile from "./components/Profile/Profile";
 import Navbar from "./components/Navbar/Navbar";
 import Dialogs from "./components/Dialogs/Dialogs";
 import "./App.css"
-import {updatePostText} from "./state";
 import FriendsBlock from "./components/FriendsBlock/FriendsBlock";
 
 function App(props) {
