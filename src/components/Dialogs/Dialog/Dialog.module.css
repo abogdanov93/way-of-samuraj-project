@@ -1,9 +1,9 @@
 .link {
-    color: lightgray;
     text-decoration: none;
+    color: #475156;
 }
 
 .activeLink {
-    color: gray;
     text-decoration: none;
+    color: #FFA000;
 }

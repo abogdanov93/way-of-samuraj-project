@@ -1,13 +1,18 @@
-.newPost{
+.newPost {
     display: grid;
-    grid-template-columns: 4fr 5fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
+    grid-template-areas:
+    "textarea button";
+
 }
 
-.newPost textarea{
+.textarea {
+    grid-area: textarea;
     max-width: 300px;
 }
 
-.newPost button{
-    max-width: 60px;
+.button {
+    grid-area: button;
+    justify-self: end;
 }

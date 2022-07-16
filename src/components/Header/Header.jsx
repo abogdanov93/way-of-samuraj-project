@@ -9,8 +9,7 @@ const Header = () => {
                <img src={logo}/>
            </div>
            <div className={style.searcher}>
-               <input type="text" required placeholder="Search" />
-               <button type="submit">Go!</button>
+               <input className={style.input} type="text" required placeholder="What are you looking for?" />
            </div>
        </header>
     );

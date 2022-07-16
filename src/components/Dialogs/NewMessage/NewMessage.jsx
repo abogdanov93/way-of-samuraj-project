@@ -10,9 +10,9 @@ const NewMessage = () => {
     }
 
     return (
-        <div>
-            <textarea ref={newMessageElement}></textarea>
-            <button onClick={addMessage}>Post</button>
+        <div className={style.newMessage}>
+            <div className={style.textarea}><textarea ref={newMessageElement} /></div>
+            <div className={style.button}><button onClick={addMessage}>Post</button></div>
         </div>
     )
 }

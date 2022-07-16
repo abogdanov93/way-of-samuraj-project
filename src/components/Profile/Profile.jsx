@@ -6,6 +6,7 @@ import NewPost from "./NewPost/NewPost";
 
 const Profile = (props) => {
     let friend = props.friends[0];
+
     let postElement = props.profile.posts
         .map(p => <Posts avatar={friend.avatar} id={p.id} post={p.post} likeCounter={p.likeCounter}/>)
 
@@ -15,8 +16,7 @@ const Profile = (props) => {
             <div className={style.boxes}>
                 <NewPost
                     newPostText={props.profile.newPostText}
-                    addPost={props.addPost}
-                    updatePostText={props.updatePostText}/>
+                    dispatch={props.dispatch}/>
             </div>
             <div className={style.boxes}>{postElement}</div>
         </div>

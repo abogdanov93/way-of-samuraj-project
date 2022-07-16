@@ -1,5 +1,8 @@
 import React from "react";
 
+const ADD_POST = "ADD-POST";
+const UPDATE_POST_TEXT = "UPDATE-POST-TEXT";
+
 let store = {
 
     _state: {
@@ -35,23 +38,6 @@ let store = {
         ]
     },
 
-    addPost() {
-        let newPost = {
-            id: 4,
-            post: this._state.profile.newPostText,
-            likeCounter: 0
-        }
-
-        this._state.profile.posts.unshift(newPost);
-        this._state.profile.newPostText = "";
-        this._callSubscriber(this._state);
-    },
-
-    updatePostText(newText) {
-        this._state.profile.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-
     _callSubscriber() {
         console.log("state has been changed");
     },
@@ -62,8 +48,28 @@ let store = {
 
     getState() {
         return this._state;
+    },
+
+    dispatch(action) {
+        if (action.type === ADD_POST) {
+            let newPost = {
+                id: 4,
+                post: this._state.profile.newPostText,
+                likeCounter: 0
+            }
+            this._state.profile.posts.unshift(newPost);
+            this._state.profile.newPostText = "";
+            this._callSubscriber(this._state);
+        } else if (action.type === UPDATE_POST_TEXT ) {
+            this._state.profile.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
+
     }
 }
+
+export const addPostActionCreator = () => ({type: ADD_POST});
+export const updatePostTextActionCreator = (text) => ({type: UPDATE_POST_TEXT, newText: text});
 
 window.store = store;
 

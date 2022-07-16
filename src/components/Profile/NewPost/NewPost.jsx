@@ -1,25 +1,29 @@
 import React, {createRef} from "react";
 import style from "./NewPost.module.css";
+import {addPostActionCreator, updatePostTextActionCreator} from "../../../store";
 
 const NewPost = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        props.addPost();
-        // props.updatePostText("");
+        props.dispatch(addPostActionCreator());
     }
 
     let updatePostText = () => {
-        let newText = newPostElement.current.value; // берет value из textarea
-        props.updatePostText(newText); // вызывает callback функцию из стейта, которая пушит newText в state
+        let text = newPostElement.current.value;
+        props.dispatch(updatePostTextActionCreator(text));
     }
 
-    return (     // при изменениях в textarea вызыввется функция updatePostText
+    return (
         <div className={style.newPost}>
-            <textarea ref={newPostElement}
-                      value={props.newPostText}
-                      onChange={updatePostText}/>
-            <button onClick={addPost}>Post</button>
+            <div className={style.textarea}>
+                <textarea ref={newPostElement}
+                          value={props.newPostText}
+                          onChange={updatePostText}/>
+            </div>
+            <div className={style.button}>
+                <button onClick={addPost}>Post</button>
+            </div>
         </div>
     );
 }

@@ -10,12 +10,40 @@
 
     background: linear-gradient(0deg, rgba(37,78,184,1) 0%, rgba(29,111,195,1) 100%);
     font-family: 'DM Sans', sans-serif;
+    color: white;
 }
 
 .content {
     grid-area: content;
-    border-radius: 7px;
     color: #475156;
+}
+
+.App button {
+    background: #ffb742;
+    background-image: -webkit-linear-gradient(top, #ffb742, #FFA000);
+    background-image: -moz-linear-gradient(top, #ffb742, #FFA000);
+    background-image: -ms-linear-gradient(top, #ffb742, #FFA000);
+    background-image: -o-linear-gradient(top, #ffb742, #FFA000);
+    background-image: linear-gradient(to bottom, #ffb742, #FFA000);
+    border: none;
+    border-radius: 19px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    width: 100px;
+}
+
+.App button:hover {
+    background: #ffc02e;
+    background-image: -webkit-linear-gradient(top, #ffc02e, #FFB300);
+    background-image: -moz-linear-gradient(top, #ffc02e, #FFB300);
+    background-image: -ms-linear-gradient(top, #ffc02e, #FFB300);
+    background-image: -o-linear-gradient(top, #ffc02e, #FFB300);
+    background-image: linear-gradient(to bottom, #ffc02e, #FFB300);
+    text-decoration: none;
 }
 
 @media (max-width: 360px) {
