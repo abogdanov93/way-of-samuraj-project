@@ -6,7 +6,7 @@ import NewMessage from "./NewMessage/NewMessage";
 
 const Dialogs = (props) => {
 
-    let dialogElement = props.dialogs.dialogs
+    let dialogElement = props.dialogs.dialog
         .map(d => <Dialog id={d.id} name={d.name}/>);
 
     let messageElement = props.dialogs.messages
@@ -21,7 +21,9 @@ const Dialogs = (props) => {
                 {messageElement}
             </div>
             <div className={`${style.newMessage} ${style.boxes}`}>
-                <NewMessage/>
+                <NewMessage
+                    newMessageText={props.dialogs.newMessageText}
+                    dispatch={props.dispatch}/>
             </div>
         </div>
     );

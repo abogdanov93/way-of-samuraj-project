@@ -2,6 +2,8 @@ import React from "react";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_POST_TEXT = "UPDATE-POST-TEXT";
+const ADD_MESSAGE = "ADD-MESSAGE";
+const UPDATE_MESSAGE_TEXT = "UPDATE-MESSAGE-TEXT";
 
 let store = {
 
@@ -14,7 +16,7 @@ let store = {
             newPostText: "text me"
         },
         dialogs: {
-            dialogs: [
+            dialog: [
                 {id: 1, name: "marusik_super"},
                 {id: 2, name: "notfat100kg"}
             ],
@@ -22,7 +24,8 @@ let store = {
                 {id: 1, message: "Привет, мы с Натуликом в лобби."},
                 {id: 2, message: "Почему все так лагает?!"},
                 {id: 3, message: "Марусик, поправь наушники!"}
-            ]
+            ],
+            newMessageText: "text me"
         },
         friends: [
             {
@@ -60,8 +63,19 @@ let store = {
             this._state.profile.posts.unshift(newPost);
             this._state.profile.newPostText = "";
             this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_POST_TEXT ) {
+        } else if (action.type === UPDATE_POST_TEXT) {
             this._state.profile.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        } else if (action.type === ADD_MESSAGE) {
+            let newMessage = {
+                id: 5,
+                message: this._state.dialogs.newMessageText
+            }
+            this._state.dialogs.messages.push(newMessage);
+            this._state.dialogs.newMessageText = "";
+            this._callSubscriber(this._state);
+        } else if (action.type === UPDATE_MESSAGE_TEXT) {
+            this._state.dialogs.newMessageText = action.newMessage;
             this._callSubscriber(this._state);
         }
 
@@ -70,6 +84,9 @@ let store = {
 
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const updatePostTextActionCreator = (text) => ({type: UPDATE_POST_TEXT, newText: text});
+export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
+export const updateMessageTextActionCreator = (message) => ({type: UPDATE_MESSAGE_TEXT, newMessage: message});
+
 
 window.store = store;
 
