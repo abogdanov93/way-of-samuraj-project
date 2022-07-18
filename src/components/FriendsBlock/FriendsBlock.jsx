@@ -3,8 +3,8 @@ import style from "./FriendsBlock.module.css";
 import Friends from "./Friends/Friends";
 
 const FriendsBlock = (props) => {
-    let friendElement =  props.friends
-        .map(f => <Friends id={f.id} name={f.name} avatar={f.avatar} />)
+    let friendElement = props.store.getState().profile.friends
+        .map(f => <Friends id={f.id} name={f.name} avatar={f.avatar} />);
 
     return (
             <div className={style.friendsBlock}>

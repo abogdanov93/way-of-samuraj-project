@@ -1,14 +1,6 @@
 .navbar {
     grid-area: navbar;
-    padding: 25px 25px 10px 65px;
-    border-radius: 7px;
-}
-
-@media (max-width: 360px) {
-    .navbar {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
+    padding: 13px 25px 10px 50px;
 }
 
 .link {
@@ -16,7 +8,19 @@
     text-decoration: none;
 }
 
+.link:hover {
+    color: #FFA000;
+}
+
 .activeLink {
     color: #fafeff;
     text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width: 360px) {
+    .navbar {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }

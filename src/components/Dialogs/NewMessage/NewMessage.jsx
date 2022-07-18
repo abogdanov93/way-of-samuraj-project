@@ -1,28 +1,24 @@
 import React from "react";
 import style from "./NewMessage.module.css";
-import {addMessageActionCreator, updateMessageTextActionCreator} from "../../../store";
 
 const NewMessage = (props) => {
-    let newMessageElement = React.createRef();
 
-    let addMessage = () => {
-        props.dispatch(addMessageActionCreator());
-    }
+    let onAddMessage = () => props.addMessage();
 
-    let updateMessageText = () => {
-        let newMessage = newMessageElement.current.value;
-        props.dispatch(updateMessageTextActionCreator(newMessage));
+    let onUpdateMessageText = (event) => {
+        let newMessage = event.target.value;
+        props.updateMessageText(newMessage);
     }
 
     return (
         <div className={style.newMessage}>
             <div className={style.textarea}>
-                <textarea ref={newMessageElement}
+                <textarea required placeholder="Write a message..."
                           value={props.newMessageText}
-                          onChange={updateMessageText}/>
+                          onChange={onUpdateMessageText}/>
             </div>
             <div className={style.button}>
-                <button onClick={addMessage}>Post</button>
+                <button onClick={onAddMessage}>Post</button>
             </div>
         </div>
     )

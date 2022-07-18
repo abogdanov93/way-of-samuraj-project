@@ -2,15 +2,17 @@ import React from "react";
 import style from "./Dialogs.module.css"
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import NewMessage from "./NewMessage/NewMessage";
+import NewMessageContainer from "./NewMessage/NewMessageContainer";
 
 const Dialogs = (props) => {
 
-    let dialogElement = props.dialogs.dialog
+    let dialogs = props.store.getState().dialogs;
+
+    let dialogElement = dialogs.dialog
         .map(d => <Dialog id={d.id} name={d.name}/>);
 
-    let messageElement = props.dialogs.messages
-        .map(m => <Message id={m.id} message={m.message}/>)
+    let messageElement = dialogs.messages
+        .map(m => <Message id={m.id} message={m.message}/>);
 
     return (
         <div className={style.dialogs}>
@@ -21,9 +23,7 @@ const Dialogs = (props) => {
                 {messageElement}
             </div>
             <div className={`${style.newMessage} ${style.boxes}`}>
-                <NewMessage
-                    newMessageText={props.dialogs.newMessageText}
-                    dispatch={props.dispatch}/>
+                <NewMessageContainer store={props.store}/>
             </div>
         </div>
     );

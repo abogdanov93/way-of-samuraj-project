@@ -1,15 +1,14 @@
 .newPost {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     grid-gap: 10px;
     grid-template-areas:
-    "textarea button";
-
+    "textareaContainer button";
 }
 
-.textarea {
-    grid-area: textarea;
-    max-width: 300px;
+.textareaContainer {
+    grid-area: textareaContainer;
+    width: 300px;
 }
 
 .button {

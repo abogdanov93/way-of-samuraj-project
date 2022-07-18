@@ -12,17 +12,13 @@ function App(props) {
         <div className="App">
             <Header/>
             <Navbar/>
-            <FriendsBlock friends={props.state.friends}/>
+            <FriendsBlock store={props.store}/>
             <div className="content">
                 <Routes>
                     <Route path="/profile/*"
-                           element={<Profile
-                               profile={props.state.profile}
-                               friends={props.state.friends}
-                               dispatch={props.dispatch}/>}/>
+                           element={<Profile store={props.store}/>}/>
                     <Route path="/dialogs/*"
-                           element={<Dialogs dialogs={props.state.dialogs}
-                                             dispatch={props.dispatch}/>}/>
+                           element={<Dialogs store={props.store}/>}/>
                     <Route path="/communities/*"
                            element={<Dialogs/>}/>
                     <Route path="/news/*"

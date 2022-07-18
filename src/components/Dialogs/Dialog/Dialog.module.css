@@ -3,7 +3,12 @@
     color: #475156;
 }
 
+.link:hover {
+    color: #FFA000;
+}
+
 .activeLink {
     text-decoration: none;
-    color: #FFA000;
+    color: #475156;
+    font-weight: bold;
 }

@@ -1,28 +1,27 @@
-import React, {createRef} from "react";
+import React from "react";
 import style from "./NewPost.module.css";
-import {addPostActionCreator, updatePostTextActionCreator} from "../../../store";
 
 const NewPost = (props) => {
-    let newPostElement = React.createRef();
-
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
+debugger
+    let onAddPost = () => {
+        props.addPost();
     }
 
-    let updatePostText = () => {
-        let text = newPostElement.current.value;
-        props.dispatch(updatePostTextActionCreator(text));
+    let onPostChange = (event) => {
+        let text = event.target.value;
+        props.updatePostText(text);
     }
 
     return (
         <div className={style.newPost}>
-            <div className={style.textarea}>
-                <textarea ref={newPostElement}
+            <div className={style.textareaContainer}>
+                <textarea className={style.textarea}
+                          required placeholder="Write a post..."
                           value={props.newPostText}
-                          onChange={updatePostText}/>
+                          onChange={onPostChange}/>
             </div>
             <div className={style.button}>
-                <button onClick={addPost}>Post</button>
+                <button onClick={onAddPost}>Post</button>
             </div>
         </div>
     );
