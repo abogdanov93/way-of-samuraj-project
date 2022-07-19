@@ -7,7 +7,7 @@ const Dialog = (props) => {
         <div className={style.dialog}>
             <NavLink to={"/dialogs/" + props.id} className={navData => navData.isActive ? style.activeLink : style.link}>{props.name}</NavLink>
         </div>
-    )
+    );
 }
 
 export default Dialog;

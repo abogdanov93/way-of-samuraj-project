@@ -7,6 +7,7 @@
     grid-template-areas:
         "picture post"
         "like likeCounter";
+    color: #475156;
 }
 
 .picture {
@@ -15,6 +16,7 @@
 
 .post {
     grid-area: post;
+    color: #475156;
 }
 
 .like {

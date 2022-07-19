@@ -8,19 +8,7 @@ let initialState = {
         {id: 1, post: "Hi there!", likeCounter: 1},
         {id: 2, post: "Are you going to play fortnite?", likeCounter: 3}
     ],
-    newPostText: "",
-    friends: [
-        {
-            id: 1,
-            name: "marusik_super",
-            avatar: "https://i.pinimg.com/474x/83/73/c9/8373c9bbddf97a72c445eab91f3d6fbc.jpg"
-        },
-        {
-            id: 2,
-            name: "notfat100kg",
-            avatar: "https://media.fortniteapi.io/images/cosmetics/e9d61c4a4aae593fbac8d72182da83f2/v2/background.png"
-        }
-    ]
+    newPostText: ""
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -30,13 +18,17 @@ const profileReducer = (state = initialState, action) => {
                 id: 4,
                 post: state.newPostText,
                 likeCounter: 0
-            }
-            state.posts.unshift(newPost);
-            state.newPostText = "";
-            return state;
+            };
+            return {
+                ...state,
+                posts: [newPost, ...state.posts],
+                newPostText: ""
+            };
         case UPDATE_POST_TEXT:
-            state.newPostText = action.newText;
-            return state;
+            return {
+                ...state,
+                newPostText: action.newText
+            };
         default:
             return state;
     }

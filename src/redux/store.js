@@ -23,19 +23,7 @@ let store = {
                 {id: 3, message: "Марусик, поправь наушники!"}
             ],
             newMessageText: ""
-        },
-        friends: [
-            {
-                id: 1,
-                name: "marusik_super",
-                avatar: "https://i.pinimg.com/474x/83/73/c9/8373c9bbddf97a72c445eab91f3d6fbc.jpg"
-            },
-            {
-                id: 2,
-                name: "notfat100kg",
-                avatar: "https://media.fortniteapi.io/images/cosmetics/e9d61c4a4aae593fbac8d72182da83f2/v2/background.png"
-            }
-        ]
+        }
     },
 
     _callSubscriber() {

@@ -1,30 +1,27 @@
 import React from "react";
 import {Route, Routes} from "react-router-dom";
 import Header from "./components/Header/Header";
-import Profile from "./components/Profile/Profile";
 import Navbar from "./components/Navbar/Navbar";
-import Dialogs from "./components/Dialogs/Dialogs";
-import "./App.css"
 import FriendsBlock from "./components/FriendsBlock/FriendsBlock";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import "./App.css";
+import Friends from "./components/Friends/Friends";
 
-function App(props) {
+function App() {
     return (
         <div className="App">
             <Header/>
             <Navbar/>
-            <FriendsBlock store={props.store}/>
+            <FriendsBlock/>
             <div className="content">
                 <Routes>
                     <Route path="/profile/*"
-                           element={<Profile store={props.store}/>}/>
+                           element={<ProfileContainer/>}/>
                     <Route path="/dialogs/*"
-                           element={<Dialogs store={props.store}/>}/>
-                    <Route path="/communities/*"
-                           element={<Dialogs/>}/>
-                    <Route path="/news/*"
-                           element={<Dialogs/>}/>
-                    <Route path="/settings/*"
-                           element={<Dialogs/>}/>
+                           element={<DialogsContainer/>}/>
+                    <Route path="/friends/*"
+                           element={<Friends/>}/>
                 </Routes>
             </div>
         </div>

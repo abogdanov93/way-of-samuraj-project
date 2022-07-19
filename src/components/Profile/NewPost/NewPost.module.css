@@ -3,11 +3,11 @@
     grid-template-columns: 2fr 1fr;
     grid-gap: 10px;
     grid-template-areas:
-    "textareaContainer button";
+    "textarea button";
 }
 
-.textareaContainer {
-    grid-area: textareaContainer;
+.textarea {
+    grid-area: textarea;
     width: 300px;
 }
 

@@ -2,10 +2,8 @@ import React from "react";
 import style from "./NewPost.module.css";
 
 const NewPost = (props) => {
-debugger
-    let onAddPost = () => {
-        props.addPost();
-    }
+
+    let onAddPost = () => props.addPost();
 
     let onPostChange = (event) => {
         let text = event.target.value;
@@ -14,10 +12,9 @@ debugger
 
     return (
         <div className={style.newPost}>
-            <div className={style.textareaContainer}>
-                <textarea className={style.textarea}
-                          required placeholder="Write a post..."
-                          value={props.newPostText}
+            <div className={style.textarea}>
+                <textarea required placeholder="Write a post..."
+                          value={props.profile.newPostText}
                           onChange={onPostChange}/>
             </div>
             <div className={style.button}>
