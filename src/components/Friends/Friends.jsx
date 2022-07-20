@@ -4,7 +4,9 @@ import style from "./Friends.module.css";
 const Friends = () => {
      return (
          <div className={style.friends}>
-             ХУЙНЯ НА ПАЛКЕ
+             <div>ХУЙНЯ НА ПАЛКЕ</div>
+             <div><button/></div>
+
         </div>
      );
 }
