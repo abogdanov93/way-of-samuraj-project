@@ -12,7 +12,7 @@ const Navbar = (props) => {
                 <NavLink to="/dialogs" className={navData => navData.isActive ? style.activeLink : style.link}>Dialogs</NavLink>
             </div>
             <div>
-                <NavLink to="/friends" className={navData => navData.isActive ? style.activeLink : style.link}>Friends</NavLink>
+                <NavLink to="/users" className={navData => navData.isActive ? style.activeLink : style.link}>Find friends</NavLink>
             </div>
             <div>
                 <NavLink to="/communities" className={navData => navData.isActive ? style.activeLink : style.link}>Communities</NavLink>
