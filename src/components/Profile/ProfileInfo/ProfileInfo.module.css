@@ -1,20 +1,32 @@
-/*.profileInfo {*/
-/*    display: grid;*/
-/*    grid-template-columns: 1fr 2fr;*/
-/*    grid-gap: 10px;*/
-/*    grid-template-areas:*/
-/*    "avatar about";*/
-/*}*/
+.profileInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+    "avatar nickName"
+    "avatar aboutMe"
+    "avatar job";
+}
 
-/*.avatar {*/
-/*    grid-area: avatar;*/
-/*}*/
+.avatar {
+    grid-area: avatar;
+}
 
-/*.about {*/
-/*    grid-area: about;*/
-/*}*/
+.nickName {
+    grid-area: nickName;
+}
 
-/*.avatar img {*/
-/*    max-width: 100%;*/
-/*    height: auto;*/
-/*}*/
+.aboutMe {
+    grid-area: aboutMe;
+    margin-top: 0px;
+}
+
+.job {
+    grid-area: job;
+}
+
+.avatar img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 7px;
+}
