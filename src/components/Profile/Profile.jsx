@@ -14,7 +14,9 @@ const Profile = (props) => {
 
     return (
         <div className={style.profile}>
-            <div className={style.boxes}><ProfileInfo/></div>
+            <div className={style.boxes}>
+                <ProfileInfo profile={props.profile.profile}/>
+            </div>
             <div className={style.boxes}>
                 <NewPost
                     profile={props.profile}

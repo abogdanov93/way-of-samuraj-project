@@ -1,20 +1,20 @@
-.profileInfo {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-gap: 10px;
-    grid-template-areas:
-    "avatar about";
-}
+/*.profileInfo {*/
+/*    display: grid;*/
+/*    grid-template-columns: 1fr 2fr;*/
+/*    grid-gap: 10px;*/
+/*    grid-template-areas:*/
+/*    "avatar about";*/
+/*}*/
 
-.avatar {
-    grid-area: avatar;
-}
+/*.avatar {*/
+/*    grid-area: avatar;*/
+/*}*/
 
-.about {
-    grid-area: about;
-}
+/*.about {*/
+/*    grid-area: about;*/
+/*}*/
 
-.avatar img {
-    max-width: 100%;
-    height: auto;
-}
+/*.avatar img {*/
+/*    max-width: 100%;*/
+/*    height: auto;*/
+/*}*/

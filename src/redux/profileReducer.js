@@ -1,14 +1,16 @@
 import React from "react";
 
-const ADD_POST = "ADD-POST";
-const UPDATE_POST_TEXT = "UPDATE-POST-TEXT";
+const ADD_POST = "ADD_POST";
+const UPDATE_POST_TEXT = "UPDATE_POST_TEXT";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
     posts: [
         {id: 1, post: "Hi there!", likeCounter: 1},
         {id: 2, post: "Are you going to play fortnite?", likeCounter: 3}
     ],
-    newPostText: ""
+    newPostText: "",
+    profile: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -29,12 +31,18 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 newPostText: action.newText
             };
+        case SET_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
+            };
         default:
             return state;
     }
 }
 
 export const addPost = () => ({type: ADD_POST});
-export const updatePostText = (text) => ({type: UPDATE_POST_TEXT, newText: text})
+export const updatePostText = (text) => ({type: UPDATE_POST_TEXT, newText: text});
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 
 export default profileReducer;
