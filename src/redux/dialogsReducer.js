@@ -1,7 +1,7 @@
 import React from "react";
 
-const ADD_MESSAGE = "ADD-MESSAGE";
-const UPDATE_MESSAGE_TEXT = "UPDATE-MESSAGE-TEXT";
+const ADD_MESSAGE = "ADD_MESSAGE";
+const UPDATE_MESSAGE_TEXT = "UPDATE_MESSAGE_TEXT";
 
 let initialState = {
     dialog: [
