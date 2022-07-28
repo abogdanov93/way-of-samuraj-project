@@ -15,6 +15,7 @@ const Users = (props) => {
         <div className={style.users}>
             {props.users.map(u =>
                 <div key={u.id}>
+
                     <NavLink to={"/profile/" + u.id}>
                         <div>
                             <img src={u.photos.small != null ? u.photos.small : user}/>
@@ -23,22 +24,33 @@ const Users = (props) => {
                             {u.name}
                         </div>
                     </NavLink>
+
                     <div>
                         {u.followed
-                            ? <button onClick={() => props.unfollowUser(u.id)
+                            ? <button
+                                disabled={props.followingInProgress.some(id => id === u.id)}
+                                onClick={() => {
+                                    props.setFollowingInProgress(true, u.id);
+                                    props.unfollowUser(u.id)
                                 .then(data => {
                                     if (data.resultCode === 0) {
                                         props.unfollow(u.id);
                                     }
+                                    props.setFollowingInProgress(false, u.id);
                                 })
-                            }>Unfollow</button>
-                            : <button onClick={() => props.followUser(u.id)
+                            }}>Unfollow</button>
+                            : <button
+                                disabled={props.followingInProgress.some(id => id === u.id)}
+                                onClick={() => {
+                                    props.setFollowingInProgress(true, u.id);
+                                    props.followUser(u.id)
                                 .then(data => {
                                     if (data.resultCode === 0) {
                                         props.follow(u.id);
                                     }
+                                    props.setFollowingInProgress(false, u.id);
                                 })
-                            }>Follow</button>
+                            }}>Follow</button>
                         }
                     </div>
                 </div>
