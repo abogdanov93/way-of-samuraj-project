@@ -10,7 +10,6 @@ const Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-
     return (
         <div className={style.users}>
             {props.users.map(u =>
@@ -29,28 +28,10 @@ const Users = (props) => {
                         {u.followed
                             ? <button
                                 disabled={props.followingInProgress.some(id => id === u.id)}
-                                onClick={() => {
-                                    props.setFollowingInProgress(true, u.id);
-                                    props.unfollowUser(u.id)
-                                .then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.unfollow(u.id);
-                                    }
-                                    props.setFollowingInProgress(false, u.id);
-                                })
-                            }}>Unfollow</button>
+                                onClick={() => {props.unfollow(u.id)} }>Unfollow</button>
                             : <button
                                 disabled={props.followingInProgress.some(id => id === u.id)}
-                                onClick={() => {
-                                    props.setFollowingInProgress(true, u.id);
-                                    props.followUser(u.id)
-                                .then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.follow(u.id);
-                                    }
-                                    props.setFollowingInProgress(false, u.id);
-                                })
-                            }}>Follow</button>
+                                onClick={() => {props.follow(u.id)} }>Follow</button>
                         }
                     </div>
                 </div>
@@ -59,7 +40,7 @@ const Users = (props) => {
             <div className={style.pageNumbers}>
                 {pages
                     .map(p => {
-                        return <div className={props.currentPage === p && style.selectedPage}
+                        return <div className={props.currentPageNumber === p && style.selectedPage}
                                     onClick={(e) => props.onPageChange(p)}>{p}</div>
                     })
                 }
