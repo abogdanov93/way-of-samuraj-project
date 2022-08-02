@@ -51,6 +51,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     follow,
     unfollow,
-    setFollowingInProgress,
     getUsers
 })(UsersContainer);

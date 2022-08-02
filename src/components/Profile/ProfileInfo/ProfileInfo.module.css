@@ -1,9 +1,10 @@
 .profileInfo {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas:
     "avatar nickName"
+    "avatar status"
     "avatar aboutMe"
     "avatar job";
 }
@@ -12,8 +13,19 @@
     grid-area: avatar;
 }
 
+.avatar img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 7px;
+}
+
 .nickName {
     grid-area: nickName;
+    margin-bottom: 0px;
+}
+
+.status {
+    grid-area: status;
 }
 
 .aboutMe {
@@ -27,10 +39,4 @@
 
 .job h4 {
     color: rgba(29,111,195,1);
-}
-
-.avatar img {
-    max-width: 80%;
-    height: auto;
-    border-radius: 7px;
 }

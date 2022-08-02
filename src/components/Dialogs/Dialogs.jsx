@@ -3,6 +3,7 @@ import style from "./Dialogs.module.css"
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import NewMessage from "./NewMessage/NewMessage";
+import {Navigate} from "react-router-dom";
 
 const Dialogs = (props) => {
     let dialogElement = props.dialogs.dialog

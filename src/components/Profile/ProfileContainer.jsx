@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import Profile from "./Profile";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {addPost, getUserProfile, updatePostText} from "../../redux/profileReducer";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
@@ -40,4 +42,6 @@ function withRouter(Component) {
     return ComponentWithRouterProp;
 }
 
-export default connect(mapStateToProps, {addPost, updatePostText, getUserProfile})(withRouter(ProfileContainer));
+export default compose(
+    connect(mapStateToProps, {addPost, updatePostText, getUserProfile}),
+    withRouter)(ProfileContainer);

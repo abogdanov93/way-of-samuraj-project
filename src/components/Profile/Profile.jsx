@@ -25,8 +25,7 @@ const Profile = (props) => {
             </div>
             <div className={style.boxes}>{postElement}</div>
         </div>
-    )
-        ;
+    );
 }
 
 export default Profile;
