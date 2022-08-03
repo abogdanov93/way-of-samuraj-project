@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import Profile from "./Profile";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {addPost, getUserProfile, updatePostText} from "../../redux/profileReducer";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
@@ -16,13 +15,13 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        return <Profile {...this.props} profile={this.props.profile}/>
+        return <Profile {...this.props} profile={this.props.profilePage}/>
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        profile: state.profile
+        profilePage: state.profilePage
     }
 }
 

@@ -5,7 +5,7 @@ import NewPost from "./NewPost/NewPost";
 import Posts from "./Posts/Posts";
 
 const Profile = (props) => {
-    let postElement = props.profile.posts
+    let postElement = props.profilePage.posts
         .map(p => <Posts
             key={p.id}
             id={p.id}
@@ -15,11 +15,11 @@ const Profile = (props) => {
     return (
         <div className={style.profile}>
             <div className={style.boxes}>
-                <ProfileInfo profile={props.profile.profile}/>
+                <ProfileInfo profile={props.profilePage.profile}/>
             </div>
             <div className={style.boxes}>
                 <NewPost
-                    profile={props.profile}
+                    profile={props.profilePage.newPostText}
                     addPost={props.addPost}
                     updatePostText={props.updatePostText}/>
             </div>
