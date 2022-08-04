@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
-import {addPost, getUserProfile, updatePostText} from "../../redux/profileReducer";
+import {addPost, getStatus, getUserProfile, updatePostText, updateStatus} from "../../redux/profileReducer";
 import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
@@ -12,10 +12,15 @@ class ProfileContainer extends React.Component {
             userId = 18397
         }
         this.props.getUserProfile(userId);
+        this.props.getStatus(userId);
     }
 
     render() {
-        return <Profile {...this.props} profile={this.props.profilePage}/>
+        return <Profile
+            {...this.props}
+            profilePage={this.props.profilePage}
+            updateStatus={this.props.updateStatus}
+            />
     }
 }
 
@@ -42,5 +47,10 @@ function withRouter(Component) {
 }
 
 export default compose(
-    connect(mapStateToProps, {addPost, updatePostText, getUserProfile}),
-    withRouter)(ProfileContainer);
+    connect(mapStateToProps, {
+        addPost,
+        updatePostText,
+        getUserProfile,
+        getStatus,
+        updateStatus
+    }), withRouter)(ProfileContainer);

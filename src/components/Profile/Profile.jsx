@@ -15,7 +15,11 @@ const Profile = (props) => {
     return (
         <div className={style.profile}>
             <div className={style.boxes}>
-                <ProfileInfo profile={props.profilePage.profile}/>
+                <ProfileInfo
+                    profile={props.profilePage.profile}
+                    status={props.profilePage.status}
+                    updateStatus={props.updateStatus}
+                />
             </div>
             <div className={style.boxes}>
                 <NewPost
