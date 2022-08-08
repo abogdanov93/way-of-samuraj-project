@@ -2,10 +2,10 @@ import React from "react";
 import style from "./Dialogs.module.css"
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import NewMessage from "./NewMessage/NewMessage";
-import {Navigate} from "react-router-dom";
+import NewMessageFormHOC from "./NewMessageForm/NewMessageForm";
 
 const Dialogs = (props) => {
+    debugger
     let dialogElement = props.dialogs.dialog
         .map(d => <Dialog
             key={d.id}
@@ -18,6 +18,10 @@ const Dialogs = (props) => {
             id={m.id}
             message={m.message}/>);
 
+    let addNewMessage = (values) => {
+        props.addMessage(values.newMessageText);
+    }
+
     return (
         <div className={style.dialogs}>
             <div className={`${style.dialog} ${style.boxes}`}>
@@ -27,10 +31,9 @@ const Dialogs = (props) => {
                 {messageElement}
             </div>
             <div className={`${style.newMessage} ${style.boxes}`}>
-                <NewMessage
-                    dialogs={props.dialogs}
+                <NewMessageFormHOC
                     addMessage={props.addMessage}
-                    updateMessageText={props.updateMessageText}
+                    onSubmit={addNewMessage}
                 />
             </div>
         </div>

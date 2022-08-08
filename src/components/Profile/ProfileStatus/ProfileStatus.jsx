@@ -10,13 +10,13 @@ class ProfileStatus extends React.Component {
     activateEditMode = () => { // создаем метод с помощью синтаксиса стрелочной функции, чтобы не потерять контекст
         this.setState({ // встроенный метод, перезаписывает свойства в локальном state // асинхронен
             editMode: true
-        })
+        });
     }
 
     deactivateEditMode = () => {
         this.setState({
             editMode: false
-        })
+        });
         this.props.updateStatus(this.state.status); // когда пользователь выйдет из режима редактирования, отправить put запрос
     }
 
@@ -26,7 +26,17 @@ class ProfileStatus extends React.Component {
         });
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+            console.log("update");
+        }
+    }
+
     render() {
+        console.log("render");
         return (
             <div>
                 {this.state.editMode
@@ -35,7 +45,9 @@ class ProfileStatus extends React.Component {
                         onChange={this.onStatusChange}
                         onBlur={this.deactivateEditMode}
                         autoFocus={true}/>
-                    : <div className={style.status} onClick={this.activateEditMode}>{this.props.status || "Write something..."}</div>
+                    : <div className={style.status} onClick={this.activateEditMode}>
+                        {this.props.status || "Write something..."}
+                    </div>
                 }
             </div>
         )

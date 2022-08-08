@@ -20,7 +20,7 @@ function App() {
                 <Routes>
                     <Route path="/profile/*"
                            element={<ProfileContainer/>}/>
-                    <Route path="/profile/:userId*"
+                    <Route path="/profile/:userId/*"
                            element={<ProfileContainer/>}/>
                     <Route path="/dialogs/*"
                            element={<DialogsContainer/>}/>

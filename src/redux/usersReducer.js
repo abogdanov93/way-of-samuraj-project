@@ -79,8 +79,8 @@ export const follow = (userId) => {
     return (dispatch) => {
         dispatch(setFollowingInProgress(true, userId));
         usersAPI.followUser(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
+            .then(response => {
+                if (response.data.resultCode === 0) {
                     dispatch(followSuccess(userId));
                 }
                 dispatch(setFollowingInProgress(false, userId));
@@ -92,8 +92,8 @@ export const unfollow = (userId) => {
     return (dispatch) => {
         dispatch(setFollowingInProgress(true, userId));
         usersAPI.unfollowUser(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
+            .then(response => {
+                if (response.data.resultCode === 0) {
                     dispatch(unfollowSuccess(userId));
                 }
                 dispatch(setFollowingInProgress(false, userId));

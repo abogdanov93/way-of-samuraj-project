@@ -9,20 +9,15 @@ const instance = axios.create({
 });
 
 export const usersAPI = {
-    getUsers(currentPageNumber, pageSize) {
+    getUsers(currentPageNumber = 1, pageSize = 5) {
         return instance.get(`users?page=${currentPageNumber}&count=${pageSize}`)
             .then(response => response.data); // цепочка промисов, цепочка then // return response --> return data
     },
     followUser(userId) {
         return instance.post(`follow/${userId}`)
-            .then(response => response.data);
     },
     unfollowUser(userId) {
         return instance.delete(`follow/${userId}`)
-            .then(response => response.data);
-    },
-    getProfile(userId) {
-        return instance.get(`profile/${userId}`);
     }
 }
 
@@ -41,5 +36,11 @@ export const profileAPI = {
 export const authAPI = {
     getAuthData() {
         return instance.get(`auth/me`);
+    },
+    logIn(email, password, rememberMe) {
+        return instance.post(`auth/login`, {email, password, rememberMe});
+    },
+    logOut() {
+        return instance.delete(`auth/login`);
     }
 }

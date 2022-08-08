@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import NewPost from "./NewPost/NewPost";
+import NewPostForm from "./NewPostForm/NewPostForm";
 import Posts from "./Posts/Posts";
 
 const Profile = (props) => {
@@ -11,6 +11,10 @@ const Profile = (props) => {
             id={p.id}
             post={p.post}
             likeCounter={p.likeCounter}/>);
+
+    let addNewPost = (values) => {
+        props.addPost(values.newPostText);
+    }
 
     return (
         <div className={style.profile}>
@@ -22,10 +26,10 @@ const Profile = (props) => {
                 />
             </div>
             <div className={style.boxes}>
-                <NewPost
-                    profile={props.profilePage.newPostText}
+                <NewPostForm
                     addPost={props.addPost}
-                    updatePostText={props.updatePostText}/>
+                    onSubmit={addNewPost}
+                />
             </div>
             <div className={style.boxes}>{postElement}</div>
         </div>

@@ -1,7 +1,6 @@
 import React from "react";
 
 const ADD_MESSAGE = "ADD_MESSAGE";
-const UPDATE_MESSAGE_TEXT = "UPDATE_MESSAGE_TEXT";
 
 let initialState = {
     dialog: [
@@ -12,33 +11,25 @@ let initialState = {
         {id: 1, message: "Привет, мы с Натуликом в лобби."},
         {id: 2, message: "Почему все так лагает?!"},
         {id: 3, message: "Марусик, поправь наушники!"}
-    ],
-    newMessageText: ""
-}
+    ]
+};
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {
                 id: 5,
-                message: state.newMessageText
+                message: action.newMessageText
             };
             return {
                 ...state,
-                messages: [...state.messages, newMessage],
-                newMessageText: ""
-            };
-        case UPDATE_MESSAGE_TEXT:
-            return {
-                ...state,
-                newMessageText: action.newMessage
+                messages: [...state.messages, newMessage]
             };
         default:
             return state;
     }
 }
 
-export const addMessage = () => ({type: ADD_MESSAGE});
-export const updateMessageText = (message) => ({type: UPDATE_MESSAGE_TEXT, newMessage: message});
+export const addMessage = (newMessageText) => ({type: ADD_MESSAGE, newMessageText});
 
 export default dialogsReducer;
