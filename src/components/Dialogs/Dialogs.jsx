@@ -5,7 +5,6 @@ import Message from "./Message/Message";
 import NewMessageFormHOC from "./NewMessageForm/NewMessageForm";
 
 const Dialogs = (props) => {
-    debugger
     let dialogElement = props.dialogs.dialog
         .map(d => <Dialog
             key={d.id}

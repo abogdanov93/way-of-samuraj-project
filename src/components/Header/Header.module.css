@@ -1,7 +1,7 @@
 .header {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
-    grid-template-areas: "logo searcher login";
+    grid-template-areas: "logo searcher loginArea";
     grid-area: header;
     background-color: transparent;
 }
@@ -31,14 +31,14 @@
     opacity: 90%;
 }
 
-.login {
-    grid-area: login;
+.loginArea {
+    grid-area: loginArea;
     align-self: center;
     justify-self: end;
     margin-right: 50px;
 }
 
-.login a {
+.loginArea a {
     color: white;
     text-decoration: none;
 }
@@ -51,6 +51,12 @@
 
 .loginIcon {
     width: 20px;
+}
+
+.login {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
 }
 
 @media (max-width: 360px) {

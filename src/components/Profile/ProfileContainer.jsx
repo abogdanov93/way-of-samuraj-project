@@ -4,6 +4,7 @@ import Profile from "./Profile";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {addPost, getStatus, getUserProfile, updateStatus} from "../../redux/profileReducer";
 import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
@@ -53,4 +54,4 @@ export default compose(
         getUserProfile,
         getStatus,
         updateStatus
-    }), withRouter)(ProfileContainer);
+    }), withAuthRedirect, withRouter)(ProfileContainer);

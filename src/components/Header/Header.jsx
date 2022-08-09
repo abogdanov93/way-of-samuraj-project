@@ -13,9 +13,12 @@ const Header = (props) => {
             <div className={style.searcher}>
                 <input className={style.input} type="text" required placeholder="What are you looking for?"/>
             </div>
-            <div className={style.login}>
+            <div className={style.loginArea}>
                 {props.isAuth
-                    ? <NavLink to={"/profile"}>{props.login}</NavLink>
+                    ? <NavLink to={"/profile"} className={style.login}>
+                        {props.login}
+                        <div onClick={props.logOut}>Sign out</div>
+                    </NavLink>
                     : <NavLink className={style.loginArea} to={"/login"}>
                         <div>Log in</div>
                         <img className={style.loginIcon} src={login}/>
