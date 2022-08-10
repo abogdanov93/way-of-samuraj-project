@@ -1,0 +1,16 @@
+.login {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+            ". capture ."
+            ". block .";
+}
+
+.capture {
+    grid-area: capture;
+}
+
+.block {
+    grid-area: block;
+}

@@ -64,6 +64,15 @@
     font-size: medium;
 }
 
+.App input {
+    border: none;
+    border-radius: 7px;
+    background: #F9F9F9;
+    outline: none;
+    resize: none;
+    font-size: medium;
+}
+
 @media (max-width: 360px) {
     .App {
         display: grid;

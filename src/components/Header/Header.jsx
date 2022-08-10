@@ -20,7 +20,7 @@ const Header = (props) => {
                         <div onClick={props.logOut}>Sign out</div>
                     </NavLink>
                     : <NavLink className={style.loginArea} to={"/login"}>
-                        <div>Log in</div>
+                        <div>Sign in</div>
                         <img className={style.loginIcon} src={login}/>
                     </NavLink>
                 }

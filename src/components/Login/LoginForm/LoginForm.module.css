@@ -1,0 +1,24 @@
+.loginForm {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+"login login"
+"password password"
+"rememberMe button";
+}
+
+.login {
+    grid-area: login;
+}
+
+.password {
+    grid-area: password;
+}
+
+.rememberMe {
+    grid-area: rememberMe;
+}
+
+.button {
+    grid-area: button;
+}

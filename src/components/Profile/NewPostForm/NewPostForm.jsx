@@ -2,7 +2,7 @@ import React from "react";
 import style from "./NewPostForm.module.css";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators";
-import {Element, Textarea} from "../../common/FormControl/FormControl";
+import {Element} from "../../common/FormControl/FormControl";
 
 const maxLength5 = maxLengthCreator(5);
 
@@ -24,5 +24,5 @@ const NewPostForm = (props) => {
     );
 }
 
-const NewPostFormHOC = reduxForm({form: "profileNewPostForm"})(NewPostForm);
+export const NewPostFormHOC = reduxForm({form: "profileNewPostForm"})(NewPostForm);
 export default NewPostFormHOC;
