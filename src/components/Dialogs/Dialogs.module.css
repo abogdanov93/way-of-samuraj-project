@@ -18,10 +18,3 @@
 .newMessage {
     grid-area: newMessage
 }
-
-.boxes {
-    background-color: white;
-    border-radius: 7px;
-    margin: 0px 13px 13px 0px;
-    padding: 20px;
-}

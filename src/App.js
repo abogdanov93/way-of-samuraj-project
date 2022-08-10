@@ -1,6 +1,6 @@
 import React from "react";
 import {Route, Routes} from "react-router-dom";
-import "./App.css";
+import commonStyles from "./App.module.css";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -12,11 +12,11 @@ import Login from "./components/Login/Login";
 
 function App() {
     return (
-        <div className="App">
+        <div className={commonStyles.App}>
             <HeaderContainer/>
             <Navbar/>
             <FriendsBlock/>
-            <div className="content">
+            <div className={commonStyles.content}>
                 <Routes>
                     <Route path="/profile/*"
                            element={<ProfileContainer/>}/>

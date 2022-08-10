@@ -15,6 +15,13 @@
 
 .content {
     grid-area: content;
+}
+
+.whiteBlock {
+    background-color: white;
+    border-radius: 7px;
+    margin: 0px 13px 13px 0px;
+    padding: 20px;
     color: #475156;
 }
 
@@ -48,14 +55,14 @@
     outline: none;
 }
 
-/*.App textarea {*/
-/*    border: none;*/
-/*    background: none;*/
-/*    outline: none;*/
-/*    width: 100%;*/
-/*    resize: none;*/
-/*    font-size: medium;*/
-/*}*/
+.App textarea {
+    border: none;
+    background: none;
+    outline: none;
+    width: 100%;
+    resize: none;
+    font-size: medium;
+}
 
 @media (max-width: 360px) {
     .App {

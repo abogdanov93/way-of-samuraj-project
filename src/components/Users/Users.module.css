@@ -1,11 +1,5 @@
 .users {
     grid-area: friendsBlock;
-    background-color: white;
-    border-radius: 7px;
-    margin-right: 40px;
-    margin-bottom: 13px;
-    padding: 20px;
-    color: #475156;
 }
 
 .user {

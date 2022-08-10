@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Profile.module.css";
+import commonStyles from "./../../App.module.css"
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPostForm from "./NewPostForm/NewPostForm";
 import Posts from "./Posts/Posts";
@@ -18,20 +19,20 @@ const Profile = (props) => {
 
     return (
         <div className={style.profile}>
-            <div className={style.boxes}>
+            <div className={commonStyles.whiteBlock}>
                 <ProfileInfo
                     profile={props.profilePage.profile}
                     status={props.profilePage.status}
                     updateStatus={props.updateStatus}
                 />
             </div>
-            <div className={style.boxes}>
+            <div className={commonStyles.whiteBlock}>
                 <NewPostForm
                     addPost={props.addPost}
                     onSubmit={addNewPost}
                 />
             </div>
-            <div className={style.boxes}>{postElement}</div>
+            <div className={commonStyles.whiteBlock}>{postElement}</div>
         </div>
     );
 }

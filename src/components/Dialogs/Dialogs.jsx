@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Dialogs.module.css"
+import commonStyles from "../../App.module.css"
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import NewMessageFormHOC from "./NewMessageForm/NewMessageForm";
@@ -23,13 +24,13 @@ const Dialogs = (props) => {
 
     return (
         <div className={style.dialogs}>
-            <div className={`${style.dialog} ${style.boxes}`}>
+            <div className={`${style.dialog} ${commonStyles.whiteBlock}`}>
                 {dialogElement}
             </div>
-            <div className={`${style.message} ${style.boxes}`}>
+            <div className={`${style.message} ${commonStyles.whiteBlock}`}>
                 {messageElement}
             </div>
-            <div className={`${style.newMessage} ${style.boxes}`}>
+            <div className={`${style.newMessage} ${commonStyles.whiteBlock}`}>
                 <NewMessageFormHOC
                     addMessage={props.addMessage}
                     onSubmit={addNewMessage}

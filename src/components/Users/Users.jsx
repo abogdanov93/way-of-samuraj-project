@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Users.module.css";
+import commonStyles from "./../../App.module.css";
 import user from "../../images/user.jpeg"
 import {NavLink} from "react-router-dom";
 
@@ -11,7 +12,7 @@ const Users = (props) => {
         pages.push(i);
     }
     return (
-        <div className={style.users}>
+        <div className={`${style.users} ${commonStyles.whiteBlock}`}>
             {props.users.map(u =>
                 <div key={u.id}>
 

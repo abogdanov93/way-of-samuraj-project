@@ -1,10 +1,12 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {maxLengthCreator, required, wrongPassword} from "../../utils/validators";
-import {Element} from "../common/Textarea/Textarea";
+import {maxLengthCreator, required} from "../../utils/validators";
+import {Element} from "../common/FormControl/FormControl";
 import {connect} from "react-redux";
 import {logIn, logOut} from "../../redux/authReducer";
 import {Navigate} from "react-router-dom";
+import style from "./../common/FormControl/FormControl.module.css"
+import commonStyles from "./../../App.module.css";
 
 const maxLength20 = maxLengthCreator(20);
 
@@ -13,9 +15,9 @@ const Login = (props) => {
         props.logIn(formData.email, formData.password, formData.rememberMe)
     }
 
-    if(props.isAuth) return <Navigate to="/profile/*"/>
+    if (props.isAuth) return <Navigate to="/profile/"/>
 
-    return <div>
+    return <div className={commonStyles.whiteBlock}>
         <h1>Log in</h1>
         <LoginFormHOC onSubmit={onSubmit}/>
     </div>
@@ -43,6 +45,7 @@ const LoginForm = (props) => {
                    name={"rememberMe"}
                    type={"checkbox"}/> Remember me
         </div>
+        {props.error && <div className={style.errorWarning}>{props.error}</div>}
         <div>
             <button type="submit">Log in</button>
         </div>
@@ -52,7 +55,7 @@ const LoginForm = (props) => {
 const LoginFormHOC = reduxForm({form: "login"})(LoginForm);
 
 const mapStateToProps = (state) => ({
-        isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth
 })
 
 export default connect(mapStateToProps, {logIn, logOut})(Login);
