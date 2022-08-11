@@ -6,7 +6,6 @@ import formStyle from "../../common/FormControl/FormControl.module.css";
 import style from "./LoginForm.module.css";
 
 
-
 const maxLength20 = maxLengthCreator(20);
 
 const LoginForm = (props) => {
@@ -29,7 +28,8 @@ const LoginForm = (props) => {
         <div className={style.rememberMe}>
             <Field component={"input"}
                    name={"rememberMe"}
-                   type={"checkbox"}/> Remember me
+                   type={"checkbox"}/>
+            <div>Remember me</div>
         </div>
         {props.error && <div className={formStyle.errorWarning}>{props.error}</div>}
         <div className={style.button}>

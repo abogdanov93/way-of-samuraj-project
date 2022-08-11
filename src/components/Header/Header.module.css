@@ -20,17 +20,6 @@
     margin: auto 13px auto auto;
 }
 
-.input {
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    width: 250px;
-    height: 40px;
-    padding-left: 25px;
-    font-size: small;
-    opacity: 90%;
-}
-
 .loginArea {
     grid-area: loginArea;
     align-self: center;

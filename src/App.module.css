@@ -65,12 +65,15 @@
 }
 
 .App input {
+    border-radius: 10px;
     border: none;
-    border-radius: 7px;
-    background: #F9F9F9;
-    outline: none;
+    width: 90%;
+    height: 40px;
     resize: none;
-    font-size: medium;
+    padding-left: 25px;
+    font-size: small;
+    background: #F9F9F9;
+    opacity: 90%;
 }
 
 @media (max-width: 360px) {

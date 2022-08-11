@@ -11,7 +11,7 @@ const Header = (props) => {
                 <img src={logo}/>
             </div>
             <div className={style.searcher}>
-                <input className={style.input} type="text" required placeholder="What are you looking for?"/>
+                <input type="text" placeholder="What are you looking for?"/>
             </div>
             <div className={style.loginArea}>
                 {props.isAuth

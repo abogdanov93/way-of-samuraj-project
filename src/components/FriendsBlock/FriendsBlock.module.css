@@ -1,6 +1,6 @@
 .friends {
     grid-area: friendsBlock;
-    margin-right: 40px;
+    /*margin-right: 40px;*/
 }
 
 .friend {

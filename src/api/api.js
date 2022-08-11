@@ -35,7 +35,7 @@ export const profileAPI = {
 
 export const authAPI = {
     getAuthData() {
-        return instance.get(`auth/me`);
+        return instance.get(`auth/me`); // авторизованы или нет
     },
     logIn(email, password, rememberMe) {
         return instance.post(`auth/login`, {email, password, rememberMe});

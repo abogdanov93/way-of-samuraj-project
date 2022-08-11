@@ -29,11 +29,11 @@ export const setAuthUserData = (userId, login, email, isAuth) => ({
 });
 
 export const getAuthUserData = () => (dispatch) => {
-    authAPI.getAuthData()
+    return authAPI.getAuthData()            // ajax запрос об авторизации // возвращает promise
         .then(response => {
             if (response.data.resultCode === 0) {
                 let {id, login, email} = response.data.data;
-                dispatch(setAuthUserData(id, login, email, true));
+                dispatch(setAuthUserData(id, login, email, true)); // сетает авторизационные данные
             }
         });
 }
