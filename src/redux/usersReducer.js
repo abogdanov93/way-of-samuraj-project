@@ -101,10 +101,10 @@ export const unfollow = (userId) => {
     }
 }
 
-export const getUsers = (currentPageNumber, pageSize) => (dispatch) => {
+export const requestUsers = (currentPageNumber, pageSize) => (dispatch) => {
         dispatch(toggleIsFetching(true));
         dispatch(setCurrentPageNumber(currentPageNumber));
-        usersAPI.getUsers(currentPageNumber, pageSize)
+        usersAPI.getUsersAPI(currentPageNumber, pageSize)
             .then(data => {
                 dispatch(toggleIsFetching(false));
                 dispatch(setUsers(data.items));

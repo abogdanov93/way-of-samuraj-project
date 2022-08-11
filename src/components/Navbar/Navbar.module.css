@@ -1,6 +1,6 @@
 .navbar {
     grid-area: navbar;
-    padding: 13px 25px 10px 50px;
+    margin-left: 45px;
 }
 
 .link {

@@ -4,15 +4,6 @@
 
 .user {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 5px;
-    justify-content: center;
-}
-
-.title {
-    font-size: small;
-    margin-top: 20px;
-    color: gray;
 }
 
 .avatar {

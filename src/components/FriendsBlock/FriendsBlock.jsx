@@ -5,7 +5,7 @@ import commonStyles from "./../../App.module.css";
 const FriendsBlock = () => {
     return (
         <div className={`${style.friends} ${commonStyles.whiteBlock}`}>
-            <h4 className={style.title}>Friends:</h4>
+            <h3 className={style.title}>Friends</h3>
             <div className={style.friend}>
                 <div>
                     <img

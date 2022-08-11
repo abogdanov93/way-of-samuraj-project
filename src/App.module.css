@@ -1,16 +1,16 @@
 .App {
     display: grid;
-    grid-template-rows: auto 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr 3fr;
     grid-template-columns: 1fr 3fr 1fr;
+    grid-gap: 16px;
     grid-template-areas:
             "header header header"
             "navbar content friendsBlock"
-            ". content ."
             ". content .";
-
     background: linear-gradient(0deg, rgba(37,78,184,1) 0%, rgba(29,111,195,1) 100%);
     font-family: 'DM Sans', sans-serif;
     color: white;
+    padding: 16px 64px 16px 64px;
 }
 
 .content {
@@ -19,8 +19,7 @@
 
 .whiteBlock {
     background-color: white;
-    border-radius: 7px;
-    margin: 0px 13px 13px 0px;
+    border-radius: 10px;
     padding: 20px;
     color: #475156;
 }
