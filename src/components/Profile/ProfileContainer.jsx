@@ -9,7 +9,6 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.router.params.userId;
-        debugger
         if (!userId) {
             userId = this.props.userId;
         }
