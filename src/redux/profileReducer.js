@@ -52,27 +52,21 @@ export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setStatus = (status) => ({type: SET_STATUS, status});
 
-export const getUserProfile = (userId) => (dispatch) => {
-    profileAPI.getProfile(userId)
-        .then(response => {
-            dispatch(setUserProfile(response.data));
-        });
+export const getUserProfile = (userId) => async (dispatch) => { // помечаем санку как асинхронную функцию
+    const response = await profileAPI.getProfile(userId); // присваиваем респонсу результат, которым зарезолвится промис из getProfile
+    dispatch(setUserProfile(response.data));
 }
 
-export const getStatus = (userId) => (dispatch) => {
-    profileAPI.getStatus(userId) // получить статус с сервера
-        .then(response => {
-            dispatch(setStatus(response.data)); // когда с сервера придет статус, засетать его
-        });
+export const getStatus = (userId) => async (dispatch) => {
+    const response = await profileAPI.getStatus(userId); // получить статус с сервера
+    dispatch(setStatus(response.data)); // когда с сервера придет статус, засетать его
 }
 
-export const updateStatus = (status) => (dispatch) => {
-    profileAPI.updateStatus(status) // закинуть статус на сервер, получить resultCode
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setStatus(status)); // засетать статус
-            }
-        })
+export const updateStatus = (status) => async (dispatch) => {
+    const response = await profileAPI.updateStatus(status); // закинуть статус на сервер, получить resultCode
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status)); // засетать статус
+    }
 }
 
 export default profileReducer;

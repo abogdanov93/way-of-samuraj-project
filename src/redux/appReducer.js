@@ -22,7 +22,7 @@ const appReducer = (state = initialState, action) => {
 export const initializationSuccess = () => ({type: INITIALIZATION_SUCCESS});
 
 export const initializeApp = () => (dispatch) => {
-   let promise = dispatch(getAuthUserData()); // когда придет подтверждение авторизации и данные
+    let promise = dispatch(getAuthUserData()); // когда придет подтверждение авторизации и данные
     promise.then(() => {
         dispatch(initializationSuccess()) // меняем initialized
     });

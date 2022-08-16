@@ -77,39 +77,32 @@ export const setFollowingInProgress = (isInProgress, userId) => ({type: FOLLOWIN
 
 export const follow = (userId) => {
     return (dispatch) => {
-        dispatch(setFollowingInProgress(true, userId));
-        usersAPI.followUser(userId)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(followSuccess(userId));
-                }
-                dispatch(setFollowingInProgress(false, userId));
-            })
+        followUnfollowFlow(dispatch, userId, usersAPI.followUser.bind(usersAPI), followSuccess);
     }
 }
 
 export const unfollow = (userId) => {
     return (dispatch) => {
-        dispatch(setFollowingInProgress(true, userId));
-        usersAPI.unfollowUser(userId)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(unfollowSuccess(userId));
-                }
-                dispatch(setFollowingInProgress(false, userId));
-            })
+        followUnfollowFlow(dispatch, userId, usersAPI.unfollowUser.bind(usersAPI), unfollowSuccess);
     }
 }
 
-export const requestUsers = (currentPageNumber, pageSize) => (dispatch) => {
-        dispatch(toggleIsFetching(true));
-        dispatch(setCurrentPageNumber(currentPageNumber));
-        usersAPI.getUsersAPI(currentPageNumber, pageSize)
-            .then(data => {
-                dispatch(toggleIsFetching(false));
-                dispatch(setUsers(data.items));
-                dispatch(setTotalUsersCount(data.totalCount));
-            });
+const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
+    dispatch(setFollowingInProgress(true, userId));
+    let response = await apiMethod(userId);
+    if (response.data.resultCode === 0) {
+        dispatch(actionCreator(userId));
+    }
+    dispatch(setFollowingInProgress(false, userId));
+}
+
+export const requestUsers = (currentPageNumber, pageSize) => async (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    dispatch(setCurrentPageNumber(currentPageNumber));
+    const data = await usersAPI.getUsersAPI(currentPageNumber, pageSize)
+    dispatch(toggleIsFetching(false));
+    dispatch(setUsers(data.items));
+    dispatch(setTotalUsersCount(data.totalCount));
 }
 
 

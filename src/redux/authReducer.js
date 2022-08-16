@@ -28,37 +28,31 @@ export const setAuthUserData = (userId, login, email, isAuth) => ({
     data: {userId, login, email, isAuth}
 });
 
-export const getAuthUserData = () => (dispatch) => {
-    return authAPI.getAuthData()            // ajax запрос об авторизации // возвращает promise
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                let {id, login, email} = response.data.data;
-                dispatch(setAuthUserData(id, login, email, true)); // сетает авторизационные данные
-            }
-        });
+export const getAuthUserData = () => async (dispatch) => {
+    const response = await authAPI.getAuthData();            // ajax запрос об авторизации // возвращает promise
+    if (response.data.resultCode === 0) {
+        let {id, login, email} = response.data.data;
+        dispatch(setAuthUserData(id, login, email, true)); // сетает авторизационные данные
+    }
 }
 
-export const logIn = (email, password, rememberMe) => (dispatch) => {
-    authAPI.logIn(email, password, rememberMe)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(getAuthUserData());
-            } else {
-                dispatch(stopSubmit(
-                    "login",
-                    {_error: response.data.messages[0]}
-                ));
-            }
-        });
+export const logIn = (email, password, rememberMe) => async (dispatch) => {
+    const response = await authAPI.logIn(email, password, rememberMe)
+    if (response.data.resultCode === 0) {
+        dispatch(getAuthUserData());
+    } else {
+        dispatch(stopSubmit(
+            "login",
+            {_error: response.data.messages[0]}
+        ));
+    }
 }
 
-export const logOut = () => (dispatch) => {
-    authAPI.logOut()
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setAuthUserData(null, null, null, false));
-            }
-        });
+export const logOut = () => async (dispatch) => {
+    const response = await authAPI.logOut()
+    if (response.data.resultCode === 0) {
+        dispatch(setAuthUserData(null, null, null, false));
+    }
 }
 
 export default authReducer;
