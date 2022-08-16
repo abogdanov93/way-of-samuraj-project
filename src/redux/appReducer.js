@@ -1,7 +1,7 @@
 import React from "react";
 import {getAuthUserData} from "./authReducer";
 
-const INITIALIZATION_SUCCESS = "INITIALIZATION_SUCCESS";
+const INITIALIZATION_SUCCESS = "app/INITIALIZATION_SUCCESS";
 
 let initialState = {
     initialized: false

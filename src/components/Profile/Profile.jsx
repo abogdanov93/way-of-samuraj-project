@@ -11,7 +11,9 @@ const Profile = (props) => {
             key={p.id}
             id={p.id}
             post={p.post}
-            likeCounter={p.likeCounter}/>);
+            likeCounter={p.likeCounter}
+            // deletePost={props.deletePost}
+        />);
 
     let addNewPost = (values) => {
         props.addPost(values.newPostText);

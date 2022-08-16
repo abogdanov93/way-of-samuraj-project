@@ -1,13 +1,13 @@
 import React from "react";
 import {usersAPI} from "../api/api";
 
-const FOLLOW = "FOLLOW";
-const UNFOLLOW = "UNFOLLOW";
-const SET_USERS = "SET_USERS";
-const SET_CURRENT_PAGE_NUMBER = "SET_CURRENT_PAGE_NUMBER";
-const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
-const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
-const FOLLOWING_IN_PROGRESS = "FOLLOWING_IN_PROGRESS";
+const FOLLOW = "users/FOLLOW";
+const UNFOLLOW = "users/UNFOLLOW";
+const SET_USERS = "users/SET_USERS";
+const SET_CURRENT_PAGE_NUMBER = "users/SET_CURRENT_PAGE_NUMBER";
+const SET_TOTAL_USERS_COUNT = "users/SET_TOTAL_USERS_COUNT";
+const TOGGLE_IS_FETCHING = "users/TOGGLE_IS_FETCHING";
+const FOLLOWING_IN_PROGRESS = "users/FOLLOWING_IN_PROGRESS";
 
 let initialState = {
     users: [],

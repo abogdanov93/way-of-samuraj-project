@@ -1,12 +1,12 @@
 .posts {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     grid-template-rows: auto auto;
     justify-content: left;
     grid-gap: 10px;
     grid-template-areas:
-        "picture post"
-        "like likeCounter";
+        "picture post post"
+        "like likeCounter delete";
     color: #475156;
 }
 
@@ -25,6 +25,10 @@
 
 .likeCounter {
     grid-area: likeCounter;
+}
+
+.delete {
+    grid-area: delete;
 }
 
 .avatar {
