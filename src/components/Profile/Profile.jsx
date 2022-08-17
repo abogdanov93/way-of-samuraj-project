@@ -12,7 +12,7 @@ const Profile = (props) => {
             id={p.id}
             post={p.post}
             likeCounter={p.likeCounter}
-            // deletePost={props.deletePost}
+            deletePost={props.deletePost}
         />);
 
     let addNewPost = (values) => {
