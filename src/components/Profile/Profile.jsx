@@ -5,32 +5,32 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPostForm from "./NewPostForm/NewPostForm";
 import Posts from "./Posts/Posts";
 
-const Profile = (props) => {
-    let postElement = props.profilePage.posts
+const Profile = ({profilePage, addPost, deletePost, updateStatus}) => {
+    let postElement = profilePage.posts
         .map(p => <Posts
             key={p.id}
             id={p.id}
             post={p.post}
             likeCounter={p.likeCounter}
-            deletePost={props.deletePost}
+            deletePost={deletePost}
         />);
 
     let addNewPost = (values) => {
-        props.addPost(values.newPostText);
+        addPost(values.newPostText);
     }
 
     return (
         <div className={style.profile}>
             <div className={commonStyles.whiteBlock}>
                 <ProfileInfo
-                    profile={props.profilePage.profile}
-                    status={props.profilePage.status}
-                    updateStatus={props.updateStatus}
+                    profile={profilePage.profile}
+                    status={profilePage.status}
+                    updateStatus={updateStatus}
                 />
             </div>
             <div className={commonStyles.whiteBlock}>
                 <NewPostForm
-                    addPost={props.addPost}
+                    addPost={addPost}
                     onSubmit={addNewPost}
                 />
             </div>

@@ -1,0 +1,8 @@
+.user {
+    display: grid;
+}
+
+.avatar {
+    max-width: 200px;
+    border-radius: 40px;
+}

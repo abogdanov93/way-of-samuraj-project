@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import style from "./ProfileStatus.module.css";
 
-const ProfileStatusWithHook = (props) => {
+const ProfileStatus = (props) => {
 
     const [edithMode, setEdithMode] = useState(false); // создаем локальный стейт, который изначально равен false
     const [status, setStatus] = useState(props.status);
@@ -36,4 +36,4 @@ const ProfileStatusWithHook = (props) => {
     )
 }
 
-export default ProfileStatusWithHook;
+export default ProfileStatus;
