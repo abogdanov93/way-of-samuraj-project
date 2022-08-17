@@ -3,17 +3,21 @@ import style from "./Users.module.css";
 import commonStyles from "./../../App.module.css";
 import user from "../../images/user.jpeg"
 import {NavLink} from "react-router-dom";
+import Pagination from "../common/Pagination/Pagination";
 
-const Users = (props) => {
-
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }
+const Users = ({
+                   totalUsersCount,
+                   pageSize,
+                   currentPageNumber,
+                   onPageChange,
+                   users,
+                   followingInProgress,
+                   follow,
+                   unfollow
+               }) => {
     return (
         <div className={`${style.users} ${commonStyles.whiteBlock}`}>
-            {props.users.map(u =>
+            {users.map(u =>
                 <div key={u.id}>
 
                     <NavLink to={"/profile/" + u.id}>
@@ -28,24 +32,23 @@ const Users = (props) => {
                     <div>
                         {u.followed
                             ? <button
-                                disabled={props.followingInProgress.some(id => id === u.id)}
-                                onClick={() => {props.unfollow(u.id)} }>Unfollow</button>
+                                disabled={followingInProgress.some(id => id === u.id)}
+                                onClick={() => {
+                                    unfollow(u.id)
+                                }}>Unfollow</button>
                             : <button
-                                disabled={props.followingInProgress.some(id => id === u.id)}
-                                onClick={() => {props.follow(u.id)} }>Follow</button>
+                                disabled={followingInProgress.some(id => id === u.id)}
+                                onClick={() => {
+                                    follow(u.id)
+                                }}>Follow</button>
                         }
                     </div>
                 </div>
             )}
-
-            <div className={style.pageNumbers}>
-                {pages
-                    .map(p => {
-                        return <div className={props.currentPageNumber === p && style.selectedPage}
-                                    onClick={(e) => props.onPageChange(p)}>{p}</div>
-                    })
-                }
-            </div>
+            <Pagination totalUsersCount={totalUsersCount}
+                        pageSize={pageSize}
+                        onPageChange={onPageChange}
+                        currentPageNumber={currentPageNumber}/>
         </div>
     );
 }

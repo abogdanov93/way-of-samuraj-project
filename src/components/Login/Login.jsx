@@ -6,12 +6,12 @@ import style from "./Login.module.css";
 import commonStyles from "./../../App.module.css";
 import LoginFormHOC from "./LoginForm/LoginForm";
 
-const Login = (props) => {
+const Login = ({logIn, isAuth}) => {
     const onSubmit = (formData) => {
-        props.logIn(formData.email, formData.password, formData.rememberMe)
+        logIn(formData.email, formData.password, formData.rememberMe)
     }
 
-    if (props.isAuth) return <Navigate to="/profile/"/>
+    if (isAuth) return <Navigate to="/profile/"/>
 
     return <div className={`${style.login} ${commonStyles.whiteBlock}`}>
         <h1 className={style.capture}>Sign in</h1>

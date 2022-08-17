@@ -10,12 +10,3 @@
     max-width: 40px;
     border-radius: 40px;
 }
-
-.pageNumbers {
-    display: grid;
-    grid-template-columns: repeat(20, auto);
-}
-
-.selectedPage {
-    font-weight: bold;
-}
