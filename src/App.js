@@ -1,12 +1,12 @@
 import React from "react";
 import {Route, Routes} from "react-router-dom";
-import commonStyles from "./App.module.css";
-import HeaderContainer from "./components/Header/HeaderContainer";
-import Navbar from "./components/Navbar/Navbar";
-import FriendsBlock from "./components/FriendsBlock/FriendsBlock";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import Navbar from "./components/Navbar/Navbar";
+import FriendsBlock from "./components/FriendsBlock/FriendsBlock";
+import commonStyles from "./App.module.css";
 
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"));
