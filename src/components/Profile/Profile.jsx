@@ -5,7 +5,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPostForm from "./NewPostForm/NewPostForm";
 import Posts from "./Posts/Posts";
 
-const Profile = ({profilePage, addPost, deletePost, updateStatus}) => {
+const Profile = ({profilePage, addPost, deletePost, updateStatus, isOwner, savePhoto}) => {
     let postElement = profilePage.posts
         .map(p => <Posts
             key={p.id}
@@ -26,6 +26,8 @@ const Profile = ({profilePage, addPost, deletePost, updateStatus}) => {
                     profile={profilePage.profile}
                     status={profilePage.status}
                     updateStatus={updateStatus}
+                    isOwner={isOwner}
+                    savePhoto={savePhoto}
                 />
             </div>
             <div className={commonStyles.whiteBlock}>

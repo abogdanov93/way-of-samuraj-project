@@ -6,15 +6,18 @@ import ProfileStatus from "../ProfileStatus/ProfileStatus";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
-        return <Preloader />
+        return <Preloader/>
     }
+
+    const onPhotoSelected = (e) => {
+        e.target.files.length && props.savePhoto(e.target.files[0]);
+    }
+
     return (
         <div className={style.profileInfo}>
-
             <div className={style.avatar}>
-                {props.profile.photos.large
-                ? <img src={props.profile.photos.large} />
-                : <img src={largeAvatar}/>}
+                <img src={props.profile.photos.large || largeAvatar} onClick={showInput}/>
+                {props.isOwner && <input type={"file"} onChange={onPhotoSelected}/>}
             </div>
 
             <h1 className={style.nickName}>{props.profile.fullName}</h1>

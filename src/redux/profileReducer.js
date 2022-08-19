@@ -5,6 +5,7 @@ const ADD_POST = "profile/ADD_POST";
 const DELETE_POST = "profile/DELETE_POST";
 const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
 const SET_STATUS = "profile/SET_STATUS";
+const SET_PHOTO = "profile/SET_PHOTO";
 
 let initialState = {
     posts: [
@@ -42,6 +43,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
             };
+            case SET_PHOTO:
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos }
+            };
         default:
             return state;
     }
@@ -50,7 +56,8 @@ const profileReducer = (state = initialState, action) => {
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
 export const deletePost = (postId) => ({type: DELETE_POST, postId});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
-export const setStatus = (status) => ({type: SET_STATUS, status});
+export const setStatusSuccess = (status) => ({type: SET_STATUS, status});
+export const setPhotoSuccess = (photos) => ({type: SET_PHOTO, photos});
 
 export const getUserProfile = (userId) => async (dispatch) => { // помечаем санку как асинхронную функцию
     const response = await profileAPI.getProfile(userId); // присваиваем респонсу результат, которым зарезолвится промис из getProfile
@@ -59,13 +66,20 @@ export const getUserProfile = (userId) => async (dispatch) => { // помеча�
 
 export const getStatus = (userId) => async (dispatch) => {
     const response = await profileAPI.getStatus(userId); // получить статус с сервера
-    dispatch(setStatus(response.data)); // когда с сервера придет статус, засетать его
+    dispatch(setStatusSuccess(response.data)); // когда с сервера придет статус, засетать его
 }
 
 export const updateStatus = (status) => async (dispatch) => {
     const response = await profileAPI.updateStatus(status); // закинуть статус на сервер, получить resultCode
     if (response.data.resultCode === 0) {
-        dispatch(setStatus(status)); // засетать статус
+        dispatch(setStatusSuccess(status)); // засетать статус
+    }
+}
+
+export const savePhoto = (image) => async (dispatch) => {
+    const response = await profileAPI.savePhoto(image);
+    if (response.data.resultCode === 0) {
+        dispatch(setPhotoSuccess(response.data.data.photos));
     }
 }
 
