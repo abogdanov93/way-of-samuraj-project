@@ -1,12 +1,13 @@
 import React from "react";
-import {Route, Routes} from "react-router-dom";
-import {connect} from "react-redux";
+import {HashRouter, Route, Routes} from "react-router-dom";
+import {connect, Provider} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
 import FriendsBlock from "./components/FriendsBlock/FriendsBlock";
 import commonStyles from "./App.module.css";
+import store from "./redux/reduxStore";
 
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"));
@@ -53,4 +54,13 @@ const mapStateToProps = (state) => ({
     initialized: state.app.initialized
 });
 
-export default connect(mapStateToProps, {initializeApp})(App);
+const AppContainer = connect(mapStateToProps, {initializeApp})(App);
+const MainAppComponent = (props) => {
+    return <HashRouter>
+        <Provider store={store}>
+            <AppContainer/>
+        </Provider>
+    </HashRouter>
+}
+
+export default MainAppComponent;
