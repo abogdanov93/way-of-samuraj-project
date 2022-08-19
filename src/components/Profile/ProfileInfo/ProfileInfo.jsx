@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
     return (
         <div className={style.profileInfo}>
             <div className={style.avatar}>
-                <img src={props.profile.photos.large || largeAvatar} onClick={showInput}/>
+                <img src={props.profile.photos.large || largeAvatar}/>
                 {props.isOwner && <input type={"file"} onChange={onPhotoSelected}/>}
             </div>
 
