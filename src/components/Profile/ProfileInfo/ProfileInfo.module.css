@@ -1,12 +1,15 @@
 .profileInfo {
     display: grid;
+    grid-gap: 10px;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(6, auto);
     grid-template-areas:
     "avatar nickName"
     "avatar status"
+    "avatar lookingForAJob"
+    "avatar jobDescription"
     "avatar aboutMe"
-    "avatar job";
+    "avatar contacts";
 }
 
 .avatar {
@@ -30,13 +33,17 @@
 
 .aboutMe {
     grid-area: aboutMe;
-    margin-top: 0px;
 }
 
-.job {
-    grid-area: job;
+.jobDescription {
+    grid-area: jobDescription;
 }
 
-.job h4 {
-    color: rgba(29,111,195,1);
+.lookingForAJob {
+    grid-area: lookingForAJob;
 }
+
+.contacts {
+    grid-area: contacts;
+}
+

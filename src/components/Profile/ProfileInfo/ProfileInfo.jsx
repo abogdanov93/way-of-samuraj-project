@@ -29,11 +29,22 @@ const ProfileInfo = (props) => {
                 />
             </div>
 
-            <div className={style.aboutMe}>{props.profile.aboutMe}</div>
+            <div className={style.lookingForAJob}>
+                Looking for a job: {props.profile.lookingForAJob ? "Yes" : "No"}
+            </div>
 
-            <div className={style.job}>
-                <h4>Are you looking for a job?</h4>
-                {props.profile.lookingForAJobDescription}
+            {props.profile.lookingForAJob && <div className={style.jobDescription}>
+                My professional skills: {props.profile.lookingForAJobDescription}
+            </div>}
+
+            <div className={style.aboutMe}>
+                About me: {props.profile.aboutMe}
+            </div>
+
+            <div className={style.contacts}>
+                {Object
+                    .keys(props.profile.contacts)
+                    .map(key => <div>{key}: {props.profile.contacts[key]}</div>)}
             </div>
 
         </div>
