@@ -1,49 +1,49 @@
-.profileInfo {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(6, auto);
-    grid-template-areas:
-    "avatar nickName"
-    "avatar status"
-    "avatar lookingForAJob"
-    "avatar jobDescription"
-    "avatar aboutMe"
-    "avatar contacts";
-}
+/*.profileInfo {*/
+/*    display: grid;*/
+/*    grid-gap: 10px;*/
+/*    grid-template-columns: 1fr 1fr;*/
+/*    grid-template-rows: repeat(6, auto);*/
+/*    grid-template-areas:*/
+/*    "avatar nickName"*/
+/*    "avatar status"*/
+/*    "avatar lookingForAJob"*/
+/*    "avatar jobDescription"*/
+/*    "avatar aboutMe"*/
+/*    "avatar contacts";*/
+/*}*/
 
-.avatar {
-    grid-area: avatar;
-}
+/*.avatar {*/
+/*    grid-area: avatar;*/
+/*}*/
 
-.avatar img {
-    max-width: 80%;
-    height: auto;
-    border-radius: 7px;
-}
+/*.avatar img {*/
+/*    max-width: 80%;*/
+/*    height: auto;*/
+/*    border-radius: 7px;*/
+/*}*/
 
-.nickName {
-    grid-area: nickName;
-    margin-bottom: 0px;
-}
+/*.nickName {*/
+/*    grid-area: nickName;*/
+/*    margin-bottom: 0px;*/
+/*}*/
 
-.status {
-    grid-area: status;
-}
+/*.status {*/
+/*    grid-area: status;*/
+/*}*/
 
-.aboutMe {
-    grid-area: aboutMe;
-}
+/*.aboutMe {*/
+/*    grid-area: aboutMe;*/
+/*}*/
 
-.jobDescription {
-    grid-area: jobDescription;
-}
+/*.jobDescription {*/
+/*    grid-area: jobDescription;*/
+/*}*/
 
-.lookingForAJob {
-    grid-area: lookingForAJob;
-}
+/*.lookingForAJob {*/
+/*    grid-area: lookingForAJob;*/
+/*}*/
 
-.contacts {
-    grid-area: contacts;
-}
+/*.contacts {*/
+/*    grid-area: contacts;*/
+/*}*/
 

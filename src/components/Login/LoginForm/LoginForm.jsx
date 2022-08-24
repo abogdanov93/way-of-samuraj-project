@@ -8,8 +8,8 @@ import style from "./LoginForm.module.css";
 
 const maxLength20 = maxLengthCreator(20);
 
-const LoginForm = (props) => {
-    return <form className={style.loginForm} onSubmit={props.handleSubmit}>
+const LoginForm = ({handleSubmit, error}) => {
+    return <form className={style.loginForm} onSubmit={handleSubmit}>
         <div className={style.login}>
             <Field component={Element}
                    name={"email"}
@@ -31,7 +31,7 @@ const LoginForm = (props) => {
                    type={"checkbox"}/>
             <div>Remember me</div>
         </div>
-        {props.error && <div className={formStyle.errorWarning}>{props.error}</div>}
+        {error && <div className={formStyle.errorWarning}>{error}</div>}
         <div className={style.button}>
             <button type="submit">Sign in</button>
         </div>

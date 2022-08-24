@@ -1,5 +1,6 @@
 import React from "react";
 import {profileAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = "profile/ADD_POST";
 const DELETE_POST = "profile/DELETE_POST";
@@ -80,6 +81,20 @@ export const savePhoto = (image) => async (dispatch) => {
     const response = await profileAPI.savePhoto(image);
     if (response.data.resultCode === 0) {
         dispatch(setPhotoSuccess(response.data.data.photos));
+    }
+}
+
+export const saveProfileData = (profile) => async (dispatch, getState) => {
+    const userId = getState().auth.userId; // получаем весь state, забираем id, который сидит в auth reducer
+    const response = await profileAPI.saveProfileData(profile);
+    if (response.data.resultCode === 0) {
+        dispatch(getUserProfile(userId)); // диспатчим другую санку
+    } else {
+        dispatch(stopSubmit(
+            "edithProfileData",
+            {'_error': response.data.messages[0]}
+        ));
+        return Promise.reject(response.data.messages[0]); // не понятно, возвращаем промис вручную, чтобы поймать его в then (onSubmit)
     }
 }
 
