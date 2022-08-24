@@ -50,5 +50,5 @@ const ProfileDataForm = ({handleSubmit, profile, error}) => {
     </form>
 }
 
-const ProfileDataFormHOC = reduxForm({form: "edithProfileData"})(ProfileDataForm);
+const ProfileDataFormHOC = reduxForm({form: "editProfileData"})(ProfileDataForm);
 export default ProfileDataFormHOC;

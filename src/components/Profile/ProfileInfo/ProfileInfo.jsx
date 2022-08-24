@@ -6,12 +6,8 @@ import ProfileStatus from "../ProfileStatus/ProfileStatus";
 import ProfileDataFormHOC from "../ProfileDataForm/ProfileDataForm";
 
 const ProfileInfo = (props) => {
-    const [edithMode, setEdithMode] = useState(false);
-    const activateEdithMode = () => setEdithMode(true);
     const onSubmit = (formData) => {
-        props.saveProfileData(formData).then(() => {
-            setEdithMode(false);
-        });
+        props.saveProfileData(formData);
     }
 
     if (!props.profile) {
@@ -36,24 +32,24 @@ const ProfileInfo = (props) => {
                 />
             </div>
 
-            {edithMode
+            {props.isEditMode
                 ? <ProfileDataFormHOC onSubmit={onSubmit}
                                       profile={props.profile}
                                       initialValues={props.profile}/> // синхронизируем данные локального стейта и форм стейта, передаем инициализационные данные
                 : <ProfileData profile={props.profile}
                                isOwner={props.isOwner}
-                               activateEdithMode={activateEdithMode}/>}
+                               setEditMode={props.setEditMode}/>}
 
         </div>
     );
 }
 
-const ProfileData = ({profile, isOwner, activateEdithMode}) => {
-
+const ProfileData = ({profile, isOwner, setEditMode}) => {
+    const activateEditMode = () => setEditMode(true);
     return <div>
         <h1 className={style.nickName}>{profile.fullName}</h1>
 
-        {isOwner && <button onClick={activateEdithMode}>Edith</button>}
+        {isOwner && <button onClick={activateEditMode}>Edit</button>}
 
         <div className={style.lookingForAJob}>
             Looking for a job: {profile.lookingForAJob ? "Yes" : "No"}

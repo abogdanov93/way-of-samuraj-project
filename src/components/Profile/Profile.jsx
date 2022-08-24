@@ -5,35 +5,37 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPostForm from "./NewPostForm/NewPostForm";
 import Posts from "./Posts/Posts";
 
-const Profile = ({profilePage, addPost, deletePost, updateStatus, isOwner, savePhoto, saveProfileData}) => {
-    let postElement = profilePage.posts
+const Profile = (props) => {
+    let postElement = props.profilePage.posts
         .map(p => <Posts
             key={p.id}
             id={p.id}
             post={p.post}
             likeCounter={p.likeCounter}
-            deletePost={deletePost}
+            deletePost={props.deletePost}
         />);
 
     let addNewPost = (values) => {
-        addPost(values.newPostText);
+        props.addPost(values.newPostText);
     }
 
     return (
         <div className={style.profile}>
             <div className={commonStyles.whiteBlock}>
                 <ProfileInfo
-                    profile={profilePage.profile}
-                    status={profilePage.status}
-                    updateStatus={updateStatus}
-                    isOwner={isOwner}
-                    savePhoto={savePhoto}
-                    saveProfileData={saveProfileData}
+                    profile={props.profilePage.profile}
+                    status={props.profilePage.status}
+                    isEditMode={props.profilePage.isEditMode}
+                    updateStatus={props.updateStatus}
+                    isOwner={props.isOwner}
+                    savePhoto={props.savePhoto}
+                    saveProfileData={props.saveProfileData}
+                    setEditMode={props.setEditMode}
                 />
             </div>
             <div className={commonStyles.whiteBlock}>
                 <NewPostForm
-                    addPost={addPost}
+                    addPost={props.addPost}
                     onSubmit={addNewPost}
                 />
             </div>

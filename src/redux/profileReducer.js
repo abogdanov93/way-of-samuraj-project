@@ -7,6 +7,7 @@ const DELETE_POST = "profile/DELETE_POST";
 const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
 const SET_STATUS = "profile/SET_STATUS";
 const SET_PHOTO = "profile/SET_PHOTO";
+const SET_EDIT_MODE = "profile/SET_EDIT_MODE";
 
 let initialState = {
     posts: [
@@ -14,6 +15,7 @@ let initialState = {
         {id: 2, post: "Are you going to play fortnite?", likeCounter: 3}
     ],
     profile: null,
+    isEditMode: false,
     status: ""
 }
 
@@ -49,6 +51,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: {...state.profile, photos: action.photos }
             };
+        case SET_EDIT_MODE:
+            return  {
+              ...state,
+              isEditMode: action.isEditMode
+            };
         default:
             return state;
     }
@@ -59,6 +66,7 @@ export const deletePost = (postId) => ({type: DELETE_POST, postId});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setStatusSuccess = (status) => ({type: SET_STATUS, status});
 export const setPhotoSuccess = (photos) => ({type: SET_PHOTO, photos});
+export const setEditMode = (isEditMode) => ({type: SET_EDIT_MODE, isEditMode});
 
 export const getUserProfile = (userId) => async (dispatch) => { // помечаем санку как асинхронную функцию
     const response = await profileAPI.getProfile(userId); // присваиваем респонсу результат, которым зарезолвится промис из getProfile
@@ -89,12 +97,15 @@ export const saveProfileData = (profile) => async (dispatch, getState) => {
     const response = await profileAPI.saveProfileData(profile);
     if (response.data.resultCode === 0) {
         dispatch(getUserProfile(userId)); // диспатчим другую санку
+        dispatch(setEditMode(false));
     } else {
         dispatch(stopSubmit(
-            "edithProfileData",
+            "editProfileData",
             {'_error': response.data.messages[0]}
         ));
-        return Promise.reject(response.data.messages[0]); // не понятно, возвращаем промис вручную, чтобы поймать его в then (onSubmit)
+        dispatch(setEditMode(true));
+        // getState().profilePage.isUpdated(false);
+        // return Promise.reject(response.data.messages[0]); // не понятно, возвращаем промис вручную, чтобы поймать его в then (onSubmit)
     }
 }
 

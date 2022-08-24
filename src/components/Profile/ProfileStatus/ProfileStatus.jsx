@@ -3,17 +3,17 @@ import style from "./ProfileStatus.module.css";
 
 const ProfileStatus = (props) => {
 
-    const [edithMode, setEdithMode] = useState(false); // создаем локальный стейт, который изначально равен false
+    const [editMode, setEditMode] = useState(false); // создаем локальный стейт, который изначально равен false
     const [status, setStatus] = useState(props.status);
     useEffect( () => {
         setStatus(props.status);
     }, [props.status]);
 
     const activateEditMode = () => {
-        setEdithMode(true);
+        setEditMode(true);
     }
-    const deactivateEdithMode = () => {
-        setEdithMode(false);
+    const deactivateEditMode = () => {
+        setEditMode(false);
         props.updateStatus(status); // когда пользователь выйдет из режима редактирования, отправить put запрос
     }
     const onStatusChange = (e) => {
@@ -22,10 +22,10 @@ const ProfileStatus = (props) => {
 
     return (
         <div>
-            {edithMode
+            {editMode
                 ? <input value={status}
                          onChange={onStatusChange}
-                         onBlur={deactivateEdithMode}
+                         onBlur={deactivateEditMode}
                          autoFocus={true}
                 />
                 : <div className={style.status} onClick={activateEditMode}>

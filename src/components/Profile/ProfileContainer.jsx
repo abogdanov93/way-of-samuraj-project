@@ -8,7 +8,7 @@ import {
     getStatus,
     getUserProfile,
     savePhoto,
-    saveProfileData,
+    saveProfileData, setEditMode,
     updateStatus
 } from "../../redux/profileReducer";
 import {compose} from "redux";
@@ -44,6 +44,7 @@ class ProfileContainer extends React.Component {
             isOwner={!this.props.router.params.userId}
             savePhoto={this.props.savePhoto}
             saveProfileData={this.props.saveProfileData}
+            setEditMode={this.props.setEditMode}
         />
     }
 }
@@ -80,5 +81,6 @@ export default compose(
         getStatus,
         updateStatus,
         savePhoto,
-        saveProfileData
+        saveProfileData,
+        setEditMode
     }), withAuthRedirect, withRouter)(ProfileContainer);
