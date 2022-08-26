@@ -104,8 +104,6 @@ export const saveProfileData = (profile) => async (dispatch, getState) => {
             {'_error': response.data.messages[0]}
         ));
         dispatch(setEditMode(true));
-        // getState().profilePage.isUpdated(false);
-        // return Promise.reject(response.data.messages[0]); // не понятно, возвращаем промис вручную, чтобы поймать его в then (onSubmit)
     }
 }
 

@@ -13,6 +13,7 @@ const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsCo
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"));
 const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer"));
 const Login = React.lazy(() => import("./components/Login/Login"));
+// не загружает все сразу, а подгружает страничку потом по необходимости
 
 
 class App extends React.Component {
@@ -32,7 +33,7 @@ class App extends React.Component {
                 <div className={commonStyles.content}>
                     <React.Suspense fallback={<Preloader/>}>
                         <Routes>
-                            <Route path="/profile/*"
+                            <Route path="/*"
                                    element={<ProfileContainer/>}/>
                             <Route path="/profile/:userId/*"
                                    element={<ProfileContainer/>}/>
@@ -42,6 +43,8 @@ class App extends React.Component {
                                    element={<UsersContainer/>}/>
                             <Route path="/login/*"
                                    element={<Login/>}/>
+                            <Route path="*"
+                                   element={<div>404 NOT FOUND</div>}/>
                         </Routes>
                     </React.Suspense>
                 </div>

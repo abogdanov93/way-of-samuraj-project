@@ -8,7 +8,7 @@ import style from "./LoginForm.module.css";
 
 const maxLength20 = maxLengthCreator(20);
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaURL}) => {
     return <form className={style.loginForm} onSubmit={handleSubmit}>
         <div className={style.login}>
             <Field component={Element}
@@ -32,6 +32,14 @@ const LoginForm = ({handleSubmit, error}) => {
             <div>Remember me</div>
         </div>
         {error && <div className={formStyle.errorWarning}>{error}</div>}
+        {captchaURL && <div>
+            <img src={captchaURL}/>
+            <Field component={Element}
+                   name={"captcha"}
+                   placeholder={"Symbols from the picture"}
+                   validate={[required]}
+                   fieldType={"input"}/>
+        </div>}
         <div className={style.button}>
             <button type="submit">Sign in</button>
         </div>

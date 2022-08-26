@@ -1,26 +1,28 @@
 import React from "react";
 import {connect} from "react-redux";
-import {logIn, logOut} from "../../redux/authReducer";
+import {logIn} from "../../redux/authReducer";
 import {Navigate} from "react-router-dom";
 import style from "./Login.module.css";
 import commonStyles from "./../../App.module.css";
 import LoginFormHOC from "./LoginForm/LoginForm";
 
-const Login = ({logIn, isAuth}) => {
+const Login = (props) => {
+    debugger
     const onSubmit = (formData) => {
-        logIn(formData.email, formData.password, formData.rememberMe)
+        props.logIn(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
-    if (isAuth) return <Navigate to="/profile/"/>
+    if (props.isAuth) return <Navigate to="/profile/"/>
 
     return <div className={`${style.login} ${commonStyles.whiteBlock}`}>
         <h1 className={style.capture}>Sign in</h1>
-        <div className={style.block}><LoginFormHOC onSubmit={onSubmit}/></div>
+        <div className={style.block}><LoginFormHOC onSubmit={onSubmit} captchaURL={props.captchaURL}/></div>
     </div>
 }
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captchaURL: state.auth.captchaURL
 })
 
-export default connect(mapStateToProps, {logIn, logOut})(Login);
+export default connect(mapStateToProps, {logIn})(Login);
