@@ -79,9 +79,13 @@ export const getStatus = (userId) => async (dispatch) => {
 }
 
 export const updateStatus = (status) => async (dispatch) => {
-    const response = await profileAPI.updateStatus(status); // закинуть статус на сервер, получить resultCode
-    if (response.data.resultCode === 0) {
-        dispatch(setStatusSuccess(status)); // засетать статус
+    try {
+        const response = await profileAPI.updateStatus(status); // закинуть статус на сервер, получить resultCode
+        if (response.data.resultCode === 0) {
+            dispatch(setStatusSuccess(status)); // засетать статус
+        }
+    } catch (error) {
+        alert(error);
     }
 }
 
