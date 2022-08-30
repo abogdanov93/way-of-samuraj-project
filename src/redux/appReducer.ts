@@ -1,13 +1,14 @@
-import React from "react";
 import {getAuthUserData} from "./authReducer";
 
-const INITIALIZATION_SUCCESS = "app/INITIALIZATION_SUCCESS";
+const INITIALIZATION_SUCCESS = "APP/INITIALIZATION_SUCCESS";
 
-let initialState = {
+type initialStateType = {initialized:boolean}
+
+let initialState: initialStateType = {
     initialized: false
 }
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action: actionType): initialStateType => {
     switch (action.type) {
         case INITIALIZATION_SUCCESS:
             return {
@@ -19,9 +20,10 @@ const appReducer = (state = initialState, action) => {
     }
 }
 
-export const initializationSuccess = () => ({type: INITIALIZATION_SUCCESS});
+type actionType = { type: typeof INITIALIZATION_SUCCESS }
+export const initializationSuccess = (): actionType => ({type: INITIALIZATION_SUCCESS});
 
-export const initializeApp = () => (dispatch) => {
+export const initializeApp = () => (dispatch:any) => {
     let promise = dispatch(getAuthUserData()); // когда придет подтверждение авторизации и данные
     promise.then(() => {
         dispatch(initializationSuccess()) // меняем initialized
