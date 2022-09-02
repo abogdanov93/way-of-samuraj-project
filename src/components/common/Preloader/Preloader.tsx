@@ -2,7 +2,8 @@ import React from "react";
 import style from "./Preloader.module.css";
 import preloader from "../../../images/preloader.svg";
 
-let Preloader = (props) => {
+
+let Preloader = () => {
     return (
         <div className={style.preloader}>
             <img src={preloader}/>

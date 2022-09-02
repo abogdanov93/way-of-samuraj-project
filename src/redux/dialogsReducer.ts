@@ -15,9 +15,9 @@ let initialState = {
         {id: 2, name: "notfat100kg"}
     ] as Array<dialogType>,
     messages: [
-        {id: 1, message: "Привет, мы с Натуликом в лобби."},
-        {id: 2, message: "Почему все так лагает?!"},
-        {id: 3, message: "Марусик, поправь наушники!"}
+        {id: 1, message: "message 1"},
+        {id: 2, message: "message 2"},
+        {id: 3, message: "message 3"}
     ] as Array<messagesType>
 };
 
