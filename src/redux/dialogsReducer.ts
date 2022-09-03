@@ -9,6 +9,7 @@ type messagesType = {
     id: number,
     message: string
 }
+
 let initialState = {
     dialog: [
         {id: 1, name: "marusik_super"},
@@ -21,7 +22,7 @@ let initialState = {
     ] as Array<messagesType>
 };
 
-const dialogsReducer = (state = initialState, action:any): initialStateType  => {
+const dialogsReducer = (state = initialState, action: addMessageActionType): initialStateType  => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {
@@ -41,6 +42,7 @@ type addMessageActionType = {
     type: typeof ADD_MESSAGE,
     newMessageText: string
 }
+
 export const addMessage = (newMessageText:string): addMessageActionType => ({type: ADD_MESSAGE, newMessageText});
 
 export default dialogsReducer;

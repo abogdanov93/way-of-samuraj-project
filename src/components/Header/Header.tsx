@@ -1,10 +1,16 @@
-import React from "react";
+import React, {FC} from "react";
 import style from "./Header.module.css";
 import logo from "../../images/logo.png";
-import login from "../../images/login.png";
+import loginIcon from "../../images/login.png";
 import {NavLink} from "react-router-dom";
 
-const Header = (props) => {
+type propsType = {
+    isAuth: boolean
+    login: string
+    logOut: () => void
+}
+
+const Header: FC<propsType> = ({isAuth, login, logOut}) => {
     return (
         <header className={style.header}>
             <div className={style.logo}>
@@ -14,14 +20,14 @@ const Header = (props) => {
                 <input type="text" placeholder="What are you looking for?"/>
             </div>
             <div className={style.loginArea}>
-                {props.isAuth
+                {isAuth
                     ? <NavLink to={"/profile"} className={style.login}>
-                        {props.login}
-                        <div onClick={props.logOut}>Sign out</div>
+                        {login}
+                        <div onClick={logOut}>Sign out</div>
                     </NavLink>
                     : <NavLink className={style.loginArea} to={"/login"}>
                         <div>Sign in</div>
-                        <img className={style.loginIcon} src={login}/>
+                        <img className={style.loginIcon} src={loginIcon}/>
                     </NavLink>
                 }
             </div>

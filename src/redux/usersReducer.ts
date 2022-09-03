@@ -20,7 +20,7 @@ let initialState = {
     followingInProgress: [] as Array<number>// array of users id
 }
 
-const usersReducer = (state = initialState, action:any): initialStateType => {
+const usersReducer = (state = initialState, action: actionsType): initialStateType => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -49,7 +49,7 @@ const usersReducer = (state = initialState, action:any): initialStateType => {
         case FOLLOWING_IN_PROGRESS: {
             return {
                 ...state,
-                followingInProgress: action.followingInProgress
+                followingInProgress: action.isInProgress
                     ? [...state.followingInProgress, action.userId]
                     : state.followingInProgress.filter(id => id !== action.userId)
             }
@@ -66,6 +66,9 @@ type setCurrentPageNumberActionType = {type: typeof SET_CURRENT_PAGE_NUMBER, cur
 type setTotalUsersCountActionType = {type: typeof SET_TOTAL_USERS_COUNT, totalCount:number}
 type toggleIsFetchingActionType = {type: typeof TOGGLE_IS_FETCHING, isFetching:boolean}
 type setFollowingInProgressActionType = {type: typeof FOLLOWING_IN_PROGRESS, isInProgress:boolean, userId:number}
+type actionsType = followSuccessActionType | unfollowSuccessActionType | setUsersActionType |
+    setCurrentPageNumberActionType | setTotalUsersCountActionType | toggleIsFetchingActionType |
+    setFollowingInProgressActionType
 
 export const followSuccess = (userId:number): followSuccessActionType => ({type: FOLLOW, userId});
 export const unfollowSuccess = (userId:number): unfollowSuccessActionType => ({type: UNFOLLOW, userId});

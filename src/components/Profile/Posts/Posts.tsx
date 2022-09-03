@@ -1,16 +1,23 @@
-import React from "react";
+import React, {FC} from "react";
 import style from "./Posts.module.css";
 
-const Posts = (props) => {
+type propsType = {
+    post: string
+    likeCounter: number
+    deletePost: (id: number) => void
+    id: number
+}
+
+const Posts: FC<propsType> = ({post, likeCounter, deletePost, id}) => {
     const onPostDelete = () => {
-        props.deletePost(props.id);
+        deletePost(id);
     }
     return (
         <div className={style.posts}>
             <div className={style.avatar}><img className={style.avatar} src="https://i.pinimg.com/474x/83/73/c9/8373c9bbddf97a72c445eab91f3d6fbc.jpg"/></div>
-            <div className={style.post}>{props.post}</div>
+            <div className={style.post}>{post}</div>
             <div className={style.like}>Like</div>
-            <div className={style.likeCounter}>{props.likeCounter}</div>
+            <div className={style.likeCounter}>{likeCounter}</div>
             <div className={style.delete} onClick={onPostDelete}>delete</div>
         </div>
     );

@@ -21,7 +21,7 @@ let initialState = {
     status: ""
 }
 
-const profileReducer = (state = initialState, action: any):initialStateType => {
+const profileReducer = (state = initialState, action: actionsType): initialStateType => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
@@ -69,6 +69,8 @@ type setUserProfileActionType = {type: typeof SET_USER_PROFILE, profile:profileT
 type setStatusSuccessActionType = {type: typeof SET_STATUS, status:string}
 type setPhotoSuccessActionType = {type: typeof SET_PHOTO, photos:photosType}
 type setEditModeActionType = {type: typeof SET_EDIT_MODE, isEditMode:boolean}
+type actionsType = addPostActionType | deletePostActionType | setUserProfileActionType |
+    setStatusSuccessActionType | setPhotoSuccessActionType | setEditModeActionType
 
 export const addPost = (newPostText: string): addPostActionType => ({type: ADD_POST, newPostText});
 export const deletePost = (postId: number): deletePostActionType => ({type: DELETE_POST, postId});

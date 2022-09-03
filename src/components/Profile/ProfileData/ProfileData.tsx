@@ -1,7 +1,15 @@
 import style from "../ProfileInfo/ProfileInfo.module.css";
-import React from "react";
+import React, {FC} from "react";
+import {profileType} from "../../../types/types";
+import Contact from "./Contact";
 
-const ProfileData = ({profile, isOwner, setEditMode}) => {
+type propsType = {
+    profile: profileType
+    isOwner: boolean
+    setEditMode: (mode: boolean) => void
+}
+
+const ProfileData: FC<propsType> = ({profile, isOwner, setEditMode}) => {
     const activateEditMode = () => setEditMode(true);
     return <div>
         <h1 className={style.nickName}>{profile.fullName}</h1>
@@ -25,12 +33,6 @@ const ProfileData = ({profile, isOwner, setEditMode}) => {
                 .keys(profile.contacts)
                 .map(key => <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>)}
         </div>
-    </div>
-}
-
-const Contact = ({contactTitle, contactValue}) => {
-    return <div>
-        {contactTitle}: {contactValue}
     </div>
 }
 

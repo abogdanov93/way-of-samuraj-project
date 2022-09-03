@@ -1,13 +1,25 @@
-import React from "react";
+import React, {ChangeEvent, FC} from "react";
 import style from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 import largeAvatar from "./../../../images/userAvatar.jpeg";
 import ProfileStatus from "../ProfileStatus/ProfileStatus";
 import ProfileDataFormHOC from "../ProfileDataForm/ProfileDataForm";
 import ProfileData from "../ProfileData/ProfileData";
+import {profileType} from "../../../types/types";
 
-const ProfileInfo = (props) => {
-    const onSubmit = (formData) => {
+type propsType = {
+    profile: profileType
+    saveProfileData: (formData: any) => void
+    savePhoto: (file: any) => void
+    isOwner: boolean
+    status: string
+    updateStatus: () => void
+    isEditMode: boolean
+    setEditMode: () => void
+}
+
+const ProfileInfo: FC<propsType> = (props) => {
+    const onSubmit = (formData: any) => {
         props.saveProfileData(formData);
     }
 
@@ -15,7 +27,8 @@ const ProfileInfo = (props) => {
         return <Preloader/>
     }
 
-    const onPhotoSelected = (e) => {
+    const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
+        // @ts-ignore
         e.target.files.length && props.savePhoto(e.target.files[0]);
     }
 

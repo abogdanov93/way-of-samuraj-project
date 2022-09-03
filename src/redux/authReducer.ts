@@ -13,7 +13,7 @@ let initialState = {
     captchaURL: null as string | null
 }
 
-const authReducer = (state = initialState, action:any) => {
+const authReducer = (state = initialState, action: actionsType) => {
     switch (action.type) {
         case SET_USER_DATA:
         case SET_CAPTCHA_URL:
@@ -50,8 +50,10 @@ export const setCaptchaURL = (captchaURL:string): setCaptchaURLType => ({
     data: {captchaURL}
 });
 
+type actionsType = setAuthUserDataType | setCaptchaURLType;
+
 export const getAuthUserData = () => async (dispatch:any) => {
-    const response = await authAPI.getAuthData();            // ajax запрос об авторизации // возвращает promise
+    const response = await authAPI.getAuthData(); // ajax запрос об авторизации // возвращает promise
     if (response.data.resultCode === 0) {
         let {id, login, email} = response.data.data;
         dispatch(setAuthUserData(id, login, email, true)); // сетает авторизационные данные
