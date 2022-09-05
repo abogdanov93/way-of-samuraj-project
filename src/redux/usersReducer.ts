@@ -122,8 +122,8 @@ export const unfollow = (userId: number): thunkType => {
 const followUnfollowFlow =
     async (dispatch: Dispatch<actionsType>, userId: number, apiMethod: any, actionCreator: (userId: number) => actionsType) => {
         dispatch(setFollowingInProgress(true, userId));
-        let response = await apiMethod(userId);
-        if (response.data.resultCode === 0) {
+        let data = await apiMethod(userId);
+        if (data.resultCode === 0) {
             dispatch(actionCreator(userId));
         }
         dispatch(setFollowingInProgress(false, userId));

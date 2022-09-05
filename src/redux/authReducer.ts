@@ -1,5 +1,7 @@
-import {authAPI, securityAPI} from "../api/api";
+import {authAPI, resultCodeEnum, resultCodeForCaptchaEnum, securityAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {ThunkAction} from "redux-thunk";
+import {stateType} from "./reduxStore";
 
 const SET_USER_DATA = "AUTH/SET_USER_DATA";
 const SET_CAPTCHA_URL = "AUTH/SET_CAPTCHA_URL";
@@ -36,55 +38,57 @@ type setAuthUserDataType = {
         isAuth: boolean
     }
 }
+type setCaptchaURLType = {
+    type: typeof SET_CAPTCHA_URL
+    data: { captchaURL: string }
+}
+type actionsType = setAuthUserDataType | setCaptchaURLType;
+
 export const setAuthUserData = (userId: number | null, login: string | null, email: string | null, isAuth: boolean): setAuthUserDataType => ({
     type: SET_USER_DATA,
     data: {userId, login, email, isAuth}
 });
 
-type setCaptchaURLType = {
-    type: typeof SET_CAPTCHA_URL
-    data: { captchaURL: string }
-}
 export const setCaptchaURL = (captchaURL:string): setCaptchaURLType => ({
     type: SET_CAPTCHA_URL,
     data: {captchaURL}
 });
 
-type actionsType = setAuthUserDataType | setCaptchaURLType;
+type thunkType = ThunkAction<void, stateType, unknown, actionsType>;
 
-export const getAuthUserData = () => async (dispatch:any) => {
-    const response = await authAPI.getAuthData(); // ajax запрос об авторизации // возвращает promise
-    if (response.data.resultCode === 0) {
-        let {id, login, email} = response.data.data;
+export const getAuthUserData = (): thunkType => async (dispatch) => {
+    const data = await authAPI.getAuthData(); // ajax запрос об авторизации // возвращает promise
+    if (data.resultCode === resultCodeEnum.success) {
+        let {id, login, email} = data.data;
         dispatch(setAuthUserData(id, login, email, true)); // сетает авторизационные данные
     }
 }
 
-export const logIn = (email:string, password:string,rememberMe:boolean, captcha:any) => async (dispatch:any) => {
-    const response = await authAPI.logIn(email, password, rememberMe, captcha);
-    if (response.data.resultCode === 0) {
+export const logIn = (email: string, password: string, rememberMe: boolean, captcha: any) => async (dispatch:any) => {
+    const data = await authAPI.logIn(email, password, rememberMe, captcha);
+    if (data.resultCode === resultCodeEnum.success) {
         dispatch(getAuthUserData());
     } else {
-        if (response.data.resultCode === 10) {
+        if (data.resultCode === resultCodeForCaptchaEnum.captchaIsRequired) {
             dispatch(getCaptchaURL());
         }
         dispatch(stopSubmit(
             "login",
-            {_error: response.data.messages[0]}
+            {_error: data.messages[0]}
         ));
     }
-}
+} // не понимаю, как типизировать
 
-export const logOut = () => async (dispatch:any) => {
-    const response = await authAPI.logOut();
-    if (response.data.resultCode === 0) {
+export const logOut = (): thunkType => async (dispatch) => {
+    const data = await authAPI.logOut();
+    if (data.resultCode === resultCodeEnum.success) {
         dispatch(setAuthUserData(null, null, null, false));
     }
 }
 
-export const getCaptchaURL = () => async (dispatch:any) => {
-    const response = await securityAPI.getCaptchaURL();
-    const captchaURL = response.data.url;
+export const getCaptchaURL = (): thunkType => async (dispatch) => {
+    const data = await securityAPI.getCaptchaURL();
+    const captchaURL = data.url;
     dispatch(setCaptchaURL(captchaURL));
 }
 
