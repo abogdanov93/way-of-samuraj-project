@@ -5,9 +5,24 @@ import {Navigate} from "react-router-dom";
 import style from "./Login.module.css";
 import commonStyles from "./../../App.module.css";
 import LoginFormHOC from "./LoginForm/LoginForm";
+import {stateType} from "../../redux/reduxStore";
 
-const Login = ({logIn, isAuth, captchaURL}) => {
-    const onSubmit = (formData) => {
+type mapStateToPropsType = {
+    isAuth: boolean
+    captchaURL: null | string
+}
+type mapDispatchToPropsType = {
+    logIn: (email: string, password: string, rememberMe: boolean, captcha: string) => void
+}
+export type formDataType = {
+    email: string
+    password: string
+    rememberMe: boolean
+    captcha: string
+}
+
+const Login: React.FC<mapStateToPropsType & mapDispatchToPropsType> = ({logIn, isAuth, captchaURL}) => {
+    const onSubmit = (formData: formDataType) => {
         logIn(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
@@ -19,7 +34,7 @@ const Login = ({logIn, isAuth, captchaURL}) => {
     </div>
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: stateType): mapStateToPropsType => ({
     isAuth: state.auth.isAuth,
     captchaURL: state.auth.captchaURL
 })

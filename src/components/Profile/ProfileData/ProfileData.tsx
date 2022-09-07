@@ -31,7 +31,7 @@ const ProfileData: FC<propsType> = ({profile, isOwner, setEditMode}) => {
         <div className={style.contacts}>
             {Object
                 .keys(profile.contacts)
-                .map(key => <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>)}
+                .map(key => <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>)} //restriction // extends string
         </div>
     </div>
 }

@@ -1,18 +1,15 @@
 import {getAuthUserData} from "./authReducer";
 import {ThunkAction} from "redux-thunk";
-import {stateType} from "./reduxStore";
-
-const INITIALIZATION_SUCCESS = "APP/INITIALIZATION_SUCCESS";
+import {inferActionsType, stateType} from "./reduxStore";
 
 type initialStateType = {initialized:boolean}
-
 let initialState: initialStateType = {
     initialized: false
 }
 
 const appReducer = (state = initialState, action: actionType): initialStateType => {
     switch (action.type) {
-        case INITIALIZATION_SUCCESS:
+        case "APP_INITIALIZATION_SUCCESS":
             return {
                 ...state,
                 initialized: true
@@ -22,15 +19,17 @@ const appReducer = (state = initialState, action: actionType): initialStateType 
     }
 }
 
-type actionType = { type: typeof INITIALIZATION_SUCCESS }
-export const initializationSuccess = (): actionType => ({type: INITIALIZATION_SUCCESS});
+type actionType = inferActionsType<typeof actions>;
+export const actions = {
+    initializationSuccess: () => ({type: "APP_INITIALIZATION_SUCCESS"} as const)
+}
 
 type thunkType = ThunkAction<void, stateType, unknown, actionType>;
 export const initializeApp = (): thunkType => (dispatch) => {
     const promise = dispatch(getAuthUserData()); // когда придет подтверждение авторизации и данные
     promise.then(() => {
-        dispatch(initializationSuccess()) // меняем initialized
-    });
+        dispatch(actions.initializationSuccess()) // меняем initialized
+    }); // не понятно, как типизировать
 }
 
 export default appReducer;

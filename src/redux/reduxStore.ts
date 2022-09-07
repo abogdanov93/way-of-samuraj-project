@@ -10,6 +10,11 @@ import appReducer from "./appReducer";
 type rootReducerType = typeof rootReducer;
 export type stateType = ReturnType<rootReducerType>;
 
+type propertiesType<T> = T extends {[key:string]: infer U} ? U : never;
+// принимает тип элемента объекта, возвращает тип функции AC
+export type inferActionsType<T extends {[key:string]: (...args: any[]) => any}> = ReturnType<propertiesType<T>>;
+// принимает тип объекта, присваивает переменной тип возвращаемого значения функции AC (объект)
+
 const rootReducer = combineReducers({
     app: appReducer,
     profilePage: profileReducer,
