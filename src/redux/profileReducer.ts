@@ -1,10 +1,13 @@
-import {profileAPI, resultCodeEnum} from "../api/api";
-import {stopSubmit} from "redux-form";
-import {photosType, postsType, profileType} from "../types/types";
-import {ThunkAction} from "redux-thunk";
-import {inferActionsType, stateType} from "./reduxStore";
+import {resultCodeEnum} from "../api/api"
+import {FormAction, stopSubmit} from "redux-form"
+import {photosType, postsType, profileType} from "../types/types"
+import {baseActionType, baseThunkType} from "./reduxStore"
+import {profileAPI} from "../api/profileAPI"
 
-type initialStateType = typeof initialState;
+type initialStateType = typeof initialState
+type actionsType = baseActionType<typeof actions>
+type thunkType = baseThunkType<actionsType | FormAction>
+
 let initialState = {
     posts: [
         {id: 1, post: "Hi there!", likeCounter: 1},
@@ -22,26 +25,26 @@ const profileReducer = (state = initialState, action: actionsType): initialState
                 id: 3,
                 post: action.newPostText,
                 likeCounter: 0
-            };
+            }
             return {
                 ...state,
                 posts: [newPost, ...state.posts],
-            };
+            }
         case "PROFILE_DELETE_POST":
             return {
                 ...state,
                 posts: state.posts.filter(p => p.id !== action.postId)
-            };
+            }
         case "PROFILE_SET_USER_PROFILE":
             return {
                 ...state,
                 profile: action.profile
-            };
+            }
         case "PROFILE_SET_STATUS":
             return {
                 ...state,
                 status: action.status
-            };
+            }
         case "PROFILE_SET_PHOTO":
             return {
                 ...state,
@@ -51,15 +54,13 @@ const profileReducer = (state = initialState, action: actionsType): initialState
             return {
                 ...state,
                 isEditMode: action.isEditMode
-            };
+            }
         default:
             return state;
     }
 }
 
-type actionsType = inferActionsType<typeof actions>;
-
-const actions = {
+export const actions = {
     addPost: (newPostText: string) => ({type: "PROFILE_ADD_POST", newPostText} as const),
     deletePost: (postId: number) => ({type: "PROFILE_DELETE_POST", postId} as const),
     setUserProfile: (profile: profileType) => ({type: "PROFILE_SET_USER_PROFILE", profile} as const),
@@ -68,49 +69,47 @@ const actions = {
     setEditMode: (isEditMode: boolean) => ({type: "PROFILE_SET_EDIT_MODE", isEditMode} as const)
 }
 
-type thunkType = ThunkAction<void, stateType, unknown, actionsType>
-
-export const getUserProfile = (userId: number): thunkType => async (dispatch) => { // помечаем санку как асинхронную функцию
-    const data = await profileAPI.getProfile(userId); // присваиваем респонсу результат, которым зарезолвится промис из getProfile
-    dispatch(actions.setUserProfile(data));
+export const getUserProfile = (userId: null | number): thunkType => async (dispatch) => { // помечаем санку как асинхронную функцию
+    const data = await profileAPI.getProfile(userId) // присваиваем респонсу результат, которым зарезолвится промис из getProfile
+    dispatch(actions.setUserProfile(data))
 }
 
-export const getStatus = (userId: number): thunkType => async (dispatch) => {
-    const data = await profileAPI.getStatus(userId); // получить статус с сервера
-    dispatch(actions.setStatusSuccess(data)); // когда с сервера придет статус, засетать его
+export const getStatus = (userId: null | number): thunkType => async (dispatch) => {
+    const data = await profileAPI.getStatus(userId) // получить статус с сервера
+    dispatch(actions.setStatusSuccess(data)) // когда с сервера придет статус, засетать его
 }
 
 export const updateStatus = (status: string): thunkType => async (dispatch) => {
     try {
-        const data = await profileAPI.updateStatus(status); // закинуть статус на сервер, получить resultCode
+        const data = await profileAPI.updateStatus(status) // закинуть статус на сервер, получить resultCode
         if (data.resultCode === resultCodeEnum.success) {
-            dispatch(actions.setStatusSuccess(status)); // засетать статус
+            dispatch(actions.setStatusSuccess(status)) // засетать статус
         }
     } catch (error) {
-        alert(error); // какой тип у error? откуда берется?
+        alert(error) // какой тип у error? откуда берется?
     }
 }
 
-export const savePhoto = (image: any): thunkType => async (dispatch) => {
-    const data = await profileAPI.savePhoto(image);
+export const savePhoto = (image: File): thunkType => async (dispatch) => {
+    const data = await profileAPI.savePhoto(image)
     if (data.resultCode === resultCodeEnum.success) {
-        dispatch(actions.setPhotoSuccess(data.data));
+        dispatch(actions.setPhotoSuccess(data.data.photos))
     }
 }
 
-export const saveProfileData = (profile: profileType) => async (dispatch: any, getState: any) => {
-    const userId = getState().auth.userId; // получаем весь state, забираем id, который сидит в auth reducer
-    const data = await profileAPI.saveProfileData(profile);
+export const saveProfileData = (profile: profileType): thunkType => async (dispatch, getState) => {
+    const userId = getState().auth.userId // получаем весь state, забираем id, который сидит в auth reducer
+    const data = await profileAPI.saveProfileData(profile)
     if (data.resultCode === resultCodeEnum.success) {
-        dispatch(getUserProfile(userId)); // диспатчим другую санку
-        dispatch(actions.setEditMode(false));
+        dispatch(getUserProfile(userId)) // диспатчим другую санку
+        dispatch(actions.setEditMode(false))
     } else {
         dispatch(stopSubmit(
             "editProfileData",
             {'_error': data.messages[0]}
-        ));
-        dispatch(actions.setEditMode(true));
+        ))
+        dispatch(actions.setEditMode(true))
     }
-} // не понимаю, как типизировать
+}
 
-export default profileReducer;
+export default profileReducer

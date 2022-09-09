@@ -1,19 +1,23 @@
-import {applyMiddleware, combineReducers, compose, legacy_createStore as createStore} from "redux";
-import thunkMiddleware from "redux-thunk";
-import profileReducer from "./profileReducer";
-import dialogsReducer from "./dialogsReducer";
-import usersReducer from "./usersReducer";
-import authReducer from "./authReducer";
-import {reducer as formReducer} from "redux-form";
-import appReducer from "./appReducer";
+import {Action, applyMiddleware, combineReducers, compose, legacy_createStore as createStore} from "redux"
+import thunkMiddleware, {ThunkAction} from "redux-thunk"
+import profileReducer from "./profileReducer"
+import dialogsReducer from "./dialogsReducer"
+import usersReducer from "./usersReducer"
+import authReducer from "./authReducer"
+import {reducer as formReducer} from "redux-form"
+import appReducer from "./appReducer"
 
-type rootReducerType = typeof rootReducer;
-export type stateType = ReturnType<rootReducerType>;
+type rootReducerType = typeof rootReducer
+export type stateType = ReturnType<rootReducerType>
 
-type propertiesType<T> = T extends {[key:string]: infer U} ? U : never;
-// принимает тип элемента объекта, возвращает тип функции AC
-export type inferActionsType<T extends {[key:string]: (...args: any[]) => any}> = ReturnType<propertiesType<T>>;
-// принимает тип объекта, присваивает переменной тип возвращаемого значения функции AC (объект)
+export type baseActionType<T> = T extends {[key:string]: (...args: any[]) => infer U} ? U : never
+// если Т соответствует элементу объекта - ключ-строка, значение-функция,
+// которая принимает какие-то аргуменнты и возвращает тип, проанализировать этот тип и вернуть его
+// или ничего не возвращать
+// followSuccess: (userId: number) => ({type: "USER_FOLLOW", userId} as const)
+
+
+export type baseThunkType<A extends Action, R = Promise<void>> = ThunkAction<R, stateType, unknown, A>
 
 const rootReducer = combineReducers({
     app: appReducer,
@@ -22,13 +26,13 @@ const rootReducer = combineReducers({
     usersPage: usersReducer,
     auth: authReducer,
     form: formReducer
-});
+})
 
 // @ts-ignore
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)))
 
 // @ts-ignore
-window.store = store;
+window.store = store
 
-export default store;
+export default store

@@ -1,14 +1,8 @@
-import {inferActionsType} from "./reduxStore";
+import {baseActionType} from "./reduxStore"
+import {dialogType, messagesType} from "../types/types"
 
-type initialStateType = typeof initialState;
-type dialogType = {
-    id: number
-    name: string
-}
-type messagesType = {
-    id: number,
-    message: string
-}
+export type initialStateType = typeof initialState
+type actionsType = baseActionType<typeof actions>
 
 let initialState = {
     dialog: [
@@ -20,7 +14,7 @@ let initialState = {
         {id: 2, message: "message 2"},
         {id: 3, message: "message 3"}
     ] as Array<messagesType>
-};
+}
 
 const dialogsReducer = (state = initialState, action: actionsType): initialStateType => {
     switch (action.type) {
@@ -28,19 +22,18 @@ const dialogsReducer = (state = initialState, action: actionsType): initialState
             let newMessage = {
                 id: 5,
                 message: action.newMessageText
-            };
+            }
             return {
                 ...state,
                 messages: [...state.messages, newMessage]
-            };
+            }
         default:
-            return state;
+            return state
     }
 }
 
-type actionsType = inferActionsType<typeof actions>;
-const actions = {
+export const actions = {
     addMessage: (newMessageText: string) => ({type: "DIALOGS_ADD_MESSAGE", newMessageText} as const)
 }
 
-export default dialogsReducer;
+export default dialogsReducer

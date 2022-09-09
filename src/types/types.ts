@@ -18,7 +18,7 @@ export type photosType = {
     large: string | null
 }
 export type profileType = {
-    userId: number
+    userId: null | number
     fullName: string
     lookingForAJob: boolean
     lookingForAJobDescription: string
@@ -33,4 +33,13 @@ export type usersType = {
     status: string | null
     photos: photosType
     followed: boolean
+}
+
+export type dialogType = {
+    id: number
+    name: string
+}
+export type messagesType = {
+    id: number,
+    message: string
 }

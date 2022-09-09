@@ -23,23 +23,19 @@ type mapStatePropsType = {
     followingInProgress: Array<number>
 }
 type mapDispatchPropsType = {
-    follow: (userId:number) => void
-    unfollow: (userId:number) => void
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
     requestUsers: (currentPageNumber: number, pageSize: number) => void
 }
-type ownPropsType = {
-    onPageChange: (pageNumber: number) => void
-}
-type propsType = mapStatePropsType & mapDispatchPropsType;
 
-class UsersContainer extends React.Component<propsType> {
+class UsersContainer extends React.Component<mapStatePropsType & mapDispatchPropsType> {
 
     componentDidMount() {
-        this.props.requestUsers(this.props.currentPageNumber, this.props.pageSize);
+        this.props.requestUsers(this.props.currentPageNumber, this.props.pageSize)
     }
 
     onPageChange = (pageNumber: number) => {
-        this.props.requestUsers(pageNumber, this.props.pageSize);
+        this.props.requestUsers(pageNumber, this.props.pageSize)
     }
 
     render() {
@@ -71,8 +67,8 @@ const mapStateToProps = (state: stateType): mapStatePropsType => {
     }
 }
 
-export default connect<mapStatePropsType, mapDispatchPropsType, ownPropsType, stateType>(mapStateToProps, {
+export default connect<mapStatePropsType, mapDispatchPropsType, {}, stateType>(mapStateToProps, {
     follow,
     unfollow,
     requestUsers
-})(UsersContainer);
+})(UsersContainer)

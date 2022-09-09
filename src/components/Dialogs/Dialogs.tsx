@@ -1,25 +1,35 @@
-import React from "react";
+import React from "react"
 import style from "./Dialogs.module.css"
 import commonStyles from "../../App.module.css"
-import Dialog from "./Dialog/Dialog";
-import Message from "./Message/Message";
-import NewMessageFormHOC from "./NewMessageForm/NewMessageForm";
+import Dialog from "./Dialog/Dialog"
+import Message from "./Message/Message"
+import NewMessageFormHOC from "./NewMessageForm/NewMessageForm"
+import {initialStateType} from "../../redux/dialogsReducer"
 
-const Dialogs = (props) => {
+type propsType = {
+    dialogs: initialStateType
+    addMessage: (newMessageText: string) => void
+}
+
+export type formDataType = {
+    newMessageText: string
+}
+
+const Dialogs: React.FC<propsType> = (props) => {
     let dialogElement = props.dialogs.dialog
         .map(d => <Dialog
             key={d.id}
             id={d.id}
-            name={d.name}/>);
+            name={d.name}/>)
 
     let messageElement = props.dialogs.messages
         .map(m => <Message
             key={m.id}
             id={m.id}
-            message={m.message}/>);
+            message={m.message}/>)
 
-    let addNewMessage = (values) => {
-        props.addMessage(values.newMessageText);
+    let addNewMessage = (values: formDataType) => {
+        props.addMessage(values.newMessageText)
     }
 
     return (
@@ -32,12 +42,11 @@ const Dialogs = (props) => {
             </div>
             <div className={`${style.newMessage} ${commonStyles.whiteBlock}`}>
                 <NewMessageFormHOC
-                    addMessage={props.addMessage}
                     onSubmit={addNewMessage}
                 />
             </div>
         </div>
-    );
+    )
 }
 
-export default Dialogs;
+export default Dialogs

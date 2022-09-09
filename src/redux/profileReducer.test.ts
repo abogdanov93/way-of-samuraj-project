@@ -1,15 +1,18 @@
-import profileReducer, {addPost, deletePost} from "./profileReducer";
+import profileReducer, {actions} from "./profileReducer";
 
 // 1. готовим исходные данные - state and action
 let state = {
     posts: [
         {id: 1, post: "Hi there!", likeCounter: 1},
         {id: 2, post: "Are you going to play fortnite?", likeCounter: 3}
-    ]
+    ],
+    profile: null,
+    isEditMode: false,
+    status: ""
 }
 
 test("length of posts should be 3", () => {
-    let action = addPost("Test");
+    let action = actions.addPost("Test");
 
     // 2. вызываем reducer
     let newState = profileReducer(state, action);
@@ -20,7 +23,7 @@ test("length of posts should be 3", () => {
 });
 
 test("new message text should be correct", () => {
-    let action = addPost("Test");
+    let action = actions.addPost("Test");
 
     let newState = profileReducer(state, action);
 
@@ -29,7 +32,7 @@ test("new message text should be correct", () => {
 });
 
 test("length of posts should be 1", () => {
-    let action = deletePost(1);
+    let action = actions.deletePost(1);
 
     let newState = profileReducer(state, action);
 
@@ -39,7 +42,7 @@ test("length of posts should be 1", () => {
 
 
 test("length of posts shouldn't be changed if id isn't correct", () => {
-    let action = deletePost(1000);
+    let action = actions.deletePost(1000);
 
     let newState = profileReducer(state, action);
 

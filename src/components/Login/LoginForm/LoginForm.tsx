@@ -1,16 +1,16 @@
-import React from "react";
-import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {Element} from "../../common/FormControl/FormControl";
-import {maxLengthCreator, required} from "../../../utils/validators";
-import formStyle from "../../common/FormControl/FormControl.module.css";
-import style from "./LoginForm.module.css";
-import {formDataType} from "../Login";
+import React from "react"
+import {Field, InjectedFormProps, reduxForm} from "redux-form"
+import {Element} from "../../common/FormControl/FormControl"
+import {maxLengthCreator, required} from "../../../utils/validators"
+import formStyle from "../../common/FormControl/FormControl.module.css"
+import style from "./LoginForm.module.css"
+import {formDataType} from "../Login"
 
 type loginOwnPropsType = {
     captchaURL: string | null
 }
 
-const maxLength20 = maxLengthCreator(20);
+const maxLength20 = maxLengthCreator(20)
 
 const LoginForm: React.FC<InjectedFormProps<formDataType, loginOwnPropsType> & loginOwnPropsType> =
     ({handleSubmit, error, captchaURL}) => {
@@ -51,5 +51,5 @@ const LoginForm: React.FC<InjectedFormProps<formDataType, loginOwnPropsType> & l
         </form>
     }
 
-const LoginFormHOC = reduxForm<formDataType, loginOwnPropsType>({form: "login"})(LoginForm);
-export default LoginFormHOC;
+const LoginFormHOC = reduxForm<formDataType, loginOwnPropsType>({form: "login"})(LoginForm)
+export default LoginFormHOC

@@ -1,9 +1,11 @@
-import {getAuthUserData} from "./authReducer";
-import {ThunkAction} from "redux-thunk";
-import {inferActionsType, stateType} from "./reduxStore";
+import {getAuthUserData} from "./authReducer"
+import {baseActionType} from "./reduxStore"
 
-type initialStateType = {initialized:boolean}
-let initialState: initialStateType = {
+type initialStateType = typeof initialState
+type actionType = baseActionType<typeof actions>
+
+
+let initialState = {
     initialized: false
 }
 
@@ -13,23 +15,22 @@ const appReducer = (state = initialState, action: actionType): initialStateType 
             return {
                 ...state,
                 initialized: true
-            };
+            }
         default:
-            return state;
+            return state
     }
 }
 
-type actionType = inferActionsType<typeof actions>;
-export const actions = {
+const actions = {
     initializationSuccess: () => ({type: "APP_INITIALIZATION_SUCCESS"} as const)
 }
 
-type thunkType = ThunkAction<void, stateType, unknown, actionType>;
-export const initializeApp = (): thunkType => (dispatch) => {
-    const promise = dispatch(getAuthUserData()); // когда придет подтверждение авторизации и данные
+export const initializeApp = () => (dispatch: any) => {
+    const promise = dispatch(getAuthUserData()) // когда придет подтверждение авторизации и данные
     promise.then(() => {
         dispatch(actions.initializationSuccess()) // меняем initialized
-    }); // не понятно, как типизировать
+    }) // не понятно, как избавиться от then или как его типизировать
 }
 
-export default appReducer;
+
+export default appReducer
