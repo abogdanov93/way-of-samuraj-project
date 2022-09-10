@@ -1,26 +1,28 @@
-import React, {ChangeEvent, FC} from "react";
-import style from "./ProfileInfo.module.css";
-import Preloader from "../../common/Preloader/Preloader";
-import largeAvatar from "./../../../images/userAvatar.jpeg";
-import ProfileStatus from "../ProfileStatus/ProfileStatus";
-import ProfileDataFormHOC from "../ProfileDataForm/ProfileDataForm";
-import ProfileData from "../ProfileData/ProfileData";
-import {profileType} from "../../../types/types";
+import React, {ChangeEvent, FC} from "react"
+import style from "./ProfileInfo.module.css"
+import Preloader from "../../common/Preloader/Preloader"
+import largeAvatar from "./../../../images/userAvatar.jpeg"
+import ProfileStatus from "../ProfileStatus/ProfileStatus"
+import ProfileDataFormHOC from "../ProfileDataForm/ProfileDataForm"
+import ProfileData from "../ProfileData/ProfileData"
+import {profileType} from "../../../types/types"
+import {baseActionType} from "../../../redux/reduxStore";
+import {actions} from "../../../redux/profileReducer";
 
 type propsType = {
     profile: profileType
-    saveProfileData: (formData: any) => void
-    savePhoto: (file: any) => void
+    saveProfileData: (formData: profileType) => void
+    savePhoto: (file: File) => void
     isOwner: boolean
     status: string
-    updateStatus: () => void
+    updateStatus: (status: string) => void
     isEditMode: boolean
-    setEditMode: () => void
+    setEditMode: (mode: boolean) => baseActionType<typeof actions>
 }
 
 const ProfileInfo: FC<propsType> = (props) => {
-    const onSubmit = (formData: any) => {
-        props.saveProfileData(formData);
+    const onSubmit = (formData: profileType) => {
+        props.saveProfileData(formData)
     }
 
     if (!props.profile) {
@@ -28,8 +30,7 @@ const ProfileInfo: FC<propsType> = (props) => {
     }
 
     const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
-        // @ts-ignore
-        e.target.files.length && props.savePhoto(e.target.files[0]);
+        e.target.files?.length && props.savePhoto(e.target.files[0]) // ? --> если files есть, берет длину 11 - 1:30
     }
 
     return (
@@ -49,16 +50,15 @@ const ProfileInfo: FC<propsType> = (props) => {
             <div className={style.profileData}>
                 {props.isEditMode
                     ? <ProfileDataFormHOC onSubmit={onSubmit}
-                                          profile={props.profile}
-                                          initialValues={props.profile}/> // синхронизируем данные локального стейта и форм стейта, передаем инициализационные данные
+                                          profile={props.profile}/>
                     : <ProfileData profile={props.profile}
                                    isOwner={props.isOwner}
                                    setEditMode={props.setEditMode}/>}
             </div>
 
         </div>
-    );
+    )
 }
 
 
-export default ProfileInfo;
+export default ProfileInfo

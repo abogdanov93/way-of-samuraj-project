@@ -14,7 +14,7 @@ type mapStateToPropsType = {
 type mapDispatchToPropsType = {
     logIn: (email: string, password: string, rememberMe: boolean, captcha: string) => void
 }
-export type formDataType = {
+export type loginFormDataType = {
     email: string
     password: string
     rememberMe: boolean
@@ -23,7 +23,7 @@ export type formDataType = {
 
 const Login: React.FC<mapStateToPropsType & mapDispatchToPropsType> =
     ({logIn, isAuth, captchaURL}) => {
-        const onSubmit = (formData: formDataType) => {
+        const onSubmit = (formData: loginFormDataType) => {
             logIn(formData.email, formData.password, formData.rememberMe, formData.captcha)
         }
 

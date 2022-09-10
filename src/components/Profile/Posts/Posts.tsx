@@ -1,16 +1,18 @@
-import React, {FC} from "react";
-import style from "./Posts.module.css";
+import React, {FC} from "react"
+import style from "./Posts.module.css"
+import {baseActionType} from "../../../redux/reduxStore";
+import {actions} from "../../../redux/profileReducer";
 
 type propsType = {
     post: string
     likeCounter: number
-    deletePost: (id: number) => void
+    deletePost: (id: number) => baseActionType<typeof actions>
     id: number
 }
 
 const Posts: FC<propsType> = ({post, likeCounter, deletePost, id}) => {
     const onPostDelete = () => {
-        deletePost(id);
+        deletePost(id)
     }
     return (
         <div className={style.posts}>
@@ -20,7 +22,7 @@ const Posts: FC<propsType> = ({post, likeCounter, deletePost, id}) => {
             <div className={style.likeCounter}>{likeCounter}</div>
             <div className={style.delete} onClick={onPostDelete}>delete</div>
         </div>
-    );
+    )
 }
 
-export default Posts;
+export default Posts

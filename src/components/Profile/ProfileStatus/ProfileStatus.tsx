@@ -1,5 +1,5 @@
-import React, {ChangeEvent, FC, useEffect, useState} from "react";
-import style from "./ProfileStatus.module.css";
+import React, {ChangeEvent, FC, useEffect, useState} from "react"
+import style from "./ProfileStatus.module.css"
 
 type propsType = {
     status: string
@@ -8,21 +8,21 @@ type propsType = {
 
 const ProfileStatus: FC<propsType> = ({status, updateStatus}) => {
 
-    const [editMode, setEditMode] = useState(false);
-    const [localStatus, setLocalStatus] = useState(status);
+    const [editMode, setEditMode] = useState(false)
+    const [localStatus, setLocalStatus] = useState(status)
     useEffect(() => {
-        setLocalStatus(status);
-    }, [status]);
+        setLocalStatus(status)
+    }, [status])
 
     const activateEditMode = () => {
-        setEditMode(true);
+        setEditMode(true)
     }
     const deactivateEditMode = () => {
-        setEditMode(false);
-        updateStatus(localStatus); // когда пользователь выйдет из режима редактирования, отправить put запрос
+        setEditMode(false)
+        updateStatus(localStatus) // когда пользователь выйдет из режима редактирования, отправить put запрос
     }
     const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setLocalStatus(e.currentTarget.value);
+        setLocalStatus(e.currentTarget.value)
     }
 
     return (
@@ -41,4 +41,4 @@ const ProfileStatus: FC<propsType> = ({status, updateStatus}) => {
     )
 }
 
-export default ProfileStatus;
+export default ProfileStatus

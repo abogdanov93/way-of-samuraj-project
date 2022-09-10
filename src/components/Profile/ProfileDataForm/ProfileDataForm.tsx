@@ -1,11 +1,16 @@
-import React from "react";
-import style from "../ProfileInfo/ProfileInfo.module.css";
-import {Field, reduxForm} from "redux-form";
-import {Element} from "../../common/FormControl/FormControl";
-import formStyle from "../../common/FormControl/FormControl.module.css";
+import React from "react"
+import style from "../ProfileInfo/ProfileInfo.module.css"
+import {Field, InjectedFormProps, reduxForm} from "redux-form"
+import {Element} from "../../common/FormControl/FormControl"
+import formStyle from "../../common/FormControl/FormControl.module.css"
+import {profileType} from "../../../types/types"
 
+type ownPropsType = {
+        profile: profileType
+}
 
-const ProfileDataForm = ({handleSubmit, profile, error}) => {
+const ProfileDataForm: React.FC<InjectedFormProps<profileType, ownPropsType> & ownPropsType> =
+    ({handleSubmit, profile, error}) => {
     return <form onSubmit={handleSubmit}>
         {error && <div className={formStyle.errorWarning}>{error}</div>}
         <div>
@@ -50,5 +55,5 @@ const ProfileDataForm = ({handleSubmit, profile, error}) => {
     </form>
 }
 
-const ProfileDataFormHOC = reduxForm({form: "editProfileData"})(ProfileDataForm);
-export default ProfileDataFormHOC;
+const ProfileDataFormHOC = reduxForm<profileType, ownPropsType>({form: "editProfileData"})(ProfileDataForm)
+export default ProfileDataFormHOC
