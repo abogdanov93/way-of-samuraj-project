@@ -1,8 +1,8 @@
-import React from "react";
-import style from "./FriendsBlock.module.css";
-import commonStyles from "./../../App.module.css";
+import React, {FC} from "react"
+import style from "./FriendsBlock.module.css"
+import commonStyles from "./../../App.module.css"
 
-const FriendsBlock = () => {
+const FriendsBlock: FC = () => {
     return (
         <div className={`${style.friends} ${commonStyles.whiteBlock}`}>
             <h3 className={style.title}>Friends</h3>
@@ -23,7 +23,7 @@ const FriendsBlock = () => {
                 <div className={style.name}>notfat100kg</div>
             </div>
         </div>
-    );
+    )
 }
 
-export default FriendsBlock;
+export default FriendsBlock

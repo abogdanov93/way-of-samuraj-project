@@ -26,7 +26,6 @@ type mapStatePropsType = {
     isAuth: boolean
     router: any
 }
-
 type mapDispatchPropsType = {
     addPost: (newPostText: string) => baseActionType<typeof actions>
     deletePost: (id: number) => baseActionType<typeof actions>
@@ -37,7 +36,6 @@ type mapDispatchPropsType = {
     savePhoto: (image: File) => void
     saveProfileData: (formData: profileType) => void
 }
-
 type propsType = mapStatePropsType & mapDispatchPropsType
 
 class ProfileContainer extends React.Component <propsType> {
@@ -55,7 +53,7 @@ class ProfileContainer extends React.Component <propsType> {
     }
 
     componentDidUpdate(prevProps: propsType, prevState: propsType) {
-        if(this.props.router.params.userId !== prevProps.router.params.userId) {
+        if (this.props.router.params.userId !== prevProps.router.params.userId) {
             this.refreshProfile()
         }
     }
@@ -99,16 +97,15 @@ function withRouter(Component: React.ComponentType) {
     return ComponentWithRouterProp
 }
 
-let f1 = connect<mapStatePropsType, mapDispatchPropsType, {}, stateType>
-(mapStateToProps, {
-    addPost: actions.addPost,
-    deletePost: actions.deletePost,
-    setEditMode: actions.setEditMode,
-    getUserProfile,
-    getStatus,
-    updateStatus,
-    savePhoto,
-    saveProfileData
-});
 export default compose<React.ComponentType>(
-    f1, withAuthRedirect, withRouter)(ProfileContainer)
+    connect<mapStatePropsType, mapDispatchPropsType, {}, stateType>
+    (mapStateToProps, {
+        addPost: actions.addPost,
+        deletePost: actions.deletePost,
+        setEditMode: actions.setEditMode,
+        getUserProfile,
+        getStatus,
+        updateStatus,
+        savePhoto,
+        saveProfileData
+    }), withAuthRedirect, withRouter)(ProfileContainer)

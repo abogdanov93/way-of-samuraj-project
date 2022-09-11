@@ -2,8 +2,8 @@ import style from "../ProfileInfo/ProfileInfo.module.css"
 import React, {FC} from "react"
 import {contactsType, profileType} from "../../../types/types"
 import Contact from "./Contact"
-import {baseActionType} from "../../../redux/reduxStore";
-import {actions} from "../../../redux/profileReducer";
+import {baseActionType} from "../../../redux/reduxStore"
+import {actions} from "../../../redux/profileReducer"
 
 type propsType = {
     profile: profileType

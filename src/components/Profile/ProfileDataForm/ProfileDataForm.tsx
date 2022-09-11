@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import style from "../ProfileInfo/ProfileInfo.module.css"
 import {Field, InjectedFormProps, reduxForm} from "redux-form"
 import {Element} from "../../common/FormControl/FormControl"
@@ -9,7 +9,7 @@ type ownPropsType = {
         profile: profileType
 }
 
-const ProfileDataForm: React.FC<InjectedFormProps<profileType, ownPropsType> & ownPropsType> =
+const ProfileDataForm: FC<InjectedFormProps<profileType, ownPropsType> & ownPropsType> =
     ({handleSubmit, profile, error}) => {
     return <form onSubmit={handleSubmit}>
         {error && <div className={formStyle.errorWarning}>{error}</div>}

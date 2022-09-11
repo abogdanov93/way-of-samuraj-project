@@ -32,5 +32,4 @@ export const initializeApp = () => (dispatch: any) => {
     }) // не понятно, как избавиться от then или как его типизировать
 }
 
-
 export default appReducer

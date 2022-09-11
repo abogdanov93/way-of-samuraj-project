@@ -1,12 +1,12 @@
-import React, {FC} from "react";
-import style from "./Header.module.css";
-import logo from "../../images/logo.png";
-import loginIcon from "../../images/login.png";
-import {NavLink} from "react-router-dom";
+import React, {FC} from "react"
+import style from "./Header.module.css"
+import logo from "../../images/logo.png"
+import loginIcon from "../../images/login.png"
+import {NavLink} from "react-router-dom"
 
 type propsType = {
     isAuth: boolean
-    login: string
+    login: string | null
     logOut: () => void
 }
 
@@ -32,7 +32,7 @@ const Header: FC<propsType> = ({isAuth, login, logOut}) => {
                 }
             </div>
         </header>
-    );
+    )
 }
 
-export default Header;
+export default Header

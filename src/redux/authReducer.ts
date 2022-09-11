@@ -8,7 +8,6 @@ type initialStateType = typeof initialState
 type actionsType = baseActionType<typeof actions>
 type thunkType = baseThunkType<actionsType | FormAction> // FormAction для типизации stopSubmit
 
-
 let initialState = {
     userId: null as number | null,
     login: null as string | null,
@@ -78,6 +77,5 @@ export const getCaptchaURL = (): thunkType => async (dispatch) => {
     const captchaURL = data.url
     dispatch(actions.setCaptchaURL(captchaURL))
 }
-
 
 export default authReducer

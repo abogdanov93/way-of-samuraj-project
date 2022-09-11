@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import userAvatar from "../../../images/userAvatar.jpeg"
 import style from "./User.module.css"
 import {NavLink} from "react-router-dom"
@@ -11,19 +11,11 @@ type propsType = {
     followingInProgress: Array<number>
 }
 
-const User: React.FC < propsType > = ({user, follow, unfollow, followingInProgress}) => {
+const User: FC < propsType > = ({user, follow, unfollow, followingInProgress}) => {
     return <div className={style.user}>
-
         <NavLink to={"/profile/" + user.id}>
-
-            <div>
                 <img className={style.avatar} src={user.photos.small != null ? user.photos.small : userAvatar}/>
-            </div>
-
-            <div>
                 {user.name}
-            </div>
-
         </NavLink>
 
         <div>
@@ -44,7 +36,6 @@ const User: React.FC < propsType > = ({user, follow, unfollow, followingInProgre
             }
         </div>
     </div>
-
 }
 
 export default User

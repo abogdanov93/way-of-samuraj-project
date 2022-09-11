@@ -1,10 +1,21 @@
 import React from "react"
 import {connect} from "react-redux"
 import Dialogs from "./Dialogs"
-import {actions} from "../../redux/dialogsReducer"
+import {actions, initialStateType} from "../../redux/dialogsReducer"
 import {withAuthRedirect} from "../../hoc/withAuthRedirect"
 import {compose} from "redux"
-import {stateType} from "../../redux/reduxStore"
+import {baseActionType, stateType} from "../../redux/reduxStore"
+
+type mapStatePropsType = {
+    dialogs: initialStateType
+}
+type mapDispatchPropsType = {
+    addMessage: (newMessageText: string) => baseActionType<typeof actions>
+}
+
+const DialogsContainer: React.FC<mapStatePropsType & mapDispatchPropsType> = (props) => {
+    return <Dialogs dialogs={props.dialogs} addMessage={props.addMessage}/>
+}
 
 const mapStateToProps = (state: stateType) => {
     return {
@@ -12,6 +23,6 @@ const mapStateToProps = (state: stateType) => {
     }
 }
 
-export default compose<React.ComponentType>(connect
+export default compose<React.ComponentType>(connect<mapStatePropsType, mapDispatchPropsType, {}, stateType>
     (mapStateToProps, {addMessage: actions.addMessage}),
-    withAuthRedirect)(Dialogs)
+    withAuthRedirect)(DialogsContainer)

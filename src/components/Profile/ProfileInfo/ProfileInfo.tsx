@@ -6,8 +6,8 @@ import ProfileStatus from "../ProfileStatus/ProfileStatus"
 import ProfileDataFormHOC from "../ProfileDataForm/ProfileDataForm"
 import ProfileData from "../ProfileData/ProfileData"
 import {profileType} from "../../../types/types"
-import {baseActionType} from "../../../redux/reduxStore";
-import {actions} from "../../../redux/profileReducer";
+import {baseActionType} from "../../../redux/reduxStore"
+import {actions} from "../../../redux/profileReducer"
 
 type propsType = {
     profile: profileType

@@ -1,12 +1,12 @@
-import React from "react"
+import React, {FC} from "react"
 import style from "./Profile.module.css"
 import commonStyles from "./../../App.module.css"
 import ProfileInfo from "./ProfileInfo/ProfileInfo"
 import NewPostForm from "./NewPostForm/NewPostForm"
 import Posts from "./Posts/Posts"
 import {postsType, profileType} from "../../types/types"
-import {baseActionType} from "../../redux/reduxStore";
-import {actions} from "../../redux/profileReducer";
+import {baseActionType} from "../../redux/reduxStore"
+import {actions} from "../../redux/profileReducer"
 
 type propsType = {
     profilePage: {
@@ -23,12 +23,11 @@ type propsType = {
     savePhoto: (image: File) => void
     saveProfileData: (formData: profileType) => void
 }
-
 export type newPostFormDataType = {
     newPostText: string
 }
 
-const Profile: React.FC<propsType> = (props) => {
+const Profile: FC<propsType> = (props) => {
     let postElement = props.profilePage.posts
         .map(p => <Posts
             key={p.id}

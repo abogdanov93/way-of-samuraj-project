@@ -3,12 +3,11 @@ import {usersType} from "../types/types"
 import {Dispatch} from "redux"
 import {baseActionType, baseThunkType} from "./reduxStore"
 import {usersAPI} from "../api/usersAPI"
-import {resultCodeEnum} from "../api/api";
+import {resultCodeEnum} from "../api/api"
 
 type initialStateType = typeof initialState
-type actionsType = baseActionType<typeof actions> // применяет общий generic тип к объекту actions
+type actionsType = baseActionType<typeof actions>
 type thunkType = baseThunkType<actionsType>
-
 
 let initialState = {
     users: [] as Array<usersType>,

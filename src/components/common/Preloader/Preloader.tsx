@@ -1,9 +1,9 @@
-import React from "react";
-import style from "./Preloader.module.css";
-import preloader from "../../../images/preloader.svg";
+import React, {FC} from "react"
+import style from "./Preloader.module.css"
+import preloader from "../../../images/preloader.svg"
 
 
-let Preloader = () => {
+let Preloader: FC = () => {
     return (
         <div className={style.preloader}>
             <img src={preloader}/>
@@ -11,4 +11,4 @@ let Preloader = () => {
     )
 }
 
-export default Preloader;
+export default Preloader

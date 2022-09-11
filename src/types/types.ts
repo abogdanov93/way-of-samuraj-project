@@ -26,7 +26,6 @@ export type profileType = {
     contacts: contactsType
     photos: photosType
 }
-
 export type usersType = {
     id: number
     name: string
@@ -34,7 +33,6 @@ export type usersType = {
     photos: photosType
     followed: boolean
 }
-
 export type dialogType = {
     id: number
     name: string

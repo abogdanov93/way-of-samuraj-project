@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import {connect} from "react-redux"
 import {logIn} from "../../redux/authReducer"
 import {Navigate} from "react-router-dom"
@@ -7,11 +7,11 @@ import commonStyles from "./../../App.module.css"
 import LoginFormHOC from "./LoginForm/LoginForm"
 import {stateType} from "../../redux/reduxStore"
 
-type mapStateToPropsType = {
+type mapStatePropsType = {
     isAuth: boolean
     captchaURL: null | string
 }
-type mapDispatchToPropsType = {
+type mapDispatchPropsType = {
     logIn: (email: string, password: string, rememberMe: boolean, captcha: string) => void
 }
 export type loginFormDataType = {
@@ -21,7 +21,7 @@ export type loginFormDataType = {
     captcha: string
 }
 
-const Login: React.FC<mapStateToPropsType & mapDispatchToPropsType> =
+const Login: FC<mapStatePropsType & mapDispatchPropsType> =
     ({logIn, isAuth, captchaURL}) => {
         const onSubmit = (formData: loginFormDataType) => {
             logIn(formData.email, formData.password, formData.rememberMe, formData.captcha)
@@ -35,9 +35,10 @@ const Login: React.FC<mapStateToPropsType & mapDispatchToPropsType> =
         </div>
     }
 
-const mapStateToProps = (state: stateType): mapStateToPropsType => ({
+const mapStateToProps = (state: stateType): mapStatePropsType => ({
     isAuth: state.auth.isAuth,
     captchaURL: state.auth.captchaURL
 })
 
-export default connect(mapStateToProps, {logIn})(Login)
+export default connect<mapStatePropsType, mapDispatchPropsType, {}, stateType>
+(mapStateToProps, {logIn})(Login)

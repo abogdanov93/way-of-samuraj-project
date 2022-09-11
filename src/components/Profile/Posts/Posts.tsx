@@ -1,7 +1,7 @@
 import React, {FC} from "react"
 import style from "./Posts.module.css"
-import {baseActionType} from "../../../redux/reduxStore";
-import {actions} from "../../../redux/profileReducer";
+import {baseActionType} from "../../../redux/reduxStore"
+import {actions} from "../../../redux/profileReducer"
 
 type propsType = {
     post: string

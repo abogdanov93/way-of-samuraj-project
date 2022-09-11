@@ -49,14 +49,14 @@ const profileReducer = (state = initialState, action: actionsType): initialState
             return {
                 ...state,
                 profile: {...state.profile, photos: action.photos} as profileType
-            };
+            }
         case "PROFILE_SET_EDIT_MODE":
             return {
                 ...state,
                 isEditMode: action.isEditMode
             }
         default:
-            return state;
+            return state
     }
 }
 

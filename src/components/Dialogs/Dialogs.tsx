@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import style from "./Dialogs.module.css"
 import commonStyles from "../../App.module.css"
 import Dialog from "./Dialog/Dialog"
@@ -10,26 +10,24 @@ type propsType = {
     dialogs: initialStateType
     addMessage: (newMessageText: string) => void
 }
-
 export type formDataType = {
     newMessageText: string
 }
 
-const Dialogs: React.FC<propsType> = (props) => {
-    let dialogElement = props.dialogs.dialog
+const Dialogs: FC<propsType> = ({dialogs, addMessage}) => {
+    let dialogElement = dialogs.dialog
         .map(d => <Dialog
             key={d.id}
             id={d.id}
             name={d.name}/>)
 
-    let messageElement = props.dialogs.messages
+    let messageElement = dialogs.messages
         .map(m => <Message
             key={m.id}
-            id={m.id}
             message={m.message}/>)
 
     let addNewMessage = (values: formDataType) => {
-        props.addMessage(values.newMessageText)
+        addMessage(values.newMessageText)
     }
 
     return (

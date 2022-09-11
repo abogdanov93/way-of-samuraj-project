@@ -1,9 +1,9 @@
-import React, {FC} from "react";
-import style from "./Users.module.css";
-import commonStyles from "./../../App.module.css";
-import Pagination from "../common/Pagination/Pagination";
-import User from "./User/User";
-import {usersType} from "../../types/types";
+import React, {FC} from "react"
+import style from "./Users.module.css"
+import commonStyles from "./../../App.module.css"
+import Pagination from "../common/Pagination/Pagination"
+import User from "./User/User"
+import {usersType} from "../../types/types"
 
 type propsType = {
     follow: (userId:number) => void
@@ -34,7 +34,7 @@ const Users: FC<propsType> = (props) => {
                         currentPageNumber={props.currentPageNumber}
                         onPageChange={props.onPageChange}/>
         </div>
-    );
+    )
 }
 
-export default Users;
+export default Users

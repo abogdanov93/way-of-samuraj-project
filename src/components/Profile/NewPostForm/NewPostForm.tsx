@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import style from "./NewPostForm.module.css"
 import {Field, InjectedFormProps, reduxForm} from "redux-form"
 import {maxLengthCreator, required} from "../../../utils/validators"
@@ -9,9 +9,8 @@ type ownPropsType = {}
 
 const maxLength5 = maxLengthCreator(5)
 
-const NewPostForm: React.FC<InjectedFormProps<newPostFormDataType, ownPropsType> & ownPropsType> =
+const NewPostForm: FC<InjectedFormProps<newPostFormDataType, {}> & ownPropsType> =
     (props) => {
-    debugger
     return (
             <form onSubmit={props.handleSubmit} className={style.newPost}>
                 <div className={style.textarea}>

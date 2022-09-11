@@ -9,15 +9,12 @@ import appReducer from "./appReducer"
 
 type rootReducerType = typeof rootReducer
 export type stateType = ReturnType<rootReducerType>
-
+export type baseThunkType<A extends Action, R = Promise<void>> = ThunkAction<R, stateType, unknown, A>
 export type baseActionType<T> = T extends {[key:string]: (...args: any[]) => infer U} ? U : never
 // если Т соответствует элементу объекта - ключ-строка, значение-функция,
 // которая принимает какие-то аргуменнты и возвращает тип, проанализировать этот тип и вернуть его
 // или ничего не возвращать
 // followSuccess: (userId: number) => ({type: "USER_FOLLOW", userId} as const)
-
-
-export type baseThunkType<A extends Action, R = Promise<void>> = ThunkAction<R, stateType, unknown, A>
 
 const rootReducer = combineReducers({
     app: appReducer,

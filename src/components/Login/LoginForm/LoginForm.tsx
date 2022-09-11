@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import {Field, InjectedFormProps, reduxForm} from "redux-form"
 import {Element} from "../../common/FormControl/FormControl"
 import {maxLengthCreator, required} from "../../../utils/validators"
@@ -12,7 +12,7 @@ type loginOwnPropsType = {
 
 const maxLength20 = maxLengthCreator(20)
 
-const LoginForm: React.FC<InjectedFormProps<loginFormDataType, loginOwnPropsType> & loginOwnPropsType> =
+const LoginForm: FC<InjectedFormProps<loginFormDataType, loginOwnPropsType> & loginOwnPropsType> =
     ({handleSubmit, error, captchaURL}) => {
         return <form className={style.loginForm} onSubmit={handleSubmit}>
             <div className={style.login}>
