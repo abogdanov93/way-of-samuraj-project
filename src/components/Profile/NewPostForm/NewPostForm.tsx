@@ -11,7 +11,8 @@ const maxLength5 = maxLengthCreator(5)
 
 const NewPostForm: React.FC<InjectedFormProps<newPostFormDataType, ownPropsType> & ownPropsType> =
     (props) => {
-        return (
+    debugger
+    return (
             <form onSubmit={props.handleSubmit} className={style.newPost}>
                 <div className={style.textarea}>
                     <Field component={Element}
