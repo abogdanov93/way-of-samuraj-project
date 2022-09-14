@@ -1,11 +1,11 @@
 import {updateObjectInArray} from "../utils/objectHelpers"
-import {usersType} from "../types/types"
 import {Dispatch} from "redux"
 import {baseActionType, baseThunkType} from "./reduxStore"
 import {usersAPI} from "../api/usersAPI"
-import {resultCodeEnum} from "../api/api"
+import {responseType, resultCodeEnum} from "../api/api"
+import {usersType} from "../types/types"
 
-type initialStateType = typeof initialState
+export type initialStateType = typeof initialState
 type actionsType = baseActionType<typeof actions>
 type thunkType = baseThunkType<actionsType>
 
@@ -57,7 +57,7 @@ const usersReducer = (state = initialState, action: actionsType): initialStateTy
     }
 }
 
-const actions = {
+export const actions = {
     followSuccess: (userId: number) => ({type: "USER_FOLLOW", userId} as const),
     unfollowSuccess: (userId: number) => ({type: "USER_UNFOLLOW", userId} as const),
     setUsers: (users: Array<usersType>) => ({type: "USER_SET_USERS", users} as const),
@@ -92,19 +92,20 @@ export const requestUsers = (currentPageNumber: number, pageSize: number): thunk
 
 export const follow = (userId: number): thunkType => {
     return async (dispatch) => {
-        followUnfollowFlow(dispatch, userId, usersAPI.followUser.bind(usersAPI), actions.followSuccess)
+        await followUnfollowFlow(dispatch, userId, usersAPI.followUser.bind(usersAPI), actions.followSuccess)
     }
 }
 
 export const unfollow = (userId: number): thunkType => {
     return async (dispatch) => {
-        followUnfollowFlow(dispatch, userId, usersAPI.unfollowUser.bind(usersAPI), actions.unfollowSuccess)
+        await followUnfollowFlow(dispatch, userId, usersAPI.unfollowUser.bind(usersAPI), actions.unfollowSuccess)
     }
 }
 
 const followUnfollowFlow =
-    async (dispatch: Dispatch<actionsType>, userId: number, apiMethod: any, actionCreator: (userId: number) =>
-        actionsType) => {
+    async (dispatch: Dispatch<actionsType>, userId: number,
+           apiMethod: (userId: number) => Promise<responseType>,
+           actionCreator: (userId: number) => actionsType) => {
         dispatch(actions.setFollowingInProgress(true, userId))
         let data = await apiMethod(userId)
         if (data.resultCode === resultCodeEnum.success) {
