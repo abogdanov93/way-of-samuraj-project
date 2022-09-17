@@ -1,19 +1,13 @@
 import React, {FC} from "react"
-import {connect} from "react-redux"
-import {logIn} from "../../redux/authReducer"
+import {useDispatch, useSelector} from "react-redux"
+import {logInThunk} from "../../redux/authReducer"
 import {Navigate} from "react-router-dom"
 import style from "./Login.module.css"
 import commonStyles from "./../../App.module.css"
 import LoginFormHOC from "./LoginForm/LoginForm"
-import {stateType} from "../../redux/reduxStore"
+import {getCaptchaURL, getIsAuth} from "../../redux/selectors/loginSelectors"
+import {AnyAction} from "redux"
 
-type mapStatePropsType = {
-    isAuth: boolean
-    captchaURL: null | string
-}
-type mapDispatchPropsType = {
-    logIn: (email: string, password: string, rememberMe: boolean, captcha: string) => void
-}
 export type loginFormDataType = {
     email: string
     password: string
@@ -21,24 +15,25 @@ export type loginFormDataType = {
     captcha: string
 }
 
-const Login: FC<mapStatePropsType & mapDispatchPropsType> =
-    ({logIn, isAuth, captchaURL}) => {
-        const onSubmit = (formData: loginFormDataType) => {
-            logIn(formData.email, formData.password, formData.rememberMe, formData.captcha)
-        }
+const Login: FC = () => {
 
-        if (isAuth) return <Navigate to="/profile/"/>
-
-        return <div className={`${style.login} ${commonStyles.whiteBlock}`}>
-            <h1 className={style.capture}>Sign in</h1>
-            <div className={style.block}><LoginFormHOC onSubmit={onSubmit} captchaURL={captchaURL}/></div>
-        </div>
+    const isAuth = useSelector(getIsAuth)
+    const captchaURL = useSelector(getCaptchaURL)
+    const dispatch = useDispatch()
+    const logIn = (email: string, password: string, rememberMe: boolean, captcha: string) => {
+        dispatch(logInThunk(email, password, rememberMe, captcha) as unknown as AnyAction)
     }
 
-const mapStateToProps = (state: stateType): mapStatePropsType => ({
-    isAuth: state.auth.isAuth,
-    captchaURL: state.auth.captchaURL
-})
+    const onSubmit = (formData: loginFormDataType) => {
+        logIn(formData.email, formData.password, formData.rememberMe, formData.captcha)
+    }
 
-export default connect<mapStatePropsType, mapDispatchPropsType, {}, stateType>
-(mapStateToProps, {logIn})(Login)
+    if (isAuth) return <Navigate to="/profile/"/>
+
+    return <div className={`${style.login} ${commonStyles.whiteBlock}`}>
+        <h1 className={style.capture}>Sign in</h1>
+        <div className={style.block}><LoginFormHOC onSubmit={onSubmit} captchaURL={captchaURL}/></div>
+    </div>
+}
+
+export default Login

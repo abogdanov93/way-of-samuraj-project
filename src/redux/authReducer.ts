@@ -49,7 +49,7 @@ export const getAuthUserData = (): thunkType => async (dispatch) => {
     }
 }
 
-export const logIn = (email: string, password: string, rememberMe: boolean, captcha: string): thunkType =>
+export const logInThunk = (email: string, password: string, rememberMe: boolean, captcha: string): thunkType =>
     async (dispatch) => {
     const data = await authAPI.logIn(email, password, rememberMe, captcha)
     if (data.resultCode === resultCodeEnum.success) {

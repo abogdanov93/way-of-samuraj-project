@@ -12,6 +12,8 @@ type propsType = {
 }
 
 const User: FC < propsType > = ({user, follow, unfollow, followingInProgress}) => {
+
+
     return <div className={style.user}>
         <NavLink to={"/profile/" + user.id}>
                 <img className={style.avatar} src={user.photos.small != null ? user.photos.small : userAvatar}/>

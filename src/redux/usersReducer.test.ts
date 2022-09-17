@@ -18,7 +18,7 @@ beforeEach(() => { // инициализация перед каждым тес�
     }
 })
 
-test("follow success", () => {
+test("followUser success", () => {
 
     const newState = usersReducer(testState, actions.followSuccess(1))
 
@@ -28,7 +28,7 @@ test("follow success", () => {
 
 })
 
-test("unfollow success", () => {
+test("unfollowUser success", () => {
 
     const newState = usersReducer(testState, actions.unfollowSuccess(2))
 

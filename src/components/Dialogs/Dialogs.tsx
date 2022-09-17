@@ -4,31 +4,32 @@ import commonStyles from "../../App.module.css"
 import Dialog from "./Dialog/Dialog"
 import Message from "./Message/Message"
 import NewMessageFormHOC from "./NewMessageForm/NewMessageForm"
-import {initialStateType} from "../../redux/dialogsReducer"
+import {useDispatch, useSelector} from "react-redux"
+import {getDialogs} from "../../redux/selectors/dialogsSelectors"
+import { actions } from "../../redux/dialogsReducer"
 
-type propsType = {
-    dialogs: initialStateType
-    addMessage: (newMessageText: string) => void
-}
 export type formDataType = {
     newMessageText: string
 }
 
-const Dialogs: FC<propsType> = ({dialogs, addMessage}) => {
-    let dialogElement = dialogs.dialog
+const Dialogs: FC = () => {
+    const dialogs = useSelector(getDialogs)
+    const dispatch = useDispatch()
+    const addNewMessage = (values: formDataType) => {
+        dispatch(actions.addMessage(values.newMessageText))
+    }
+
+    const dialogElement = dialogs.dialog
         .map(d => <Dialog
             key={d.id}
             id={d.id}
             name={d.name}/>)
 
-    let messageElement = dialogs.messages
+    const messageElement = dialogs.messages
         .map(m => <Message
             key={m.id}
             message={m.message}/>)
 
-    let addNewMessage = (values: formDataType) => {
-        addMessage(values.newMessageText)
-    }
 
     return (
         <div className={style.dialogs}>

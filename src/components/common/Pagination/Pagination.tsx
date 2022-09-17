@@ -32,7 +32,7 @@ const Pagination: FC<propsType> = ({totalItemsCount, pageSize, onPageChange, cur
         {pages
             .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
             .map(p => {
-                return <div className={currentPageNumber === p && style.selectedPage}
+                return <div key={p} className={currentPageNumber === p && style.selectedPage}
                             onClick={(e) => onPageChange(p)}>{p}</div>
             })
         }

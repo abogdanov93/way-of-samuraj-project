@@ -9,9 +9,9 @@ import FriendsBlock from "./components/FriendsBlock/FriendsBlock"
 import store, {stateType} from "./redux/reduxStore"
 import commonStyles from "./App.module.css"
 
-const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"))
+const Dialogs = React.lazy(() => import("./components/Dialogs/Dialogs"))
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"))
-const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer"))
+const Users = React.lazy(() => import("./components/Users/Users"))
 const Login = React.lazy(() => import("./components/Login/Login"))
 
 type mapPropsType = {
@@ -43,9 +43,9 @@ class App extends React.Component <mapPropsType & dispatchPropsType> {
                             <Route path="/profile/:userId/*"
                                    element={<ProfileContainer/>}/>
                             <Route path="/dialogs/*"
-                                   element={<DialogsContainer/>}/>
+                                   element={<Dialogs/>}/>
                             <Route path="/users/*"
-                                   element={<UsersContainer/>}/>
+                                   element={<Users/>}/>
                             <Route path="/login/*"
                                    element={<Login/>}/>
                             <Route path="*"

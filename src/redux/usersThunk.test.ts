@@ -1,6 +1,6 @@
 import {usersAPI} from "../api/usersAPI";
 import {responseType, resultCodeEnum} from "../api/api";
-import {actions, follow, unfollow} from "./usersReducer";
+import {actions, followUser, unfollowUser} from "./usersReducer";
 
 jest.mock("../api/usersAPI") // делаем заглушку для API
 const userAPIMock = usersAPI as jest.Mocked<typeof usersAPI>
@@ -21,12 +21,12 @@ const result: responseType = {
     data: {}
 }
 
-test("success follow thunk", async() => {
+test("success followUser thunk", async() => {
 
     userAPIMock.followUser.mockReturnValue(Promise.resolve(result)) // возвращает фейковый ответ
     userAPIMock.unfollowUser.mockReturnValue(Promise.resolve(result)) // возвращает фейковый ответ
 
-    const thunk = follow(1)
+    const thunk = followUser(1)
 
     await thunk(dispatchMock, getStateMock, {})
 
@@ -37,11 +37,11 @@ test("success follow thunk", async() => {
 
 })
 
-test("success unfollow thunk", async() => {
+test("success unfollowUser thunk", async() => {
     userAPIMock.followUser.mockReturnValue(Promise.resolve(result)) // возвращает фейковый ответ
     userAPIMock.unfollowUser.mockReturnValue(Promise.resolve(result)) // возвращает фейковый ответ
 
-    const thunk = unfollow(1)
+    const thunk = unfollowUser(1)
 
     await thunk(dispatchMock, getStateMock, {})
 

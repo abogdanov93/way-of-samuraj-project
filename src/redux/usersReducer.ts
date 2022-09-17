@@ -102,13 +102,13 @@ export const requestUsers = (currentPageNumber: number, pageSize: number, filter
         dispatch(actions.setTotalUsersCount(data.totalCount))
     }
 
-export const follow = (userId: number): thunkType => {
+export const followUser = (userId: number): thunkType => {
     return async (dispatch) => {
         await followUnfollowFlow(dispatch, userId, usersAPI.followUser.bind(usersAPI), actions.followSuccess)
     }
 }
 
-export const unfollow = (userId: number): thunkType => {
+export const unfollowUser = (userId: number): thunkType => {
     return async (dispatch) => {
         await followUnfollowFlow(dispatch, userId, usersAPI.unfollowUser.bind(usersAPI), actions.unfollowSuccess)
     }
