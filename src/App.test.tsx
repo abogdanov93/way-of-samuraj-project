@@ -3,6 +3,6 @@ import App from './App'
 
 test('renders learn react link', () => {
   render(<App/>)
-  const linkElement = screen.getByText(/Profile/)
+  const linkElement = screen.getByText("preloader")
   expect(linkElement).toBeInTheDocument()
 })

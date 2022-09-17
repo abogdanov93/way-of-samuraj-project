@@ -1,8 +1,8 @@
 import usersReducer, {actions, initialStateType} from "./usersReducer"
 
-let state: initialStateType // инициализировать не сразу, потому что тест может поменять стейт
+let testState: initialStateType // инициализировать не сразу, потому что тест может поменять стейт
 beforeEach(() => { // инициализация перед каждым тестом
-    state = {
+    testState = {
         users: [
             {id: 0, name: "M", status: "0", photos: {small: null, large: null}, followed: false},
             {id: 1, name: "A", status: "1", photos: {small: null, large: null}, followed: false},
@@ -13,13 +13,14 @@ beforeEach(() => { // инициализация перед каждым тес�
         totalUsersCount: 0,
         currentPageNumber: 1,
         isFetching: true,
-        followingInProgress: []
+        followingInProgress: [],
+        filter: {term: "", friend: null}
     }
 })
 
 test("follow success", () => {
 
-    const newState = usersReducer(state, actions.followSuccess(1))
+    const newState = usersReducer(testState, actions.followSuccess(1))
 
     expect(newState.users[0].followed).toBeFalsy()
     expect(newState.users[1].followed).toBeTruthy()
@@ -29,7 +30,7 @@ test("follow success", () => {
 
 test("unfollow success", () => {
 
-    const newState = usersReducer(state, actions.unfollowSuccess(2))
+    const newState = usersReducer(testState, actions.unfollowSuccess(2))
 
     expect(newState.users[1].followed).toBeFalsy()
     expect(newState.users[2].followed).toBeFalsy()

@@ -6,6 +6,7 @@ import {responseType, resultCodeEnum} from "../api/api"
 import {usersType} from "../types/types"
 
 export type initialStateType = typeof initialState
+export type filterType = typeof initialState.filter
 type actionsType = baseActionType<typeof actions>
 type thunkType = baseThunkType<actionsType>
 
@@ -15,7 +16,11 @@ let initialState = {
     totalUsersCount: 0,
     currentPageNumber: 1,
     isFetching: true,
-    followingInProgress: [] as Array<number> // array of users id
+    followingInProgress: [] as Array<number>, // array of users id
+    filter: {
+        term: "",
+        friend: null as null | boolean
+    }
 }
 
 const usersReducer = (state = initialState, action: actionsType): initialStateType => {
@@ -34,6 +39,11 @@ const usersReducer = (state = initialState, action: actionsType): initialStateTy
             return {
                 ...state,
                 users: action.users
+            }
+        case "USER_SET_FILTER":
+            return {
+                ...state,
+                filter: action.payload
             }
         case "USER_SET_CURRENT_PAGE_NUMBER": {
             return {...state, currentPageNumber: action.currentPageNumber}
@@ -61,6 +71,7 @@ export const actions = {
     followSuccess: (userId: number) => ({type: "USER_FOLLOW", userId} as const),
     unfollowSuccess: (userId: number) => ({type: "USER_UNFOLLOW", userId} as const),
     setUsers: (users: Array<usersType>) => ({type: "USER_SET_USERS", users} as const),
+    setFilter: (filter: filterType) => ({type: "USER_SET_FILTER", payload: filter} as const),
     setCurrentPageNumber: (currentPageNumber: number) => ({
         type: "USER_SET_CURRENT_PAGE_NUMBER",
         currentPageNumber
@@ -80,11 +91,12 @@ export const actions = {
     } as const)
 }
 
-export const requestUsers = (currentPageNumber: number, pageSize: number): thunkType =>
+export const requestUsers = (currentPageNumber: number, pageSize: number, filter: filterType): thunkType =>
     async (dispatch, getState) => {
         dispatch(actions.toggleIsFetching(true))
         dispatch(actions.setCurrentPageNumber(currentPageNumber))
-        const data = await usersAPI.getUsersAPI(currentPageNumber, pageSize)
+        dispatch(actions.setFilter(filter))
+        const data = await usersAPI.getUsersAPI(currentPageNumber, pageSize, filter.term, filter.friend)
         dispatch(actions.toggleIsFetching(false))
         dispatch(actions.setUsers(data.items))
         dispatch(actions.setTotalUsersCount(data.totalCount))

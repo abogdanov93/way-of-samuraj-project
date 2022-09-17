@@ -21,13 +21,10 @@ const result: responseType = {
     data: {}
 }
 
-userAPIMock.followUser.mockReturnValue(Promise.resolve(result)) // возвращает фейковый ответ
-userAPIMock.unfollowUser.mockReturnValue(Promise.resolve(result)) // возвращает фейковый ответ
-
-
-
-
 test("success follow thunk", async() => {
+
+    userAPIMock.followUser.mockReturnValue(Promise.resolve(result)) // возвращает фейковый ответ
+    userAPIMock.unfollowUser.mockReturnValue(Promise.resolve(result)) // возвращает фейковый ответ
 
     const thunk = follow(1)
 
@@ -41,6 +38,8 @@ test("success follow thunk", async() => {
 })
 
 test("success unfollow thunk", async() => {
+    userAPIMock.followUser.mockReturnValue(Promise.resolve(result)) // возвращает фейковый ответ
+    userAPIMock.unfollowUser.mockReturnValue(Promise.resolve(result)) // возвращает фейковый ответ
 
     const thunk = unfollow(1)
 
