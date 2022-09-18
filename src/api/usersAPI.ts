@@ -1,5 +1,5 @@
-import {usersType} from "../types/types";
-import {instance, responseType} from "./api";
+import {usersType} from "../types/types"
+import {instance, responseType} from "./api"
 
 type getUserResponseType = {
     items: Array<usersType>
@@ -11,14 +11,14 @@ export const usersAPI = {
     getUsersAPI(currentPageNumber = 1, pageSize = 5, term = "", friend: null | boolean = null) {
         return instance.get<getUserResponseType>(`users?page=${currentPageNumber}&count=${pageSize}&term=${term}`
             + (friend === null ? "" : `&friend=${friend}`))
-            .then(response => response.data); // цепочка промисов, цепочка then // return response --> return data
+            .then(response => response.data)
     },
     followUser(userId: number) {
         return instance.post<responseType>(`follow/${userId}`)
-            .then(response => response.data);
+            .then(response => response.data)
     },
     unfollowUser(userId: number) {
         return instance.delete<responseType>(`follow/${userId}`)
-            .then(response => response.data);
+            .then(response => response.data)
     }
 }

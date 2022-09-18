@@ -28,7 +28,7 @@ const UsersSearchForm: FC<propsType> = ({onFilterChange}) => {
 
 return <div>
     <Formik
-        initialValues={{ term: "", friend: "null"}}
+        initialValues={{ term: "dimych", friend: "true"}}
         validate={usersSearchFormValidate}
         onSubmit={submit}
     >

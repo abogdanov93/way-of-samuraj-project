@@ -7,6 +7,9 @@ import Posts from "./Posts/Posts"
 import {postsType, profileType} from "../../types/types"
 import {baseActionType} from "../../redux/reduxStore"
 import {actions} from "../../redux/profileReducer"
+import {useSelector} from "react-redux"
+import {getPosts} from "../../redux/selectors/profileSelectors"
+import {useSearchParams} from "react-router-dom"
 
 type propsType = {
     profilePage: {
@@ -28,7 +31,10 @@ export type newPostFormDataType = {
 }
 
 const Profile: FC<propsType> = (props) => {
-    let postElement = props.profilePage.posts
+
+    const posts = useSelector(getPosts)
+
+    let postElement = posts
         .map(p => <Posts
             key={p.id}
             id={p.id}

@@ -3,9 +3,9 @@ import style from "./Users.module.css"
 import commonStyles from "./../../App.module.css"
 import Pagination from "../common/Pagination/Pagination"
 import User from "./User/User"
-import UsersSearchForm from "./UsersSearchForm/UsersSearchForm";
-import {filterType, requestUsers, followUser, unfollowUser} from "../../redux/usersReducer";
-import {useDispatch, useSelector} from "react-redux";
+import UsersSearchForm from "./UsersSearchForm/UsersSearchForm"
+import {filterType, requestUsers, followUser, unfollowUser} from "../../redux/usersReducer"
+import {useDispatch, useSelector} from "react-redux"
 import {
     getCurrentPageNumber,
     getFollowingInProgress,
@@ -17,12 +17,9 @@ import {
 } from "../../redux/selectors/usersSelectors"
 import Preloader from "../common/Preloader/Preloader"
 import {AnyAction} from "redux"
+import {useNavigate} from "react-router-dom"
 
 const Users: FC = () => {
-
-    useEffect(()=>{
-        dispatch(requestUsers(currentPageNumber, pageSize, filter) as unknown as AnyAction)
-    }, [])
 
     const isFetching = useSelector(getIsFetching)
     const totalUsersCount = useSelector(getTotalUsersCount)
@@ -45,6 +42,17 @@ const Users: FC = () => {
     const unfollow = (userId: number) => {
         dispatch(unfollowUser(userId) as unknown as AnyAction)
     }
+
+    const navigate = useNavigate()
+    useEffect(() => {
+        dispatch(requestUsers(currentPageNumber, pageSize, filter) as unknown as AnyAction)
+    }, [])
+    useEffect(() => {
+        navigate({
+            pathname: '/users',
+            search: `?term=${filter.term}&friends=${filter.friend}&page=${currentPageNumber}`
+        })
+    }, [filter, currentPageNumber])
 
     return <div className={`${style.users} ${commonStyles.whiteBlock}`}>
 

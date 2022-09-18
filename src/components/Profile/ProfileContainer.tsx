@@ -39,8 +39,9 @@ type mapDispatchPropsType = {
 type propsType = mapStatePropsType & mapDispatchPropsType
 
 class ProfileContainer extends React.Component <propsType> {
+
     refreshProfile() {
-        let userId = this.props.router.params.userId
+        let userId: number | null = this.props.router.params.userId
         if (!userId) {
             userId = this.props.userId
         }
@@ -61,7 +62,6 @@ class ProfileContainer extends React.Component <propsType> {
     render() {
         return <Profile
             {...this.props}
-            profilePage={this.props.profilePage}
             updateStatus={this.props.updateStatus}
             addPost={this.props.addPost}
             deletePost={this.props.deletePost}
