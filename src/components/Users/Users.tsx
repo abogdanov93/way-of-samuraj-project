@@ -17,7 +17,7 @@ import {
 } from "../../redux/selectors/usersSelectors"
 import Preloader from "../common/Preloader/Preloader"
 import {AnyAction} from "redux"
-import {useNavigate} from "react-router-dom"
+import {useLocation, useNavigate, useSearchParams} from "react-router-dom"
 
 const Users: FC = () => {
 
@@ -44,9 +44,24 @@ const Users: FC = () => {
     }
 
     const navigate = useNavigate()
+    const [searchParams] = useSearchParams()
+
+    // получает данные из url и отправляет их в redux
     useEffect(() => {
-        dispatch(requestUsers(currentPageNumber, pageSize, filter) as unknown as AnyAction)
+        // @ts-ignore
+        const urlParams = Object.fromEntries([...searchParams])
+
+        let urlCurrentPageNumber = currentPageNumber
+        let urlFilter = filter
+
+        if (urlParams.page) urlCurrentPageNumber = Number(urlParams.page)
+        if (urlParams.term) urlFilter = {...filter, term: urlParams.term}
+        if (urlParams.friend) urlFilter = {...filter, friend: urlParams.friend === "null" ? null : urlParams.friend = "true" ? true : false}
+
+        dispatch(requestUsers(urlCurrentPageNumber, pageSize, urlFilter) as unknown as AnyAction)
     }, [])
+
+    // устанавливает в url данные из redux
     useEffect(() => {
         navigate({
             pathname: '/users',

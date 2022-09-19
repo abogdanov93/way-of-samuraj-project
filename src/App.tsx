@@ -1,13 +1,14 @@
 import React, {FC} from "react"
 import {HashRouter, Route, Routes} from "react-router-dom"
 import {connect, Provider} from "react-redux"
+import 'antd/dist/antd.css'
+import commonStyles from "./App.module.css"
+import store, {stateType} from "./redux/reduxStore"
 import {initializeApp} from "./redux/appReducer"
-import Preloader from "./components/common/Preloader/Preloader"
-import HeaderContainer from "./components/Header/HeaderContainer"
 import Navbar from "./components/Navbar/Navbar"
 import FriendsBlock from "./components/FriendsBlock/FriendsBlock"
-import store, {stateType} from "./redux/reduxStore"
-import commonStyles from "./App.module.css"
+import HeaderContainer from "./components/Header/HeaderContainer"
+import Preloader from "./components/common/Preloader/Preloader"
 
 const Dialogs = React.lazy(() => import("./components/Dialogs/Dialogs"))
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"))

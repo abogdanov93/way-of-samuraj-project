@@ -2,6 +2,8 @@ import React, {FC} from "react"
 import {Formik} from 'formik'
 import {filterType} from "../../../redux/usersReducer"
 import {Field} from "formik"
+import {useSelector} from "react-redux"
+import {getUsersFilter} from "../../../redux/selectors/usersSelectors"
 
 type propsType = {
     onFilterChange: (filter: filterType) => void
@@ -17,6 +19,9 @@ const usersSearchFormValidate = (values: any) => {
 } // почему за пределами компоненты?
 
 const UsersSearchForm: FC<propsType> = ({onFilterChange}) => {
+
+    const filter = useSelector(getUsersFilter)
+
     const submit = (values: any, { setSubmitting }: {setSubmitting: (isSubmitting: boolean) => void}) => {
         // const filter: filterType = {
         //     term: values.term,
@@ -28,28 +33,14 @@ const UsersSearchForm: FC<propsType> = ({onFilterChange}) => {
 
 return <div>
     <Formik
-        initialValues={{ term: "dimych", friend: "true"}}
+        initialValues={{ term: filter.term, friend: filter.friend}}
+        enableReinitialize={true}
         validate={usersSearchFormValidate}
         onSubmit={submit}
     >
-        {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              isSubmitting,
-              /* and other goodies */
-          }) => (
+        {({handleSubmit, isSubmitting}) => (
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="term"
-                    // onChange={handleChange} // нет такого
-                    // onBlur={handleBlur} // нет такого
-                    // value={values.searchUser} // нет такого
-                />
+                <Field type="text" name="term"/>
                 <Field name="friend" as="select">
                     <option value="null">All users</option>
                     <option value="true">Followed users</option>
