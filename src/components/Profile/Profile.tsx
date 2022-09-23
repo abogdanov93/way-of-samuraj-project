@@ -42,7 +42,6 @@ const Profile: FC = () => {
         } else {
             id = Number(params.userId)
         }
-        debugger
         getProfile(id)
         getStatus(id)
     }

@@ -17,5 +17,5 @@ export const getIsEdithMode = (state: stateType) => {
 }
 
 export const getUserId = (state: stateType) => {
-    return state.profilePage.profile?.userId
+    return state.auth.userId
 }

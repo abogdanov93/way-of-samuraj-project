@@ -1,11 +1,4 @@
 import React from "react"
-import {connect} from "react-redux"
-import Profile from "./Profile"
-import {useLocation, useNavigate, useParams} from "react-router-dom"
-import {getStatus, getUserProfile} from "../../redux/profileReducer"
-import {compose} from "redux"
-import {withAuthRedirect} from "../../hoc/withAuthRedirect"
-import {stateType} from "../../redux/reduxStore"
 //
 // type mapStatePropsType = {
 //     userId: number
