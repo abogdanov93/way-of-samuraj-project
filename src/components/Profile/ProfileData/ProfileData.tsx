@@ -8,7 +8,7 @@ import {actions} from "../../../redux/profileReducer"
 type propsType = {
     profile: profileType
     isOwner: boolean
-    setEditMode: (mode: boolean) => baseActionType<typeof actions>
+    setEditMode: (mode: boolean) => void
 }
 
 const ProfileData: FC<propsType> = ({profile, isOwner, setEditMode}) => {

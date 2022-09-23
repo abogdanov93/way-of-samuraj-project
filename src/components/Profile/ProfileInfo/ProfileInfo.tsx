@@ -6,54 +6,63 @@ import ProfileStatus from "../ProfileStatus/ProfileStatus"
 import ProfileDataFormHOC from "../ProfileDataForm/ProfileDataForm"
 import ProfileData from "../ProfileData/ProfileData"
 import {profileType} from "../../../types/types"
-import {baseActionType} from "../../../redux/reduxStore"
-import {actions} from "../../../redux/profileReducer"
+import {actions, saveProfileData, saveProfilePhoto, updateProfileStatus} from "../../../redux/profileReducer"
+import {useDispatch, useSelector} from "react-redux"
+import {getIsEdithMode, getProfile, getStatus} from "../../../redux/selectors/profileSelectors"
+import {AnyAction} from "redux"
 
-type propsType = {
-    profile: profileType
-    saveProfileData: (formData: profileType) => void
-    savePhoto: (file: File) => void
-    isOwner: boolean
-    status: string
-    updateStatus: (status: string) => void
-    isEditMode: boolean
-    setEditMode: (mode: boolean) => baseActionType<typeof actions>
-}
 
-const ProfileInfo: FC<propsType> = (props) => {
-    const onSubmit = (formData: profileType) => {
-        props.saveProfileData(formData)
+const ProfileInfo: FC<{isOwner: any}> = ({isOwner}) => {
+    const profile = useSelector(getProfile)
+    const status = useSelector(getStatus)
+    const isEditMode = useSelector(getIsEdithMode)
+    const dispatch = useDispatch()
+    const updateStatus = (status: string) => {
+        dispatch(updateProfileStatus(status) as unknown as AnyAction)
+    }
+    const savePhoto = (image: File) => {
+        dispatch(saveProfilePhoto(image) as unknown as AnyAction)
+    }
+    const saveData = (profile: profileType) => {
+        dispatch(saveProfileData(profile) as unknown as AnyAction)
+    }
+    const setEditMode = (isEditMode: boolean) => {
+        dispatch(actions.setEditMode(isEditMode))
     }
 
-    if (!props.profile) {
+    const onSubmit = (formData: profileType) => {
+        saveData(formData)
+    }
+
+    if (!profile) {
         return <Preloader/>
     }
 
     const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
-        e.target.files?.length && props.savePhoto(e.target.files[0]) // ? --> если files есть, берет длину 11 - 1:30
+        e.target.files?.length && savePhoto(e.target.files[0]) // ? --> если files есть, берет длину 11 - 1:30
     }
 
     return (
         <div className={style.profileInfo}>
 
             <div className={style.avatar}>
-                <img src={props.profile.photos.large || largeAvatar}/>
-                {props.isOwner && <input type={"file"} onChange={onPhotoSelected}/>}
+                <img src={profile.photos.large || largeAvatar}/>
+                {isOwner && <input type={"file"} onChange={onPhotoSelected}/>}
             </div>
 
             <div className={style.status}>
                 <ProfileStatus
-                    status={props.status}
-                    updateStatus={props.updateStatus}/>
+                    status={status}
+                    updateStatus={updateStatus}/>
             </div>
 
             <div className={style.profileData}>
-                {props.isEditMode
+                {isEditMode
                     ? <ProfileDataFormHOC onSubmit={onSubmit}
-                                          profile={props.profile}/>
-                    : <ProfileData profile={props.profile}
-                                   isOwner={props.isOwner}
-                                   setEditMode={props.setEditMode}/>}
+                                          profile={profile}/>
+                    : <ProfileData profile={profile}
+                                   isOwner={isOwner}
+                                   setEditMode={setEditMode}/>}
             </div>
 
         </div>

@@ -15,30 +15,8 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect"
 import {baseActionType, stateType} from "../../redux/reduxStore"
 import {postsType, profileType} from "../../types/types"
 
-type mapStatePropsType = {
-    profilePage: {
-        posts: Array<postsType>
-        profile: profileType
-        status: string
-        isEditMode: boolean
-    }
-    userId: number
-    isAuth: boolean
-    router: any
-}
-type mapDispatchPropsType = {
-    addPost: (newPostText: string) => baseActionType<typeof actions>
-    deletePost: (id: number) => baseActionType<typeof actions>
-    setEditMode: (mode: boolean) => baseActionType<typeof actions>
-    getUserProfile: (userId: number) => void
-    getStatus: (userId: number) => void
-    updateStatus: (status: string) => void
-    savePhoto: (image: File) => void
-    saveProfileData: (formData: profileType) => void
-}
-type propsType = mapStatePropsType & mapDispatchPropsType
 
-class ProfileContainer extends React.Component <propsType> {
+class ProfileContainer extends React.Component  {
 
     refreshProfile() {
         let userId: number | null = this.props.router.params.userId
@@ -60,16 +38,8 @@ class ProfileContainer extends React.Component <propsType> {
     }
 
     render() {
-        return <Profile
-            {...this.props}
-            updateStatus={this.props.updateStatus}
-            addPost={this.props.addPost}
-            deletePost={this.props.deletePost}
-            isOwner={!this.props.router.params.userId}
-            savePhoto={this.props.savePhoto}
-            saveProfileData={this.props.saveProfileData}
-            setEditMode={this.props.setEditMode}
-        />
+        // @ts-ignore
+        return <Profile isOwner={!this.props.router.params.userId}/>
     }
 }
 
@@ -101,7 +71,6 @@ export default compose<React.ComponentType>(
     connect<mapStatePropsType, mapDispatchPropsType, {}, stateType>
     (mapStateToProps, {
         addPost: actions.addPost,
-        deletePost: actions.deletePost,
         setEditMode: actions.setEditMode,
         getUserProfile,
         getStatus,

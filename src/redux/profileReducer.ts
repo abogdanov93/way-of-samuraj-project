@@ -79,7 +79,7 @@ export const getStatus = (userId: null | number): thunkType => async (dispatch) 
     dispatch(actions.setStatusSuccess(data)) // когда с сервера придет статус, засетать его
 }
 
-export const updateStatus = (status: string): thunkType => async (dispatch) => {
+export const updateProfileStatus = (status: string): thunkType => async (dispatch) => {
     try {
         const data = await profileAPI.updateStatus(status) // закинуть статус на сервер, получить resultCode
         if (data.resultCode === resultCodeEnum.success) {
@@ -90,7 +90,7 @@ export const updateStatus = (status: string): thunkType => async (dispatch) => {
     }
 }
 
-export const savePhoto = (image: File): thunkType => async (dispatch) => {
+export const saveProfilePhoto = (image: File): thunkType => async (dispatch) => {
     const data = await profileAPI.savePhoto(image)
     if (data.resultCode === resultCodeEnum.success) {
         dispatch(actions.setPhotoSuccess(data.data.photos))

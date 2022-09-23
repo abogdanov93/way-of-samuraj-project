@@ -6,7 +6,7 @@ import {actions} from "../../../redux/profileReducer"
 type propsType = {
     post: string
     likeCounter: number
-    deletePost: (id: number) => baseActionType<typeof actions>
+    deletePost: (id: number) => void
     id: number
 }
 
