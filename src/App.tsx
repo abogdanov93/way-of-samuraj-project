@@ -10,9 +10,10 @@ import FriendsBlock from "./components/FriendsBlock/FriendsBlock"
 import HeaderContainer from "./components/Header/HeaderContainer"
 import Preloader from "./components/common/Preloader/Preloader"
 
-const Dialogs = React.lazy(() => import("./components/Dialogs/Dialogs"))
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"))
 const Users = React.lazy(() => import("./components/Users/Users"))
+const Dialogs = React.lazy(() => import("./components/Dialogs/Dialogs"))
+const Chat = React.lazy(() => import("./components/Chat/Chat"))
 const Login = React.lazy(() => import("./components/Login/Login"))
 
 type mapPropsType = {
@@ -39,14 +40,16 @@ class App extends React.Component <mapPropsType & dispatchPropsType> {
                 <div className={commonStyles.content}>
                     <React.Suspense fallback={<Preloader/>}>
                         <Routes>
-                            <Route path="/*"
+                            <Route path="/profile/*"
                                    element={<ProfileContainer/>}/>
                             <Route path="/profile/:userId/*"
                                    element={<ProfileContainer/>}/>
-                            <Route path="/dialogs/*"
-                                   element={<Dialogs/>}/>
                             <Route path="/users/*"
                                    element={<Users/>}/>
+                            <Route path="/dialogs/*"
+                                   element={<Dialogs/>}/>
+                            <Route path="/chat/*"
+                                   element={<Chat/>}/>
                             <Route path="/login/*"
                                    element={<Login/>}/>
                             <Route path="*"

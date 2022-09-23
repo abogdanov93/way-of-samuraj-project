@@ -8,11 +8,14 @@ const Navbar: FC = () => {
             <NavLink to="/profile" className={navData => navData.isActive ? style.activeLink : style.link}>
                 Profile
             </NavLink>
+            <NavLink to="/users" className={navData => navData.isActive ? style.activeLink : style.link}>
+                Find friends
+            </NavLink>
             <NavLink to="/dialogs" className={navData => navData.isActive ? style.activeLink : style.link}>
                 Dialogs
             </NavLink>
-            <NavLink to="/users" className={navData => navData.isActive ? style.activeLink : style.link}>
-                Find friends
+            <NavLink to="/chat" className={navData => navData.isActive ? style.activeLink : style.link}>
+                Chat
             </NavLink>
             <NavLink to="/communities" className={navData => navData.isActive ? style.activeLink : style.link}>
                 Communities

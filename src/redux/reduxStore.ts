@@ -6,6 +6,7 @@ import usersReducer from "./usersReducer"
 import authReducer from "./authReducer"
 import {reducer as formReducer} from "redux-form"
 import appReducer from "./appReducer"
+import chatReducer from "./chatReducer";
 
 type rootReducerType = typeof rootReducer
 export type stateType = ReturnType<rootReducerType>
@@ -19,8 +20,9 @@ export type baseActionType<T> = T extends {[key:string]: (...args: any[]) => inf
 const rootReducer = combineReducers({
     app: appReducer,
     profilePage: profileReducer,
-    dialogs: dialogsReducer,
     usersPage: usersReducer,
+    dialogs: dialogsReducer,
+    chat: chatReducer,
     auth: authReducer,
     form: formReducer
 })
