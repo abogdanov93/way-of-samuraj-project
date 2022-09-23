@@ -10,7 +10,7 @@ import FriendsBlock from "./components/FriendsBlock/FriendsBlock"
 import HeaderContainer from "./components/Header/HeaderContainer"
 import Preloader from "./components/common/Preloader/Preloader"
 
-const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"))
+const Profile = React.lazy(() => import("./components/Profile/Profile"))
 const Users = React.lazy(() => import("./components/Users/Users"))
 const Dialogs = React.lazy(() => import("./components/Dialogs/Dialogs"))
 const Chat = React.lazy(() => import("./components/Chat/Chat"))
@@ -41,9 +41,9 @@ class App extends React.Component <mapPropsType & dispatchPropsType> {
                     <React.Suspense fallback={<Preloader/>}>
                         <Routes>
                             <Route path="/profile/*"
-                                   element={<ProfileContainer/>}/>
+                                   element={<Profile/>}/>
                             <Route path="/profile/:userId/*"
-                                   element={<ProfileContainer/>}/>
+                                   element={<Profile/>}/>
                             <Route path="/users/*"
                                    element={<Users/>}/>
                             <Route path="/dialogs/*"

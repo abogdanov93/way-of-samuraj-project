@@ -15,3 +15,7 @@ export const getStatus = (state: stateType) => {
 export const getIsEdithMode = (state: stateType) => {
     return state.profilePage.isEditMode
 }
+
+export const getUserId = (state: stateType) => {
+    return state.profilePage.profile?.userId
+}

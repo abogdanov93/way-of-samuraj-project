@@ -12,7 +12,7 @@ import {getIsEdithMode, getProfile, getStatus} from "../../../redux/selectors/pr
 import {AnyAction} from "redux"
 
 
-const ProfileInfo: FC<{isOwner: any}> = ({isOwner}) => {
+const ProfileInfo: FC<{isOwner: boolean}> = ({isOwner}) => {
     const profile = useSelector(getProfile)
     const status = useSelector(getStatus)
     const isEditMode = useSelector(getIsEdithMode)

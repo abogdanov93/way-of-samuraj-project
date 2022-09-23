@@ -74,7 +74,7 @@ export const getUserProfile = (userId: null | number): thunkType => async (dispa
     dispatch(actions.setUserProfile(data))
 }
 
-export const getStatus = (userId: null | number): thunkType => async (dispatch) => {
+export const getProfileStatus = (userId: null | number): thunkType => async (dispatch) => {
     const data = await profileAPI.getStatus(userId) // получить статус с сервера
     dispatch(actions.setStatusSuccess(data)) // когда с сервера придет статус, засетать его
 }

@@ -1,12 +1,14 @@
-import React, {FC} from "react"
+import React, {FC, useEffect} from "react"
 import style from "./Profile.module.css"
 import commonStyles from "./../../App.module.css"
 import ProfileInfo from "./ProfileInfo/ProfileInfo"
 import NewPostForm from "./NewPostForm/NewPostForm"
 import Posts from "./Posts/Posts"
-import {actions} from "../../redux/profileReducer"
+import {actions, getProfileStatus, getUserProfile} from "../../redux/profileReducer"
 import {useDispatch, useSelector} from "react-redux"
-import {getPosts} from "../../redux/selectors/profileSelectors"
+import {getPosts, getUserId} from "../../redux/selectors/profileSelectors"
+import {useLocation, useParams} from "react-router-dom"
+import {AnyAction} from "redux"
 
 
 export type newPostFormDataType = {
@@ -14,15 +16,44 @@ export type newPostFormDataType = {
 }
 
 const Profile: FC = () => {
-
     const posts = useSelector(getPosts)
+    const userId = useSelector(getUserId)
     const dispatch = useDispatch()
     const deletePost = (postId: number) => {
         dispatch(actions.deletePost(postId))
     }
+    const getProfile = (userId: null | number) => {
+        dispatch(getUserProfile(userId) as unknown as AnyAction)
+    }
+    const getStatus = (userId: null | number) => {
+        dispatch(getProfileStatus(userId) as unknown as AnyAction)
+    }
     const addPost = (newPostText: string) => {
         dispatch(actions.addPost(newPostText))
     }
+
+    const params = useParams()
+    const isOwner = !params.userId
+
+    const refreshProfile = () => {
+        let id
+        if (!params.userId) {
+            id = userId as number | null
+        } else {
+            id = Number(params.userId)
+        }
+        debugger
+        getProfile(id)
+        getStatus(id)
+    }
+
+    useEffect(() => {
+        refreshProfile()
+    }, [])
+
+    useEffect(() => {
+        refreshProfile()
+    }, [params.userId])
 
 
     let postElement = posts
