@@ -7,7 +7,7 @@ import Posts from "./Posts/Posts"
 import {actions, getProfileStatus, getUserProfile} from "../../redux/profileReducer"
 import {useDispatch, useSelector} from "react-redux"
 import {getPosts, getUserId} from "../../redux/selectors/profileSelectors"
-import {useLocation, useParams} from "react-router-dom"
+import {useParams} from "react-router-dom"
 import {AnyAction} from "redux"
 
 
@@ -45,12 +45,14 @@ const Profile: FC = () => {
         getProfile(id)
         getStatus(id)
     }
+//todo возможно это не нужно
+    // useEffect(() => {
+    //     debugger
+    //     refreshProfile()
+    // }, [])
 
     useEffect(() => {
-        refreshProfile()
-    }, [])
-
-    useEffect(() => {
+        debugger
         refreshProfile()
     }, [params.userId])
 
