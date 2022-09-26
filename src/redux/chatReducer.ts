@@ -1,23 +1,25 @@
 import {baseActionType, baseThunkType} from "./reduxStore"
-import {chatAPI, chatMessageType, openHandler, statusType} from "../api/chatAPI"
+import {chatAPI, chatMessageAPIType, statusType} from "../api/chatAPI"
 import {Dispatch} from "redux"
+import {v1} from "uuid"
 
 type actionType = baseActionType<typeof actions>
 type thunkType = baseThunkType<actionType>
-
+type initialStateType = typeof initialState
+export type chatMessageType = chatMessageAPIType & {id: string}
 
 let initialState = {
     messages: [] as chatMessageType[],
     status: "pending" as statusType
 }
 
-const chatReducer = (state = initialState, action: actionType) => {
+const chatReducer = (state = initialState, action: actionType): initialStateType => {
     switch (action.type) {
         case "CHAT_MESSAGES_RECEIVED":
             return {
                 ...state,
-                messages: [...state.messages, ...action.payload.messages
-                    .filter((m, index, array) => index >= array.length - 100)]
+                messages: [...state.messages, ...action.payload.messages.map( m => ({...m, id: v1() }))]
+                    .filter((m, index, array) => index >= array.length - 100)
             }
         case "CHAT_STATUS_CHANGED":
             return {
@@ -30,14 +32,13 @@ const chatReducer = (state = initialState, action: actionType) => {
 }
 
 const actions = {
-    messagesReceived: (messages: chatMessageType[]) =>
+    messagesReceived: (messages: chatMessageAPIType[]) =>
         ({type: "CHAT_MESSAGES_RECEIVED", payload: {messages}} as const),
     statusChanged: (status: statusType) => ({type: "CHAT_STATUS_CHANGED", payload: {status}} as const)
 }
 
-let _newMessageHandler: ((messages: chatMessageType[]) => void) | null = null
+let _newMessageHandler: ((messages: chatMessageAPIType[]) => void) | null = null
 const newMessageHandlerCreator = (dispatch: Dispatch) => {
-    debugger
     if (_newMessageHandler === null) {
         _newMessageHandler = (messages) => {
             dispatch(actions.messagesReceived(messages))

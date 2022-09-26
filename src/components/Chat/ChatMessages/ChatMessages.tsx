@@ -1,9 +1,9 @@
-import React, {FC, UIEventHandler, useEffect, useRef, useState} from "react"
+import React, {FC, useEffect, useRef, useState} from "react"
 import style from "../Chat.module.css"
 import {NavLink} from "react-router-dom"
-import {chatMessageType} from "../../../api/chatAPI"
 import {useSelector} from "react-redux"
 import {getChatMessages} from "../../../redux/selectors/chatSelectors"
+import {chatMessageAPIType} from "../../../api/chatAPI"
 
 export const ChatMessages: FC = () => {
 
@@ -27,14 +27,13 @@ export const ChatMessages: FC = () => {
     }
 
     return <div className={style.chatMessages} onScroll={scrollHandler}>
-        {messages.map((m, index) =>
-            <ChatMessage message={m.message} userName={m.userName} photo={m.photo} userId={m.userId} key={index}/>)}
+        {messages.map((m) =>
+            <ChatMessage message={m.message} userName={m.userName} photo={m.photo} userId={m.userId} key={m.id}/>)}
         <div ref={messagesRef}/>
     </div>
 }
 
-const ChatMessage: FC<chatMessageType> = React.memo(({photo, userName, message, userId}) => {
-        console.log(">>>>>>>render")
+const ChatMessage: FC<chatMessageAPIType> = React.memo(({photo, userName, message, userId}) => {
         return <div className={style.chatMessage}>
             <NavLink to={"/profile/" + userId}><img src={photo}/>
                 <div>{userName}</div>

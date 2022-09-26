@@ -1,4 +1,4 @@
-export type chatMessageType = {
+export type chatMessageAPIType = {
     message: string
     photo: string
     userId?: number
@@ -6,7 +6,7 @@ export type chatMessageType = {
 }
 type eventType = "messagesReceived" | "statusChanged"
 export type statusType = "pending" | "ready" | "error"
-type messagesReceivedSubscriberType = (messages: chatMessageType[]) => void
+type messagesReceivedSubscriberType = (messages: chatMessageAPIType[]) => void
 type statusChangedSubscriberType = (status: statusType) => void
 
 const subscribers = {
@@ -26,7 +26,6 @@ const closeHandler = () => {
 }
 
 const messageHandler = (e: MessageEvent) => {
-    debugger
     const newMessages = JSON.parse(e.data)
     subscribers["messagesReceived"].forEach(s => s(newMessages))
 }
