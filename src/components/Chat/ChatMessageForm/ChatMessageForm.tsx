@@ -4,7 +4,7 @@ import {sendChatMessage} from "../../../redux/chatReducer"
 import {getStatus} from "../../../redux/selectors/chatSelectors"
 import {AnyAction} from "redux"
 
-export const NewChatMessageForm: FC = () => {
+export const ChatMessageForm: FC = () => {
     const [message, setMessage] = useState("")
     const status = useSelector(getStatus)
     const dispatch = useDispatch()

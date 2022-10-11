@@ -1,20 +1,21 @@
-.newPost {
+.dialogMessageForm {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-gap: 10px;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr auto;
+    grid-gap: 20px;
+    justify-content: space-between;
+    align-items: center;
     grid-template-areas:
     "textarea button"
     "warning warning";
 }
 
-.textarea {
+.newMessage {
     grid-area: textarea;
-    width: 300px;
 }
 
 .button {
     grid-area: button;
-    justify-self: end;
 }
 
 .warning {

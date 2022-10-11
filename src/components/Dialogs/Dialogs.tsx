@@ -3,21 +3,17 @@ import style from "./Dialogs.module.css"
 import commonStyles from "../../App.module.css"
 import Dialog from "./Dialog/Dialog"
 import Message from "./Message/Message"
-import NewMessageFormHOC from "./NewMessageForm/NewMessageForm"
 import {useDispatch, useSelector} from "react-redux"
 import {getDialogs} from "../../redux/selectors/dialogsSelectors"
-import { actions } from "../../redux/dialogsReducer"
+import {actions} from "../../redux/dialogsReducer"
+import {DialogMessageForm} from "./DialogMessageForm/DialogMessageForm";
 
 export type formDataType = {
-    newMessageText: string
+    newDialogMessage: string
 }
 
 const Dialogs: FC = () => {
     const dialogs = useSelector(getDialogs)
-    const dispatch = useDispatch()
-    const addNewMessage = (values: formDataType) => {
-        dispatch(actions.addMessage(values.newMessageText))
-    }
 
     const dialogElement = dialogs.dialog
         .map(d => <Dialog
@@ -40,9 +36,7 @@ const Dialogs: FC = () => {
                 {messageElement}
             </div>
             <div className={`${style.newMessage} ${commonStyles.whiteBlock}`}>
-                <NewMessageFormHOC
-                    onSubmit={addNewMessage}
-                />
+                <DialogMessageForm />
             </div>
         </div>
     )

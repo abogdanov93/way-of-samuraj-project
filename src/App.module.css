@@ -54,6 +54,10 @@
     outline: none;
 }
 
+.App button:disabled {
+    opacity: 0.4;
+}
+
 .App textarea {
     border: none;
     background: none;
@@ -65,7 +69,8 @@
 
 .App input {
     border-radius: 10px;
-    border: none;
+    border: #c4c4c4 solid 1px;
+    /*border: none;*/
     width: 90%;
     height: 40px;
     resize: none;

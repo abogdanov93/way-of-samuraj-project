@@ -23,7 +23,7 @@ const profileReducer = (state = initialState, action: actionsType): initialState
         case "PROFILE_ADD_POST":
             let newPost = {
                 id: 3,
-                post: action.newPostText,
+                post: action.newPost,
                 likeCounter: 0
             }
             return {
@@ -61,7 +61,7 @@ const profileReducer = (state = initialState, action: actionsType): initialState
 }
 
 export const actions = {
-    addPost: (newPostText: string) => ({type: "PROFILE_ADD_POST", newPostText} as const),
+    addPost: (newPost: string) => ({type: "PROFILE_ADD_POST", newPost} as const),
     deletePost: (postId: number) => ({type: "PROFILE_DELETE_POST", postId} as const),
     setUserProfile: (profile: profileType) => ({type: "PROFILE_SET_USER_PROFILE", profile} as const),
     setStatusSuccess: (status: string) => ({type: "PROFILE_SET_STATUS", status} as const),
