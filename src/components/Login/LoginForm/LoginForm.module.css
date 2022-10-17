@@ -5,9 +5,9 @@
     grid-gap: 30px;
     align-items: center;
     grid-template-areas:
-"login login"
-"password password"
-"rememberMe button";
+        "login login"
+        "password password"
+        "rememberMe button";
 }
 
 .login {
@@ -22,9 +22,8 @@
     grid-area: rememberMe;
     display: grid;
     grid-template-columns: auto auto;
-    justify-items: center;
     align-items: center;
-    font-size: small;
+    justify-items: left;
 }
 
 .rememberMe input {
@@ -34,5 +33,8 @@
 .button {
     grid-area: button;
     justify-self: right;
-    padding-right: 15px;
+}
+
+.errorWarning {
+
 }

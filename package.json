@@ -1,8 +1,8 @@
 {
-  "name": "it-kamasutra-project",
+  "name": "way-of-samuraj-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://MashaBogdanova.github.io/it-kamasutra-project",
+  "homepage": "https://MashaBogdanova.github.io/way-of-samuraj-project",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
