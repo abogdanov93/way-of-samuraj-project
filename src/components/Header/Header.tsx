@@ -3,16 +3,19 @@ import style from "./Header.module.css"
 import logo from "../../images/logo.png"
 import loginIcon from "../../images/login.png"
 import {NavLink} from "react-router-dom"
+import {useDispatch, useSelector} from "react-redux"
+import {getLogin} from "../../redux/selectors/loginSelectors"
+import {AnyAction} from "redux"
+import {signOut} from "../../redux/authReducer"
 
-type propsType = {
-    isAuth: boolean
-    login: string | null
-    logOut: () => void
-}
+const Header: FC = () => {
 
-const Header: FC<propsType> = ({isAuth, login, logOut}) => {
-    return (
-        <header className={style.header}>
+    const isAuth = useSelector(getLogin)
+    const login = useSelector(getLogin)
+    const dispatch = useDispatch()
+    const logOut = () => dispatch(signOut() as unknown as AnyAction)
+
+    return <header className={style.header}>
             <div className={style.logo}>
                 <img src={logo}/>
             </div>
@@ -32,7 +35,6 @@ const Header: FC<propsType> = ({isAuth, login, logOut}) => {
                 }
             </div>
         </header>
-    )
 }
 
 export default Header

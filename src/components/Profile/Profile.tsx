@@ -20,15 +20,10 @@ const Profile: FC = () => {
     const userId = useSelector(getUserId)
     const dispatch = useDispatch()
 
-    const deletePost = (postId: number) => {
-        dispatch(actions.deletePost(postId))
-    }
-    const getProfile = (userId: null | number) => {
-        dispatch(getUserProfile(userId) as unknown as AnyAction)
-    }
-    const getStatus = (userId: null | number) => {
-        dispatch(getProfileStatus(userId) as unknown as AnyAction)
-    }
+    const deletePost = (postId: number) => dispatch(actions.deletePost(postId))
+    const getProfile = (userId: null | number) => dispatch(getUserProfile(userId) as unknown as AnyAction)
+    const getStatus = (userId: null | number) => dispatch(getProfileStatus(userId) as unknown as AnyAction)
+
 
 
     const params = useParams()

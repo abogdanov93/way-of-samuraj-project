@@ -7,8 +7,8 @@ import store, {stateType} from "./redux/reduxStore"
 import {initializeApp} from "./redux/appReducer"
 import Navbar from "./components/Navbar/Navbar"
 import FriendsBlock from "./components/FriendsBlock/FriendsBlock"
-import HeaderContainer from "./components/Header/HeaderContainer"
 import Preloader from "./components/common/Preloader/Preloader"
+import Header from "./components/Header/Header";
 
 const Profile = React.lazy(() => import("./components/Profile/Profile"))
 const Users = React.lazy(() => import("./components/Users/Users"))
@@ -34,7 +34,7 @@ class App extends React.Component <mapPropsType & dispatchPropsType> {
         }
         return (
             <div className={commonStyles.App}>
-                <HeaderContainer/>
+                <Header/>
                 <Navbar/>
                 <FriendsBlock/>
                 <div className={commonStyles.content}>
