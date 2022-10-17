@@ -2,9 +2,9 @@ import React, {FC} from "react"
 import style from "./LoginForm.module.css"
 import {useDispatch, useSelector} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
-import {getCaptchaURL} from "../../../redux/selectors/loginSelectors";
-import {logInThunk} from "../../../redux/authReducer";
-import {AnyAction} from "redux";
+import {getCaptchaURL} from "../../../redux/selectors/loginSelectors"
+import {logInThunk} from "../../../redux/authReducer"
+import {AnyAction} from "redux"
 
 export type Inputs = {
     email: string
@@ -14,9 +14,9 @@ export type Inputs = {
 }
 
 export const LoginForm: FC = () => {
+
     const captchaURL = useSelector(getCaptchaURL)
     const dispatch = useDispatch()
-
 
     const {register, handleSubmit, formState: {errors, isValid}, reset} = useForm<Inputs>({mode: "onBlur"})
     const onSubmit: SubmitHandler<Inputs> = data => {
@@ -33,39 +33,46 @@ export const LoginForm: FC = () => {
         />
 
         <input {...register("password", {
-            minLength: {value: 5, message: "The password should consist at least 5 symbols"}
+            minLength: {value: 5, message: "The password should consist at least 5 symbols"},
+            required: "The field is required"
         })}
                type="password"
                placeholder={"Password"}
         />
 
         <input {...register("rememberMe")} type="checkbox"/>
-        <button type="submit" disabled={!isValid} className={style.button}>Send</button>
 
-        if (errors.email || errors.password) {
+        <button type="submit" className={style.button}>Send</button>
+
+        {(errors.email || errors.password)
+            && <div className={style.warning}>
+        {errors?.email?.message || errors.password?.message || "Invalid email or password. Please try again"}
+            </div>
+        }
+
+        {captchaURL
+        && <div>
+            <img src={captchaURL as string}/>
+            <input {...register("captcha", {
+                required: "The field is required"
+            })}
+                   className={style.newMessage}
+                   placeholder={"Type symbols from the picture"}
+            />
+        </div>
+        }
+
+        {errors.captcha &&
         <div className={style.warning}>
             {errors?.email?.message || errors.password?.message || "Invalid email or password. Please try again"}
         </div>
-    }
-        captchaURL && <div>
-        <img src={captchaURL as string}/>
-        <input {...register("captcha", {
-            required: "The field is required"
-        })}
-               className={style.newMessage}
-               placeholder={"Type symbols from the picture"}
-        />
-    </div>
-        errors.captcha &&
-        <div className={style.warning}>
-            {errors?.email?.message || errors.password?.message || "Invalid email or password. Please try again"}
-        </div>
+        }
 
     </form>
-}
+        }
 
-//
-// type loginOwnPropsType = {
+        //
+        // type loginOwnPropsType = {
 //     captchaURL: string | null
 // }
 //

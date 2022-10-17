@@ -53,10 +53,10 @@ export const logInThunk = (email: string, password: string, rememberMe: boolean,
     async (dispatch) => {
     const data = await authAPI.logIn(email, password, rememberMe, captcha)
     if (data.resultCode === resultCodeEnum.success) {
-        dispatch(getAuthUserData())
+        await dispatch(getAuthUserData())
     } else {
         if (data.resultCode === resultCodeForCaptchaEnum.captchaIsRequired) {
-            dispatch(getCaptchaURL())
+            await dispatch(getCaptchaURL())
         }
         dispatch(stopSubmit(
             "login",
@@ -69,6 +69,7 @@ export const logOut = (): thunkType => async (dispatch) => {
     const data = await authAPI.logOut()
     if (data.resultCode === resultCodeEnum.success) {
         dispatch(actions.setAuthUserData(null, null, null, false))
+        
     }
 }
 

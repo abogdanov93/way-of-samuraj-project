@@ -26,6 +26,7 @@ export const DialogMessageForm: FC = () => {
                className={style.newMessage}
                placeholder={"Write a message..."}
         />
+
         <button type="submit" disabled={!isValid} className={style.button}>Send</button>
 
         {errors.newDialogMessage
@@ -33,7 +34,6 @@ export const DialogMessageForm: FC = () => {
             {errors?.newDialogMessage?.message || "Error"}
         </div>
         }
-
 
     </form>
 }
