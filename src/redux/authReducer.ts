@@ -64,7 +64,6 @@ export const signOut = (): thunkType => async (dispatch) => {
     const data = await authAPI.logOut()
     if (data.resultCode === resultCodeEnum.success) {
         dispatch(actions.setAuthUserData(null, null, null, false))
-
     }
 }
 

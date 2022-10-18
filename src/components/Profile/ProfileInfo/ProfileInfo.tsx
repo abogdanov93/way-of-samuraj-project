@@ -70,8 +70,6 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
                             updateStatus={updateStatus}/>
                     </div>
 
-                    <h3 className={style.informationTitle}>Information</h3>
-
                     <div className={style.jobDescription}>
                         <h4>My professional skills:</h4>
                         {profile.lookingForAJobDescription}

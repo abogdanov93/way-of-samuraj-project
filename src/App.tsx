@@ -1,5 +1,5 @@
 import React, {FC} from "react"
-import {HashRouter, Route, Routes} from "react-router-dom"
+import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom"
 import {connect, Provider} from "react-redux"
 import 'antd/dist/antd.css'
 import commonStyles from "./App.module.css"
@@ -50,7 +50,7 @@ class App extends React.Component <mapPropsType & dispatchPropsType> {
                                    element={<Dialogs/>}/>
                             <Route path="/chat/*"
                                    element={<Chat/>}/>
-                            <Route path="/login/*"
+                            <Route path="/login"
                                    element={<Login/>}/>
                             <Route path="*"
                                    element={<div>404 NOT FOUND</div>}/>
@@ -69,11 +69,11 @@ const mapStateToProps = (state: stateType) => ({
 const AppContainer = connect(mapStateToProps, {initializeApp})(App)
 
 const MainAppComponent: FC = () => {
-    return <HashRouter>
+    return <BrowserRouter>
         <Provider store={store}>
             <AppContainer/>
         </Provider>
-    </HashRouter>
+    </BrowserRouter>
 }
 
 export default MainAppComponent

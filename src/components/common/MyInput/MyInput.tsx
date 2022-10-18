@@ -14,6 +14,6 @@ type UseControllerProps<TFieldValues extends FieldValues = FieldValues> = {
     control?: Control<TFieldValues>
 }
 
-export const MyInput:FC<ownPropsType> = ({...props}) => {
+export const MyInput:FC<ownPropsType > = ({...props}) => {
     return <input className={style.myInput} {...props}/>
 }

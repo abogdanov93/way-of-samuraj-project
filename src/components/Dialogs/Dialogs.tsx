@@ -3,14 +3,9 @@ import style from "./Dialogs.module.css"
 import commonStyles from "../../App.module.css"
 import Dialog from "./Dialog/Dialog"
 import Message from "./Message/Message"
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 import {getDialogs} from "../../redux/selectors/dialogsSelectors"
-import {actions} from "../../redux/dialogsReducer"
-import {DialogMessageForm} from "./DialogMessageForm/DialogMessageForm";
-
-export type formDataType = {
-    newDialogMessage: string
-}
+import {DialogMessageForm} from "./DialogMessageForm/DialogMessageForm"
 
 const Dialogs: FC = () => {
     const dialogs = useSelector(getDialogs)

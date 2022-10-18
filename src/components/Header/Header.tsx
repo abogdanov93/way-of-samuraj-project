@@ -2,7 +2,7 @@ import React, {FC} from "react"
 import style from "./Header.module.css"
 import logo from "../../images/logo.png"
 import loginIcon from "../../images/login.png"
-import {NavLink} from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
 import {getLogin} from "../../redux/selectors/loginSelectors"
 import {AnyAction} from "redux"
@@ -13,9 +13,16 @@ const Header: FC = () => {
     const isAuth = useSelector(getLogin)
     const login = useSelector(getLogin)
     const dispatch = useDispatch()
-    const logOut = () => dispatch(signOut() as unknown as AnyAction)
+    const navigate = useNavigate()
+    const logOut = () => {
+        dispatch(signOut() as unknown as AnyAction)
+        navigate("/login")
+    }
 
     return <header className={style.header}>
+        <button onClick={() => navigate("/login")}>
+            click
+        </button>
             <div className={style.logo}>
                 <img src={logo}/>
             </div>
@@ -24,10 +31,10 @@ const Header: FC = () => {
             </div>
             <div className={style.loginArea}>
                 {isAuth
-                    ? <NavLink to={"/profile"} className={style.login}>
-                        {login}
+                    ? <div>
+                        <NavLink to={"/profile"} className={style.login}>{login}</NavLink>
                         <div onClick={logOut}>Sign out</div>
-                    </NavLink>
+                    </div>
                     : <NavLink className={style.loginArea} to={"/login"}>
                         <div>Sign in</div>
                         <img className={style.loginIcon} src={loginIcon}/>
