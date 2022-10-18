@@ -1,0 +1,8 @@
+.profileDataForm {
+    display: grid;
+
+}
+
+.error {
+    color: orangered;
+}

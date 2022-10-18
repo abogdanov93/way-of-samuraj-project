@@ -3,13 +3,13 @@ import style from "./ProfileInfo.module.css"
 import Preloader from "../../common/Preloader/Preloader"
 import largeAvatar from "./../../../images/userAvatar.jpeg"
 import ProfileStatus from "../ProfileStatus/ProfileStatus"
-import ProfileDataFormHOC from "../ProfileDataForm/ProfileDataForm"
 import ProfileData from "../ProfileData/ProfileData"
 import {profileType} from "../../../types/types"
 import {actions, saveProfileData, saveProfilePhoto, updateProfileStatus} from "../../../redux/profileReducer"
 import {useDispatch, useSelector} from "react-redux"
 import {getIsEdithMode, getProfile, getStatus} from "../../../redux/selectors/profileSelectors"
 import {AnyAction} from "redux"
+import {ProfileDataForm} from "../ProfileDataForm/ProfileDataForm"
 
 
 const ProfileInfo: FC<{isOwner: boolean}> = ({isOwner}) => {
@@ -23,15 +23,9 @@ const ProfileInfo: FC<{isOwner: boolean}> = ({isOwner}) => {
     const savePhoto = (image: File) => {
         dispatch(saveProfilePhoto(image) as unknown as AnyAction)
     }
-    const saveData = (profile: profileType) => {
-        dispatch(saveProfileData(profile) as unknown as AnyAction)
-    }
+
     const setEditMode = (isEditMode: boolean) => {
         dispatch(actions.setEditMode(isEditMode))
-    }
-
-    const onSubmit = (formData: profileType) => {
-        saveData(formData)
     }
 
     if (!profile) {
@@ -58,8 +52,7 @@ const ProfileInfo: FC<{isOwner: boolean}> = ({isOwner}) => {
 
             <div className={style.profileData}>
                 {isEditMode
-                    ? <ProfileDataFormHOC onSubmit={onSubmit}
-                                          profile={profile}/>
+                    ? <ProfileDataForm profile={profile}/>
                     : <ProfileData profile={profile}
                                    isOwner={isOwner}
                                    setEditMode={setEditMode}/>}

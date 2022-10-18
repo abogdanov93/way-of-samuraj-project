@@ -8,12 +8,7 @@ import {useDispatch, useSelector} from "react-redux"
 import {getPosts, getUserId} from "../../redux/selectors/profileSelectors"
 import {useParams} from "react-router-dom"
 import {AnyAction} from "redux"
-import {NewPostForm} from "./NewPostForm/NewPostForm";
-
-
-export type newPostFormDataType = {
-    newPostText: string
-}
+import {NewPostForm} from "./NewPostForm/NewPostForm"
 
 const Profile: FC = () => {
     const posts = useSelector(getPosts)
@@ -62,9 +57,11 @@ const Profile: FC = () => {
             <div className={commonStyles.whiteBlock}>
                 <ProfileInfo isOwner={isOwner}/>
             </div>
+
             <div className={commonStyles.whiteBlock}>
                 <NewPostForm />
             </div>
+
             <div className={commonStyles.whiteBlock}>{postElement}</div>
         </div>
     )

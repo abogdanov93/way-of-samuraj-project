@@ -1,12 +1,11 @@
 import {resultCodeEnum, resultCodeForCaptchaEnum} from "../api/api"
-import {FormAction, stopSubmit} from "redux-form"
 import {baseActionType, baseThunkType} from "./reduxStore"
 import {authAPI} from "../api/authAPI"
 import {securityAPI} from "../api/securityAPI"
 
 type initialStateType = typeof initialState
 type actionsType = baseActionType<typeof actions>
-type thunkType = baseThunkType<actionsType | FormAction> // FormAction для типизации stopSubmit
+type thunkType = baseThunkType<actionsType>
 
 let initialState = {
     userId: null as number | null,
@@ -58,10 +57,6 @@ export const logInThunk = (email: string, password: string, rememberMe: boolean,
         if (data.resultCode === resultCodeForCaptchaEnum.captchaIsRequired) {
             await dispatch(getCaptchaURL())
         }
-        dispatch(stopSubmit(
-            "login",
-            {_error: data.messages[0]}
-        ))
     }
 }
 

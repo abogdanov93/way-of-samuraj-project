@@ -1,12 +1,11 @@
 import {resultCodeEnum} from "../api/api"
-import {FormAction, stopSubmit} from "redux-form"
 import {photosType, postsType, profileType} from "../types/types"
 import {baseActionType, baseThunkType} from "./reduxStore"
 import {profileAPI} from "../api/profileAPI"
 
 type initialStateType = typeof initialState
 type actionsType = baseActionType<typeof actions>
-type thunkType = baseThunkType<actionsType | FormAction>
+type thunkType = baseThunkType<actionsType>
 
 let initialState = {
     posts: [
@@ -101,13 +100,11 @@ export const saveProfileData = (profile: profileType): thunkType => async (dispa
     const userId = getState().auth.userId // получаем весь state, забираем id, который сидит в auth reducer
     const data = await profileAPI.saveProfileData(profile)
     if (data.resultCode === resultCodeEnum.success) {
-        dispatch(getUserProfile(userId)) // диспатчим другую санку
+        debugger
+        dispatch(getUserProfile(userId))
         dispatch(actions.setEditMode(false))
     } else {
-        dispatch(stopSubmit(
-            "editProfileData",
-            {'_error': data.messages[0]}
-        ))
+        debugger
         dispatch(actions.setEditMode(true))
     }
 }

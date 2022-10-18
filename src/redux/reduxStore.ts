@@ -4,7 +4,6 @@ import profileReducer from "./profileReducer"
 import dialogsReducer from "./dialogsReducer"
 import usersReducer from "./usersReducer"
 import authReducer from "./authReducer"
-import {reducer as formReducer} from "redux-form"
 import appReducer from "./appReducer"
 import chatReducer from "./chatReducer";
 
@@ -24,7 +23,6 @@ const rootReducer = combineReducers({
     dialogs: dialogsReducer,
     chat: chatReducer,
     auth: authReducer,
-    form: formReducer
 })
 
 // @ts-ignore

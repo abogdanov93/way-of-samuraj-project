@@ -2,8 +2,6 @@ import style from "../ProfileInfo/ProfileInfo.module.css"
 import React, {FC} from "react"
 import {contactsType, profileType} from "../../../types/types"
 import Contact from "./Contact"
-import {baseActionType} from "../../../redux/reduxStore"
-import {actions} from "../../../redux/profileReducer"
 
 type propsType = {
     profile: profileType
@@ -13,7 +11,8 @@ type propsType = {
 
 const ProfileData: FC<propsType> = ({profile, isOwner, setEditMode}) => {
     const activateEditMode = () => setEditMode(true)
-    return <div>
+
+    return <div className={style.profileData}>
         <h1 className={style.nickName}>{profile.fullName}</h1>
 
         {isOwner && <button onClick={activateEditMode}>Edit</button>}
