@@ -1,4 +1,4 @@
-import React, {ReactNode} from "react"
+import React, {FC, ReactNode} from "react"
 import style from "./MyBytton.module.css"
 
 type propsType = {
@@ -7,6 +7,6 @@ type propsType = {
     disabled?: boolean
 }
 
-export const MyButton = ({children, ...props}: propsType) => {
+export const MyButton: FC<propsType> = ({children, ...props}) => {
     return <button className={style.myButton} {...props}>{children}</button>
 }

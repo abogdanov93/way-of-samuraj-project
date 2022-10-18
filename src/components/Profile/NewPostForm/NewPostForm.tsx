@@ -4,6 +4,7 @@ import {actions} from "../../../redux/profileReducer"
 import {useDispatch} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {MyButton} from "../../common/MyButton/MyButton";
+import {MyInput} from "../../common/MyInput/MyInput";
 
 type Inputs = {
     newPost: string,
@@ -21,12 +22,20 @@ export const NewPostForm: FC = () => {
 
     return <form onSubmit={handleSubmit(onSubmit)} className={style.newPost}>
 
-        <input {...register("newPost", {
-            maxLength: {value: 300, message: "The length of message must be 300 characters or fewer."}
-        })}
-               className={style.newMessage}
-               placeholder={"Write something..."}
-        />
+        {/*<input {...register("newPost", {*/}
+        {/*    maxLength: {value: 300, message: "The length of message must be 300 characters or fewer."}*/}
+        {/*})}*/}
+        {/*       className={style.newMessage}*/}
+        {/*       placeholder={"Write something..."}*/}
+        {/*/>*/}
+
+        <div className={style.newMessage}>
+            <MyInput {...register("newPost", {
+                maxLength: {value: 300, message: "The length of message must be 300 characters or fewer."}
+            })}
+                placeholder="Write something..."/>
+        </div>
+
         <div className={style.button}><MyButton type="submit" disabled={!isValid}>Send</MyButton></div>
 
         {errors.newPost
