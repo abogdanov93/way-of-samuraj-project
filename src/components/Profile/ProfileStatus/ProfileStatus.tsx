@@ -33,7 +33,7 @@ const ProfileStatus: FC<propsType> = ({status, updateStatus}) => {
                          onBlur={deactivateEditMode}
                          autoFocus={true}
                 />
-                : <div className={style.status} onClick={activateEditMode}>
+                : <div  onClick={activateEditMode}>
                     {status || "Write something..."}
                 </div>
             }
