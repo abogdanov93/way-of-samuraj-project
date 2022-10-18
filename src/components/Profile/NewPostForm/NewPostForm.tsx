@@ -3,6 +3,7 @@ import style from "./NewPostForm.module.css"
 import {actions} from "../../../redux/profileReducer"
 import {useDispatch} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
+import {MyButton} from "../../common/MyButton/MyButton";
 
 type Inputs = {
     newPost: string,
@@ -26,7 +27,7 @@ export const NewPostForm: FC = () => {
                className={style.newMessage}
                placeholder={"Write something..."}
         />
-        <button type="submit" disabled={!isValid} className={style.button}>Send</button>
+        <div className={style.button}><MyButton type="submit" disabled={!isValid}>Send</MyButton></div>
 
         {errors.newPost
         && <div className={style.warning}>
