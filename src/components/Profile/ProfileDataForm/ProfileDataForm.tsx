@@ -24,7 +24,7 @@ export const ProfileDataForm: FC<propsType> = ({profile}) => {
             aboutMe: data.aboutMe,
             contacts: data.contacts,
             photos: data.photos
-        }))
+        }) as unknown as AnyAction)
     }
 
     return <form onSubmit={handleSubmit(onSubmit)} className={style.profileDataForm}>

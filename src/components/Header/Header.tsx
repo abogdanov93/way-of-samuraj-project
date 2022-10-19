@@ -6,6 +6,7 @@ import {NavLink, useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
 import {getLogin} from "../../redux/selectors/loginSelectors"
 import {signOut} from "../../redux/authReducer"
+import {AnyAction} from "redux";
 
 const Header: FC = () => {
 
@@ -14,7 +15,7 @@ const Header: FC = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const logOut = () => {
-        dispatch(signOut())
+        dispatch(signOut() as unknown as AnyAction)
         navigate("/login")
     }
 

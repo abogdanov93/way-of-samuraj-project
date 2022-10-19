@@ -9,6 +9,7 @@ import {getPosts, getUserId} from "../../redux/selectors/profileSelectors"
 import {useParams} from "react-router-dom"
 import {AnyAction} from "redux"
 import {NewPostForm} from "./NewPostForm/NewPostForm"
+import {WithAuthRedirect} from "../../hoc/withAuthRedirect"
 
 const Profile: FC = () => {
     const posts = useSelector(getPosts)
@@ -18,8 +19,6 @@ const Profile: FC = () => {
     const deletePost = (postId: number) => dispatch(actions.deletePost(postId))
     const getProfile = (userId: null | number) => dispatch(getUserProfile(userId) as unknown as AnyAction)
     const getStatus = (userId: null | number) => dispatch(getProfileStatus(userId) as unknown as AnyAction)
-
-
 
     const params = useParams()
     const isOwner = !params.userId
@@ -36,7 +35,6 @@ const Profile: FC = () => {
     }
 
     useEffect(() => {
-        debugger
         refreshProfile()
     }, [params.userId])
 
@@ -50,21 +48,18 @@ const Profile: FC = () => {
             deletePost={deletePost}
         />)
 
+    return <div className={style.profile}>
+                <div className={commonStyles.whiteBlock}>
+                    <ProfileInfo isOwner={isOwner}/>
+                </div>
 
+                <div className={commonStyles.whiteBlock}>
+                    <NewPostForm/>
+                </div>
 
-    return (
-        <div className={style.profile}>
-            <div className={commonStyles.whiteBlock}>
-                <ProfileInfo isOwner={isOwner}/>
+                <div className={commonStyles.whiteBlock}>{postElement}</div>
             </div>
-
-            <div className={commonStyles.whiteBlock}>
-                <NewPostForm />
-            </div>
-
-            <div className={commonStyles.whiteBlock}>{postElement}</div>
-        </div>
-    )
 }
 
+// export default WithAuthRedirect(Profile)
 export default Profile

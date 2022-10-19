@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {getCaptchaURL} from "../../../redux/selectors/loginSelectors"
 import {logInThunk} from "../../../redux/authReducer"
+import {AnyAction} from "redux";
 
 export type Inputs = {
     email: string
@@ -19,7 +20,7 @@ export const LoginForm: FC = () => {
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm<Inputs>({mode: "onBlur"})
     const onSubmit: SubmitHandler<Inputs> = data => {
-        dispatch(logInThunk(data.email, data.password, data.rememberMe, data.captcha))
+        dispatch(logInThunk(data.email, data.password, data.rememberMe, data.captcha) as unknown as AnyAction)
         reset()
     }
 
