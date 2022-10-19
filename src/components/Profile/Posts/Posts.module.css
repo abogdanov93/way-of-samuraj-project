@@ -1,16 +1,28 @@
 .posts {
     display: grid;
     grid-template-areas:
-    "avatar name ."
-    "post post post"
-    "actions actions .";
+    "author ."
+    "post post"
+    "actions .";
     justify-content: left;
     align-items: center;
-    grid-gap: 5px 16px;
+    grid-gap: 5px;
 }
 
-.avatar {
-    grid-area: avatar;
+.author{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    color: #475156;
+    text-decoration: none;
+}
+
+.author:hover{
+    color: darkgrey;
+}
+
+.author img {
     max-width: 40px;
     border-radius: 40px;
 }
@@ -28,4 +40,8 @@
     display: flex;
     gap: 5px;
     color: darkgrey;
+}
+
+.action {
+    cursor: pointer;
 }

@@ -4,6 +4,7 @@
     align-items: center;
     grid-area: header;
     background-color: transparent;
+    font-size: small;
 }
 .header a {
     color: white;
@@ -21,7 +22,14 @@
 .loginArea {
     display: grid;
     grid-template-columns: auto auto;
-    grid-gap: 5px;
+    align-items: center;
+    grid-gap: 10px;
+    cursor: pointer;
+}
+
+.avatar {
+    max-width: 40px;
+    border-radius: 40px;
 }
 
 .loginIcon {
