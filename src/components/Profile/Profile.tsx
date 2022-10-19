@@ -9,7 +9,6 @@ import {getPosts, getUserId} from "../../redux/selectors/profileSelectors"
 import {useParams} from "react-router-dom"
 import {AnyAction} from "redux"
 import {NewPostForm} from "./NewPostForm/NewPostForm"
-import {WithAuthRedirect} from "../../hoc/withAuthRedirect"
 
 const Profile: FC = () => {
     const posts = useSelector(getPosts)
@@ -61,5 +60,4 @@ const Profile: FC = () => {
             </div>
 }
 
-// export default WithAuthRedirect(Profile)
 export default Profile

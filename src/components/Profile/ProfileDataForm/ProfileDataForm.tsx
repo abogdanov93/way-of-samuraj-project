@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {actions, saveProfileData} from "../../../redux/profileReducer"
 import {AnyAction} from "redux"
-import {MyButton} from "../../common/MyButton/MyButton";
+import {MyButton} from "../../common/MyButton/MyButton"
 
 type propsType = { profile: profileType }
 type Inputs = profileType
@@ -26,10 +26,10 @@ export const ProfileDataForm: FC<propsType> = ({profile}) => {
             photos: data.photos
         }) as unknown as AnyAction)
     }
-    // const setEditMode = (isEditMode: boolean) => {
-    //     dispatch(actions.setEditMode(isEditMode))
-    // }
-    // const deactivateEditMode = () => setEditMode(false)
+    const setEditMode = (isEditMode: boolean) => {
+        dispatch(actions.setEditMode(isEditMode))
+    }
+    const deactivateEditMode = () => setEditMode(false)
 
     return <form onSubmit={handleSubmit(onSubmit)} className={style.profileDataForm}>
 
@@ -67,9 +67,10 @@ export const ProfileDataForm: FC<propsType> = ({profile}) => {
         {/*        .map(key => <input {...register(`contacts."${key}` as any)} placeholder={key}/>)*/}
         {/*    }*/}
         {/*</div>*/}
-
+<div className={style.buttons}>
             <MyButton type="submit" disabled={!isValid}>Send</MyButton>
-            {/*<MyButton onClick={deactivateEditMode}>Return</MyButton>*/}
+            <MyButton onClick={deactivateEditMode}>Return</MyButton>
+</div>
 
 
     </form>

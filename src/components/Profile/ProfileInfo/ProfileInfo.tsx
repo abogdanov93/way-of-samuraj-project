@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, ReactNode} from "react"
+import React, {ChangeEvent, FC} from "react"
 import style from "./ProfileInfo.module.css"
 import Preloader from "../../common/Preloader/Preloader"
 import largeAvatar from "./../../../images/userAvatar.jpeg"
@@ -8,14 +8,9 @@ import {useDispatch, useSelector} from "react-redux"
 import {getIsEdithMode, getProfile, getStatus} from "../../../redux/selectors/profileSelectors"
 import {AnyAction} from "redux"
 import {ProfileDataForm} from "../ProfileDataForm/ProfileDataForm"
-import {Badge, Card, Collapse} from "antd"
-import Contact from "../ProfileData/Contact";
-import {contactsType} from "../../../types/types";
+import {Badge} from "antd"
+import {contactsType} from "../../../types/types"
 
-
-function Panel(props: { header: string, children: ReactNode }) {
-    return null;
-}
 
 const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
     const profile = useSelector(getProfile)
