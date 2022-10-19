@@ -1,4 +1,12 @@
-.myTextarea {
+.MyMessageForm {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.MyMessageForm textarea {
     border: transparent solid 1px;
     border-radius: 10px;
     background: #F9F9F9;

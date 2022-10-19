@@ -1,7 +1,0 @@
-.dialogMessageForm {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-gap: 16px;
-    justify-content: space-between;
-    align-items: center;
-}
