@@ -1,39 +1,35 @@
-import React, {FC} from "react"
-import {useForm, SubmitHandler} from "react-hook-form"
+import React, {FC, useState} from "react"
 import style from "./DialogMessageForm.module.css"
 import {useDispatch} from "react-redux"
 import {actions} from "../../../redux/dialogsReducer"
+import {MyButton} from "../../common/MyButton/MyButton"
+import {MyTextarea} from "../../common/MyTextarea/MyTextarea"
 
-type Inputs = {
-    newDialogMessage: string,
-}
 
 export const DialogMessageForm: FC = () => {
 
+    const [message, setMessage] = useState("")
     const dispatch = useDispatch()
 
-    const {register, handleSubmit, formState: {errors, isValid}, reset} = useForm<Inputs>({mode: "onBlur"})
-    const onSubmit: SubmitHandler<Inputs> = data => {
-        dispatch(actions.addMessage(data.newDialogMessage))
-        reset()
+    const sendMessageHandler = (message: string) => {
+        if (!message) {
+            return
+        }
+        dispatch(actions.addMessage(message))
+        setMessage("")
     }
 
-    return <form onSubmit={handleSubmit(onSubmit)} className={style.dialogMessageForm}>
+    return <div className={style.dialogMessageForm}>
 
-        <input {...register("newDialogMessage", {
-            maxLength: {value: 300, message: "The length of message must be 300 characters or fewer."}
-        })}
-               className={style.newMessage}
-               placeholder={"Write a message..."}
-        />
-
-        <button type="submit" disabled={!isValid} className={style.button}>Send</button>
-
-        {errors.newDialogMessage
-        && <div className={style.warning}>
-            {errors?.newDialogMessage?.message || "Error"}
+        <div className={style.newMessage}>
+            <MyTextarea placeholder={"Write a message..."}
+                        value={message}
+                        onChange={(e) => setMessage(e.currentTarget.value)}/>
         </div>
-        }
 
-    </form>
+        <div className={style.button}>
+            <MyButton onClick={() => sendMessageHandler(message)}>Send</MyButton>
+        </div>
+
+    </div>
 }

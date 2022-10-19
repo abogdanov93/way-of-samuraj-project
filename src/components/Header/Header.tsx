@@ -6,7 +6,7 @@ import {NavLink, useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
 import {getLogin} from "../../redux/selectors/loginSelectors"
 import {signOut} from "../../redux/authReducer"
-import {AnyAction} from "redux";
+import {AnyAction} from "redux"
 
 const Header: FC = () => {
 

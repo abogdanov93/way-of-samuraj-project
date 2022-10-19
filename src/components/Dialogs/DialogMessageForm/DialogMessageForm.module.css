@@ -1,26 +1,7 @@
 .dialogMessageForm {
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-rows: 1fr auto;
-    grid-gap: 20px;
+    grid-gap: 16px;
     justify-content: space-between;
     align-items: center;
-    grid-template-areas:
-    "textarea button"
-    "warning warning";
-}
-
-.newMessage {
-    grid-area: textarea;
-}
-
-.button {
-    grid-area: button;
-}
-
-.warning {
-    grid-area: warning;
-    justify-self: left;
-    color: orangered;
-    font-weight: bold;
 }
