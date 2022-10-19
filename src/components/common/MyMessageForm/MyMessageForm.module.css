@@ -1,9 +1,10 @@
 .MyMessageForm {
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-gap: 16px;
+    grid-gap: 5px 16px;
     justify-content: space-between;
     align-items: center;
+    /*padding: 20px 0;*/
 }
 
 .MyMessageForm textarea {
@@ -17,4 +18,10 @@
     resize: none;
     font-size: small;
     padding-left: 16px;
+}
+
+.error {
+    color: orangered;
+    font-weight: bold;
+    font-size: small;
 }

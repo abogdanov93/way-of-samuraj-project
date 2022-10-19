@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react'
+import React, {ChangeEvent, FC, useState} from 'react'
 import style from "./MyMessageForm.module.css"
 import {useDispatch} from "react-redux"
 import {actions} from "../../../redux/dialogsReducer"
@@ -13,6 +13,7 @@ type propsType = {
 export const MyMessageForm: FC<propsType> = ({placeholder, sendMessage, disabled}) => {
 
     const [message, setMessage] = useState("")
+    const [error, setError] = useState(null as null | string)
     const dispatch = useDispatch()
 
     const sendMessageHandler = (message: string) => {
@@ -23,15 +24,26 @@ export const MyMessageForm: FC<propsType> = ({placeholder, sendMessage, disabled
         setMessage("")
     }
 
+    const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        const value = e.target.value
+        if (value.length > 5) setError("The maximum limit is 5 symbols")
+        else setError(null)
+        setMessage(value)
+    }
 
     return <div className={style.MyMessageForm}>
         <textarea placeholder={placeholder}
                   value={message}
-                  onChange={(e) => setMessage(e.currentTarget.value)}/>
+                  onChange={handleChange}/>
 
         <div className={style.button}>
-            <MyButton onClick={() => sendMessageHandler(message)} disabled={disabled}>Send</MyButton>
+            <MyButton onClick={() => sendMessageHandler(message)} disabled={disabled || error}>Send</MyButton>
         </div>
 
+        {error && (
+            <label className={style.error} htmlFor="message">
+                {error}
+            </label>
+        )}
     </div>
 }
