@@ -3,27 +3,16 @@ import style from "./FriendsBlock.module.css"
 import commonStyles from "./../../App.module.css"
 
 const FriendsBlock: FC = () => {
-    return (
-        <div className={`${style.friends} ${commonStyles.whiteBlock}`}>
-            <h3 className={style.title}>Friends</h3>
-            <div className={style.friend}>
-                <div>
-                    <img
-                        className={style.avatar}
-                        src="https://i.pinimg.com/474x/83/73/c9/8373c9bbddf97a72c445eab91f3d6fbc.jpg"/>
-                </div>
-                <div className={style.name}>marusik_super</div>
-            </div>
-            <div className={style.friend}>
-                <div>
-                    <img
-                        className={style.avatar}
-                        src="https://media.fortniteapi.io/images/cosmetics/e9d61c4a4aae593fbac8d72182da83f2/v2/background.png"/>
-                </div>
-                <div className={style.name}>notfat100kg</div>
-            </div>
+//todo: запросить юзеров с фильтром друзья
+    // const dispatch = useDispatch()
+    // const friends = dispatch(requestUsers(null, null, true) as unknown as AnyAction)
+
+    return <div className={`${style.friends} ${commonStyles.whiteBlock}`}>
+        <h3 className={style.title}>Friends</h3>
+        <div className={style.friend}>
+
         </div>
-    )
+    </div>
 }
 
 export default FriendsBlock

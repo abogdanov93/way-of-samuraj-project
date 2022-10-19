@@ -1,11 +1,16 @@
+h3 {
+    color: darkgrey;
+}
+
 .friends {
     grid-area: friendsBlock;
 }
 
 .friend {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
+    grid-template-columns: auto 1fr;
+    grid-gap: 16px;
+    align-items: center;
 }
 
 .avatar {

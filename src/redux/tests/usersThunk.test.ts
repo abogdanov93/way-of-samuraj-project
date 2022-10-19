@@ -1,6 +1,6 @@
-import {usersAPI} from "../api/usersAPI";
-import {responseType, resultCodeEnum} from "../api/api";
-import {actions, followUser, unfollowUser} from "./usersReducer";
+import {usersAPI} from "../../api/usersAPI";
+import {responseType, resultCodeEnum} from "../../api/api";
+import {actions, followUser, unfollowUser} from "../usersReducer";
 
 jest.mock("../api/usersAPI") // делаем заглушку для API
 const userAPIMock = usersAPI as jest.Mocked<typeof usersAPI>
