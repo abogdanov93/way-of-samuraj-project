@@ -7,9 +7,10 @@ import {MyButton} from "../MyButton/MyButton"
 type propsType = {
     placeholder: string
     sendMessage: any
+    disabled?: any
 }
 
-export const MyMessageForm: FC<propsType> = ({placeholder, sendMessage}) => {
+export const MyMessageForm: FC<propsType> = ({placeholder, sendMessage, disabled}) => {
 
     const [message, setMessage] = useState("")
     const dispatch = useDispatch()
@@ -29,7 +30,7 @@ export const MyMessageForm: FC<propsType> = ({placeholder, sendMessage}) => {
                   onChange={(e) => setMessage(e.currentTarget.value)}/>
 
         <div className={style.button}>
-            <MyButton onClick={() => sendMessageHandler(message)}>Send</MyButton>
+            <MyButton onClick={() => sendMessageHandler(message)} disabled={disabled}>Send</MyButton>
         </div>
 
     </div>
