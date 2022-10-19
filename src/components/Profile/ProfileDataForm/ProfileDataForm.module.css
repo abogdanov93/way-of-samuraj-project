@@ -3,6 +3,23 @@
 
 }
 
+.profileDataForm h4 {
+    font-weight: normal;
+    color: darkgrey;
+}
+
+.profileDataForm input {
+   width: 90%;
+    border-radius: 8px;
+    border-color: transparent;
+    background: #F9F9F9;
+}
+
 .error {
     color: orangered;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: auto auto;
 }
