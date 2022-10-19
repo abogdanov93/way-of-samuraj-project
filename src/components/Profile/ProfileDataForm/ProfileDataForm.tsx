@@ -5,7 +5,6 @@ import {useDispatch} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {saveProfileData} from "../../../redux/profileReducer"
 import {AnyAction} from "redux"
-import {MyButton} from "../../common/MyButton/MyButton";
 
 type propsType = { profile: profileType }
 type Inputs = profileType
@@ -25,7 +24,7 @@ export const ProfileDataForm: FC<propsType> = ({profile}) => {
             aboutMe: data.aboutMe,
             contacts: data.contacts,
             photos: data.photos
-        }) as unknown as AnyAction)
+        }))
     }
 
     return <form onSubmit={handleSubmit(onSubmit)} className={style.profileDataForm}>

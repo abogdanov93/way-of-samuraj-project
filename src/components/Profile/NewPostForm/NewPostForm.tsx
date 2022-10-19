@@ -3,8 +3,8 @@ import style from "./NewPostForm.module.css"
 import {actions} from "../../../redux/profileReducer"
 import {useDispatch} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
-import {MyButton} from "../../common/MyButton/MyButton";
-import {MyInput} from "../../common/MyInput/MyInput";
+import {MyButton} from "../../common/MyButton/MyButton"
+import {MyInput} from "../../common/MyInput/MyInput"
 
 type Inputs = {
     newPost: string,

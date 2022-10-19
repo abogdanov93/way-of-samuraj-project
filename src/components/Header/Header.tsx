@@ -5,7 +5,6 @@ import loginIcon from "../../images/login.png"
 import {NavLink, useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
 import {getLogin} from "../../redux/selectors/loginSelectors"
-import {AnyAction} from "redux"
 import {signOut} from "../../redux/authReducer"
 
 const Header: FC = () => {
@@ -15,14 +14,11 @@ const Header: FC = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const logOut = () => {
-        dispatch(signOut() as unknown as AnyAction)
+        dispatch(signOut())
         navigate("/login")
     }
 
     return <header className={style.header}>
-        <button onClick={() => navigate("/login")}>
-            click
-        </button>
             <div className={style.logo}>
                 <img src={logo}/>
             </div>

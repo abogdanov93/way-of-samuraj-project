@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {getCaptchaURL} from "../../../redux/selectors/loginSelectors"
 import {logInThunk} from "../../../redux/authReducer"
-import {AnyAction} from "redux"
 
 export type Inputs = {
     email: string
@@ -18,9 +17,9 @@ export const LoginForm: FC = () => {
     const captchaURL = useSelector(getCaptchaURL)
     const dispatch = useDispatch()
 
-    const {register, handleSubmit, formState: {errors, isValid}, reset} = useForm<Inputs>({mode: "onBlur"})
+    const {register, handleSubmit, formState: {errors}, reset} = useForm<Inputs>({mode: "onBlur"})
     const onSubmit: SubmitHandler<Inputs> = data => {
-        dispatch(logInThunk(data.email, data.password, data.rememberMe, data.captcha) as unknown as AnyAction)
+        dispatch(logInThunk(data.email, data.password, data.rememberMe, data.captcha))
         reset()
     }
 
@@ -78,50 +77,3 @@ export const LoginForm: FC = () => {
 
     </form>
 }
-
-//
-// type loginOwnPropsType = {
-//     captchaURL: string | null
-// }
-//
-// const LoginForm: FC<InjectedFormProps<loginFormDataType, loginOwnPropsType> & loginOwnPropsType> =
-//     ({handleSubmit, error, captchaURL}) => {
-//         return <form className={style.loginForm} onSubmit={handleSubmit}>
-//             <div className={style.login}>
-//                 <Field component={Element}
-//                        name={"email"} // можно типизировать name? type a = keyof loginFormDataType;
-//                        placeholder={"E-mail"}
-//                        validate={[required, maxLengthCreator(20)]}
-//                        fieldType={"input"}/>
-//             </div>
-//             <div className={style.password}>
-//                 <Field component={Element}
-//                        name={"password"}
-//                        type={"password"}
-//                        placeholder={"Password"}
-//                        validate={[required, maxLengthCreator(20)]}
-//                        fieldType={"input"}/>
-//             </div>
-//             <div className={style.rememberMe}>
-//                 <Field component={"input"}
-//                        name={"rememberMe"}
-//                        type={"checkbox"}/>
-//                 <div>Remember me</div>
-//             </div>
-//             {error && <div className={formStyle.errorWarning}>{error}</div>}
-//             {captchaURL && <div>
-//                 <img src={captchaURL}/>
-//                 <Field component={Element}
-//                        name={"captcha"}
-//                        placeholder={"Symbols from the picture"}
-//                        validate={[required]}
-//                        fieldType={"input"}/>
-//             </div>}
-//             <div className={style.button}>
-//                 <button type="submit">Sign in</button>
-//             </div>
-//         </form>
-//     }
-//
-// const LoginFormHOC = reduxForm<loginFormDataType, loginOwnPropsType>({form: "login"})(LoginForm)
-// export default LoginFormHOC

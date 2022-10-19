@@ -8,7 +8,9 @@ import {initializeApp} from "./redux/appReducer"
 import Navbar from "./components/Navbar/Navbar"
 import FriendsBlock from "./components/FriendsBlock/FriendsBlock"
 import Preloader from "./components/common/Preloader/Preloader"
-import Header from "./components/Header/Header";
+import Header from "./components/Header/Header"
+import type {} from "redux-thunk/extend-redux"
+
 
 const Profile = React.lazy(() => import("./components/Profile/Profile"))
 const Users = React.lazy(() => import("./components/Users/Users"))
@@ -69,11 +71,11 @@ const mapStateToProps = (state: stateType) => ({
 const AppContainer = connect(mapStateToProps, {initializeApp})(App)
 
 const MainAppComponent: FC = () => {
-    return <BrowserRouter>
+    return <HashRouter>
         <Provider store={store}>
             <AppContainer/>
         </Provider>
-    </BrowserRouter>
+    </HashRouter>
 }
 
 export default MainAppComponent
