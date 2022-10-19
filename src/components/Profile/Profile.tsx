@@ -56,7 +56,7 @@ const Profile: FC = () => {
                     <NewPostForm/>
                 </div>
 
-                <div className={commonStyles.whiteBlock}>{postElement}</div>
+                <div className={`${commonStyles.whiteBlock} ${style.posts}`}>{postElement}</div>
             </div>
 }
 

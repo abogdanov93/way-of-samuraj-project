@@ -1,36 +1,21 @@
 .header {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-areas: "logo searcher loginArea";
-    grid-gap: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     grid-area: header;
     background-color: transparent;
 }
+.header a {
+    color: white;
+    text-decoration: none;
+}
 
 .logo {
-    grid-area: logo;
     margin-left: 40px;
 }
 
 .logo img {
     width: 125px;
-}
-
-.searcher {
-    grid-area: searcher;
-    width: 40%;
-    justify-self: right;
-}
-
-.loginArea {
-    grid-area: loginArea;
-    align-self: center;
-    justify-self: center;
-}
-
-.loginArea a {
-    color: white;
-    text-decoration: none;
 }
 
 .loginArea {
@@ -41,16 +26,4 @@
 
 .loginIcon {
     width: 20px;
-}
-
-.login {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 10px;
-}
-
-@media (max-width: 360px) {
-    .logo {
-        margin: 5px;
-    }
 }

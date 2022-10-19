@@ -1,37 +1,31 @@
 .posts {
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto;
-    justify-content: left;
-    grid-gap: 10px;
     grid-template-areas:
-        "picture post post"
-        "like likeCounter delete";
-    color: #475156;
+    "avatar name ."
+    "post post post"
+    "actions actions .";
+    justify-content: left;
+    align-items: center;
+    grid-gap: 5px 16px;
 }
 
-.picture {
-    grid-area: picture;
+.avatar {
+    grid-area: avatar;
+    max-width: 40px;
+    border-radius: 40px;
+}
+
+.name {
+    grid-area: name;
 }
 
 .post {
     grid-area: post;
-    color: #475156;
 }
 
-.like {
-    grid-area: like;
-}
-
-.likeCounter {
-    grid-area: likeCounter;
-}
-
-.delete {
-    grid-area: delete;
-}
-
-.avatar {
-    max-width: 40px;
-    border-radius: 40px;
+.actions {
+    grid-area: actions;
+    display: flex;
+    gap: 5px;
+    color: darkgrey;
 }

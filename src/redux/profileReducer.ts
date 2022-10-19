@@ -9,8 +9,8 @@ type thunkType = baseThunkType<actionsType>
 
 let initialState = {
     posts: [
-        {id: 1, post: "Hi there!", likeCounter: 1},
-        {id: 2, post: "Are you going to play fortnite?", likeCounter: 3}
+        {id: 1, post: "Are you going to play fortnite?"},
+        {id: 2, post: "Hi there!"}
     ] as Array<postsType>,
     profile: null as profileType | null,
     isEditMode: false,

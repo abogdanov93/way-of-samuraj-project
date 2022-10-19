@@ -1,7 +1,8 @@
-import React, {FC} from "react"
+import React, {FC, useState} from "react"
 import style from "./Posts.module.css"
-import {baseActionType} from "../../../redux/reduxStore"
-import {actions} from "../../../redux/profileReducer"
+import {useSelector} from "react-redux";
+import {getProfile} from "../../../redux/selectors/profileSelectors";
+import {HeartOutlined, LikeOutlined} from "@ant-design/icons";
 
 type propsType = {
     post: string
@@ -11,16 +12,27 @@ type propsType = {
 }
 
 const Posts: FC<propsType> = ({post, likeCounter, deletePost, id}) => {
+
+    const [likes, setLikes] = useState(0)
+    const [hearts, setHearts] = useState(0)
+
+    const profile = useSelector(getProfile)
     const onPostDelete = () => {
         deletePost(id)
     }
+
     return (
         <div className={style.posts}>
-            <div className={style.avatar}><img className={style.avatar} src="https://i.pinimg.com/474x/83/73/c9/8373c9bbddf97a72c445eab91f3d6fbc.jpg"/></div>
+            <img className={style.avatar} src={profile?.photos.small as any}/>
+            <div className={style.name}>{profile?.fullName}</div>
             <div className={style.post}>{post}</div>
-            <div className={style.like}>Like</div>
-            <div className={style.likeCounter}>{likeCounter}</div>
-            <div className={style.delete} onClick={onPostDelete}>delete</div>
+            <div className={style.actions}>
+                <div><LikeOutlined onClick={() => setLikes(value => value + 1)}/></div>
+                <div>{likes}</div>
+                <div><HeartOutlined onClick={() => setHearts(value => value + 1)}/></div>
+                <div>{hearts}</div>
+                <div onClick={onPostDelete}>Delete</div>
+            </div>
         </div>
     )
 }

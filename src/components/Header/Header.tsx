@@ -23,9 +23,6 @@ const Header: FC = () => {
             <div className={style.logo}>
                 <img src={logo}/>
             </div>
-            <div className={style.searcher}>
-                <input type="text" placeholder="What are you looking for?"/>
-            </div>
             <div className={style.loginArea}>
                 {isAuth
                     ? <div>
