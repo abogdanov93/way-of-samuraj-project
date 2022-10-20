@@ -8,6 +8,7 @@
             "avatar status"
             "avatar jobDescription"
             "avatar aboutMe";
+    height: 100vh;
 }
 
 .avatar {
@@ -53,4 +54,13 @@
     font-weight: bold;
     font-size: small;
     margin-bottom: 0;
+}
+
+.contacts {
+    margin: 16px 0 16px 0;
+}
+
+.contacts a {
+    display: inline-block;
+    margin: 0 0 5px 0;
 }

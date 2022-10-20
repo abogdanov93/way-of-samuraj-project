@@ -10,6 +10,7 @@ import {AnyAction} from "redux"
 import {ProfileDataForm} from "../ProfileDataForm/ProfileDataForm"
 import {Badge} from "antd"
 import {contactsType} from "../../../types/types"
+import {Contact} from "./Contact/Contact"
 
 
 const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
@@ -46,7 +47,7 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
                     ? <Badge.Ribbon text="Open to work" color="green">
                         <img src={profile.photos.large || largeAvatar}/>
                     </Badge.Ribbon>
-                    : <Badge.Ribbon text="Hippies">
+                    : <Badge.Ribbon text="Do not open to work">
                         <img src={profile.photos.large || largeAvatar}/>
                     </Badge.Ribbon>
                 }
@@ -75,11 +76,10 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
                         {profile.aboutMe}
                     </div>
 
+
                     <div className={style.contacts}>
-                        <h4>My contacts:</h4>
                         {Object
-                            .keys(profile.contacts)
-                            .map(key => <div>{`${key} : ${profile.contacts[key as keyof contactsType]}`}</div>)}
+                            .keys(profile.contacts).map(key => <Contact name={key} link={profile.contacts[key as keyof contactsType]}/>)}
                     </div>
 
                     {isOwner && <button onClick={activateEditMode}>Edit</button>}

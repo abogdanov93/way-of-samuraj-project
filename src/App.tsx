@@ -42,6 +42,8 @@ class App extends React.Component <mapPropsType & dispatchPropsType> {
                         <Routes>
                             <Route path="/profile/*"
                                    element={<Profile/>}/>
+                            <Route path="*"
+                                   element={<Profile/>}/>
                             <Route path="/profile/:userId/*"
                                    element={<Profile/>}/>
                             <Route path="/users/*"
@@ -52,8 +54,6 @@ class App extends React.Component <mapPropsType & dispatchPropsType> {
                                    element={<Chat/>}/>
                             <Route path="/login"
                                    element={<Login/>}/>
-                            <Route path="*"
-                                   element={<div>404 NOT FOUND</div>}/>
                         </Routes>
                     </React.Suspense>
                 </div>
