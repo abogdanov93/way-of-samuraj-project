@@ -4,14 +4,12 @@ import {filterType} from "../../../redux/usersReducer"
 import {Field} from "formik"
 import {useSelector} from "react-redux"
 import {getUsersFilter} from "../../../redux/selectors/usersSelectors"
+import style from "./UserSearchForm.module.css"
+import {MyButton} from "../../common/MyButton/MyButton";
 
 type propsType = {
     onFilterChange: (filter: filterType) => void
 }
-// type formType = {
-//     term: string
-//     friend: "true" | "false" | "null"
-// }
 
 const usersSearchFormValidate = (values: any) => {
     const errors = {}
@@ -23,13 +21,9 @@ const UsersSearchForm: FC<propsType> = ({onFilterChange}) => {
     const filter = useSelector(getUsersFilter)
 
     const submit = (values: any, { setSubmitting }: {setSubmitting: (isSubmitting: boolean) => void}) => {
-        // const filter: filterType = {
-        //     term: values.term,
-        //     friend: values.friend === "true" ? true : values.friend === "false" ? false : null
-        // }
         onFilterChange(values)
         setSubmitting(false)
-    } // почему внутри компоненты?
+    }
 
 return <div>
     <Formik
@@ -39,14 +33,23 @@ return <div>
         onSubmit={submit}
     >
         {({handleSubmit, isSubmitting}) => (
-            <form onSubmit={handleSubmit}>
-                <Field type="text" name="term"/>
-                <Field name="friend" as="select">
+            <form className={style.form} onSubmit={handleSubmit}>
+
+                <Field className={style.search}
+                       placeholder="Who are you looking for?"
+                       type="text"
+                       name="term"
+                />
+
+                <Field className={style.select}
+                       name="friend"
+                       as="select">
                     <option value="null">All users</option>
                     <option value="true">Followed users</option>
                     <option value="false">Unfollowed users</option>
                 </Field>
-                <button type="submit" disabled={isSubmitting}>Find</button>
+
+                <MyButton type="submit" disabled={isSubmitting}>Find</MyButton>
             </form>
         )}
     </Formik>

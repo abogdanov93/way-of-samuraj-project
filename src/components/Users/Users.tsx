@@ -73,7 +73,9 @@ const Users: FC = () => {
 
         {isFetching && <Preloader/>}
 
-        <UsersSearchForm onFilterChange={onFilterChange}/>
+        <div>
+            <UsersSearchForm onFilterChange={onFilterChange}/>
+        </div>
 
         <div>
             {users.map(u => <User key={u.id}
@@ -87,7 +89,8 @@ const Users: FC = () => {
         <Pagination totalItemsCount={totalUsersCount}
                     pageSize={pageSize}
                     currentPageNumber={currentPageNumber}
-                    onPageChange={onPageChange}/>
+                    onPageChange={onPageChange}
+        />
 
     </div>
 }

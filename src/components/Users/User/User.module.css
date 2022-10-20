@@ -1,8 +1,32 @@
-.user {
-    display: grid;
+.userPage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 50px 20px 50px;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .avatar {
-    max-width: 200px;
+    grid-area: avatar;
+    max-width: 60px;
     border-radius: 40px;
 }
+
+.name {
+    grid-area: name;
+    color: dimgray;
+    text-decoration: none;
+}
+
+.userPage button {
+    background-image: none;
+    background-color: transparent;
+    border: solid 1px #FFA000;
+    color: #FFA000;
+}
+
