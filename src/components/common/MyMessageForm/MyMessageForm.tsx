@@ -26,7 +26,7 @@ export const MyMessageForm: FC<propsType> = ({placeholder, sendMessage, disabled
 
     const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const value = e.target.value
-        if (value.length > 5) setError("The maximum limit is 5 symbols")
+        if (value.length > 500) setError("The maximum limit is 500 symbols")
         else setError(null)
         setMessage(value)
     }
@@ -40,10 +40,6 @@ export const MyMessageForm: FC<propsType> = ({placeholder, sendMessage, disabled
             <MyButton onClick={() => sendMessageHandler(message)} disabled={disabled || error}>Send</MyButton>
         </div>
 
-        {error && (
-            <label className={style.error} htmlFor="message">
-                {error}
-            </label>
-        )}
+        {error && (<label className={style.error} htmlFor="message">{error}</label>)}
     </div>
 }

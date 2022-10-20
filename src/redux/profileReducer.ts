@@ -100,11 +100,9 @@ export const saveProfileData = (profile: profileType): thunkType => async (dispa
     const userId = getState().auth.userId // получаем весь state, забираем id, который сидит в auth reducer
     const data = await profileAPI.saveProfileData(profile)
     if (data.resultCode === resultCodeEnum.success) {
-        debugger
         dispatch(getUserProfile(userId))
         dispatch(actions.setEditMode(false))
     } else {
-        debugger
         dispatch(actions.setEditMode(true))
     }
 }

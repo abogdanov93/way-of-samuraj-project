@@ -58,7 +58,9 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
                 ? <ProfileDataForm profile={profile}/>
                 : <div className={style.profileData}>
 
-                    {isOwner && <div className={style.edit} onClick={activateEditMode}>Edit</div>}
+                    <div className={style.edit}>
+                        {isOwner && <div onClick={activateEditMode}>Edit</div>}
+                    </div>
 
                     <h1 className={style.nickName}>{profile.fullName}</h1>
 

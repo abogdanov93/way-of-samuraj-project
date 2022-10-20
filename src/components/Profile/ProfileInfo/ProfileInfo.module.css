@@ -12,7 +12,8 @@
     grid-area: data;
     display: grid;
     grid-template-columns: 1fr auto;
-    align-items: center;
+    grid-template-rows: auto auto auto auto 1fr;
+    align-items: start;
     grid-template-areas:
             "nickName edit"
             "status status"
@@ -40,6 +41,7 @@
     color: dimgray;
     font-weight: bold;
     margin-bottom: 0;
+    align-self: center;
 }
 
 .edit {
@@ -48,6 +50,7 @@
     text-decoration: underline;
     cursor: pointer;
     width: 30px;
+    align-self: center;
 }
 
 .edit:hover {
@@ -80,6 +83,8 @@
 }
 
 .contacts {
+    /*display: grid;*/
+    /*align-items: start;*/
     margin: 16px 0 16px 0;
 }
 
