@@ -1,11 +1,6 @@
 .profileDataForm {
     display: grid;
-
-}
-
-.profileDataForm h4 {
-    font-weight: normal;
-    color: darkgrey;
+    gap: 5px;
 }
 
 .profileDataForm input {
@@ -15,7 +10,8 @@
     background: #F9F9F9;
 }
 
-.error {
+.profileDataForm label {
+    display: grid;
     color: orangered;
     font-size: small;
 }
@@ -23,10 +19,7 @@
 .buttons {
     display: grid;
     grid-template-columns: auto auto;
+    justify-content: start;
+    gap: 16px;
     margin-top: 16px;
-}
-
-.contacts {
-    display: grid;
-    grid-gap: 8px;
 }

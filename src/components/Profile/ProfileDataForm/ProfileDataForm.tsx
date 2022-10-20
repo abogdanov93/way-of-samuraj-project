@@ -7,75 +7,98 @@ import {actions, saveProfileData} from "../../../redux/profileReducer"
 import {AnyAction} from "redux"
 import {MyButton} from "../../common/MyButton/MyButton"
 
-type propsType = { profile: profileType }
 type Inputs = profileType
 
-export const ProfileDataForm: FC<propsType> = ({profile}) => {
+
+export const ProfileDataForm: FC = () => {
 
     const dispatch = useDispatch()
-    const {register, handleSubmit, formState: {errors, isValid}} = useForm<Inputs>({mode: "onBlur"})
 
-    const onSubmit: SubmitHandler<Inputs> = data => {
-        dispatch(saveProfileData({
-            userId: data.userId,
-            fullName: data.fullName,
-            lookingForAJob: data.lookingForAJob,
-            lookingForAJobDescription: data.lookingForAJobDescription,
-            aboutMe: data.aboutMe,
-            contacts: {
-                github: data.contacts.github,
-                instagram: data.contacts.instagram,
-                vk: data.contacts.vk,
-                facebook: data.contacts.facebook,
-                website: data.contacts.website,
-                mainLink: data.contacts.mainLink,
-                twitter: data.contacts.twitter,
-                youtube: data.contacts.youtube
-            },
-            photos: data.photos
-        }) as unknown as AnyAction)
+    const {register, handleSubmit, formState: {errors}} = useForm<Inputs>({mode: "onBlur"})
+    const onSubmit: SubmitHandler<Inputs> = (data) => {
+        dispatch(saveProfileData(data) as unknown as AnyAction)
     }
+    const deactivateEditMode = () => dispatch(actions.setEditMode(false))
 
-    const setEditMode = (isEditMode: boolean) => {
-        dispatch(actions.setEditMode(isEditMode))
-    }
-
-    const deactivateEditMode = () => setEditMode(false)
 
     return <form onSubmit={handleSubmit(onSubmit)} className={style.profileDataForm}>
-
         <div>
-            <h4>Your name:</h4>
-            <input {...register("fullName")}/>
+            <input {...register("fullName", {required: true})}
+            placeholder="Your name"/>
+            {errors.fullName && <label>This field is required</label>}
         </div>
 
         <div>
-            <h4>Are you looking for a job now?</h4>
-            <input {...register("lookingForAJob")}/>
+            <input {...register("lookingForAJob", {required: true})}
+            placeholder="Are you looking for a job?"/>
+            {errors.lookingForAJob && <label>This field is required</label>}
         </div>
 
         <div>
-            <h4>What job are you looking for?</h4>
-            <input {...register("lookingForAJobDescription")}/>
+            <input {...register("lookingForAJobDescription", {required: true})}
+                   placeholder="Your professional skills"/>
+            {errors.lookingForAJobDescription && <label>This field is required</label>}
         </div>
 
         <div>
-            <h4>Write something about you:</h4>
-            <input {...register("aboutMe")}/>
+            <input {...register("aboutMe", {required: true})}
+                   placeholder="About you"/>
+            {errors.aboutMe && <label>This field is required</label>}
         </div>
 
-        {/*<div className={style.contacts}>*/}
-        {/*    <h4>Your contacts:</h4>*/}
-        {/*    {Object*/}
-        {/*        .keys(profile?.contacts)*/}
-        {/*        .map(key => <div>*/}
-        {/*            <input {...register(`contacts.${key}` as any, {required: "This field is required"})} placeholder={key}/></div>)}*/}
-        {/*</div>*/}
+        <div>
+            <input {...register("contacts.github", {required: true})}
+                   placeholder="Github"/>
+            {errors.contacts?.github && <label>This field is required</label>}
+        </div>
+
+        <div>
+            <input {...register("contacts.vk", {required: true})}
+                   placeholder="Vkontakte"/>
+            {errors.contacts?.vk && <label>This field is required</label>}
+        </div>
+
+        <div>
+            <input {...register("contacts.facebook", {required: true})}
+                placeholder="Facebook"/>
+            {errors.contacts?.facebook && <label>This field is required</label>}
+        </div>
+
+        <div>
+            <input {...register("contacts.instagram", {required: true})}
+                placeholder="Instagram"/>
+            {errors.contacts?.instagram && <label>This field is required</label>}
+        </div>
+
+        <div>
+            <input {...register("contacts.twitter", {required: true})}
+                placeholder="Twitter"/>
+            {errors.contacts?.twitter && <label>This field is required</label>}
+        </div>
+
+        <div>
+            <input {...register("contacts.website", {required: true})}
+                placeholder="Your website"/>
+            {errors.contacts?.website && <label>This field is required</label>}
+        </div>
+
+        <div>
+            <input {...register("contacts.youtube", {required: true})}
+                placeholder="Youtube"/>
+            {errors.contacts?.youtube && <label>This field is required</label>}
+        </div>
+
+        <div>
+            <input {...register("contacts.mainLink", {required: true})}
+                placeholder="Maim link"/>
+            {errors.contacts?.mainLink && <label>This field is required</label>}
+        </div>
 
         <div className={style.buttons}>
-            <MyButton type="submit" disabled={!isValid}>Send</MyButton>
-            <MyButton onClick={deactivateEditMode}>Return</MyButton>
+            <MyButton type="submit">Edit</MyButton>
+            <MyButton onClick={deactivateEditMode}>Reset</MyButton>
         </div>
+
     </form>
 
 }

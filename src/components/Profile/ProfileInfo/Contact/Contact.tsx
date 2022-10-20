@@ -25,7 +25,7 @@ export const Contact = ({name, link}: propsType) => {
     //     text: null as null | string
     // }
 
-if (!link) {
+if (link) {
     switch (name) {
         case "facebook":
             return <a href={link}><Tag icon={<FacebookOutlined/>} color="#3b5999">Facebook</Tag></a>
