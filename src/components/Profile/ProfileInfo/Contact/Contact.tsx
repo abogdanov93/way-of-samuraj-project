@@ -1,11 +1,11 @@
-import React, {FC, ReactElement} from 'react'
+import React from 'react'
 import style from "./Contact.module.css"
-import {Link} from "react-router-dom"
 import {Tag} from "antd"
 import {
     FacebookOutlined,
     GithubOutlined,
-    InstagramOutlined, MailOutlined,
+    InstagramOutlined,
+    MailOutlined,
     SmileOutlined,
     TwitterOutlined,
     YoutubeOutlined
@@ -25,7 +25,7 @@ export const Contact = ({name, link}: propsType) => {
     //     text: null as null | string
     // }
 
-
+if (!link) {
     switch (name) {
         case "facebook":
             return <a href={link}><Tag icon={<FacebookOutlined/>} color="#3b5999">Facebook</Tag></a>
@@ -40,10 +40,12 @@ export const Contact = ({name, link}: propsType) => {
         case "youtube":
             return <a href={link}><Tag icon={<YoutubeOutlined/>} color="#cd201f">Youtube</Tag></a>
         case "mainLink":
-            return <a href={link}><Tag icon={<MailOutlined/>} color="#F8CD59">MainLink</Tag></a>
-        default:
-            return <a href={link}><Tag icon={<SmileOutlined/>} color="#FFB300">Website</Tag></a>
+            return <a href={link}><Tag icon={<MailOutlined/>} color="#39AA44">MainLink</Tag></a>
+        case "website":
+            return <a href={link}><Tag icon={<SmileOutlined/>} color="#FF7500">Website</Tag></a>
     }
+}
+return null
 
     // if (link) {
     //     return <div>

@@ -58,6 +58,8 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
                 ? <ProfileDataForm profile={profile}/>
                 : <div className={style.profileData}>
 
+                    {isOwner && <div className={style.edit} onClick={activateEditMode}>Edit</div>}
+
                     <h1 className={style.nickName}>{profile.fullName}</h1>
 
                     <div className={style.status}>
@@ -82,7 +84,6 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
                             .keys(profile.contacts).map(key => <Contact name={key} link={profile.contacts[key as keyof contactsType]}/>)}
                     </div>
 
-                    {isOwner && <button onClick={activateEditMode}>Edit</button>}
                 </div>}
         </div>
 

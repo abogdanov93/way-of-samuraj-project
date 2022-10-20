@@ -14,7 +14,8 @@
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    color: #475156;
+    color: rgba(29,111,195,1);
+    font-weight: bold;
     text-decoration: none;
 }
 
