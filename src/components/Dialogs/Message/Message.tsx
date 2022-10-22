@@ -21,7 +21,6 @@ type propsType = {
 }
 
 const Message: FC<propsType> = ({message}) => {
-    debugger
     console.log(message)
 
     const [likes, setLikes] = useState(0)

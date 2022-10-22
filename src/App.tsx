@@ -31,8 +31,7 @@ const App: FC = () => {
         return <Preloader/>
     }
 
-    return (
-        <div className={commonStyles.App}>
+    return <div className={commonStyles.App}>
             <Header/>
             <Navbar/>
             <FriendsBlock/>
@@ -57,7 +56,6 @@ const App: FC = () => {
                 </React.Suspense>
             </div>
         </div>
-    )
 }
 
 

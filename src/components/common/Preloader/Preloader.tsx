@@ -1,6 +1,6 @@
 import React, {FC} from "react"
 import style from "./Preloader.module.css"
-import preloader from "../../../images/preloader.svg"
+import preloader from "../../../images/yellowPreloader.svg"
 
 
 let Preloader: FC = () => {
