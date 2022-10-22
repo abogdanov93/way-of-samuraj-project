@@ -16,14 +16,13 @@ const Dialogs: FC = () => {
             id={d.id}
             name={d.name}/>)
 
-
     return (
         <div className={style.dialogs}>
             <div className={`${style.dialog} ${commonStyles.whiteBlock}`}>
                 {dialogElement}
             </div>
             <div className={`${style.message} ${commonStyles.whiteBlock}`}>
-                {dialogs.messages.map(m => <Message message={m.message}/>)}
+                {dialogs.messages.map(m => <Message key={m.id} message={m.message}/>)}
             </div>
             <div className={`${style.newMessage} ${commonStyles.whiteBlock}`}>
                 <DialogMessageForm />

@@ -18,15 +18,17 @@ const dialogsSlice = createSlice({
             {id: 2, name: "notfat100kg"}
         ],
         messages: [
-            {message: "message"},
-            {message: "message"},
-            {message: "lol"}
-            ]
+            {id: 1, message: "message"},
+            {id: 2, message: "message"},
+            {id: 3, message: "lol"}
+        ]
     } as initialStateType,
     reducers: {
         addMessage(state, action) {
-            let newMessage = {message: action.payload}
-            state.messages.push(newMessage)
+            state.messages.push({
+                id: 4,
+                message: action.payload
+            })
         }
     }
 })
