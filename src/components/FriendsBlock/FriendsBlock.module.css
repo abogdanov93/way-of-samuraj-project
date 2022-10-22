@@ -1,9 +1,15 @@
-h3 {
+.friendsBlock {
+    grid-area: friendsBlock;
+    padding: 25px;
+}
+
+.friendsBlock h3 {
     color: darkgrey;
 }
 
 .friends {
-    grid-area: friendsBlock;
+    display: grid;
+    gap: 16px;
 }
 
 .friend {
@@ -13,7 +19,7 @@ h3 {
     align-items: center;
 }
 
-.avatar {
-    max-width: 40px;
+.friend img {
+    width: 40px;
     border-radius: 40px;
 }

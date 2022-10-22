@@ -8,6 +8,7 @@ import authReducer from "./reducers/authReducer"
 import chatReducer from "./reducers/chatReducer"
 import dialogsSlice from "./reducers/dialogsSlice"
 import appSlice from "./reducers/appSlice"
+import friendsSlice from "./reducers/friendsSlice";
 
 // для useAppDispatch и useAppSelectors
 // export type AppStore = ReturnType<typeof setupStore>
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
     dialogs: dialogsSlice,
     chat: chatReducer,
     auth: authReducer,
+    friends: friendsSlice
 })
 
 export const store = configureStore({

@@ -83,7 +83,7 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
 
                     <div className={style.contacts}>
                         {Object
-                            .keys(profile.contacts).map(key => <Contact name={key} link={profile.contacts[key as keyof contactsType]}/>)}
+                            .keys(profile.contacts).map(key => <Contact key={key} name={key} link={profile.contacts[key as keyof contactsType]}/>)}
                     </div>
 
                 </div>}

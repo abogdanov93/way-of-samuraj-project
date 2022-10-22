@@ -29,9 +29,9 @@ export type contactsType = {
 export type usersType = {
     id: number
     name: string
-    status: string | null
+    status?: string | null
     photos: photosType
-    followed: boolean
+    followed?: boolean
 }
 export type dialogType = {
     id: number
