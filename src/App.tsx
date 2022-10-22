@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom"
 import {Provider, useDispatch, useSelector} from "react-redux"
 import 'antd/dist/antd.css'
 import commonStyles from "./App.module.css"
-import {initializeApp} from "./redux/reducers/appReducer"
+import {initializeApp} from "./redux/reducers/appSlice"
 import Navbar from "./components/Navbar/Navbar"
 import FriendsBlock from "./components/FriendsBlock/FriendsBlock"
 import Preloader from "./components/common/Preloader/Preloader"
