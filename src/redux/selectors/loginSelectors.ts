@@ -1,4 +1,4 @@
-import {stateType} from "../reduxStore"
+import {stateType} from "../store"
 
 export const getIsAuth = (state: stateType) => {
     return state.auth.isAuth

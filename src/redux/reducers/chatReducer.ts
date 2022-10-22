@@ -1,5 +1,5 @@
-import {baseActionType, baseThunkType} from "./reduxStore"
-import {chatAPI, chatMessageAPIType, statusType} from "../api/chatAPI"
+import {baseActionType, baseThunkType} from "../store"
+import {chatAPI, chatMessageAPIType, statusType} from "../../api/chatAPI"
 import {Dispatch} from "redux"
 import {v1} from "uuid"
 

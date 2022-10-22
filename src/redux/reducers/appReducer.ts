@@ -1,5 +1,5 @@
 import {getAuthUserData} from "./authReducer"
-import {baseActionType} from "./reduxStore"
+import {baseActionType} from "../store"
 
 type initialStateType = typeof initialState
 type actionType = baseActionType<typeof actions>

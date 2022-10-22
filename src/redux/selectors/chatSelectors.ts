@@ -1,4 +1,4 @@
-import {stateType} from "../reduxStore"
+import {stateType} from "../store"
 
 export const getChatMessages = (state: stateType) => {
     return state.chat.messages

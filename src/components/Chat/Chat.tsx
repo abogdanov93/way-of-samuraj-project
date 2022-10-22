@@ -3,7 +3,7 @@ import commonStyles from "../../App.module.css"
 import {ChatMessages} from "./ChatMessages/ChatMessages"
 import {ChatMessageForm} from "./ChatMessageForm/ChatMessageForm"
 import {useDispatch, useSelector} from "react-redux";
-import {startMessagesListening, stopMessagesListening} from "../../redux/chatReducer";
+import {startMessagesListening, stopMessagesListening} from "../../redux/reducers/chatReducer";
 import {AnyAction} from "redux";
 import {getStatus} from "../../redux/selectors/chatSelectors";
 

@@ -1,6 +1,6 @@
 import React, {FC} from "react"
 import {Formik} from 'formik'
-import {filterType} from "../../../redux/usersReducer"
+import {filterType} from "../../../redux/reducers/usersReducer"
 import {Field} from "formik"
 import {useSelector} from "react-redux"
 import {getUsersFilter} from "../../../redux/selectors/usersSelectors"

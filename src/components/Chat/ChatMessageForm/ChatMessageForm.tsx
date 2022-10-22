@@ -1,6 +1,6 @@
 import React, {FC} from "react"
 import {useSelector} from "react-redux"
-import {sendChatMessage} from "../../../redux/chatReducer"
+import {sendChatMessage} from "../../../redux/reducers/chatReducer"
 import {getStatus} from "../../../redux/selectors/chatSelectors"
 import {MyMessageForm} from "../../common/MyMessageForm/MyMessageForm"
 

@@ -1,8 +1,16 @@
-import {baseActionType} from "./reduxStore"
-import {dialogType, messagesType} from "../types/types"
+import {baseActionType} from "../store"
+import {dialogType, messagesType} from "../../types/types"
 
-export type initialStateType = typeof initialState
+export type initialStateType = {
+    dialog: Array<dialogType>
+    messages: Array<messagesType>
+}
+// export type initialStateType = typeof initialState
 type actionsType = baseActionType<typeof actions>
+
+
+
+
 
 let initialState = {
     dialog: [

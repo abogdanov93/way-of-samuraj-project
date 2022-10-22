@@ -1,6 +1,6 @@
 import React, {FC} from "react"
 import {MyMessageForm} from "../../common/MyMessageForm/MyMessageForm"
-import {actions} from "../../../redux/dialogsReducer"
+import {actions} from "../../../redux/reducers/dialogsReducer"
 
 
 export const DialogMessageForm: FC = () => {

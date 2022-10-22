@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FC, useState} from 'react'
 import style from "./MyMessageForm.module.css"
 import {useDispatch} from "react-redux"
-import {actions} from "../../../redux/dialogsReducer"
+import {actions} from "../../../redux/reducers/dialogsReducer"
 import {PrimaryButton} from "../PrimaryButton/PrimaryButton"
 
 type propsType = {

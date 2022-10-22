@@ -1,4 +1,4 @@
-import usersReducer, {actions, initialStateType} from "../usersReducer"
+import usersReducer, {actions, initialStateType} from "../reducers/usersReducer"
 
 let testState: initialStateType // инициализировать не сразу, потому что тест может поменять стейт
 beforeEach(() => { // инициализация перед каждым тестом

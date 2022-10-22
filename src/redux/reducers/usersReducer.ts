@@ -1,9 +1,9 @@
-import {updateObjectInArray} from "../utils/objectHelpers"
+import {updateObjectInArray} from "../../utils/objectHelpers"
 import {Dispatch} from "redux"
-import {baseActionType, baseThunkType} from "./reduxStore"
-import {usersAPI} from "../api/usersAPI"
-import {responseType, resultCodeEnum} from "../api/api"
-import {usersType} from "../types/types"
+import {baseActionType, baseThunkType} from "../store"
+import {usersAPI} from "../../api/usersAPI"
+import {responseType, resultCodeEnum} from "../../api/api"
+import {usersType} from "../../types/types"
 
 export type initialStateType = typeof initialState
 export type filterType = typeof initialState.filter

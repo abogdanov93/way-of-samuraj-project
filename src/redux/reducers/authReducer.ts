@@ -1,7 +1,7 @@
-import {resultCodeEnum, resultCodeForCaptchaEnum} from "../api/api"
-import {baseActionType, baseThunkType} from "./reduxStore"
-import {authAPI} from "../api/authAPI"
-import {securityAPI} from "../api/securityAPI"
+import {resultCodeEnum, resultCodeForCaptchaEnum} from "../../api/api"
+import {baseActionType, baseThunkType} from "../store"
+import {authAPI} from "../../api/authAPI"
+import {securityAPI} from "../../api/securityAPI"
 
 type initialStateType = typeof initialState
 type actionsType = baseActionType<typeof actions>

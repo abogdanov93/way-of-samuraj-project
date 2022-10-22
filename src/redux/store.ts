@@ -2,12 +2,12 @@ import React from "react"
 import {Action} from "redux"
 import {configureStore, combineReducers} from "@reduxjs/toolkit"
 import thunkMiddleware, {ThunkAction} from "redux-thunk"
-import profileReducer from "./profileReducer"
-import dialogsReducer from "./dialogsReducer"
-import usersReducer from "./usersReducer"
-import authReducer from "./authReducer"
-import appReducer from "./appReducer"
-import chatReducer from "./chatReducer"
+import profileReducer from "./reducers/profileReducer"
+import dialogsReducer from "./reducers/dialogsReducer"
+import usersReducer from "./reducers/usersReducer"
+import authReducer from "./reducers/authReducer"
+import appReducer from "./reducers/appReducer"
+import chatReducer from "./reducers/chatReducer"
 
 // для useAppDispatch и useAppSelectors
 // export type AppStore = ReturnType<typeof setupStore>

@@ -3,7 +3,7 @@ import style from "./LoginForm.module.css"
 import {useDispatch, useSelector} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {getCaptchaURL} from "../../../redux/selectors/loginSelectors"
-import {logInThunk} from "../../../redux/authReducer"
+import {logInThunk} from "../../../redux/reducers/authReducer"
 import {AnyAction} from "redux";
 
 export type Inputs = {

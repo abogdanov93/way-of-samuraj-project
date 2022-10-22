@@ -1,4 +1,4 @@
-import profileReducer, {actions} from "../profileReducer"
+import profileReducer, {actions} from "../reducers/profileReducer"
 
 // 1. готовим исходные данные - state and action
 let state = {

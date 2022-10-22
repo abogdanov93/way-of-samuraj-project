@@ -3,7 +3,7 @@ import style from "./ProfileDataForm.module.css"
 import {profileType} from "../../../types/types"
 import {useDispatch} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
-import {actions, saveProfileData} from "../../../redux/profileReducer"
+import {actions, saveProfileData} from "../../../redux/reducers/profileReducer"
 import {AnyAction} from "redux"
 import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton"
 import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton";

@@ -1,11 +1,42 @@
-import {resultCodeEnum} from "../api/api"
-import {photosType, postsType, profileType} from "../types/types"
-import {baseActionType, baseThunkType} from "./reduxStore"
-import {profileAPI} from "../api/profileAPI"
+import {resultCodeEnum} from "../../api/api"
+import {photosType, postsType, profileType} from "../../types/types"
+import {baseActionType, baseThunkType} from "../store"
+import {profileAPI} from "../../api/profileAPI"
+// import {createSlice} from "@reduxjs/toolkit"
 
-type initialStateType = typeof initialState
+type initialStateType = {
+    posts: Array<postsType>
+    profile: profileType | null
+    isEditMode: boolean
+    status: string
+}
+// type initialStateType = typeof initialState
 type actionsType = baseActionType<typeof actions>
 type thunkType = baseThunkType<actionsType>
+
+
+// const profileSlice = createSlice({
+//     name: "profile",
+//     initialState: {
+//         posts: [
+//             {id: 1, post: "Are you going to play fortnite?"},
+//             {id: 2, post: "Hi there!"}
+//         ],
+//         profile: null,
+//         isEditMode: false,
+//         status: ""
+//     } as initialStateType,
+//     reducers: {
+//         addPost(state, action){
+//             state.posts.push(action.payload.newPost)
+//         },
+//         setEditMode(state, action){
+//             state.isEditMode = action.payload.isEditMode
+//         }
+//     }
+// })
+
+
 
 let initialState = {
     posts: [

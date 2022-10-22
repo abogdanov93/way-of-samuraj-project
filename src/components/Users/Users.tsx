@@ -4,7 +4,7 @@ import commonStyles from "./../../App.module.css"
 import Pagination from "../common/Pagination/Pagination"
 import User from "./User/User"
 import UsersSearchForm from "./UsersSearchForm/UsersSearchForm"
-import {filterType, requestUsers, followUser, unfollowUser} from "../../redux/usersReducer"
+import {filterType, requestUsers, followUser, unfollowUser} from "../../redux/reducers/usersReducer"
 import {useDispatch, useSelector} from "react-redux"
 import {
     getCurrentPageNumber,
