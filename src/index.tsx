@@ -2,10 +2,10 @@ import React from 'react'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 import ReactDOM from "react-dom/client"
-import MainAppComponent from "./App"
+import AppRouter from "./App"
 
 // @ts-ignore
 const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(<MainAppComponent/>)
+root.render(<AppRouter/>)
 
 reportWebVitals()

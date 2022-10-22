@@ -1,9 +1,9 @@
 import React, {FC, useEffect} from "react"
 import {BrowserRouter, Route, Routes} from "react-router-dom"
-import {connect, Provider, useDispatch, useSelector} from "react-redux"
+import {Provider, useDispatch, useSelector} from "react-redux"
 import 'antd/dist/antd.css'
 import commonStyles from "./App.module.css"
-import store, {stateType} from "./redux/reduxStore"
+import store from "./redux/reduxStore"
 import {initializeApp} from "./redux/appReducer"
 import Navbar from "./components/Navbar/Navbar"
 import FriendsBlock from "./components/FriendsBlock/FriendsBlock"
@@ -61,7 +61,7 @@ const App: FC = () => {
 }
 
 
-const MainAppComponent: FC = () => {
+const AppRouter: FC = () => {
     return <BrowserRouter>
         <Provider store={store}>
             <App/>
@@ -69,4 +69,4 @@ const MainAppComponent: FC = () => {
     </BrowserRouter>
 }
 
-export default MainAppComponent
+export default AppRouter
