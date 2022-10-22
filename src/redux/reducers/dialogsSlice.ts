@@ -25,9 +25,12 @@ const dialogsSlice = createSlice({
                 id: 4,
                 message: action.payload
             })
+        },
+        deleteMessage(state, action) {
+            state.messages = state.messages.filter(m => m.id !== action.payload)
         }
     }
 })
 
 export default dialogsSlice.reducer
-export const {addMessage} = dialogsSlice.actions
+export const {addMessage, deleteMessage} = dialogsSlice.actions

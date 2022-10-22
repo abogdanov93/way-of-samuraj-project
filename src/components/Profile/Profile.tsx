@@ -2,13 +2,13 @@ import React, {FC, useEffect} from "react"
 import style from "./Profile.module.css"
 import commonStyles from "./../../App.module.css"
 import ProfileInfo from "./ProfileInfo/ProfileInfo"
-import Posts from "./Posts/Posts"
 import {actions, getProfileStatus, getUserProfile} from "../../redux/reducers/profileReducer"
 import {useDispatch, useSelector} from "react-redux"
 import {getPosts, getUserId} from "../../redux/selectors/profileSelectors"
 import {useParams} from "react-router-dom"
 import {AnyAction} from "redux"
-import {NewPostForm} from "./NewPostForm/NewPostForm"
+import MyMessage from "../common/MyMessage/MyMessage"
+import {MyMessageForm} from "../common/MyMessageForm/MyMessageForm"
 
 const Profile: FC = () => {
     const posts = useSelector(getPosts)
@@ -38,25 +38,18 @@ const Profile: FC = () => {
     }, [params.userId])
 
 
-    let postElement = posts
-        .map(p => <Posts
-            key={p.id}
-            id={p.id}
-            post={p.post}
-            likeCounter={p.likeCounter}
-            deletePost={deletePost}
-        />)
-
     return <div className={style.profile}>
                 <div className={commonStyles.whiteBlock}>
                     <ProfileInfo isOwner={isOwner}/>
                 </div>
 
                 <div className={commonStyles.whiteBlock}>
-                    <NewPostForm/>
+                    <MyMessageForm placeholder="Write something..." sendMessage={actions.addPost}/>
                 </div>
 
-                <div className={`${commonStyles.whiteBlock} ${style.posts}`}>{postElement}</div>
+                <div className={`${commonStyles.whiteBlock} ${style.posts}`}>{
+                    posts.map(p => <MyMessage key={p.id} id={p.id} text={p.post} deleteText={deletePost}/>)
+                }</div>
             </div>
 }
 

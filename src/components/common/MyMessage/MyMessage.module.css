@@ -1,0 +1,15 @@
+.message {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+    color: darkgrey;
+    font-size: small;
+}
+
+.action {
+    cursor: pointer;
+}
