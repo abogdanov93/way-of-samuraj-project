@@ -8,18 +8,13 @@ import {DialogMessageForm} from "./DialogMessageForm/DialogMessageForm"
 import Message from "./Message/Message"
 
 const Dialogs: FC = () => {
-    const dialogs = useSelector(getDialogs)
 
-    const dialogElement = dialogs.dialog
-        .map(d => <Dialog
-            key={d.id}
-            id={d.id}
-            name={d.name}/>)
+    const dialogs = useSelector(getDialogs)
 
     return (
         <div className={style.dialogs}>
             <div className={`${style.dialog} ${commonStyles.whiteBlock}`}>
-                {dialogElement}
+                {dialogs.dialog.map(d => <Dialog key={d.id} id={d.id} name={d.name}/>)}
             </div>
             <div className={`${style.message} ${commonStyles.whiteBlock}`}>
                 {dialogs.messages.map(m => <Message key={m.id} message={m.message}/>)}
