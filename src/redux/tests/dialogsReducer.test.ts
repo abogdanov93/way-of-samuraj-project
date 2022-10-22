@@ -1,4 +1,4 @@
-import dialogsReducer, {actions} from "../reducers/dialogsReducer"
+import dialogsReducer, {addMessage} from "../reducers/dialogsSlice"
 
 let state = {
     dialog: [
@@ -13,14 +13,14 @@ let state = {
 }
 
 test("The length of messages will be 4", () => {
-    let action = actions.addMessage("Test")
+    let action = addMessage("Test")
     let newState = dialogsReducer(state, action)
 
     expect(newState.messages.length).toBe(4)
 })
 
 test("The new message will be correct", () => {
-    let action = actions.addMessage("Test")
+    let action = addMessage("Test")
     let newState = dialogsReducer(state, action)
 
     expect(newState.messages[3].message).toBe("Test")

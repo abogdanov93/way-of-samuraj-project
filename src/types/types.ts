@@ -38,6 +38,6 @@ export type dialogType = {
     name: string
 }
 export type messagesType = {
-    id: number,
+    // id: number,
     message: string
 }

@@ -3,11 +3,12 @@ import {Action} from "redux"
 import {configureStore, combineReducers} from "@reduxjs/toolkit"
 import thunkMiddleware, {ThunkAction} from "redux-thunk"
 import profileReducer from "./reducers/profileReducer"
-import dialogsReducer from "./reducers/dialogsReducer"
+import dialogsReducer from "./reducers/dialogsSlice"
 import usersReducer from "./reducers/usersReducer"
 import authReducer from "./reducers/authReducer"
 import appReducer from "./reducers/appReducer"
 import chatReducer from "./reducers/chatReducer"
+import dialogsSlice from "./reducers/dialogsSlice";
 
 // для useAppDispatch и useAppSelectors
 // export type AppStore = ReturnType<typeof setupStore>
@@ -22,7 +23,7 @@ const rootReducer = combineReducers({
     app: appReducer,
     profilePage: profileReducer,
     usersPage: usersReducer,
-    dialogs: dialogsReducer,
+    dialogs: dialogsSlice,
     chat: chatReducer,
     auth: authReducer,
 })

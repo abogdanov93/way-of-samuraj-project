@@ -15,13 +15,14 @@
 import { DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined } from '@ant-design/icons';
 import { Avatar, Comment, Tooltip } from 'antd';
 import React, {createElement, FC, ReactNode, useState} from 'react';
-import {messagesType} from "../../../types/types";
 
 type propsType = {
     message: ReactNode
 }
 
 const Message: FC<propsType> = ({message}) => {
+    debugger
+    console.log(message)
 
     const [likes, setLikes] = useState(0)
     const [dislikes, setDislikes] = useState(0)
