@@ -2,7 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px 50px 20px 50px;
+    margin: 10px 50px 10px 50px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E8E8E8;
 }
 
 .user{
@@ -21,12 +23,5 @@
     grid-area: name;
     color: dimgray;
     text-decoration: none;
-}
-
-.userPage button {
-    background-image: none;
-    background-color: transparent;
-    border: solid 1px #FFA000;
-    color: #FFA000;
 }
 

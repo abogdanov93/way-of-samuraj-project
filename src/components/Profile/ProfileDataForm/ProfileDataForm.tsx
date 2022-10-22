@@ -5,7 +5,8 @@ import {useDispatch} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {actions, saveProfileData} from "../../../redux/profileReducer"
 import {AnyAction} from "redux"
-import {MyButton} from "../../common/MyButton/MyButton"
+import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton"
+import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton";
 
 type Inputs = profileType
 
@@ -90,13 +91,13 @@ export const ProfileDataForm: FC = () => {
 
         <div>
             <input {...register("contacts.mainLink", {required: true})}
-                placeholder="Maim link"/>
+                placeholder="Main link"/>
             {errors.contacts?.mainLink && <label>This field is required</label>}
         </div>
 
         <div className={style.buttons}>
-            <MyButton type="submit">Edit</MyButton>
-            <MyButton onClick={deactivateEditMode}>Reset</MyButton>
+            <PrimaryButton type="submit">Edit</PrimaryButton>
+            <SecondaryButton onClick={deactivateEditMode}>Reset</SecondaryButton>
         </div>
 
     </form>

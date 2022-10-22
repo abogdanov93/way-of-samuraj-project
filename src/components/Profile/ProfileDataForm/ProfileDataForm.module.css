@@ -5,9 +5,12 @@
 
 .profileDataForm input {
     width: 90%;
+    height: 30px;
     border-radius: 8px;
     border-color: transparent;
     background: #F9F9F9;
+    padding-left: 8px;
+    font-size: small;
 }
 
 .profileDataForm label {

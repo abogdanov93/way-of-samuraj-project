@@ -5,7 +5,7 @@ import {Field} from "formik"
 import {useSelector} from "react-redux"
 import {getUsersFilter} from "../../../redux/selectors/usersSelectors"
 import style from "./UserSearchForm.module.css"
-import {MyButton} from "../../common/MyButton/MyButton";
+import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton";
 
 type propsType = {
     onFilterChange: (filter: filterType) => void
@@ -49,7 +49,7 @@ return <div>
                     <option value="false">Unfollowed users</option>
                 </Field>
 
-                <MyButton type="submit" disabled={isSubmitting}>Find</MyButton>
+                <PrimaryButton type="submit" disabled={isSubmitting}>Find</PrimaryButton>
             </form>
         )}
     </Formik>
