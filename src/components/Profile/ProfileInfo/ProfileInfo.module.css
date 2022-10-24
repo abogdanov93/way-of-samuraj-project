@@ -46,11 +46,11 @@
 
 .edit {
     grid-area: edit;
-    font-size: medium;
-    text-decoration: underline;
+    font-size: 14px;
     cursor: pointer;
     width: 30px;
     align-self: center;
+    color: darkgrey;
 }
 
 .edit:hover {

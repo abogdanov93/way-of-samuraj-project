@@ -35,7 +35,8 @@ export const ChatMessages: FC = () => {
 
 const ChatMessage: FC<chatMessageAPIType> = React.memo(({photo, userName, message, userId}) => {
         return <div className={style.chatMessage}>
-            <NavLink to={"/profile/" + userId}><img src={photo}/>
+            <NavLink to={"/profile/" + userId}>
+                <img src={photo}/>
                 <div>{userName}</div>
             </NavLink>
             <div>{message}</div>

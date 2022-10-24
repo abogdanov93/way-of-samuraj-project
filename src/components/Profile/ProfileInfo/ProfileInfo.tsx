@@ -80,7 +80,6 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
                         {profile.aboutMe}
                     </div>
 
-
                     <div className={style.contacts}>
                         {Object
                             .keys(profile.contacts).map(key => <Contact key={key} name={key} link={profile.contacts[key as keyof contactsType]}/>)}

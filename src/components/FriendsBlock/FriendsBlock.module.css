@@ -1,15 +1,28 @@
 .friendsBlock {
     grid-area: friendsBlock;
-    padding: 25px;
 }
 
-.friendsBlock h3 {
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.title h3 {
+    font-size: large;
+    font-weight: bold;
     color: darkgrey;
+}
+
+.title h4 {
+    color: darkgrey;
+    cursor: pointer;
 }
 
 .friends {
     display: grid;
-    gap: 16px;
+    gap: 10px;
 }
 
 .friend {

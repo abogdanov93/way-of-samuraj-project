@@ -45,8 +45,8 @@ return <div>
                        name="friend"
                        as="select">
                     <option value="null">All users</option>
-                    <option value="true">Followed users</option>
-                    <option value="false">Unfollowed users</option>
+                    <option value="true">Followed</option>
+                    <option value="false">Unfollowed</option>
                 </Field>
 
                 <PrimaryButton type="submit" disabled={isSubmitting}>Find</PrimaryButton>
