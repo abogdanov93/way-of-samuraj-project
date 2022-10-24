@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FC} from "react"
 import style from "./ProfileInfo.module.css"
 import Preloader from "../../common/Preloader/Preloader"
-import largeAvatar from "./../../../images/userAvatar.jpeg"
+import largeAvatar from "../../../uploads/images/userAvatar.jpeg"
 import ProfileStatus from "../ProfileStatus/ProfileStatus"
 import {actions, saveProfilePhoto, updateProfileStatus} from "../../../redux/reducers/profileReducer"
 import {useDispatch, useSelector} from "react-redux"
@@ -11,12 +11,16 @@ import {ProfileDataForm} from "../ProfileDataForm/ProfileDataForm"
 import {Badge} from "antd"
 import {contactsType} from "../../../types/types"
 import {Contact} from "./Contact/Contact"
+import {stateType} from "../../../redux/store"
 
 
 const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
-    const profile = useSelector(getProfile)
-    const status = useSelector(getStatus)
-    const isEditMode = useSelector(getIsEdithMode)
+
+    // const profile = useSelector(getProfile)
+    // const status = useSelector(getStatus)
+    // const isEditMode = useSelector(getIsEdithMode)
+    const {profile, status, isEditMode} = useSelector((state: stateType) => state.profilePage)
+
     const dispatch = useDispatch()
     const updateStatus = (status: string) => {
         dispatch(updateProfileStatus(status) as unknown as AnyAction)

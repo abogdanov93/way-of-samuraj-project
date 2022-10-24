@@ -3,6 +3,10 @@
     margin-bottom: 10px;
 }
 
+.message a {
+    font-size: small;
+}
+
 .actions {
     display: flex;
     gap: 5px;

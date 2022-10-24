@@ -1,18 +1,4 @@
 .chat {
-}
-
-.chatMessages {
-    height: 400px;
-    overflow: auto;
-}
-
-.chatMessage {
     display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-}
-
-.chatMessage img {
-    width: 40px;
-    border-radius: 50%;
+    gap: 20px;
 }

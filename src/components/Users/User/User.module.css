@@ -10,7 +10,7 @@
 .user{
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 20px;
 }
 
 .avatar {
@@ -21,7 +21,7 @@
 
 .name {
     grid-area: name;
-    color: dimgray;
+    font-size: small;
     text-decoration: none;
 }
 

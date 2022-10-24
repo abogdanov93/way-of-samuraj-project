@@ -10,7 +10,7 @@ import {
     TwitterOutlined,
     YoutubeOutlined
 } from "@ant-design/icons"
-import vk from "../../../../images/vk-icon.svg"
+import vk from "../../../../uploads/images/vk-icon.svg"
 
 type propsType = {
     name: string

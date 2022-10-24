@@ -1,9 +1,9 @@
 import React, {FC, useEffect, useRef, useState} from "react"
-import style from "../Chat.module.css"
 import {NavLink} from "react-router-dom"
 import {useSelector} from "react-redux"
 import {getChatMessages} from "../../../redux/selectors/chatSelectors"
 import {chatMessageAPIType} from "../../../api/chatAPI"
+import style from "./ChatMessages.module.css"
 
 export const ChatMessages: FC = () => {
 
@@ -39,7 +39,7 @@ const ChatMessage: FC<chatMessageAPIType> = React.memo(({photo, userName, messag
                 <img src={photo}/>
                 <div>{userName}</div>
             </NavLink>
-            <div>{message}</div>
+            <div className={style.chatMessage}>{message}</div>
         </div>
     }
 )

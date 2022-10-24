@@ -1,8 +1,8 @@
 .profileInfo {
-    color: darkgrey;
+    color: #475156;
+    height: 310px;
     display: grid;
     grid-template-columns: auto 1fr;
-    /*grid-template-rows: auto auto auto auto 1fr;*/
     grid-gap: 0 25px;
     grid-template-areas:
             "avatar data";
@@ -13,6 +13,7 @@
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-rows: auto auto auto auto 1fr;
+    gap: 5px;
     align-items: start;
     grid-template-areas:
             "nickName edit"
@@ -38,19 +39,19 @@
 
 .nickName {
     grid-area: nickName;
-    color: dimgray;
+    color: #475156;
     font-weight: bold;
+    font-size: 24px;
     margin-bottom: 0;
     align-self: center;
 }
 
 .edit {
     grid-area: edit;
-    font-size: 14px;
     cursor: pointer;
     width: 30px;
     align-self: center;
-    color: darkgrey;
+    color: rgba(0, 0, 0, 0.45);
 }
 
 .edit:hover {
@@ -60,12 +61,11 @@
 
 .status {
     grid-area: status;
-    margin-top: -8px;
     margin-bottom: 8px;
     align-self: center;
-    font-size: small;
+    font-size: 12px;
     font-weight: lighter;
-    color: dimgray;
+    color: rgba(0, 0, 0, 0.45);;
 }
 
 .jobDescription {
@@ -77,14 +77,11 @@
 }
 
 .profileInfo h4 {
-    color: dimgray;
-    font-weight: bold;
+    color: rgba(0, 0, 0, 0.45);
     margin-bottom: 0;
 }
 
 .contacts {
-    /*display: grid;*/
-    /*align-items: start;*/
     margin: 16px 0 16px 0;
 }
 

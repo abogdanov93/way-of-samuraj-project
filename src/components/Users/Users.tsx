@@ -1,7 +1,7 @@
 import React, {FC, useEffect} from "react"
 import style from "./Users.module.css"
 import commonStyles from "./../../App.module.css"
-import Pagination from "../common/Pagination/Pagination"
+import MyPagination from "../common/Pagination/MyPagination"
 import User from "./User/User"
 import UsersSearchForm from "./UsersSearchForm/UsersSearchForm"
 import {filterType, requestUsers, followUser, unfollowUser} from "../../redux/reducers/usersReducer"
@@ -30,6 +30,7 @@ const Users: FC = () => {
     const filter = useSelector(getUsersFilter)
 
     const dispatch = useDispatch()
+
     const onPageChange = (pageNumber: number) => {
         dispatch(requestUsers(pageNumber, pageSize, filter) as unknown as AnyAction)
     }
@@ -86,10 +87,10 @@ const Users: FC = () => {
             )}
         </div>
 
-        <Pagination totalItemsCount={totalUsersCount}
-                    pageSize={pageSize}
-                    currentPageNumber={currentPageNumber}
-                    onPageChange={onPageChange}
+        <MyPagination totalItemsCount={totalUsersCount}
+                      pageSize={pageSize}
+                      currentPageNumber={currentPageNumber}
+                      onPageChange={onPageChange}
         />
 
     </div>

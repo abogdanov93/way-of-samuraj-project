@@ -1,5 +1,7 @@
 .friendsBlock {
     grid-area: friendsBlock;
+    height: 310px;
+    box-sizing: unset;
 }
 
 .title {
@@ -10,14 +12,17 @@
 }
 
 .title h3 {
-    font-size: large;
     font-weight: bold;
-    color: darkgrey;
+    color: #475156;
 }
 
 .title h4 {
-    color: darkgrey;
     cursor: pointer;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.title h4:hover {
+    color: rgba(29,111,195,1);
 }
 
 .friends {
@@ -28,8 +33,10 @@
 .friend {
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-gap: 16px;
+    grid-gap: 20px;
     align-items: center;
+    font-size: small;
+
 }
 
 .friend img {

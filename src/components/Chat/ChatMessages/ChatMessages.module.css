@@ -1,0 +1,31 @@
+.chatMessages {
+    height: 400px;
+    overflow: auto;
+    padding: 20px;
+    border: solid 1px gainsboro;
+    border-radius: 5px;
+}
+
+.chatMessage {
+    padding: 0 0 10px 30px;
+    display: grid;
+    gap: 0 40px;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+}
+
+.chatMessage a {
+    color: rgba(0, 0, 0, 0.45);
+    font-size: small;
+}
+
+.message{
+    font-size: 14px;
+    color: #475156;
+}
+
+.chatMessage img {
+    width: 40px;
+    border-radius: 50%;
+}

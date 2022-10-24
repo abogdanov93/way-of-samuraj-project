@@ -4,9 +4,11 @@ export enum resultCodeEnum {
     success = 0,
     error = 1
 }
+
 export enum resultCodeForCaptchaEnum {
     captchaIsRequired = 10
 }
+
 export type responseType<D = {}, RC = resultCodeEnum> = { // по умолчанию data пустой объект, result code без капчи
     data: D
     resultCode: RC

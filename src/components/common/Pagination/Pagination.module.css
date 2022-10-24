@@ -1,13 +1,11 @@
 .paginationPage {
     display: flex;
-    justify-content: space-around;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
-.selectedPage {
-    font-weight: bold;
-}
-
-.pageNumbers {
-    display: grid;
-    grid-template-columns: repeat(20, auto);
+.paginationPage button {
+    color: #475156;
+    font-size: small;
 }

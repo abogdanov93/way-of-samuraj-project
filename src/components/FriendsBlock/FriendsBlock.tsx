@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux"
 import {requestFriends} from "../../redux/reducers/friendsSlice"
 import {AnyAction} from "redux"
 import {getFriends} from "../../redux/selectors/friendsSelectors"
-import userAvatar from "../../images/userAvatar.jpeg"
+import userAvatar from "../../uploads/images/userAvatar.jpeg"
 import {Navigate, NavLink, useNavigate} from "react-router-dom"
 import {requestUsers} from "../../redux/reducers/usersReducer";
 
