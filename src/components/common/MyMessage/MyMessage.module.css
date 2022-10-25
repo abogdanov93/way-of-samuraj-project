@@ -7,6 +7,11 @@
     font-size: small;
 }
 
+.message a:hover {
+    color: rgba(29,111,195,1);
+    font-weight: bold;
+}
+
 .actions {
     display: flex;
     gap: 5px;

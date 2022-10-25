@@ -7,6 +7,7 @@ import {actions, saveProfileData} from "../../../redux/reducers/profileReducer"
 import {AnyAction} from "redux"
 import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton"
 import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton";
+import {Switch} from "antd";
 
 type Inputs = profileType
 
@@ -23,6 +24,9 @@ export const ProfileDataForm: FC = () => {
 
 
     return <form onSubmit={handleSubmit(onSubmit)} className={style.profileDataForm}>
+        <h3>
+            Edit profile information
+        </h3>
         <div>
             <input {...register("fullName", {required: true})}
             placeholder="Your name"/>
@@ -32,6 +36,8 @@ export const ProfileDataForm: FC = () => {
         <div>
             <input {...register("lookingForAJob", {required: true})}
             placeholder="Are you looking for a job?"/>
+
+            {/*<Switch size="small" defaultChecked {...register("lookingForAJob")}/>*/}
             {errors.lookingForAJob && <label>This field is required</label>}
         </div>
 

@@ -23,6 +23,8 @@
 
 .title h4:hover {
     color: rgba(29,111,195,1);
+    font-weight: bold;
+
 }
 
 .friends {
@@ -36,7 +38,11 @@
     grid-gap: 20px;
     align-items: center;
     font-size: small;
+}
 
+.friend h4:hover {
+    color: rgba(29,111,195,1);
+    font-weight: bold;
 }
 
 .friend img {

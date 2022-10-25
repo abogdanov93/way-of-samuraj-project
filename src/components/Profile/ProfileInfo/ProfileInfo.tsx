@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC} from "react"
+import React, {ChangeEvent, FC, useRef, useState} from "react"
 import style from "./ProfileInfo.module.css"
 import Preloader from "../../common/Preloader/Preloader"
 import largeAvatar from "../../../uploads/images/userAvatar.jpeg"
@@ -8,10 +8,13 @@ import {useDispatch, useSelector} from "react-redux"
 import {getIsEdithMode, getProfile, getStatus} from "../../../redux/selectors/profileSelectors"
 import {AnyAction} from "redux"
 import {ProfileDataForm} from "../ProfileDataForm/ProfileDataForm"
-import {Badge} from "antd"
+import {Badge, Button, Upload} from "antd"
 import {contactsType} from "../../../types/types"
 import {Contact} from "./Contact/Contact"
 import {stateType} from "../../../redux/store"
+import {CameraOutlined, UploadOutlined} from "@ant-design/icons";
+import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton";
+import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton";
 
 
 const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
@@ -20,7 +23,7 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
     // const status = useSelector(getStatus)
     // const isEditMode = useSelector(getIsEdithMode)
     const {profile, status, isEditMode} = useSelector((state: stateType) => state.profilePage)
-
+    const inputRef = useRef(null)
     const dispatch = useDispatch()
     const updateStatus = (status: string) => {
         dispatch(updateProfileStatus(status) as unknown as AnyAction)
@@ -37,8 +40,13 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
         return <Preloader/>
     }
 
+    const handleSelect = () => {
+        // @ts-ignore
+        inputRef?.current?.click()
+    }
+
     const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
-        e.target.files?.length && savePhoto(e.target.files[0]) // ? --> если files есть, берет длину 11 - 1:30
+        e.target.files?.length && savePhoto(e.target.files[0])
     }
 
     const activateEditMode = () => setEditMode(true)
@@ -47,6 +55,7 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
         <div className={style.profileInfo}>
 
             <div className={style.avatar}>
+
                 {profile.lookingForAJob
                     ? <Badge.Ribbon text="Open to work" color="green">
                         <img src={profile.photos.large || largeAvatar}/>
@@ -55,11 +64,30 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
                         <img src={profile.photos.large || largeAvatar}/>
                     </Badge.Ribbon>
                 }
-                {isOwner && <input type={"file"} onChange={onPhotoSelected}/>}
+
+                {isOwner &&
+                    <div>
+                        <input
+                            ref={inputRef}
+                            type="file"
+                            hidden
+                            onChange={onPhotoSelected}
+                        />
+                        <Button className={style.avatarButton}
+                            // size="large"
+                                shape="circle"
+                                onClick={handleSelect}
+                                icon={<CameraOutlined/>}/>
+                    </div>
+                }
             </div>
 
             {isEditMode
-                ? <ProfileDataForm />
+                ? <div className={style.modal}>
+                    <div className={style.modalWindow} >
+                        <ProfileDataForm/>
+                    </div>
+                </div>
                 : <div className={style.profileData}>
 
                     <div className={style.edit}>
@@ -86,7 +114,8 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
 
                     <div className={style.contacts}>
                         {Object
-                            .keys(profile.contacts).map(key => <Contact key={key} name={key} link={profile.contacts[key as keyof contactsType]}/>)}
+                            .keys(profile.contacts).map(key => <Contact key={key} name={key}
+                                                                        link={profile.contacts[key as keyof contactsType]}/>)}
                     </div>
 
                 </div>}
