@@ -1,5 +1,4 @@
 import React, {ChangeEvent, FC, useEffect, useState} from "react"
-import style from "./ProfileStatus.module.css"
 
 type propsType = {
     status: string
@@ -10,6 +9,7 @@ const ProfileStatus: FC<propsType> = ({status, updateStatus}) => {
 
     const [editMode, setEditMode] = useState(false)
     const [localStatus, setLocalStatus] = useState(status)
+
     useEffect(() => {
         setLocalStatus(status)
     }, [status])

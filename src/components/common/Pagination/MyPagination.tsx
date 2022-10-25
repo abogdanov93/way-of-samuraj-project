@@ -11,7 +11,9 @@ type propsType = {
 }
 
 const MyPagination: FC<propsType> = ({totalItemsCount, pageSize, onPageChange, currentPageNumber}) => {
+
     let pagesCount = Math.ceil(totalItemsCount / pageSize)
+
     // let pages = []
     // for (let i = 1; i <= pagesCount; i++) {
     //     pages.push(i)

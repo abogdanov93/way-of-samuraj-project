@@ -5,29 +5,16 @@ import MyPagination from "../common/Pagination/MyPagination"
 import User from "./User/User"
 import UsersSearchForm from "./UsersSearchForm/UsersSearchForm"
 import {filterType, requestUsers, followUser, unfollowUser} from "../../redux/reducers/usersReducer"
-import {useDispatch, useSelector} from "react-redux"
-import {
-    getCurrentPageNumber,
-    getFollowingInProgress,
-    getIsFetching,
-    getPageSize,
-    getTotalUsersCount,
-    getUsers,
-    getUsersFilter
-} from "../../redux/selectors/usersSelectors"
+import {useDispatch} from "react-redux"
 import Preloader from "../common/Preloader/Preloader"
 import {AnyAction} from "redux"
-import {useLocation, useNavigate, useSearchParams} from "react-router-dom"
+import {useNavigate, useSearchParams} from "react-router-dom"
+import {useAppSelector} from "../../hooks/redux"
 
 const Users: FC = () => {
 
-    const isFetching = useSelector(getIsFetching)
-    const totalUsersCount = useSelector(getTotalUsersCount)
-    const pageSize = useSelector(getPageSize)
-    const currentPageNumber = useSelector(getCurrentPageNumber)
-    const followingInProgress = useSelector(getFollowingInProgress)
-    const users = useSelector(getUsers)
-    const filter = useSelector(getUsersFilter)
+    const {users, filter, totalUsersCount, currentPageNumber, pageSize, isFetching, followingInProgress} =
+        useAppSelector(state => state.usersPage)
 
     const dispatch = useDispatch()
 
@@ -57,7 +44,10 @@ const Users: FC = () => {
 
         if (urlParams.page) urlCurrentPageNumber = Number(urlParams.page)
         if (urlParams.term) urlFilter = {...filter, term: urlParams.term}
-        if (urlParams.friend) urlFilter = {...filter, friend: urlParams.friend === "null" ? null : urlParams.friend = "true" ? true : false}
+        if (urlParams.friend) urlFilter = {
+            ...filter,
+            friend: urlParams.friend === "null" ? null : urlParams.friend = "true" ? true : false
+        }
 
         dispatch(requestUsers(urlCurrentPageNumber, pageSize, urlFilter) as unknown as AnyAction)
     }, [])

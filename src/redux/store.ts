@@ -10,14 +10,6 @@ import dialogsSlice from "./reducers/dialogsSlice"
 import appSlice from "./reducers/appSlice"
 import friendsSlice from "./reducers/friendsSlice"
 
-// для useAppDispatch и useAppSelectors
-// export type AppStore = ReturnType<typeof setupStore>
-// export type AppDispatch = AppStore['dispatch']
-
-export type stateType = ReturnType<typeof rootReducer>
-export type baseThunkType<A extends Action, R = Promise<void>> = ThunkAction<R, stateType, unknown, A>
-export type baseActionType<T> = T extends {[key:string]: (...args: any[]) => infer U} ? U : never
-
 
 const rootReducer = combineReducers({
     app: appSlice,
@@ -29,7 +21,17 @@ const rootReducer = combineReducers({
     friends: friendsSlice
 })
 
-export const store = configureStore({
-    reducer: rootReducer,
-    middleware: [thunkMiddleware]
-})
+const setupStore = () => {
+    return configureStore({
+        reducer: rootReducer
+    })
+}
+
+export const store = setupStore()
+
+export type stateType = ReturnType<typeof rootReducer>
+export type appStoreType = ReturnType<typeof setupStore>
+export type appDispatchType = appStoreType["dispatch"]
+
+export type baseThunkType<A extends Action, R = Promise<void>> = ThunkAction<R, stateType, unknown, A>
+export type baseActionType<T> = T extends { [key: string]: (...args: any[]) => infer U } ? U : never

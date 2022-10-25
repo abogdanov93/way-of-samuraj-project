@@ -15,16 +15,14 @@ import {stateType} from "../../../redux/store"
 import {CameraOutlined, UploadOutlined} from "@ant-design/icons";
 import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton";
 import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton";
-
+import {useAppSelector} from "../../../hooks/redux";
 
 const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
 
-    // const profile = useSelector(getProfile)
-    // const status = useSelector(getStatus)
-    // const isEditMode = useSelector(getIsEdithMode)
-    const {profile, status, isEditMode} = useSelector((state: stateType) => state.profilePage)
+    const {profile, status, isEditMode} = useAppSelector(state => state.profilePage)
     const inputRef = useRef(null)
     const dispatch = useDispatch()
+
     const updateStatus = (status: string) => {
         dispatch(updateProfileStatus(status) as unknown as AnyAction)
     }

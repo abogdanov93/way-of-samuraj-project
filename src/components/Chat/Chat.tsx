@@ -9,8 +9,10 @@ import {AnyAction} from "redux"
 import {getStatus} from "../../redux/selectors/chatSelectors"
 
 const Chat: FC = () => {
+
     const status = useSelector(getStatus)
     const dispatch = useDispatch()
+
     useEffect(() => {
         dispatch(startMessagesListening() as unknown as AnyAction)
         return () => {

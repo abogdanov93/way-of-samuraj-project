@@ -37,7 +37,6 @@ export const ProfileDataForm: FC = () => {
             <input {...register("lookingForAJob", {required: true})}
             placeholder="Are you looking for a job?"/>
 
-            {/*<Switch size="small" defaultChecked {...register("lookingForAJob")}/>*/}
             {errors.lookingForAJob && <label>This field is required</label>}
         </div>
 

@@ -6,8 +6,8 @@ import {requestFriends} from "../../redux/reducers/friendsSlice"
 import {AnyAction} from "redux"
 import {getFriends} from "../../redux/selectors/friendsSelectors"
 import userAvatar from "../../uploads/images/userAvatar.jpeg"
-import {Navigate, NavLink, useNavigate} from "react-router-dom"
-import {requestUsers} from "../../redux/reducers/usersReducer";
+import {NavLink, useNavigate} from "react-router-dom"
+import {requestUsers} from "../../redux/reducers/usersReducer"
 
 const FriendsBlock: FC = () => {
 

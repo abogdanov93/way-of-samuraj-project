@@ -18,13 +18,6 @@ type propsType = {
 }
 
 export const Contact = ({name, link}: propsType) => {
-
-    // let data = {
-    //     icon: null as any,
-    //     color: null as any,
-    //     text: null as null | string
-    // }
-
 if (link) {
     switch (name) {
         case "facebook":
@@ -46,13 +39,4 @@ if (link) {
     }
 }
 return null
-
-    // if (link) {
-    //     return <div>
-    //         <Link to={link}>
-    //             <Tag color={data.color}>{data.text}</Tag>
-    //         </Link>
-    //     </div>
-    // }
-
 }
