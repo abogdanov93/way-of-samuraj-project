@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit"
 import {usersType} from "../../types/types"
 import {friendsAPI} from "../../api/friendsAPI"
-import {baseActionType, baseThunkType} from "../store";
+import {baseActionType, baseThunkType} from "../store"
 
 type actionsType = baseActionType<typeof friendsSlice.actions>
 type thunkType = baseThunkType<actionsType>
@@ -14,12 +14,13 @@ const friendsSlice = createSlice({
     reducers: {
         setFriends(state, action){
             state.friends = action.payload.items
+            // todo: типизировать action
+            // console.log(action.payload)
         }
     }
 })
 
-export const requestFriends = (): thunkType =>
-    async (dispatch) => {
+export const requestFriends = (): thunkType => async (dispatch) => {
         const data = await friendsAPI.getFriendsAPI()
         dispatch(friendsSlice.actions.setFriends(data))
     }

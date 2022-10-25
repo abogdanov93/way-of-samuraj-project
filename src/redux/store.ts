@@ -1,24 +1,23 @@
-import React from "react"
 import {Action} from "redux"
 import {configureStore, combineReducers} from "@reduxjs/toolkit"
-import thunkMiddleware, {ThunkAction} from "redux-thunk"
+import {ThunkAction} from "redux-thunk"
 import profileReducer from "./reducers/profileReducer"
 import usersReducer from "./reducers/usersReducer"
 import authReducer from "./reducers/authReducer"
 import chatReducer from "./reducers/chatReducer"
-import dialogsSlice from "./reducers/dialogsSlice"
-import appSlice from "./reducers/appSlice"
-import friendsSlice from "./reducers/friendsSlice"
+import dialogs from "./reducers/dialogsSlice"
+import app from "./reducers/appSlice"
+import friends from "./reducers/friendsSlice"
 
 
 const rootReducer = combineReducers({
-    app: appSlice,
+    app,
     profilePage: profileReducer,
     usersPage: usersReducer,
-    dialogs: dialogsSlice,
+    dialogs,
     chat: chatReducer,
     auth: authReducer,
-    friends: friendsSlice
+    friends
 })
 
 const setupStore = () => {
