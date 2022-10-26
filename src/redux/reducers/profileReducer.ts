@@ -128,7 +128,7 @@ export const saveProfilePhoto = (image: File): thunkType => async (dispatch) => 
 }
 
 export const saveProfileData = (profile: ProfileType): thunkType => async (dispatch, getState) => {
-    const userId = getState().auth.userId // получаем весь state, забираем id, который сидит в auth reducer
+    const userId = getState().auth.id // получаем весь state, забираем id, который сидит в auth reducer
     const data = await profileAPI.saveProfileData(profile)
     if (data.resultCode === resultCodeEnum.success) {
         dispatch(getUserProfile(userId))

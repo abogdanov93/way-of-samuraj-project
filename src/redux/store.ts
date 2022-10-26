@@ -3,7 +3,7 @@ import {configureStore, combineReducers} from "@reduxjs/toolkit"
 import {ThunkAction} from "redux-thunk"
 import profileReducer from "./reducers/profileReducer"
 import usersReducer from "./reducers/usersReducer"
-import authReducer from "./reducers/authReducer"
+import auth from "./reducers/authSlice"
 import chatReducer from "./reducers/chatReducer"
 import dialogs from "./reducers/dialogsSlice"
 import app from "./reducers/appSlice"
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
     usersPage: usersReducer,
     dialogs,
     chat: chatReducer,
-    auth: authReducer,
+    auth,
     friends
 })
 

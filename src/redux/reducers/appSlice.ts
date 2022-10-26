@@ -1,4 +1,4 @@
-import {getAuthUserData} from "./authReducer"
+import {getAuthUserData} from "./authSlice"
 import {createSlice} from "@reduxjs/toolkit"
 import {AppDispatchType} from "../store"
 

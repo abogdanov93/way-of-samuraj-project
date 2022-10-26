@@ -5,7 +5,7 @@ import loginIcon from "../../uploads/images/login.png"
 import {NavLink, useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
 import {getLogin} from "../../redux/selectors/loginSelectors"
-import {signOut} from "../../redux/reducers/authReducer"
+import {signOut} from "../../redux/reducers/authSlice"
 import {AnyAction} from "redux"
 import {getProfile} from "../../redux/selectors/profileSelectors";
 

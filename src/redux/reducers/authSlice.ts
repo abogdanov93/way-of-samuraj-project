@@ -2,7 +2,7 @@ import {resultCodeEnum, resultCodeForCaptchaEnum} from "../../api/api"
 import {AppDispatchType, baseActionType, baseThunkType} from "../store"
 import {authAPI, AuthDataType} from "../../api/authAPI"
 import {securityAPI} from "../../api/securityAPI"
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 type InitialStateType = {
     id: number | null
@@ -20,6 +20,33 @@ let initialState: InitialStateType = {
     captchaURL: null
 }
 
+export const getAuthUserData = () => async (dispatch: AppDispatchType) => {
+    const data = await authAPI.getAuthData()
+    if (data.resultCode === resultCodeEnum.success) {
+        let payload = {
+            ...data.data,
+            isAuth: true
+        }
+        dispatch(authSlice.actions.setAuthUserData(payload))
+    }
+}
+
+// export const getAuthUserData = createAsyncThunk(
+//     "auth/data",
+//     async (_, thunkAPI) => {
+//         try {
+//             const data = await authAPI.getAuthData()
+//             let payload = {
+//                 ...data.data,
+//                 isAuth: true
+//             }
+//             dispatch(authSlice.actions.setAuthUserData(payload))
+//         } catch (e) {
+//
+//         }
+//     }
+// )
+
 const authSlice = createSlice({
     name: "auth",
     initialState,
@@ -36,17 +63,6 @@ const authSlice = createSlice({
     }
 })
 
-
-export const getAuthUserData = () => async (dispatch: AppDispatchType) => {
-    const data = await authAPI.getAuthData() // ajax запрос об авторизации // возвращает promise
-    if (data.resultCode === resultCodeEnum.success) {
-        let payload = {
-            ...data.data,
-            isAuth: true
-        }
-        dispatch(authSlice.actions.setAuthUserData(payload)) // сетает авторизационные данные
-    }
-}
 
 export const logInThunk = (email: string, password: string, rememberMe: boolean, captcha: string) =>
     async (dispatch: AppDispatchType) => {
@@ -80,6 +96,3 @@ export const getCaptchaURL = () => async (dispatch: AppDispatchType) => {
 }
 
 export default authSlice.reducer
-
-// type actionsType = baseActionType<typeof actions>
-// type thunkType = baseThunkType<actionsType>
