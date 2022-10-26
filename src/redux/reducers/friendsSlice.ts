@@ -28,11 +28,7 @@ export const requestFriends = createAsyncThunk(
 const friendsSlice = createSlice({
     name: "friends",
     initialState,
-    reducers: {
-        setFriends(state, action: PayloadAction<UsersType[]>) {
-            state.friends = action.payload
-        }
-    },
+    reducers: {},
     extraReducers: {
         [requestFriends.fulfilled.type]: (state, action: PayloadAction<UsersType[]>) => {
             state.isLoading = false
