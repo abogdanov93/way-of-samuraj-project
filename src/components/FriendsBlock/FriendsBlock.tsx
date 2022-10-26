@@ -10,6 +10,7 @@ import {requestUsers} from "../../redux/reducers/usersReducer"
 import Preloader from "../common/Preloader/Preloader"
 import {useAppSelector} from "../../hooks/redux"
 import {Error} from "../common/Error/Error"
+import {SecondaryButton} from "../common/SecondaryButton/SecondaryButton";
 
 const FriendsBlock: FC = () => {
 
@@ -27,8 +28,13 @@ const FriendsBlock: FC = () => {
     // }, [friends.length])
 
     const showFriends = () => {
-        navigate("/users?term=&friends=true&page=1")
+        navigate("/users")
         dispatch(requestUsers(1, 5, {term: "", friend: true}) as unknown as AnyAction)
+    }
+
+    const searchFriends = () => {
+        navigate("/users")
+        dispatch(requestUsers(1, 5, {term: "", friend: null}) as unknown as AnyAction)
     }
 
     return <div className={`${style.friendsBlock} ${commonStyles.whiteBlock}`}>
@@ -40,7 +46,10 @@ const FriendsBlock: FC = () => {
         <div className={style.friends}>
             {isLoading && <Preloader style={{width: "50px", marginTop: "30%"}}/>}
             {error && <Error error={error}/>}
-            {friends.length === 0 && !error && <div className={style.noFriendsMessage}>You don't have friends yet</div>}
+            {friends.length === 0 && !error && !isLoading && <div className={style.noFriendsMessage}>
+                <h4>You don't have friends yet. Search for new friends</h4>
+                <SecondaryButton onClick={searchFriends}>Search</SecondaryButton>
+            </div>}
 
             {friends
                 .slice(0, 5)

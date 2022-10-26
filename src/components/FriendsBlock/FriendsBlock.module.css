@@ -51,8 +51,13 @@
 }
 
 .noFriendsMessage {
+    margin-top: 65px;
+    display: grid;
+    justify-items: center;
+}
+
+.noFriendsMessage h4{
     color: rgba(0, 0, 0, 0.45);
     font-weight: lighter;
     text-align: center;
-    margin-top: 90px;
 }

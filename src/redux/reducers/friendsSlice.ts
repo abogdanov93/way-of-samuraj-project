@@ -18,7 +18,8 @@ export const requestFriends = createAsyncThunk(
     "friend/request",
     async (_, thunkAPI) => {
         try {
-            return await friendsAPI.getFriendsAPI()
+            let response = await friendsAPI.getFriendsAPI()
+            return response
         } catch (e) {
             return thunkAPI.rejectWithValue("Something went wrong, please refresh the page")
         }

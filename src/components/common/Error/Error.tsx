@@ -9,6 +9,6 @@ type PropsType = {
 export const Error: FC<PropsType> = ({error}) => {
     return <div className={style.error}>
         <FrownOutlined className={style.smile}/>
-        <label>{error}</label>
+        <h4>{error}</h4>
         </div>
 }
