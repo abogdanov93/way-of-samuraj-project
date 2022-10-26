@@ -1,7 +1,6 @@
 import {getAuthUserData} from "./authReducer"
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
-import {AppDispatchType} from "../store";
-import {useAppDispatch} from "../../hooks/redux";
+import {createSlice} from "@reduxjs/toolkit"
+import {AppDispatchType} from "../store"
 
 type initialStateType = {
     initialized: boolean
@@ -27,5 +26,6 @@ export const initializeApp = () => (dispatch: AppDispatchType) => {
         dispatch(appSlice.actions.initializationSuccess())
     })
 }
+// todo: как переделать санку без асинхронного запроса?
 
 export default appSlice.reducer

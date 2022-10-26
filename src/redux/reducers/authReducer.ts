@@ -3,16 +3,23 @@ import {baseActionType, baseThunkType} from "../store"
 import {authAPI} from "../../api/authAPI"
 import {securityAPI} from "../../api/securityAPI"
 
-type initialStateType = typeof initialState
+type initialStateType = {
+    userId: number | null
+    login: string | null
+    email: string | null
+    isAuth: boolean
+    captchaURL: string | null
+}
+
 type actionsType = baseActionType<typeof actions>
 type thunkType = baseThunkType<actionsType>
 
-let initialState = {
-    userId: null as number | null,
-    login: null as string | null,
-    email: null as string | null,
+let initialState: initialStateType = {
+    userId: null,
+    login: null,
+    email: null,
     isAuth: false,
-    captchaURL: null as string | null
+    captchaURL: null
 }
 
 const authReducer = (state = initialState, action: actionsType) => {

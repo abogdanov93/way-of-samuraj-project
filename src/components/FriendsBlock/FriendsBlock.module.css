@@ -22,7 +22,7 @@
 }
 
 .title h4:hover {
-    color: rgba(29,111,195,1);
+    color: rgba(29, 111, 195, 1);
     font-weight: bold;
 
 }
@@ -41,7 +41,7 @@
 }
 
 .friend h4:hover {
-    color: rgba(29,111,195,1);
+    color: rgba(29, 111, 195, 1);
     font-weight: bold;
 }
 
@@ -52,5 +52,7 @@
 
 .noFriendsMessage {
     color: rgba(0, 0, 0, 0.45);
+    font-weight: lighter;
     text-align: center;
+    margin-top: 90px;
 }

@@ -1,7 +1,18 @@
 .error {
-    display: flex;
-    justify-content: center;
+    height: 100%;
+    display: grid;
     align-items: center;
-    gap: 16px;
     color: rgba(0, 0, 0, 0.45);
+    font-weight: lighter;
+    margin-top: 40px;
+}
+
+.error label {
+    text-align: center;
+}
+
+.smile {
+    display: grid;
+    justify-self: center;
+    align-self: end;
 }

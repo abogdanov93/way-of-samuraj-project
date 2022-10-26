@@ -28,7 +28,7 @@ const FriendsBlock: FC = () => {
 
     const showFriends = () => {
         navigate("/users?term=&friends=true&page=1")
-        dispatch(requestUsers(1, 5,  {term: "", friend: true}) as unknown as AnyAction)
+        dispatch(requestUsers(1, 5, {term: "", friend: true}) as unknown as AnyAction)
     }
 
     return <div className={`${style.friendsBlock} ${commonStyles.whiteBlock}`}>
@@ -37,11 +37,11 @@ const FriendsBlock: FC = () => {
             <h4 onClick={showFriends}>Show all</h4>
         </div>
 
-        {isLoading && <Preloader style={{width: "50px", marginTop: "30%"}}/>}
-        {error && <Error error={error}/>}
-        {friends.length === 0 && !error && <div className={style.noFriendsMessage}>You don't have friends yet</div>}
-
         <div className={style.friends}>
+            {isLoading && <Preloader style={{width: "50px", marginTop: "30%"}}/>}
+            {error && <Error error={error}/>}
+            {friends.length === 0 && !error && <div className={style.noFriendsMessage}>You don't have friends yet</div>}
+
             {friends
                 .slice(0, 5)
                 .map(f => <NavLink to={"/profile/" + f.id} key={f.id} className={style.friend}>

@@ -7,7 +7,7 @@ type GetFriendsResponseType = {
 
 export const friendsAPI = {
     getFriendsAPI() {
-        return instance.get<GetFriendsResponseType>(`userm,s?friend=${true}`)
+        return instance.get<GetFriendsResponseType>(`users?friend=${true}`)
             .then(response => response.data.items)
     }
 }
