@@ -1,9 +1,9 @@
-import {dialogType, messagesType} from "../../types/types"
+import {DialogType, MessagesType} from "../../types/types"
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 
 export type initialStateType = {
-    dialog: Array<dialogType>
-    messages: Array<messagesType>
+    dialog: Array<DialogType>
+    messages: Array<MessagesType>
 }
 
 const initialState: initialStateType = {

@@ -28,9 +28,9 @@ const setupStore = () => {
 
 export const store = setupStore()
 
-export type stateType = ReturnType<typeof rootReducer>
-export type appStoreType = ReturnType<typeof setupStore>
-export type appDispatchType = appStoreType["dispatch"]
+export type StateType = ReturnType<typeof rootReducer>
+export type AppStoreType = ReturnType<typeof setupStore>
+export type AppDispatchType = AppStoreType["dispatch"]
 
-export type baseThunkType<A extends Action, R = Promise<void>> = ThunkAction<R, stateType, unknown, A>
+export type baseThunkType<A extends Action, R = Promise<void>> = ThunkAction<R, StateType, unknown, A>
 export type baseActionType<T> = T extends { [key: string]: (...args: any[]) => infer U } ? U : never

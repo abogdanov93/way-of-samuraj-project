@@ -1,13 +1,13 @@
-import {stateType} from "../store"
+import {StateType} from "../store"
 
-export const getIsAuth = (state: stateType) => {
+export const getIsAuth = (state: StateType) => {
     return state.auth.isAuth
 }
 
-export const getLogin = (state: stateType) => {
+export const getLogin = (state: StateType) => {
     return state.auth.login
 }
 
-export const getCaptchaURL = (state: stateType) => {
+export const getCaptchaURL = (state: StateType) => {
     return state.auth.captchaURL
 }

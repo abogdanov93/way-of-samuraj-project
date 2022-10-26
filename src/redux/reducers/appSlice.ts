@@ -1,27 +1,31 @@
 import {getAuthUserData} from "./authReducer"
-import {createSlice} from "@reduxjs/toolkit"
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
+import {AppDispatchType} from "../store";
+import {useAppDispatch} from "../../hooks/redux";
 
 type initialStateType = {
     initialized: boolean
 }
 
+const initialState: initialStateType = {
+    initialized: false
+}
+
 const appSlice = createSlice({
     name: "app",
-    initialState: {
-        initialized: false
-    } as initialStateType,
+    initialState,
     reducers: {
-        initializationSuccess(state){
+        initializationSuccess(state) {
             state.initialized = true
         }
     }
 })
 
-export const initializeApp = () => (dispatch: any) => {
-    const promise = dispatch(getAuthUserData()) // когда придет подтверждение авторизации и данные
+export const initializeApp = () => (dispatch: AppDispatchType) => {
+    const promise = dispatch(getAuthUserData())
     promise.then(() => {
-        dispatch(appSlice.actions.initializationSuccess()) // меняем initialized
-    }) // не понятно, как избавиться от then или как его типизировать
+        dispatch(appSlice.actions.initializationSuccess())
+    })
 }
 
 export default appSlice.reducer

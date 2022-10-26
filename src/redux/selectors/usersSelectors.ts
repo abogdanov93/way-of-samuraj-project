@@ -1,29 +1,29 @@
-import {stateType} from "../store"
+import {StateType} from "../store"
 
-export const getUsers = (state: stateType) => {
+export const getUsers = (state: StateType) => {
     return state.usersPage.users
 }
 
-export const getPageSize = (state: stateType) => {
+export const getPageSize = (state: StateType) => {
     return state.usersPage.pageSize
 }
 
-export const getTotalUsersCount = (state: stateType) => {
+export const getTotalUsersCount = (state: StateType) => {
     return state.usersPage.totalUsersCount
 }
 
-export const getCurrentPageNumber = (state: stateType) => {
+export const getCurrentPageNumber = (state: StateType) => {
     return state.usersPage.currentPageNumber
 }
 
-export const getIsFetching = (state: stateType) => {
+export const getIsFetching = (state: StateType) => {
     return state.usersPage.isFetching
 }
 
-export const getFollowingInProgress = (state: stateType) => {
+export const getFollowingInProgress = (state: StateType) => {
     return state.usersPage.followingInProgress
 }
 
-export const getUsersFilter = (state: stateType) => {
+export const getUsersFilter = (state: StateType) => {
     return state.usersPage.filter
 }

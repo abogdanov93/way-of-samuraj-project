@@ -1,5 +1,5 @@
-import {stateType} from "../store"
+import {StateType} from "../store"
 
-export const getDialogs = (state: stateType) => {
+export const getDialogs = (state: StateType) => {
     return state.dialogs
 }

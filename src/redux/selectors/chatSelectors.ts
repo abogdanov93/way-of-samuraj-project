@@ -1,9 +1,9 @@
-import {stateType} from "../store"
+import {StateType} from "../store"
 
-export const getChatMessages = (state: stateType) => {
+export const getChatMessages = (state: StateType) => {
     return state.chat.messages
 }
 
-export const getStatus = (state: stateType) => {
+export const getStatus = (state: StateType) => {
     return state.chat.status
 }

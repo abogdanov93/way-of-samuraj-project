@@ -1,28 +1,52 @@
-import {createSlice} from "@reduxjs/toolkit"
-import {usersType} from "../../types/types"
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit"
+import {UsersType} from "../../types/types"
 import {friendsAPI} from "../../api/friendsAPI"
-import {baseActionType, baseThunkType} from "../store"
 
-type actionsType = baseActionType<typeof friendsSlice.actions>
-type thunkType = baseThunkType<actionsType>
+type initialStateType = {
+    friends: Array<UsersType>
+    isLoading: boolean
+    error: string
+}
+
+const initialState: initialStateType = {
+    friends: [],
+    isLoading: false,
+    error: ""
+}
+
+export const requestFriends = createAsyncThunk(
+    "friend/request",
+    async (_, thunkAPI) => {
+        try {
+            return await friendsAPI.getFriendsAPI()
+        } catch (e) {
+            return thunkAPI.rejectWithValue("Something went wrong, please refresh the page")
+        }
+    }
+)
 
 const friendsSlice = createSlice({
     name: "friends",
-    initialState: {
-        friends: [] as Array<usersType>
-    },
+    initialState,
     reducers: {
-        setFriends(state, action){
-            state.friends = action.payload.items
-            // todo: типизировать action
-            // console.log(action.payload)
+        setFriends(state, action: PayloadAction<UsersType[]>) {
+            state.friends = action.payload
+        }
+    },
+    extraReducers: {
+        [requestFriends.fulfilled.type]: (state, action: PayloadAction<UsersType[]>) => {
+            state.isLoading = false
+            state.error = ""
+            state.friends = action.payload
+        },
+        [requestFriends.pending.type]: (state) => {
+            state.isLoading = true
+        },
+        [requestFriends.rejected.type]: (state, action: PayloadAction<string>) => {
+            state.isLoading = false
+            state.error = action.payload
         }
     }
 })
-
-export const requestFriends = (): thunkType => async (dispatch) => {
-        const data = await friendsAPI.getFriendsAPI()
-        dispatch(friendsSlice.actions.setFriends(data))
-    }
 
 export default friendsSlice.reducer

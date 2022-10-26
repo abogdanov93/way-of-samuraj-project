@@ -3,7 +3,7 @@ import {Dispatch} from "redux"
 import {baseActionType, baseThunkType} from "../store"
 import {usersAPI} from "../../api/usersAPI"
 import {responseType, resultCodeEnum} from "../../api/api"
-import {usersType} from "../../types/types"
+import {UsersType} from "../../types/types"
 
 export type initialStateType = typeof initialState
 export type filterType = typeof initialState.filter
@@ -11,7 +11,7 @@ type actionsType = baseActionType<typeof actions>
 type thunkType = baseThunkType<actionsType>
 
 let initialState = {
-    users: [] as Array<usersType>,
+    users: [] as Array<UsersType>,
     pageSize: 5,
     totalUsersCount: 0,
     currentPageNumber: 1,
@@ -70,7 +70,7 @@ const usersReducer = (state = initialState, action: actionsType): initialStateTy
 export const actions = {
     followSuccess: (userId: number) => ({type: "USER_FOLLOW", userId} as const),
     unfollowSuccess: (userId: number) => ({type: "USER_UNFOLLOW", userId} as const),
-    setUsers: (users: Array<usersType>) => ({type: "USER_SET_USERS", users} as const),
+    setUsers: (users: Array<UsersType>) => ({type: "USER_SET_USERS", users} as const),
     setFilter: (filter: filterType) => ({type: "USER_SET_FILTER", payload: filter} as const),
     setCurrentPageNumber: (currentPageNumber: number) => ({
         type: "USER_SET_CURRENT_PAGE_NUMBER",

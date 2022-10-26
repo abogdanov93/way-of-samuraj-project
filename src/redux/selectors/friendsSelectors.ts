@@ -1,5 +1,5 @@
-import {stateType} from "../store"
+import {StateType} from "../store"
 
-export const getFriends = (state: stateType) => {
+export const getFriends = (state: StateType) => {
     return state.friends.friends
 }

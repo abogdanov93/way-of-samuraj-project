@@ -1,11 +1,13 @@
-import {usersType} from "../types/types"
+import {UsersType} from "../types/types"
 import {instance} from "./api"
 
-type getUserResponseType = Array<usersType>
+type GetFriendsResponseType = {
+    items: Array<UsersType>
+}
 
 export const friendsAPI = {
     getFriendsAPI() {
-        return instance.get<getUserResponseType>(`users?friend=${true}`)
-            .then(response => response.data)
+        return instance.get<GetFriendsResponseType>(`userm,s?friend=${true}`)
+            .then(response => response.data.items)
     }
 }

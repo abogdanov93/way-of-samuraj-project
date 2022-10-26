@@ -2,11 +2,11 @@ import React, {FC} from "react"
 import userAvatar from "../../../uploads/images/userAvatar.jpeg"
 import style from "./User.module.css"
 import {NavLink} from "react-router-dom"
-import {usersType} from "../../../types/types"
+import {UsersType} from "../../../types/types"
 import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton"
 
 type propsType = {
-    user: usersType
+    user: UsersType
     follow: (id: number) => void
     unfollow: (id: number) => void
     followingInProgress: Array<number>

@@ -1,23 +1,30 @@
 import React, {FC, useEffect} from "react"
 import style from "./FriendsBlock.module.css"
 import commonStyles from "./../../App.module.css"
-import {useDispatch, useSelector} from "react-redux"
+import {useDispatch} from "react-redux"
 import {requestFriends} from "../../redux/reducers/friendsSlice"
 import {AnyAction} from "redux"
-import {getFriends} from "../../redux/selectors/friendsSelectors"
 import userAvatar from "../../uploads/images/userAvatar.jpeg"
 import {NavLink, useNavigate} from "react-router-dom"
 import {requestUsers} from "../../redux/reducers/usersReducer"
+import Preloader from "../common/Preloader/Preloader"
+import {useAppSelector} from "../../hooks/redux"
+import {Error} from "../common/Error/Error"
 
 const FriendsBlock: FC = () => {
 
-    const friends = useSelector(getFriends)
+    const {friends, isLoading, error} = useAppSelector(state => state.friends)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(requestFriends() as unknown as AnyAction)
     }, [])
+
+    // todo: ререндер при добавлении и удалении друга
+    // useEffect(() => {
+    //     dispatch(requestFriends() as unknown as AnyAction)
+    // }, [friends.length])
 
     const showFriends = () => {
         navigate("/users?term=&friends=true&page=1")
@@ -29,6 +36,11 @@ const FriendsBlock: FC = () => {
             <h3>Friends</h3>
             <h4 onClick={showFriends}>Show all</h4>
         </div>
+
+        {isLoading && <Preloader style={{width: "50px", marginTop: "30%"}}/>}
+        {error && <Error error={error}/>}
+        {friends.length === 0 && !error && <div className={style.noFriendsMessage}>You don't have friends yet</div>}
+
         <div className={style.friends}>
             {friends
                 .slice(0, 5)

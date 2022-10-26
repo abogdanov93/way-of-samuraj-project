@@ -1,6 +1,6 @@
 import React, {FC} from "react"
 import style from "./ProfileDataForm.module.css"
-import {profileType} from "../../../types/types"
+import {ProfileType} from "../../../types/types"
 import {useDispatch} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {actions, saveProfileData} from "../../../redux/reducers/profileReducer"
@@ -9,7 +9,7 @@ import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton"
 import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton";
 import {Switch} from "antd";
 
-type Inputs = profileType
+type Inputs = ProfileType
 
 
 export const ProfileDataForm: FC = () => {

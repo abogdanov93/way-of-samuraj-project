@@ -9,9 +9,9 @@ import {getIsEdithMode, getProfile, getStatus} from "../../../redux/selectors/pr
 import {AnyAction} from "redux"
 import {ProfileDataForm} from "../ProfileDataForm/ProfileDataForm"
 import {Badge, Button, Upload} from "antd"
-import {contactsType} from "../../../types/types"
+import {ContactsType} from "../../../types/types"
 import {Contact} from "./Contact/Contact"
-import {stateType} from "../../../redux/store"
+import {StateType} from "../../../redux/store"
 import {CameraOutlined, UploadOutlined} from "@ant-design/icons";
 import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton";
 import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton";
@@ -113,7 +113,7 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
                     <div className={style.contacts}>
                         {Object
                             .keys(profile.contacts).map(key => <Contact key={key} name={key}
-                                                                        link={profile.contacts[key as keyof contactsType]}/>)}
+                                                                        link={profile.contacts[key as keyof ContactsType]}/>)}
                     </div>
 
                 </div>}

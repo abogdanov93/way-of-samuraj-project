@@ -1,12 +1,12 @@
 import {resultCodeEnum} from "../../api/api"
-import {photosType, postsType, profileType} from "../../types/types"
+import {PhotosType, PostsType, ProfileType} from "../../types/types"
 import {baseActionType, baseThunkType} from "../store"
 import {profileAPI} from "../../api/profileAPI"
 // import {createSlice} from "@reduxjs/toolkit"
 
 type initialStateType = {
-    posts: Array<postsType>
-    profile: profileType | null
+    posts: Array<PostsType>
+    profile: ProfileType | null
     isEditMode: boolean
     status: string
 }
@@ -42,8 +42,8 @@ let initialState = {
     posts: [
         {id: 1, post: "Are you going to play fortnite?"},
         {id: 2, post: "Hi there!"}
-    ] as Array<postsType>,
-    profile: null as profileType | null,
+    ] as Array<PostsType>,
+    profile: null as ProfileType | null,
     isEditMode: false,
     status: ""
 }
@@ -78,7 +78,7 @@ const profileReducer = (state = initialState, action: actionsType): initialState
         case "PROFILE_SET_PHOTO":
             return {
                 ...state,
-                profile: {...state.profile, photos: action.photos} as profileType
+                profile: {...state.profile, photos: action.photos} as ProfileType
             }
         case "PROFILE_SET_EDIT_MODE":
             return {
@@ -93,9 +93,9 @@ const profileReducer = (state = initialState, action: actionsType): initialState
 export const actions = {
     addPost: (newPost: string) => ({type: "PROFILE_ADD_POST", newPost} as const),
     deletePost: (postId: number) => ({type: "PROFILE_DELETE_POST", postId} as const),
-    setUserProfile: (profile: profileType) => ({type: "PROFILE_SET_USER_PROFILE", profile} as const),
+    setUserProfile: (profile: ProfileType) => ({type: "PROFILE_SET_USER_PROFILE", profile} as const),
     setStatusSuccess: (status: string) => ({type: "PROFILE_SET_STATUS", status} as const),
-    setPhotoSuccess: (photos: photosType) => ({type: "PROFILE_SET_PHOTO", photos} as const),
+    setPhotoSuccess: (photos: PhotosType) => ({type: "PROFILE_SET_PHOTO", photos} as const),
     setEditMode: (isEditMode: boolean) => ({type: "PROFILE_SET_EDIT_MODE", isEditMode} as const)
 }
 
@@ -127,7 +127,7 @@ export const saveProfilePhoto = (image: File): thunkType => async (dispatch) => 
     }
 }
 
-export const saveProfileData = (profile: profileType): thunkType => async (dispatch, getState) => {
+export const saveProfileData = (profile: ProfileType): thunkType => async (dispatch, getState) => {
     const userId = getState().auth.userId // получаем весь state, забираем id, который сидит в auth reducer
     const data = await profileAPI.saveProfileData(profile)
     if (data.resultCode === resultCodeEnum.success) {

@@ -1,22 +1,25 @@
-export type postsType = {
+export type PostsType = {
     id: number
     post: string
     likeCounter: number
 }
-export type photosType = {
+
+export type PhotosType = {
     small: string | null
     large: string | null
 }
-export type profileType = {
+
+export type ProfileType = {
     userId?: null | number
     fullName: string
     lookingForAJob: boolean
     lookingForAJobDescription: string
     aboutMe: string
-    contacts: contactsType
-    photos: photosType
+    contacts: ContactsType
+    photos: PhotosType
 }
-export type contactsType = {
+
+export type ContactsType = {
     github: string
     vk: string
     facebook: string
@@ -26,18 +29,21 @@ export type contactsType = {
     youtube: string
     mainLink: string
 }
-export type usersType = {
+
+export type UsersType = {
     id: number
     name: string
     status?: string | null
-    photos: photosType
+    photos: PhotosType
     followed?: boolean
 }
-export type dialogType = {
+
+export type DialogType = {
     id: number
     name: string
 }
-export type messagesType = {
+
+export type MessagesType = {
     id: number,
     message: string
 }

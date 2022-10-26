@@ -1,21 +1,21 @@
-import {stateType} from "../store"
+import {StateType} from "../store"
 
-export const getPosts = (state: stateType) => {
+export const getPosts = (state: StateType) => {
     return state.profilePage.posts
 }
 
-export const getProfile = (state: stateType) => {
+export const getProfile = (state: StateType) => {
     return state.profilePage.profile
 }
 
-export const getStatus = (state: stateType) => {
+export const getStatus = (state: StateType) => {
     return state.profilePage.status
 }
 
-export const getIsEdithMode = (state: stateType) => {
+export const getIsEdithMode = (state: StateType) => {
     return state.profilePage.isEditMode
 }
 
-export const getUserId = (state: stateType) => {
+export const getUserId = (state: StateType) => {
     return state.auth.userId
 }
