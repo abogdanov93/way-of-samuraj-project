@@ -14,11 +14,11 @@ const initialState: initialStateType = {
     error: ""
 }
 
-export const requestFriends = createAsyncThunk(
+export const fetchFriends = createAsyncThunk(
     "friend/request",
     async (_, thunkAPI) => {
         try {
-            let response = await friendsAPI.getFriendsAPI()
+            const response = await friendsAPI.getFriendsAPI()
             return response
         } catch (e) {
             return thunkAPI.rejectWithValue("Something went wrong, please refresh the page")
@@ -26,20 +26,20 @@ export const requestFriends = createAsyncThunk(
     }
 )
 
-const friendsSlice = createSlice({
+export const friendsSlice = createSlice({
     name: "friends",
     initialState,
     reducers: {},
     extraReducers: {
-        [requestFriends.fulfilled.type]: (state, action: PayloadAction<UsersType[]>) => {
+        [fetchFriends.fulfilled.type]: (state, action: PayloadAction<UsersType[]>) => {
             state.isLoading = false
             state.error = ""
             state.friends = action.payload
         },
-        [requestFriends.pending.type]: (state) => {
+        [fetchFriends.pending.type]: (state) => {
             state.isLoading = true
         },
-        [requestFriends.rejected.type]: (state, action: PayloadAction<string>) => {
+        [fetchFriends.rejected.type]: (state, action: PayloadAction<string>) => {
             state.isLoading = false
             state.error = action.payload
         }

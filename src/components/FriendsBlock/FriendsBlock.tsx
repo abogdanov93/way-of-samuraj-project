@@ -2,7 +2,7 @@ import React, {FC, useEffect} from "react"
 import style from "./FriendsBlock.module.css"
 import commonStyles from "./../../App.module.css"
 import {useDispatch} from "react-redux"
-import {requestFriends} from "../../redux/reducers/friendsSlice"
+import {fetchFriends} from "../../redux/reducers/friendsSlice"
 import {AnyAction} from "redux"
 import userAvatar from "../../uploads/images/userAvatar.jpeg"
 import {NavLink, useNavigate} from "react-router-dom"
@@ -19,7 +19,7 @@ const FriendsBlock: FC = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        dispatch(requestFriends() as unknown as AnyAction)
+        dispatch(fetchFriends() as unknown as AnyAction)
     }, [])
 
     // todo: ререндер при добавлении и удалении друга

@@ -12,7 +12,7 @@ type InitialStateType = {
     captchaURL?: string | null
 }
 
-let initialState: InitialStateType = {
+const initialState: InitialStateType = {
     id: null,
     login: null,
     email: null,
@@ -31,23 +31,7 @@ export const getAuthUserData = () => async (dispatch: AppDispatchType) => {
     }
 }
 
-// export const getAuthUserData = createAsyncThunk(
-//     "auth/data",
-//     async (_, thunkAPI) => {
-//         try {
-//             const data = await authAPI.getAuthData()
-//             let payload = {
-//                 ...data.data,
-//                 isAuth: true
-//             }
-//             dispatch(authSlice.actions.setAuthUserData(payload))
-//         } catch (e) {
-//
-//         }
-//     }
-// )
-
-const authSlice = createSlice({
+export const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
