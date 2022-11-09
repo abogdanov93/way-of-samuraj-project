@@ -1,0 +1,33 @@
+.avatar{
+    display: grid;
+    grid-gap: 16px;
+    justify-content: center;
+    align-content: start;
+    color: transparent;
+}
+
+.avatar img {
+    border-radius: 16px;
+    max-width: 250px;
+}
+
+@media (max-width: 414px){
+    .avatar img {
+        border-radius: 50%;
+        max-width: 5em;
+    }
+}
+
+.avatarButton {
+    position: relative;
+    bottom: 52px;
+    left: 214px;
+    color: dimgray;
+    background-color: gainsboro;
+}
+
+.avatarButton:hover {
+    color: dimgray;
+    background-color: darkgrey;
+    border: transparent;
+}

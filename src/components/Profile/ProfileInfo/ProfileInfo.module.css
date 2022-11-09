@@ -10,100 +10,10 @@
 
 .profileData {
     grid-area: data;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto auto auto 1fr;
-    gap: 5px;
-    align-items: start;
-    grid-template-areas:
-            "nickName edit"
-            "status status"
-            "jobDescription jobDescription"
-            "aboutMe aboutMe"
-            "contacts contacts";
 }
 
 .avatar {
     grid-area: avatar;
-    display: grid;
-    grid-gap: 16px;
-    justify-content: center;
-    align-content: start;
-    color: transparent;
-}
-
-.avatar img {
-    border-radius: 16px;
-    max-width: 250px;
-}
-
-.nickName {
-    grid-area: nickName;
-    color: #475156;
-    font-weight: bold;
-    font-size: 24px;
-    margin-bottom: 0;
-    align-self: center;
-}
-
-.edit {
-    grid-area: edit;
-    cursor: pointer;
-    width: 30px;
-    align-self: center;
-    color: rgba(0, 0, 0, 0.45);
-}
-
-.edit:hover {
-    cursor: pointer;
-    color: rgba(29,111,195,1);
-    font-weight: bold;
-}
-
-.status {
-    grid-area: status;
-    margin-bottom: 8px;
-    align-self: center;
-    font-size: 12px;
-    font-weight: lighter;
-    color: rgba(0, 0, 0, 0.45);;
-}
-
-.jobDescription {
-    grid-area: jobDescription;
-}
-
-.aboutMe {
-    grid-area: aboutMe;
-}
-
-.profileInfo h4 {
-    color: rgba(0, 0, 0, 0.45);
-    margin-bottom: 0;
-}
-
-.contacts {
-    margin: 16px 0 16px 0;
-}
-
-.contacts a {
-    display: inline-block;
-    margin: 0 0 5px 0;
-}
-
-.avatarButton {
-    position: relative;
-    bottom: 52px;
-    left: 214px;
-    color: dimgray;
-    background-color: gainsboro;
-}
-
-.avatarButton:hover {
-    color: dimgray;
-    background-color: darkgrey;
-    border: transparent;
-
 }
 
 .modal {
@@ -122,6 +32,15 @@
     animation-duration: 300ms;
 }
 
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .modalWindow {
     width: 100%;
     max-width: 550px;
@@ -136,8 +55,4 @@
     overflow: hidden;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: slide-in;
-    animation-duration: 0.5s;
 }

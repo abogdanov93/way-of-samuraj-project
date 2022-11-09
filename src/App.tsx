@@ -34,28 +34,30 @@ const App: FC = () => {
     return <div className={commonStyles.App}>
             <Header/>
             <Navbar/>
+        <div className={commonStyles.friends}>
             <FriendsBlock/>
-            <div className={commonStyles.content}>
-                <React.Suspense fallback={<Preloader/>}>
-                    <Routes>
-                        <Route path="/profile/*"
-                               element={<Profile/>}/>
-                        <Route path="*"
-                               element={<Profile/>}/>
-                        <Route path="/profile/:userId/*"
-                               element={<Profile/>}/>
-                        <Route path="/users/*"
-                               element={<Users/>}/>
-                        <Route path="/dialogs/*"
-                               element={<Dialogs/>}/>
-                        <Route path="/chat/*"
-                               element={<Chat/>}/>
-                        <Route path="/login"
-                               element={<Login/>}/>
-                    </Routes>
-                </React.Suspense>
-            </div>
         </div>
+        <div className={commonStyles.content}>
+            <React.Suspense fallback={<Preloader/>}>
+                <Routes>
+                    <Route path="/profile/*"
+                           element={<Profile/>}/>
+                    <Route path="*"
+                           element={<Profile/>}/>
+                    <Route path="/profile/:userId/*"
+                           element={<Profile/>}/>
+                    <Route path="/users/*"
+                           element={<Users/>}/>
+                    <Route path="/dialogs/*"
+                           element={<Dialogs/>}/>
+                    <Route path="/chat/*"
+                           element={<Chat/>}/>
+                    <Route path="/login"
+                           element={<Login/>}/>
+                </Routes>
+            </React.Suspense>
+        </div>
+    </div>
 }
 
 

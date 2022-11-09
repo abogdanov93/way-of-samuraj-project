@@ -1,7 +1,13 @@
 .friendsBlock {
-    grid-area: friendsBlock;
+    grid-area: friends;
     height: 310px;
     box-sizing: unset;
+}
+
+@media (max-width: 414px) {
+    .friendsBlock {
+        display: none;
+    }
 }
 
 .title {
@@ -24,7 +30,6 @@
 .title h4:hover {
     color: rgba(29, 111, 195, 1);
     font-weight: bold;
-
 }
 
 .friends {
@@ -56,7 +61,7 @@
     justify-items: center;
 }
 
-.noFriendsMessage h4{
+.noFriendsMessage h4 {
     color: rgba(0, 0, 0, 0.45);
     font-weight: lighter;
     text-align: center;
