@@ -6,6 +6,7 @@
     background-color: transparent;
     font-size: small;
 }
+
 .header a {
     color: white;
     text-decoration: none;
@@ -30,4 +31,12 @@
 
 .loginIcon {
     width: 20px;
+}
+
+
+@media (max-width: 414px) {
+    .logo img {
+        width: 11em;
+    }
+
 }

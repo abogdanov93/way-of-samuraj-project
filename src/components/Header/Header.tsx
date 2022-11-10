@@ -1,4 +1,4 @@
-import React, {FC} from "react"
+import React, {FC, useState} from "react"
 import style from "./Header.module.css"
 import logo from "../../uploads/images/logo.png"
 import loginIcon from "../../uploads/images/login.png"
@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from "react-redux"
 import {getLogin} from "../../redux/selectors/loginSelectors"
 import {signOut} from "../../redux/reducers/authSlice"
 import {AnyAction} from "redux"
-import {getProfile} from "../../redux/selectors/profileSelectors";
+import {getProfile} from "../../redux/selectors/profileSelectors"
 
 const Header: FC = () => {
 
@@ -20,10 +20,13 @@ const Header: FC = () => {
         navigate("/login")
     }
 
+
     return <header className={style.header}>
+
         <div className={style.logo}>
             <img src={logo}/>
         </div>
+
         <div className={style.loginArea}>
             {isAuth
                 ? <div className={style.loginArea}>
@@ -38,6 +41,7 @@ const Header: FC = () => {
                 </NavLink>
             }
         </div>
+
     </header>
 }
 
