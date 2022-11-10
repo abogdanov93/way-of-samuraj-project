@@ -5,7 +5,7 @@ import {Field} from "formik"
 import {useSelector} from "react-redux"
 import {getUsersFilter} from "../../../redux/selectors/usersSelectors"
 import style from "./UserSearchForm.module.css"
-import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton";
+import {PrimaryButton} from "../../Utils/PrimaryButton/PrimaryButton";
 
 type propsType = {
     onFilterChange: (filter: filterType) => void

@@ -3,7 +3,7 @@ import userAvatar from "../../../uploads/images/userAvatar.jpeg"
 import style from "./User.module.css"
 import {NavLink} from "react-router-dom"
 import {UsersType} from "../../../types/types"
-import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton"
+import {SecondaryButton} from "../../Utils/SecondaryButton/SecondaryButton"
 
 type propsType = {
     user: UsersType

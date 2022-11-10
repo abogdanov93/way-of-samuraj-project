@@ -6,10 +6,10 @@ import {AnyAction} from "redux"
 import userAvatar from "../../uploads/images/userAvatar.jpeg"
 import {NavLink, useNavigate} from "react-router-dom"
 import {requestUsers} from "../../redux/reducers/usersReducer"
-import Preloader from "../common/Preloader/Preloader"
+import Preloader from "../Utils/Preloader/Preloader"
 import {useAppSelector} from "../../hooks/redux"
-import {Error} from "../common/Error/Error"
-import {SecondaryButton} from "../common/SecondaryButton/SecondaryButton"
+import {Error} from "../Utils/Error/Error"
+import {SecondaryButton} from "../Utils/SecondaryButton/SecondaryButton"
 import {fetchFriendsThunk} from "../../redux/actions/friendsActions"
 
 const FriendsBlock: FC = () => {

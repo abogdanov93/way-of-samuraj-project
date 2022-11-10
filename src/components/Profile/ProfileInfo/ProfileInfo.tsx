@@ -1,6 +1,6 @@
 import React, {FC} from "react"
 import style from "./ProfileInfo.module.css"
-import Preloader from "../../common/Preloader/Preloader"
+import Preloader from "../../Utils/Preloader/Preloader"
 import {ProfileDataForm} from "../ProfileDataForm/ProfileDataForm"
 import {useAppSelector} from "../../../hooks/redux"
 import {UserAvatar} from "./UserAvatar/UserAvatar"

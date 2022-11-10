@@ -5,7 +5,7 @@ import 'antd/dist/antd.css'
 import commonStyles from "./App.module.css"
 import Navbar from "./components/Navbar/Navbar"
 import FriendsBlock from "./components/FriendsBlock/FriendsBlock"
-import Preloader from "./components/common/Preloader/Preloader"
+import Preloader from "./components/Utils/Preloader/Preloader"
 import Header from "./components/Header/Header"
 import {getInitialized} from "./redux/selectors/appSelectors"
 import {AnyAction} from "redux"

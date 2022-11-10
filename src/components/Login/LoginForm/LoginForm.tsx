@@ -5,9 +5,9 @@ import {SubmitHandler, useForm} from "react-hook-form"
 import {getCaptchaURL} from "../../../redux/selectors/loginSelectors"
 import {logInThunk} from "../../../redux/reducers/authSlice"
 import {AnyAction} from "redux"
-import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton"
-import {MyInput} from "../../common/MyInput/MyInput"
-import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton"
+import {PrimaryButton} from "../../Utils/PrimaryButton/PrimaryButton"
+import {MyInput} from "../../Utils/MyInput/MyInput"
+import {SecondaryButton} from "../../Utils/SecondaryButton/SecondaryButton"
 
 export type Inputs = {
     email: string

@@ -4,9 +4,9 @@ import commonStyles from "../../App.module.css"
 import Dialog from "./Dialog/Dialog"
 import {useDispatch, useSelector} from "react-redux"
 import {getDialogs} from "../../redux/selectors/dialogsSelectors"
-import MyMessage from "../common/MyMessage/MyMessage"
+import MyMessage from "../Utils/MyMessage/MyMessage"
 import {addMessage, deleteMessage} from "../../redux/reducers/dialogsSlice"
-import {MyMessageForm} from "../common/MyMessageForm/MyMessageForm"
+import {MyMessageForm} from "../Utils/MyMessageForm/MyMessageForm"
 
 const Dialogs: FC = () => {
 

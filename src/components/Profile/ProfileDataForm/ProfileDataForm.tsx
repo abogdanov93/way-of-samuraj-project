@@ -5,8 +5,8 @@ import {useDispatch} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {profileSlice} from "../../../redux/reducers/profileSlice"
 import {AnyAction} from "redux"
-import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton"
-import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton"
+import {PrimaryButton} from "../../Utils/PrimaryButton/PrimaryButton"
+import {SecondaryButton} from "../../Utils/SecondaryButton/SecondaryButton"
 import {saveProfileDataThunk} from "../../../redux/actions/profileActions"
 
 type Inputs = ProfileType
