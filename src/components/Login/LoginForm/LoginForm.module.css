@@ -1,40 +1,19 @@
-.loginForm {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    grid-gap: 30px;
-    align-items: center;
-    grid-template-areas:
-        "login login"
-        "password password"
-        "rememberMe button";
-}
-
-.login {
-    grid-area: login;
-}
-
-.password {
-    grid-area: password;
-}
-
 .rememberMe {
     grid-area: rememberMe;
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
     align-items: center;
     justify-items: left;
+    gap: 1em;
+    margin: 1em 0;
+
 }
 
 .rememberMe input {
     width: auto;
 }
 
-.button {
-    grid-area: button;
-    justify-self: right;
+.buttons {
+    display: flex;
+    gap: 1em;
 }
 
-.errorWarning {
-
-}

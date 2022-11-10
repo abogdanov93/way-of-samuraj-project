@@ -1,19 +1,27 @@
 import React, {FC} from "react"
 import style from "./MyInput.module.css"
-import {Control, FieldName, FieldValues, RegisterOptions} from "react-hook-form"
 
 type ownPropsType = {
     placeholder: string
+    type?: string
+    name?: string
+    errors?: any
+    register?: any
+    validationSchema?: any
+    required?: boolean
 }
 
-type UseControllerProps<TFieldValues extends FieldValues = FieldValues> = {
-    name: FieldName<TFieldValues>
-    rules?: Exclude<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' >
-    onFocus?: () => void
-    defaultValue?: unknown
-    control?: Control<TFieldValues>
-}
+export const MyInput: FC<ownPropsType> = ({name, register, errors, required, type, validationSchema}) => {
+    return <>
+        <input
+            className={style.myInput}
+            id={name}
+            name={name}
+            type={type}
+            {...register(name, validationSchema)}
+        />
 
-export const MyInput:FC<ownPropsType > = ({...props}) => {
-    return <input className={style.myInput} {...props}/>
+        {errors.name && <div className={style.errorWarning}>{errors?.name?.message}</div>}
+
+    </>
 }

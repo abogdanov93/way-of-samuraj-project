@@ -12,7 +12,7 @@ const Login: FC = () => {
     if (isAuth) return <Navigate to="/profile/"/>
 
     return <div className={`${style.login} ${commonStyles.whiteBlock}`}>
-        <h1 className={style.capture}>Sign in</h1>
+        <h1>Sign in</h1>
         <div className={style.block}><LoginForm /></div>
     </div>
 }

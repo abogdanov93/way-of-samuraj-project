@@ -1,20 +1,18 @@
 .login {
-    padding: 40px 0px 40px 0px;
+    padding: 4em 2em;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: auto auto;
-    grid-gap: 16px;
     grid-template-areas:
             ". capture ."
             ". block .";
+    gap: 1em 0;
 }
 
-.capture {
-    padding-left: 40px;
+.login h1 {
     grid-area: capture;
 }
 
 .block {
     grid-area: block;
-    padding: 20px;
 }

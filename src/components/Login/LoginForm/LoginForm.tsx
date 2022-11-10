@@ -4,7 +4,10 @@ import {useDispatch, useSelector} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {getCaptchaURL} from "../../../redux/selectors/loginSelectors"
 import {logInThunk} from "../../../redux/reducers/authSlice"
-import {AnyAction} from "redux";
+import {AnyAction} from "redux"
+import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton"
+import {MyInput} from "../../common/MyInput/MyInput"
+import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton"
 
 export type Inputs = {
     email: string
@@ -24,33 +27,39 @@ export const LoginForm: FC = () => {
         reset()
     }
 
-    return <form onSubmit={handleSubmit(onSubmit)} className={style.loginForm}>
+    return <form onSubmit={handleSubmit(onSubmit)}>
 
-        <input {...register("email", {
-            required: "The field is required"
-        })}
-               placeholder={"E-mail"}
-               className={style.login}
+        <MyInput
+            name="email"
+            placeholder="E-mail"
+            errors={errors}
+            register={register}
+            validationSchema={{required: "The field is required"}}
+            required
         />
-        {errors.email && <div className={style.errorWarning}>{errors?.email?.message}</div>}
 
-        <input {...register("password", {
-            minLength: {value: 5, message: "The password should consist at least 5 symbols"},
-            required: "The field is required"
-        })}
-               type="password"
-               placeholder={"Password"}
-               className={style.password}
+        <MyInput
+            name="password"
+            type="password"
+            placeholder="Password"
+            errors={errors}
+            register={register}
+            validationSchema={{
+                required: "The field is required",
+                minLength: {value: 5, message: "The password should consist at least 5 symbols"}
+            }}
+            required
         />
-        {errors.password && <div className={style.errorWarning}>{errors?.password?.message}</div>}
-
 
         <div className={style.rememberMe}>
             <div> Remember me</div>
             <input {...register("rememberMe")} type="checkbox"/>
         </div>
 
-        <button type="submit" className={style.button}>Send</button>
+        <div className={style.buttons}>
+            <PrimaryButton type="submit">Send</PrimaryButton>
+            <SecondaryButton type="reset">Reset</SecondaryButton>
+        </div>
 
         {(errors.email || errors.password)
             && <div className={style.warning}>
