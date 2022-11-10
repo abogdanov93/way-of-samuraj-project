@@ -1,6 +1,6 @@
 .navbar {
     grid-area: nav;
-    margin-left: 45px;
+    padding: 1em;
     display: grid;
     grid-template-rows: repeat(100, auto);
 }

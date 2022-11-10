@@ -13,24 +13,13 @@
             "contacts contacts";
 }
 
-@media (max-width: 414px) {
-    .profileData {
-        grid-area: data;
-        grid-template-columns: 1fr;
-        rid-template-rows: auto auto auto auto auto auto;
-        grid-template-areas:
-            "nickName"
-            "edit"
-            "status"
-            "jobDescription"
-            "aboutMe"
-            "contacts";
-    }
-}
-
-.profileData h4 {
-    color: rgba(0, 0, 0, 0.45);
+.profileData h1 {
+    grid-area: nickName;
+    color: #475156;
+    font-weight: bold;
+    font-size: 2em;
     margin-bottom: 0;
+    align-self: center;
 }
 
 .edit {
@@ -47,13 +36,9 @@
     font-weight: bold;
 }
 
-.profileData h1 {
-    grid-area: nickName;
-    color: #475156;
-    font-weight: bold;
-    font-size: 24px;
+.profileData h4 {
+    color: rgba(0, 0, 0, 0.45);
     margin-bottom: 0;
-    align-self: center;
 }
 
 .status {
@@ -74,7 +59,8 @@
 }
 
 .contacts {
-    margin: 16px 0 16px 0;
+    grid-area: contacts;
+    margin: 16px 0;
 }
 
 .contacts a {
@@ -82,3 +68,27 @@
     margin: 0 0 5px 0;
 }
 
+@media (max-width: 414px) {
+    .profileData {
+        grid-area: data;
+        grid-template-columns: 1fr auto;
+        rid-template-rows: repeat(5, auto);
+        grid-template-areas:
+            "nickName edit"
+            "status status"
+            "jobDescription jobDescription"
+            "aboutMe aboutMe"
+            "contacts contacts";
+    }
+    .profileData h1 {
+        font-size: 1rem;
+    }
+    .edit {
+        color: rgba(29, 111, 195, 1);
+        font-weight: bold;
+    }
+    .contacts {
+        margin: 0;
+
+    }
+}

@@ -11,13 +11,6 @@
     max-width: 250px;
 }
 
-@media (max-width: 414px){
-    .avatar img {
-        border-radius: 50%;
-        max-width: 5em;
-    }
-}
-
 .avatarButton {
     position: relative;
     bottom: 52px;
@@ -30,4 +23,18 @@
     color: dimgray;
     background-color: darkgrey;
     border: transparent;
+}
+
+@media (max-width: 414px){
+    .avatar img {
+        border-radius: 50%;
+        max-width: 5em;
+    }
+    .avatarButton {
+        bottom: 30px;
+        left: -5px;
+    }
+    .badge {
+        display: none;
+    }
 }

@@ -34,10 +34,10 @@ export const UserAvatar: FC<PropsType> = ({isOwner}) => {
         <div className={style.avatar}>
 
             {profile?.lookingForAJob
-                ? <Badge.Ribbon text="Open to work" color="green">
+                ? <Badge.Ribbon text="Open to work" color="green" className={style.badge}>
                     <img src={profile.photos.large || largeAvatar}/>
                 </Badge.Ribbon>
-                : <Badge.Ribbon text="Do not open to work">
+                : <Badge.Ribbon text="Do not open to work" className={style.badge}>
                     <img src={profile?.photos.large || largeAvatar}/>
                 </Badge.Ribbon>
             }

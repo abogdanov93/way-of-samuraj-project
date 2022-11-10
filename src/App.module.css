@@ -28,6 +28,8 @@
 
 @media (max-width: 414px){
     .App{
-        padding: 1em;
+        padding: 2em;
+        grid-template-columns: 1fr;
+        grid-gap: 1em 0;
     }
 }
