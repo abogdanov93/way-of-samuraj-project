@@ -11,6 +11,7 @@ import {getInitialized} from "./redux/selectors/appSelectors"
 import {AnyAction} from "redux"
 import {store} from "./redux/store"
 import {initializeApp} from "./redux/reducers/appSlice"
+import {NavMenu} from "./components/NavMenu/NavMenu";
 
 const Profile = React.lazy(() => import("./components/Profile/Profile"))
 const Users = React.lazy(() => import("./components/Users/Users"))
@@ -57,6 +58,7 @@ const App: FC = () => {
                 </Routes>
             </React.Suspense>
         </div>
+        <NavMenu/>
     </div>
 }
 

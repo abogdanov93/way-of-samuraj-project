@@ -28,7 +28,7 @@ export const pages: PagesType[] = [
     },
     {
         path: '/users',
-        title: "Find friends",
+        title: "Friends",
         icon: <SearchOutlined />,
         element: <Users/>
     },
