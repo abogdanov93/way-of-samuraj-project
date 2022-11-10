@@ -2,22 +2,24 @@ import React, {FC, useEffect} from "react"
 import style from "./Profile.module.css"
 import commonStyles from "./../../App.module.css"
 import ProfileInfo from "./ProfileInfo/ProfileInfo"
-import {actions, getProfileStatus, getUserProfile} from "../../redux/reducers/profileReducer"
-import {useDispatch, useSelector} from "react-redux"
+import {profileSlice} from "../../redux/reducers/profileSlice"
+import {useSelector} from "react-redux"
 import {getPosts, getUserId} from "../../redux/selectors/profileSelectors"
 import {useParams} from "react-router-dom"
-import {AnyAction} from "redux"
 import MyMessage from "../common/MyMessage/MyMessage"
 import {MyMessageForm} from "../common/MyMessageForm/MyMessageForm"
+import {useAppDispatch} from "../../hooks/redux"
+import {PostType} from "../../types/types"
+import {getStatusThunk, getProfileThunk} from "../../redux/actions/profileActions"
 
 const Profile: FC = () => {
     const posts = useSelector(getPosts)
     const userId = useSelector(getUserId)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
-    const deletePost = (postId: number) => dispatch(actions.deletePost(postId))
-    const getProfile = (userId: null | number) => dispatch(getUserProfile(userId) as unknown as AnyAction)
-    const getStatus = (userId: null | number) => dispatch(getProfileStatus(userId) as unknown as AnyAction)
+    const deletePost = (postId: number) => dispatch(profileSlice.actions.deletePost(postId))
+    const getProfile = (userId: null | number) => dispatch(getProfileThunk(userId))
+    const getStatus = (userId: null | number) => dispatch(getStatusThunk(userId))
 
     const params = useParams()
     const isOwner = !params.userId
@@ -44,11 +46,11 @@ const Profile: FC = () => {
                 </div>
 
                 <div className={commonStyles.whiteBlock}>
-                    <MyMessageForm placeholder="Write something..." sendMessage={actions.addPost}/>
+                    <MyMessageForm placeholder="Write something..." sendMessage={profileSlice.actions.addPost}/>
                 </div>
 
                 <div className={`${commonStyles.whiteBlock} ${style.posts}`}>{
-                    posts.map(p => <MyMessage key={p.id} id={p.id} text={p.post} deleteText={deletePost}/>)
+                    posts.map((p: PostType) => <MyMessage key={p.id} id={p.id} text={p.post} deleteText={deletePost}/>)
                 }</div>
             </div>
 }

@@ -3,11 +3,11 @@ import style from "./ProfileDataForm.module.css"
 import {ProfileType} from "../../../types/types"
 import {useDispatch} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
-import {actions, saveProfileData} from "../../../redux/reducers/profileReducer"
+import {profileSlice} from "../../../redux/reducers/profileSlice"
 import {AnyAction} from "redux"
 import {PrimaryButton} from "../../common/PrimaryButton/PrimaryButton"
-import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton";
-import {Switch} from "antd";
+import {SecondaryButton} from "../../common/SecondaryButton/SecondaryButton"
+import {saveProfileDataThunk} from "../../../redux/actions/profileActions"
 
 type Inputs = ProfileType
 
@@ -18,9 +18,9 @@ export const ProfileDataForm: FC = () => {
 
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>({mode: "onBlur"})
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        dispatch(saveProfileData(data) as unknown as AnyAction)
+        dispatch(saveProfileDataThunk(data) as unknown as AnyAction)
     }
-    const deactivateEditMode = () => dispatch(actions.setEditMode(false))
+    const deactivateEditMode = () => dispatch(profileSlice.actions.setEditMode(false))
 
 
     return <form onSubmit={handleSubmit(onSubmit)} className={style.profileDataForm}>

@@ -3,7 +3,6 @@ import {BrowserRouter, Route, Routes} from "react-router-dom"
 import {Provider, useDispatch, useSelector} from "react-redux"
 import 'antd/dist/antd.css'
 import commonStyles from "./App.module.css"
-import {initializeApp} from "./redux/reducers/appSlice"
 import Navbar from "./components/Navbar/Navbar"
 import FriendsBlock from "./components/FriendsBlock/FriendsBlock"
 import Preloader from "./components/common/Preloader/Preloader"
@@ -11,6 +10,7 @@ import Header from "./components/Header/Header"
 import {getInitialized} from "./redux/selectors/appSelectors"
 import {AnyAction} from "redux"
 import {store} from "./redux/store"
+import {initializeApp} from "./redux/reducers/appSlice"
 
 const Profile = React.lazy(() => import("./components/Profile/Profile"))
 const Users = React.lazy(() => import("./components/Users/Users"))

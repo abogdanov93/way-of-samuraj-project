@@ -2,9 +2,10 @@ import React, {FC} from 'react'
 import ProfileStatus from "../../ProfileStatus/ProfileStatus"
 import {Contact} from "../Contact/Contact"
 import {ContactsType} from "../../../../types/types"
-import {actions, updateProfileStatus} from "../../../../redux/reducers/profileReducer"
+import {profileSlice} from "../../../../redux/reducers/profileSlice"
 import {useAppDispatch, useAppSelector} from "../../../../hooks/redux"
 import style from "./ProfileData.module.css"
+import {updateStatusThunk} from "../../../../redux/actions/profileActions"
 
 type PropsType = {
     isOwner: boolean
@@ -16,8 +17,8 @@ export const ProfileData: FC<PropsType> = ({isOwner}) => {
     const {profile, status} = useAppSelector(state => state.profilePage)
     const dispatch = useAppDispatch()
 
-    const updateStatus = (status: string) => dispatch(updateProfileStatus(status))
-    const setEditMode = (isEditMode: boolean) => dispatch(actions.setEditMode(isEditMode))
+    const updateStatus = (status: string) => dispatch(updateStatusThunk(status))
+    const setEditMode = (isEditMode: boolean) => dispatch(profileSlice.actions.setEditMode(isEditMode))
     const activateEditMode = () => setEditMode(true)
 
     return <div className={style.profileData}>

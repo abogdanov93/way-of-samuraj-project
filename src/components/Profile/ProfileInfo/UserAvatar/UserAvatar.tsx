@@ -3,8 +3,8 @@ import {Badge, Button} from "antd"
 import largeAvatar from "../../../../uploads/images/userAvatar.jpeg"
 import {CameraOutlined} from "@ant-design/icons"
 import {useAppDispatch, useAppSelector} from "../../../../hooks/redux"
-import {saveProfilePhoto} from "../../../../redux/reducers/profileReducer"
 import style from "./UserAvatar.module.css"
+import {saveAvatarThunk} from "../../../../redux/actions/profileActions"
 
 type PropsType = {
     isOwner: boolean
@@ -27,7 +27,7 @@ export const UserAvatar: FC<PropsType> = ({isOwner}) => {
     }
 
     const savePhoto = (image: File) => {
-        dispatch(saveProfilePhoto(image))
+        dispatch(saveAvatarThunk(image))
     }
 
     return (

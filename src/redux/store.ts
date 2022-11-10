@@ -1,18 +1,18 @@
 import {Action} from "redux"
 import {configureStore, combineReducers} from "@reduxjs/toolkit"
 import {ThunkAction} from "redux-thunk"
-import profileReducer from "./reducers/profileReducer"
 import usersReducer from "./reducers/usersReducer"
 import auth from "./reducers/authSlice"
 import chatReducer from "./reducers/chatReducer"
 import dialogs from "./reducers/dialogsSlice"
 import app from "./reducers/appSlice"
 import friends from "./reducers/friendsSlice"
+import profilePage from "./reducers/profileSlice"
 
 
 const rootReducer = combineReducers({
     app,
-    profilePage: profileReducer,
+    profilePage,
     usersPage: usersReducer,
     dialogs,
     chat: chatReducer,

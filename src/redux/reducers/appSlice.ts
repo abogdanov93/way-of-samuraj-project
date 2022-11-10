@@ -20,11 +20,18 @@ const appSlice = createSlice({
     }
 })
 
-export const initializeApp = () => (dispatch: AppDispatchType) => {
-    const promise = dispatch(getAuthUserData())
-    promise.then(() => {
+export const initializeApp = () => async (dispatch: AppDispatchType) => {
+    try {
+        await dispatch(getAuthUserData())
         dispatch(appSlice.actions.initializationSuccess())
-    })
+    } catch (e) {
+        console.log(e)
+    }
+
+    // const promise = dispatch(getAuthUserData())
+    // promise.then(() => {
+    //     dispatch(appSlice.actions.initializationSuccess())
+    // })
 }
 // todo: как переделать санку без асинхронного запроса?
 

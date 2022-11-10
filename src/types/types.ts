@@ -1,7 +1,6 @@
-export type PostsType = {
+export type PostType = {
     id: number
     post: string
-    likeCounter: number
 }
 
 export type PhotosType = {
