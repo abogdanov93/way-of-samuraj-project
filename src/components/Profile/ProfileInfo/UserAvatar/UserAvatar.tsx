@@ -8,7 +8,6 @@ import {saveAvatarThunk} from "../../../../redux/actions/profileActions"
 
 type PropsType = {
     isOwner: boolean
-    className: any
 }
 
 export const UserAvatar: FC<PropsType> = ({isOwner}) => {
@@ -30,8 +29,7 @@ export const UserAvatar: FC<PropsType> = ({isOwner}) => {
         dispatch(saveAvatarThunk(image))
     }
 
-    return (
-        <div className={style.avatar}>
+    return <div className={style.avatar}>
 
             {profile?.lookingForAJob
                 ? <Badge.Ribbon text="Open to work" color="green" className={style.badge}>
@@ -43,12 +41,12 @@ export const UserAvatar: FC<PropsType> = ({isOwner}) => {
             }
 
             {isOwner &&
-                <div>
+                <div className={style.input}>
                     <input
                         ref={inputRef}
                         type="file"
-                        hidden
                         onChange={onPhotoSelected}
+                        hidden
                     />
                     <Button className={style.avatarButton}
                             shape="circle"
@@ -56,6 +54,6 @@ export const UserAvatar: FC<PropsType> = ({isOwner}) => {
                             icon={<CameraOutlined/>}/>
                 </div>
             }
+
         </div>
-    )
 }

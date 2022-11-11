@@ -2,23 +2,73 @@
     color: #475156;
     height: 310px;
     display: grid;
-    grid-template-columns: auto 1fr;
     grid-gap: 0 2em;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto 1fr;
     grid-template-areas:
-            "avatar data";
-}
-
-.profileData {
-    grid-area: data;
+"avatar nickName edit"
+"avatar status status"
+"avatar data data";
 }
 
 .avatar {
     grid-area: avatar;
 }
 
+h1 {
+    grid-area: nickName;
+    color: #475156;
+    font-weight: bold;
+    font-size: 150%;
+    margin-bottom: 0;
+    align-self: center;
+}
+
+.edit {
+    grid-area: edit;
+    cursor: pointer;
+    width: 30px;
+    color: rgba(0, 0, 0, 0.45);
+    align-self: center;
+}
+
+.edit:hover {
+    cursor: pointer;
+    color: rgba(29, 111, 195, 1);
+    font-weight: bold;
+}
+
+.status {
+    grid-area: status;
+}
+
+.profileData {
+    grid-area: data;
+}
+
 @media (max-width: 414px) {
     .profileInfo {
-        grid-gap: 1em;
+        height: auto;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+"avatar nickName edit"
+"avatar status status"
+"data data data";
+    }
+
+    .edit {
+        color: rgba(29, 111, 195, 1);
+        font-weight: bold;
+        align-self: center;
+    }
+
+    .status {
+        margin: 0;
+    }
+
+    h1 {
+        align-self: center;
     }
 }
 

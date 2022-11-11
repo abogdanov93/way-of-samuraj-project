@@ -14,23 +14,9 @@ type PropsType = {
 
 export const ProfileData: FC<PropsType> = ({isOwner}) => {
 
-    const {profile, status} = useAppSelector(state => state.profilePage)
-    const dispatch = useAppDispatch()
-
-    const updateStatus = (status: string) => dispatch(updateStatusThunk(status))
-    const setEditMode = (isEditMode: boolean) => dispatch(profileSlice.actions.setEditMode(isEditMode))
-    const activateEditMode = () => setEditMode(true)
+    const {profile} = useAppSelector(state => state.profilePage)
 
     return <div className={style.profileData}>
-
-        {isOwner && <div onClick={activateEditMode} className={style.edit}>Edit</div>}
-        <h1>{profile?.fullName}</h1>
-
-        <div className={style.status}>
-            <ProfileStatus
-                status={status}
-                updateStatus={updateStatus}/>
-        </div>
 
         <div className={style.jobDescription}>
             <h4>My professional skills:</h4>

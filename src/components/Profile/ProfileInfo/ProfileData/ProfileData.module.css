@@ -1,66 +1,15 @@
 .profileData {
     grid-area: data;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto auto auto 1fr;
-    gap: 5px;
-    align-items: start;
-    grid-template-areas:
-            "nickName edit"
-            "status status"
-            "jobDescription jobDescription"
-            "aboutMe aboutMe"
-            "contacts contacts";
-}
-
-.profileData h1 {
-    grid-area: nickName;
-    color: #475156;
-    font-weight: bold;
-    font-size: 2em;
-    margin-bottom: 0;
-    align-self: center;
-}
-
-.edit {
-    grid-area: edit;
-    cursor: pointer;
-    width: 30px;
-    align-self: center;
-    color: rgba(0, 0, 0, 0.45);
-}
-
-.edit:hover {
-    cursor: pointer;
-    color: rgba(29, 111, 195, 1);
-    font-weight: bold;
 }
 
 .profileData h4 {
     color: rgba(0, 0, 0, 0.45);
     margin-bottom: 0;
-}
-
-.status {
-    grid-area: status;
-    margin-bottom: 8px;
-    align-self: center;
-    font-size: 12px;
-    font-weight: lighter;
-    color: rgba(0, 0, 0, 0.45);
-}
-
-.jobDescription {
-    grid-area: jobDescription;
-}
-
-.aboutMe {
-    grid-area: aboutMe;
+    margin-top: 7px;
 }
 
 .contacts {
-    grid-area: contacts;
-    margin: 16px 0;
+    margin-top: 7px;
 }
 
 .contacts a {
@@ -69,24 +18,6 @@
 }
 
 @media (max-width: 414px) {
-    .profileData {
-        grid-area: data;
-        grid-template-columns: 1fr auto;
-        rid-template-rows: repeat(5, auto);
-        grid-template-areas:
-            "nickName edit"
-            "status status"
-            "jobDescription jobDescription"
-            "aboutMe aboutMe"
-            "contacts contacts";
-    }
-    .profileData h1 {
-        font-size: 1rem;
-    }
-    .edit {
-        color: rgba(29, 111, 195, 1);
-        font-weight: bold;
-    }
     .contacts {
         margin: 1em 0;
     }
