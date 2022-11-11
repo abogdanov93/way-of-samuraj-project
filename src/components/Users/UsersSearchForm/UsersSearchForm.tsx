@@ -5,7 +5,9 @@ import {Field} from "formik"
 import {useSelector} from "react-redux"
 import {getUsersFilter} from "../../../redux/selectors/usersSelectors"
 import style from "./UserSearchForm.module.css"
-import {PrimaryButton} from "../../Utils/PrimaryButton/PrimaryButton";
+import {PrimaryButton} from "../../Utils/PrimaryButton/PrimaryButton"
+
+// with Formik
 
 type propsType = {
     onFilterChange: (filter: filterType) => void
@@ -14,7 +16,7 @@ type propsType = {
 const usersSearchFormValidate = (values: any) => {
     const errors = {}
     return errors
-} // почему за пределами компоненты?
+}
 
 const UsersSearchForm: FC<propsType> = ({onFilterChange}) => {
 

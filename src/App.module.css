@@ -1,15 +1,15 @@
 .App {
     min-height: 100vh;
     width: 100vw;
+    padding: 1em 10em;
     display: grid;
     grid-template-rows: auto 1fr;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-gap: 16px;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-gap: 1em;
     grid-template-areas:
             "header header header"
             "nav content friends";
     background: linear-gradient(0deg, rgba(37,78,184,1) 0%, rgba(29,111,195,1) 100%);
-    padding: 16px 64px 16px 64px;
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     color: white;
@@ -20,16 +20,21 @@
 }
 
 .whiteBlock {
-    background-color: white;
+    width: 100%;
+    padding: 2em;
     border-radius: 10px;
-    padding: 20px;
+    background-color: white;
     color: #475156;
 }
 
 @media (max-width: 414px){
     .App{
-        padding: 2em;
-        grid-template-columns: 1fr;
+        padding: 1em 0;
         grid-gap: 1em 0;
+        grid-template-columns: auto;
+    }
+    .whiteBlock {
+        box-sizing: border-box;
+        padding: 1em;
     }
 }

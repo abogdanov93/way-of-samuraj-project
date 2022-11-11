@@ -1,7 +1,7 @@
 .profile {
     display:grid;
     grid-template-rows: auto auto 1fr;
-    grid-gap: 16px;
+    grid-gap: 1em;
 }
 
 .posts {

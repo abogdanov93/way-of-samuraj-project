@@ -3,7 +3,7 @@
     height: 310px;
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-gap: 0 25px;
+    grid-gap: 0 2em;
     grid-template-areas:
             "avatar data";
 }
@@ -14,6 +14,12 @@
 
 .avatar {
     grid-area: avatar;
+}
+
+@media (max-width: 414px) {
+    .profileInfo {
+        grid-gap: 1em;
+    }
 }
 
 .modal {

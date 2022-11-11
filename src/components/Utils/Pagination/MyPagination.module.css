@@ -1,6 +1,6 @@
 .paginationPage {
+    margin-top: 1em;
     display: flex;
-    margin-top: 20px;
     justify-content: center;
     align-items: center;
 }
@@ -8,4 +8,11 @@
 .paginationPage button {
     color: #475156;
     font-size: small;
+}
+
+@media (max-width: 414px) {
+    .paginationPage button {
+        margin: 0;
+        padding: 0;
+    }
 }

@@ -35,9 +35,7 @@ const App: FC = () => {
     return <div className={commonStyles.App}>
             <Header/>
             <Navbar/>
-        <div className={commonStyles.friends}>
             <FriendsBlock/>
-        </div>
         <div className={commonStyles.content}>
             <React.Suspense fallback={<Preloader/>}>
                 <Routes>

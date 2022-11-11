@@ -1,5 +1,5 @@
 import React, {FC, MouseEventHandler, useState} from "react"
-import style from "./Pagination.module.css"
+import style from "./MyPagination.module.css"
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 
@@ -8,12 +8,14 @@ type propsType = {
     pageSize: number
     onPageChange: (pageNumber: number) => void
     currentPageNumber: number
+    className: any
 }
 
 const MyPagination: FC<propsType> = ({totalItemsCount, pageSize, onPageChange, currentPageNumber}) => {
 
     let pagesCount = Math.ceil(totalItemsCount / pageSize)
 
+    // without lib version
     // let pages = []
     // for (let i = 1; i <= pagesCount; i++) {
     //     pages.push(i)
@@ -25,17 +27,17 @@ const MyPagination: FC<propsType> = ({totalItemsCount, pageSize, onPageChange, c
     // let rightPortionPageNumber = portionNumber * portionSize
 
 
-    return <div className={style.paginationPage}>
+    return <div>
         <Stack spacing={2}>
             <Pagination
-                        count={pagesCount}
-                        page={currentPageNumber}
-                        onChange={((e, p) => onPageChange(p))}
-                        showFirstButton
-                        showLastButton
+                className={style.paginationPage}
+                count={pagesCount}
+                page={currentPageNumber}
+                onChange={((e, p) => onPageChange(p))}
             />
         </Stack>
 
+        {/* without lib version*/}
         {/*{portionNumber > 1 &&*/}
         {/*    <div>*/}
         {/*        <div onClick={() => {*/}

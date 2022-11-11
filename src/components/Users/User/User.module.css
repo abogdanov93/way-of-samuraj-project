@@ -2,9 +2,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 50px 10px 50px;
+    margin: 1em 3em;
     padding-bottom: 10px;
     border-bottom: 1px solid #E8E8E8;
+}
+
+@media (max-width: 414px) {
+    .userPage {
+        margin: 1em 0;
+    }
 }
 
 .user{

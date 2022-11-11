@@ -45,12 +45,6 @@ export const pages: PagesType[] = [
         element: <Chat/>
     },
     {
-        path: '/music',
-        title: "Music",
-        icon: <CustomerServiceOutlined />,
-        element: <Profile/>
-    },
-    {
         path: '/settings',
         title: "Settings",
         icon: <SettingOutlined />,

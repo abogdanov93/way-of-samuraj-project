@@ -1,7 +1,6 @@
 .friendsBlock {
     grid-area: friends;
-    height: 310px;
-    box-sizing: unset;
+    height: 366px;
 }
 
 @media (max-width: 414px) {
