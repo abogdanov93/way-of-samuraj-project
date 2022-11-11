@@ -24,3 +24,10 @@
 .myButton:disabled {
         opacity: 0.4;
 }
+
+@media (max-width: 414px) {
+        .myButton {
+                width: 65px;
+                font-size: x-small;
+        }
+}

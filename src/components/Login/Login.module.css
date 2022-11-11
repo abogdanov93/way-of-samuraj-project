@@ -26,6 +26,6 @@
         grid-template-areas:
             "capture"
             "block";
-        gap: 1em 0;
+        gap: 2em 0;
     }
 }
