@@ -16,3 +16,16 @@
 .block {
     grid-area: block;
 }
+
+@media (max-width: 414px) {
+    .login {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        justify-items: center;
+        grid-template-areas:
+            "capture"
+            "block";
+        gap: 1em 0;
+    }
+}
