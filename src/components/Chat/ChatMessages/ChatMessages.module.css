@@ -1,16 +1,15 @@
 .chatMessages {
     height: 400px;
     overflow: auto;
-    padding: 20px;
     border: solid 1px gainsboro;
     border-radius: 5px;
 }
 
 .chatMessage {
-    padding: 0 0 10px 20px;
+    padding: 1em 2em;
     display: grid;
-    gap: 0 45px;
     align-items: center;
+    justify-items: start;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: auto auto;
 }
@@ -23,11 +22,19 @@
 }
 
 .message{
-    font-size: 14px;
     color: #475156;
 }
 
 .chatMessage img {
     width: 40px;
     border-radius: 50%;
+}
+
+@media (max-width: 414px) {
+    .chatMessages {
+        padding: 0;
+    }
+    .chatMessage {
+        padding: 1em;
+    }
 }

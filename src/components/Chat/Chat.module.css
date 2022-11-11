@@ -2,3 +2,9 @@
     display: grid;
     gap: 20px;
 }
+
+@media (max-width: 414px) {
+    .chat {
+        width: 100vw;
+    }
+}

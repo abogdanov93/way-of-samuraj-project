@@ -32,6 +32,10 @@
         padding: 1em 0;
         grid-gap: 1em 0;
         grid-template-columns: auto;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            "header header header"
+            "nav content friends";
     }
     .whiteBlock {
         box-sizing: border-box;

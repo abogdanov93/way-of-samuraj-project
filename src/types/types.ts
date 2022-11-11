@@ -40,6 +40,7 @@ export type UsersType = {
 export type DialogType = {
     id: number
     name: string
+    lastMessage: string
 }
 
 export type MessagesType = {

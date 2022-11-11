@@ -17,7 +17,7 @@ const Dialogs: FC = () => {
     return (
         <div className={style.dialogs}>
             <div className={`${style.dialog} ${commonStyles.whiteBlock}`}>
-                {dialogs.dialog.map(d => <Dialog key={d.id} id={d.id} name={d.name}/>)}
+                {dialogs.dialog.map(d => <Dialog key={d.id} id={d.id} name={d.name} lastMessage={d.lastMessage}/>)}
             </div>
             <div className={`${style.message} ${commonStyles.whiteBlock}`}>
                 {dialogs.messages.map(m => <MyMessage key={m.id} text={m.message} id={m.id} deleteText={deleteMessageText}/>)}

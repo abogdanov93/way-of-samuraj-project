@@ -8,8 +8,8 @@ export type initialStateType = {
 
 const initialState: initialStateType = {
     dialog: [
-        {id: 1, name: "Han Solo"},
-        {id: 2, name: "efremos"}
+        {id: 1, name: "Han Solo", lastMessage: '"message"'},
+        {id: 2, name: "efremos", lastMessage: '"message"'}
     ],
     messages: [
         {id: 1, message: "message"},
