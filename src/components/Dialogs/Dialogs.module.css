@@ -10,6 +10,7 @@
 
 .dialog {
     grid-area: dialog;
+    height: 455px;
 }
 
 .messages {
