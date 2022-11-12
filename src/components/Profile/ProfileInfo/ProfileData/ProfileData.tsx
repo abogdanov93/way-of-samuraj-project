@@ -1,11 +1,8 @@
 import React, {FC} from 'react'
-import ProfileStatus from "../../ProfileStatus/ProfileStatus"
 import {Contact} from "../Contact/Contact"
 import {ContactsType} from "../../../../types/types"
-import {profileSlice} from "../../../../redux/reducers/profileSlice"
 import {useAppDispatch, useAppSelector} from "../../../../hooks/redux"
 import style from "./ProfileData.module.css"
-import {updateStatusThunk} from "../../../../redux/actions/profileActions"
 
 type PropsType = {
     isOwner: boolean

@@ -28,7 +28,7 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
 
         {isOwner && <div onClick={activateEditMode} className={style.edit}>Edit</div>}
 
-        <Status className={style.status}/>
+        <Status className={style.status} isOwner={isOwner}/>
 
         <div className={style.openToWork}>
             <CheckCircleTwoTone twoToneColor="#52c41a" />
