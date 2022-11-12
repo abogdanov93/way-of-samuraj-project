@@ -4,7 +4,7 @@
     grid-template-rows: 3fr auto;
     grid-gap: 16px;
     grid-template-areas:
-        "dialog message"
+        "dialog messages"
         "dialog newMessage";
 }
 
@@ -12,9 +12,13 @@
     grid-area: dialog;
 }
 
-.message {
-    grid-area: message;
-    padding-bottom: 30px;
+.messages {
+    width: 100%;
+    grid-area: messages;
+    height: 400px;
+    overflow: auto;
+    border: solid 1px gainsboro;
+    border-radius: 5px;
 }
 
 .newMessage {

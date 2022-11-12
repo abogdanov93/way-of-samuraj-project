@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from "react"
-import {BrowserRouter, Route, Routes} from "react-router-dom"
+import {BrowserRouter, Route, Routes, useLocation} from "react-router-dom"
 import {Provider, useDispatch, useSelector} from "react-redux"
 import 'antd/dist/antd.css'
 import commonStyles from "./App.module.css"
@@ -33,9 +33,9 @@ const App: FC = () => {
     }
 
     return <div className={commonStyles.App}>
-            <Header/>
-            <Navbar/>
-            <FriendsBlock/>
+        <Header/>
+        <Navbar/>
+        <FriendsBlock/>
         <div className={commonStyles.content}>
             <React.Suspense fallback={<Preloader/>}>
                 <Routes>

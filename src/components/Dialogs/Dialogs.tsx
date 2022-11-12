@@ -1,4 +1,4 @@
-import React, {FC} from "react"
+import React, {FC, useEffect, useRef} from "react"
 import style from "./Dialogs.module.css"
 import commonStyles from "../../App.module.css"
 import Dialog from "./Dialog/Dialog"
@@ -7,6 +7,7 @@ import {getDialogs} from "../../redux/selectors/dialogsSelectors"
 import MyMessage from "../Utils/MyMessage/MyMessage"
 import {addMessage, deleteMessage} from "../../redux/reducers/dialogsSlice"
 import {MyMessageForm} from "../Utils/MyMessageForm/MyMessageForm"
+import {getChatMessages} from "../../redux/selectors/chatSelectors";
 
 const Dialogs: FC = () => {
 
@@ -14,14 +15,28 @@ const Dialogs: FC = () => {
     const dispatch = useDispatch()
     const deleteMessageText = (id: number) => dispatch(deleteMessage(id))
 
+    const messagesRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (messagesRef.current) {
+            messagesRef.current.scrollTop = messagesRef.current.scrollHeight
+        }
+    }, [dialogs.messages])
+
     return (
         <div className={style.dialogs}>
+
             <div className={`${style.dialog} ${commonStyles.whiteBlock}`}>
                 {dialogs.dialog.map(d => <Dialog key={d.id} id={d.id} name={d.name} lastMessage={d.lastMessage}/>)}
             </div>
-            <div className={`${style.message} ${commonStyles.whiteBlock}`}>
-                {dialogs.messages.map(m => <MyMessage key={m.id} text={m.message} id={m.id} deleteText={deleteMessageText}/>)}
+
+            <div className={commonStyles.whiteBlock}>
+                <div className={style.messages} ref={messagesRef}>
+                    {dialogs.messages.map(m => <MyMessage key={m.id} text={m.message} id={m.id}
+                                                          deleteText={deleteMessageText}/>)}
+                </div>
             </div>
+
             <div className={`${style.newMessage} ${commonStyles.whiteBlock}`}>
                 <MyMessageForm placeholder={"Write a message..."} sendMessage={addMessage}/>
             </div>
