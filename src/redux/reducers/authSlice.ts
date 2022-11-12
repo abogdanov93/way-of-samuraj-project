@@ -3,6 +3,7 @@ import {AppDispatchType, baseActionType, baseThunkType} from "../store"
 import {authAPI, AuthDataType} from "../../api/authAPI"
 import {securityAPI} from "../../api/securityAPI"
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {profileAPI} from "../../api/profileAPI";
 
 type InitialStateType = {
     id: number | null
@@ -10,6 +11,7 @@ type InitialStateType = {
     email: string | null
     isAuth: boolean
     captchaURL?: string | null
+    ownersAvatar: string | null
 }
 
 const initialState: InitialStateType = {
@@ -17,18 +19,8 @@ const initialState: InitialStateType = {
     login: null,
     email: null,
     isAuth: false,
-    captchaURL: null
-}
-
-export const getAuthUserData = () => async (dispatch: AppDispatchType) => {
-    const data = await authAPI.getAuthData()
-    if (data.resultCode === resultCodeEnum.success) {
-        let payload = {
-            ...data.data,
-            isAuth: true
-        }
-        dispatch(authSlice.actions.setAuthUserData(payload))
-    }
+    captchaURL: null,
+    ownersAvatar: null
 }
 
 export const authSlice = createSlice({
@@ -40,6 +32,7 @@ export const authSlice = createSlice({
             state.email = action.payload.email
             state.login = action.payload.login
             state.isAuth = action.payload.isAuth
+            state.ownersAvatar = action.payload.ownersAvatar
         },
         setCaptchaURL(state, action: PayloadAction<string>) {
             state.captchaURL = action.payload
@@ -47,6 +40,19 @@ export const authSlice = createSlice({
     }
 })
 
+export const getAuthUserData = () => async (dispatch: AppDispatchType) => {
+    const authData = await authAPI.getAuthData()
+    if (authData.resultCode === resultCodeEnum.success) {
+        const profileData = await profileAPI.getProfile(authData.data.id)
+        const ownersAvatar = profileData.photos.small
+        let payload = {
+            ...authData.data,
+            isAuth: true,
+            ownersAvatar
+        }
+        dispatch(authSlice.actions.setAuthUserData(payload))
+    }
+}
 
 export const logInThunk = (email: string, password: string, rememberMe: boolean, captcha: string) =>
     async (dispatch: AppDispatchType) => {
@@ -67,7 +73,8 @@ export const signOut = () => async (dispatch: AppDispatchType) => {
             id: null,
             login: null,
             email: null,
-            isAuth: false
+            isAuth: false,
+            ownersAvatar: null
         }
         dispatch(authSlice.actions.setAuthUserData(payload))
     }

@@ -47,10 +47,12 @@ export const usersSlice = createSlice({
             state.totalUsersCount = action.payload
         },
         followUser(state, action: PayloadAction<number>) {
-
+            const userIndex = state.users.findIndex((user => user.id == action.payload))
+            state.users[userIndex].followed = true
         },
         unfollowUser(state, action: PayloadAction<number>) {
-
+            const userIndex = state.users.findIndex((user => user.id == action.payload))
+            state.users[userIndex].followed = false
         }
         // + toggle is fetching
         // + set following in progress
@@ -63,7 +65,7 @@ export const usersSlice = createSlice({
     //         state.isFetching = false
     //         state.users = action.payload
     //     },
-    //     [setUsers.pending.type]: (state) => {
+    //     [setUsers.rejected.type]: (state) => {
     //         state.isFetching = false
     //         console.log("Error")
     //     },

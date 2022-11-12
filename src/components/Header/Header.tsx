@@ -4,14 +4,13 @@ import logo from "../../uploads/images/logo.png"
 import loginIcon from "../../uploads/images/login.png"
 import {NavLink, useNavigate} from "react-router-dom"
 import {useSelector} from "react-redux"
-import {getLogin} from "../../redux/selectors/loginSelectors"
 import {signOut} from "../../redux/reducers/authSlice"
 import {getProfile} from "../../redux/selectors/profileSelectors"
-import {useAppDispatch} from "../../hooks/redux"
+import {useAppDispatch, useAppSelector} from "../../hooks/redux"
 
 const Header: FC = () => {
 
-    const isAuth = useSelector(getLogin)
+    const {isAuth, ownersAvatar} = useAppSelector(state => state.auth)
     const profile = useSelector(getProfile)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
@@ -31,7 +30,7 @@ const Header: FC = () => {
             {isAuth
                 ? <div className={style.loginArea}>
                     <NavLink to={"/profile"}>
-                        <img className={style.avatar} src={profile?.photos.small as string}/>
+                        <img className={style.avatar} src={ownersAvatar as string}/>
                     </NavLink>
                     <div onClick={logOut}>Sign out</div>
                 </div>
