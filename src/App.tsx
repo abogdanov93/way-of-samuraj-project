@@ -8,10 +8,10 @@ import FriendsBlock from "./components/FriendsBlock/FriendsBlock"
 import Preloader from "./components/Utils/Preloader/Preloader"
 import Header from "./components/Header/Header"
 import {getInitialized} from "./redux/selectors/appSelectors"
-import {AnyAction} from "redux"
 import {store} from "./redux/store"
 import {initializeApp} from "./redux/reducers/appSlice"
-import {NavMenu} from "./components/NavMenu/NavMenu";
+import {NavMenu} from "./components/NavMenu/NavMenu"
+import {useAppDispatch} from "./hooks/redux"
 
 const Profile = React.lazy(() => import("./components/Profile/Profile"))
 const Users = React.lazy(() => import("./components/Users/Users"))
@@ -22,10 +22,10 @@ const Login = React.lazy(() => import("./components/Login/Login"))
 
 const App: FC = () => {
     const initialized = useSelector(getInitialized)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(initializeApp() as unknown as AnyAction)
+        dispatch(initializeApp())
     }, [])
 
     if (!initialized) {

@@ -3,20 +3,20 @@ import style from "./Header.module.css"
 import logo from "../../uploads/images/logo.png"
 import loginIcon from "../../uploads/images/login.png"
 import {NavLink, useNavigate} from "react-router-dom"
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 import {getLogin} from "../../redux/selectors/loginSelectors"
 import {signOut} from "../../redux/reducers/authSlice"
-import {AnyAction} from "redux"
 import {getProfile} from "../../redux/selectors/profileSelectors"
+import {useAppDispatch} from "../../hooks/redux"
 
 const Header: FC = () => {
 
     const isAuth = useSelector(getLogin)
     const profile = useSelector(getProfile)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const logOut = () => {
-        dispatch(signOut() as unknown as AnyAction)
+        dispatch(signOut())
         navigate("/login")
     }
 

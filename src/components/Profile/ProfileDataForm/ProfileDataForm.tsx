@@ -1,24 +1,23 @@
 import React, {FC} from "react"
 import style from "./ProfileDataForm.module.css"
 import {ProfileType} from "../../../types/types"
-import {useDispatch} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {profileSlice} from "../../../redux/reducers/profileSlice"
-import {AnyAction} from "redux"
 import {PrimaryButton} from "../../Utils/PrimaryButton/PrimaryButton"
 import {SecondaryButton} from "../../Utils/SecondaryButton/SecondaryButton"
 import {saveProfileDataThunk} from "../../../redux/actions/profileActions"
+import {useAppDispatch} from "../../../hooks/redux"
 
 type Inputs = ProfileType
 
 
 export const ProfileDataForm: FC = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>({mode: "onBlur"})
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        dispatch(saveProfileDataThunk(data) as unknown as AnyAction)
+        dispatch(saveProfileDataThunk(data))
     }
     const deactivateEditMode = () => dispatch(profileSlice.actions.setEditMode(false))
 

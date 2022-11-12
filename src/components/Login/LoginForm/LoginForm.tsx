@@ -4,10 +4,10 @@ import {useDispatch, useSelector} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {getCaptchaURL} from "../../../redux/selectors/loginSelectors"
 import {logInThunk} from "../../../redux/reducers/authSlice"
-import {AnyAction} from "redux"
 import {PrimaryButton} from "../../Utils/PrimaryButton/PrimaryButton"
 import {MyInput} from "../../Utils/MyInput/MyInput"
 import {SecondaryButton} from "../../Utils/SecondaryButton/SecondaryButton"
+import {useAppDispatch} from "../../../hooks/redux"
 
 export type Inputs = {
     email: string
@@ -19,11 +19,11 @@ export type Inputs = {
 export const LoginForm: FC = () => {
 
     const captchaURL = useSelector(getCaptchaURL)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm<Inputs>({mode: "onBlur"})
     const onSubmit: SubmitHandler<Inputs> = data => {
-        dispatch(logInThunk(data.email, data.password, data.rememberMe, data.captcha) as unknown as AnyAction)
+        dispatch(logInThunk(data.email, data.password, data.rememberMe, data.captcha))
         reset()
     }
 

@@ -1,13 +1,12 @@
 import React, {FC, useEffect} from "react"
 import style from "./FriendsBlock.module.css"
 import commonStyles from "./../../App.module.css"
-import {useDispatch} from "react-redux"
 import {AnyAction} from "redux"
 import userAvatar from "../../uploads/images/userAvatar.jpeg"
 import {NavLink, useNavigate} from "react-router-dom"
 import {requestUsers} from "../../redux/reducers/usersReducer"
 import Preloader from "../Utils/Preloader/Preloader"
-import {useAppSelector} from "../../hooks/redux"
+import {useAppDispatch, useAppSelector} from "../../hooks/redux"
 import {Error} from "../Utils/Error/Error"
 import {SecondaryButton} from "../Utils/SecondaryButton/SecondaryButton"
 import {fetchFriendsThunk} from "../../redux/actions/friendsActions"
@@ -15,26 +14,26 @@ import {fetchFriendsThunk} from "../../redux/actions/friendsActions"
 const FriendsBlock: FC = () => {
 
     const {friends, isLoading, error} = useAppSelector(state => state.friends)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
     useEffect(() => {
-        dispatch(fetchFriendsThunk() as unknown as AnyAction)
+        dispatch(fetchFriendsThunk())
     }, [])
 
     // todo: ререндер при добавлении и удалении друга
     // useEffect(() => {
-    //     dispatch(requestFriends() as unknown as AnyAction)
+    //     dispatch(requestFriends())
     // }, [friends.length])
 
     const showFriends = () => {
         navigate("/users")
-        dispatch(requestUsers(1, 5, {term: "", friend: true}) as unknown as AnyAction)
+        dispatch(requestUsers(1, 5, {term: "", friend: true}))
     }
 
     const searchFriends = () => {
         navigate("/users")
-        dispatch(requestUsers(1, 5, {term: "", friend: null}) as unknown as AnyAction)
+        dispatch(requestUsers(1, 5, {term: "", friend: null}))
     }
 
     return <div className={`${style.friendsBlock} ${commonStyles.whiteBlock}`}>
