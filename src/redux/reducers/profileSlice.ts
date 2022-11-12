@@ -24,7 +24,7 @@ export const profileSlice = createSlice({
     reducers: {
         addPost(state, action: PayloadAction<string>) {
             const newPost = {
-                id: 3,
+                id: Math.random(),
                 post: action.payload
             }
             state.posts.unshift(newPost)

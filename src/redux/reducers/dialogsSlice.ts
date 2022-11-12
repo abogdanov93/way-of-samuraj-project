@@ -24,7 +24,7 @@ const dialogsSlice = createSlice({
     reducers: {
         addMessage(state, action: PayloadAction<string>) {
             state.messages.push({
-                id: 4,
+                id: Math.random(),
                 message: action.payload
             })
         },
