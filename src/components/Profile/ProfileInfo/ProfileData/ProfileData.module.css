@@ -17,7 +17,7 @@
     margin: 0 0 5px 0;
 }
 
-@media (max-width: 414px) {
+@media (max-width: 687px) {
     .contacts {
         margin: 1em 0;
     }

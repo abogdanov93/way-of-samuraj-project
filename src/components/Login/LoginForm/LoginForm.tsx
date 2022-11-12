@@ -46,7 +46,7 @@ export const LoginForm: FC = () => {
             register={register}
             validationSchema={{
                 required: "The field is required",
-                minLength: {value: 5, message: "The password should consist at least 5 symbols"}
+                minLength: {value: 4, message: "The password should consist at least 4 symbols"}
             }}
             required
         />

@@ -21,7 +21,7 @@
     position: absolute;
 }
 
-@media (max-width: 414px){
+@media (max-width: 687px){
 
     .avatar img {
         border-radius: 50%;

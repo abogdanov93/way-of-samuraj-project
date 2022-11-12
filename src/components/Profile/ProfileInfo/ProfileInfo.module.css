@@ -46,14 +46,19 @@ h1 {
     grid-area: data;
 }
 
-@media (max-width: 414px) {
+.openToWork {
+    display: none;
+}
+
+@media (max-width: 687px) {
     .profileInfo {
         height: auto;
         grid-template-columns: auto 1fr;
-        grid-template-rows: auto 1fr auto;
+        grid-template-rows: auto 1fr auto auto;
         grid-template-areas:
 "avatar nickName edit"
 "avatar status status"
+"avatar openToWork openToWork"
 "data data data";
     }
 
@@ -69,6 +74,16 @@ h1 {
 
     h1 {
         align-self: center;
+    }
+
+    .openToWork {
+        grid-area: openToWork;
+        display: flex;
+        grid-gap: 3px;
+        align-items: center;
+        font-weight: lighter;
+        font-size: 85%;
+        color: rgba(0, 0, 0, 0.45);
     }
 }
 

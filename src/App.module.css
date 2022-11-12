@@ -27,7 +27,7 @@
     color: #475156;
 }
 
-@media (max-width: 414px){
+@media (max-width: 687px){
     .App{
         padding: 1em 0;
         grid-gap: 1em 0;

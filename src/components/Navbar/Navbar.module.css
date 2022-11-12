@@ -5,7 +5,7 @@
     grid-template-rows: repeat(100, auto);
 }
 
-@media (max-width: 414px) {
+@media (max-width: 687px) {
     .navbar {
         display: none;
     }

@@ -25,7 +25,7 @@
         opacity: 0.4;
 }
 
-@media (max-width: 414px) {
+@media (max-width: 687px) {
         .myButton {
                 width: 77px;
                 font-size: 12px;

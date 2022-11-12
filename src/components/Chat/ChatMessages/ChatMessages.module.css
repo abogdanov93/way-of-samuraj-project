@@ -33,7 +33,7 @@
     border-radius: 50%;
 }
 
-@media (max-width: 414px) {
+@media (max-width: 687px) {
     .chatMessages {
         padding: 0;
     }

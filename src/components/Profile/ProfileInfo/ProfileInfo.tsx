@@ -7,6 +7,7 @@ import {UserAvatar} from "./UserAvatar/UserAvatar"
 import {ProfileData} from "./ProfileData/ProfileData"
 import {Status} from "./Status/Status";
 import {profileSlice} from "../../../redux/reducers/profileSlice"
+import {CheckCircleTwoTone} from "@ant-design/icons";
 
 const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
 
@@ -28,6 +29,11 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
         {isOwner && <div onClick={activateEditMode} className={style.edit}>Edit</div>}
 
         <Status className={style.status}/>
+
+        <div className={style.openToWork}>
+            <CheckCircleTwoTone twoToneColor="#52c41a" />
+            <span>Open to work</span>
+        </div>
 
         {isEditMode
             ? <div className={style.modal}>

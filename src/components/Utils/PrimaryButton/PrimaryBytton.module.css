@@ -34,7 +34,7 @@
     opacity: 0.4;
 }
 
-@media (max-width: 414px) {
+@media (max-width: 687px) {
     .myButton {
         width: 75px;
         height: 36px;

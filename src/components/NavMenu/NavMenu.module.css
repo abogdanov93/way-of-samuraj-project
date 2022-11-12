@@ -2,7 +2,7 @@
     display: none;
 }
 
-@media (max-width: 414px){
+@media (max-width: 687px){
     .navMenu {
         padding: 1em;
         display: flex;

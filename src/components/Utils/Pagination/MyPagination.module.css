@@ -10,7 +10,7 @@
     font-size: small;
 }
 
-@media (max-width: 414px) {
+@media (max-width: 687px) {
     .paginationPage button {
         margin: 0;
         padding: 0;

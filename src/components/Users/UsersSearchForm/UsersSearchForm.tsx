@@ -13,11 +13,6 @@ type propsType = {
     onFilterChange: (filter: filterType) => void
 }
 
-const usersSearchFormValidate = (values: any) => {
-    const errors = {}
-    return errors
-}
-
 const UsersSearchForm: FC<propsType> = ({onFilterChange}) => {
 
     const filter = useSelector(getUsersFilter)
@@ -31,7 +26,6 @@ return <div>
     <Formik
         initialValues={{ term: filter.term, friend: filter.friend}}
         enableReinitialize={true}
-        validate={usersSearchFormValidate}
         onSubmit={submit}
     >
         {({handleSubmit, isSubmitting}) => (
