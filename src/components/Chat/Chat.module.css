@@ -5,6 +5,7 @@
 
 @media (max-width: 414px) {
     .chat {
+        box-sizing: border-box;
         width: 100vw;
     }
 }

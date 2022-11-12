@@ -23,6 +23,7 @@
 
 @media (max-width: 414px) {
     .dialogs {
+        margin-bottom: 4em;
         width: 100vw;
         display: grid;
         grid-template-columns: 1fr;

@@ -36,7 +36,8 @@
 
 @media (max-width: 414px) {
     .myButton {
-        width: 65px;
-        font-size: x-small;
+        width: 75px;
+        height: 36px;
+        font-size: 12px;
     }
 }
