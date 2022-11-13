@@ -6,14 +6,14 @@ import {profileSlice} from "../../../redux/reducers/profileSlice"
 import {PrimaryButton} from "../../Utils/PrimaryButton/PrimaryButton"
 import {SecondaryButton} from "../../Utils/SecondaryButton/SecondaryButton"
 import {saveProfileDataThunk} from "../../../redux/actions/profileActions"
-import {useAppDispatch} from "../../../hooks/redux"
+import {useAppDispatch, useAppSelector} from "../../../hooks/redux"
 
 type Inputs = ProfileType
-
 
 export const ProfileDataForm: FC = () => {
 
     const dispatch = useAppDispatch()
+    const profile = useAppSelector(state => state.profilePage.profile)
 
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>({mode: "onBlur"})
     const onSubmit: SubmitHandler<Inputs> = (data) => {
@@ -28,74 +28,86 @@ export const ProfileDataForm: FC = () => {
         </h3>
         <div>
             <input {...register("fullName", {required: true})}
-            placeholder="Your name"/>
+                   placeholder="Your name"
+                   defaultValue={profile?.fullName}/>
             {errors.fullName && <label>This field is required</label>}
         </div>
 
         <div>
             <input {...register("lookingForAJob", {required: true})}
-            placeholder="Are you looking for a job?"/>
+                   placeholder="Are you looking for a job?"
+                   defaultValue={profile?.lookingForAJob.toString()}/>
 
             {errors.lookingForAJob && <label>This field is required</label>}
         </div>
 
         <div>
             <input {...register("lookingForAJobDescription", {required: true})}
-                   placeholder="Your professional skills"/>
+                   placeholder="Your professional skills"
+                   defaultValue={profile?.lookingForAJobDescription}/>
             {errors.lookingForAJobDescription && <label>This field is required</label>}
         </div>
 
         <div>
             <input {...register("aboutMe", {required: true})}
-                   placeholder="About you"/>
+                   placeholder="About you"
+                   defaultValue={profile?.aboutMe}/>
             {errors.aboutMe && <label>This field is required</label>}
         </div>
 
         <div>
             <input {...register("contacts.github", {required: true})}
-                   placeholder="Github"/>
+                   placeholder="Github"
+                   defaultValue={profile?.contacts.github}/>
             {errors.contacts?.github && <label>This field is required</label>}
         </div>
 
         <div>
             <input {...register("contacts.vk", {required: true})}
-                   placeholder="Vkontakte"/>
+                   placeholder="Vkontakte"
+                   defaultValue={profile?.contacts.vk}/>
             {errors.contacts?.vk && <label>This field is required</label>}
         </div>
 
         <div>
             <input {...register("contacts.facebook", {required: true})}
-                placeholder="Facebook"/>
+                   placeholder="Facebook"
+                   defaultValue={profile?.contacts.facebook}/>
             {errors.contacts?.facebook && <label>This field is required</label>}
         </div>
 
         <div>
             <input {...register("contacts.instagram", {required: true})}
-                placeholder="Instagram"/>
+                   placeholder="Instagram"
+                   defaultValue={profile?.contacts.instagram}/>
             {errors.contacts?.instagram && <label>This field is required</label>}
         </div>
 
         <div>
             <input {...register("contacts.twitter", {required: true})}
-                placeholder="Twitter"/>
+                   placeholder="Twitter"
+                   defaultValue={profile?.contacts.twitter}/>
             {errors.contacts?.twitter && <label>This field is required</label>}
         </div>
 
         <div>
             <input {...register("contacts.website", {required: true})}
-                placeholder="Your website"/>
+                   placeholder="Your website"
+                   defaultValue={profile?.contacts.website}/>
             {errors.contacts?.website && <label>This field is required</label>}
         </div>
 
         <div>
             <input {...register("contacts.youtube", {required: true})}
-                placeholder="Youtube"/>
+                   placeholder="Youtube"
+                   defaultValue={profile?.contacts.youtube}/>
             {errors.contacts?.youtube && <label>This field is required</label>}
         </div>
 
         <div>
             <input {...register("contacts.mainLink", {required: true})}
-                placeholder="Main link"/>
+                   placeholder="Main link"
+                   defaultValue={profile?.contacts.mainLink}/>
             {errors.contacts?.mainLink && <label>This field is required</label>}
         </div>
 

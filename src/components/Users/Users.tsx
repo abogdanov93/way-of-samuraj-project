@@ -11,7 +11,6 @@ import {fetchUsers, followUser, unfollowUser} from "../../redux/actions/usersAct
 import {FilterType} from "../../redux/reducers/usersSlice"
 
 const Users: FC = () => {
-    debugger
 
     const {users, filter, totalUsersCount, currentPageNumber, pageSize, isFetching, followingInProgress} =
         useAppSelector(state => state.users)

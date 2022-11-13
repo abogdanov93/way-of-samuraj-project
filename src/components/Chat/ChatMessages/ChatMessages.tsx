@@ -1,12 +1,11 @@
 import React, {FC, useEffect, useRef} from "react"
-import {useSelector} from "react-redux"
-import {getChatMessages} from "../../../redux/selectors/chatSelectors"
 import style from "./ChatMessages.module.css"
 import {ChatMessage} from "./ChatMessage/СhatMessage"
+import {useAppSelector} from "../../../hooks/redux"
 
 export const ChatMessages: FC = () => {
 
-    const messages = useSelector(getChatMessages)
+    const messages = useAppSelector(state => state.chat.messages)
     const messagesRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {

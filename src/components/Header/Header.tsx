@@ -1,17 +1,14 @@
-import React, {FC, useState} from "react"
+import React, {FC} from "react"
 import style from "./Header.module.css"
 import logo from "../../uploads/images/logo.png"
 import loginIcon from "../../uploads/images/login.png"
 import {NavLink, useNavigate} from "react-router-dom"
-import {useSelector} from "react-redux"
-import {signOut} from "../../redux/reducers/authSlice"
-import {getProfile} from "../../redux/selectors/profileSelectors"
 import {useAppDispatch, useAppSelector} from "../../hooks/redux"
+import {signOut} from "../../redux/actions/authActions"
 
 const Header: FC = () => {
 
     const {isAuth, ownersAvatar} = useAppSelector(state => state.auth)
-    const profile = useSelector(getProfile)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const logOut = () => {

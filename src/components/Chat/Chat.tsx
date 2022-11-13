@@ -4,7 +4,7 @@ import style from "./Chat.module.css"
 import {ChatMessages} from "./ChatMessages/ChatMessages"
 import {ChatMessageForm} from "./ChatMessageForm/ChatMessageForm"
 import {useSelector} from "react-redux"
-import {startMessagesListening, stopMessagesListening} from "../../redux/reducers/chatReducer"
+import {startMessagesListening, stopMessagesListening} from "../../redux/reducers/chatSlice"
 import {getStatus} from "../../redux/selectors/chatSelectors"
 import {useAppDispatch} from "../../hooks/redux"
 

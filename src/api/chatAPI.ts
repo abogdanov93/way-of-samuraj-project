@@ -1,22 +1,22 @@
-export type chatMessageAPIType = {
+export type ChatMessageAPIType = {
     message: string
     photo: string
     userId?: number
     userName: string
 }
-type eventType = "messagesReceived" | "statusChanged"
-export type statusType = "pending" | "ready" | "error"
-type messagesReceivedSubscriberType = (messages: chatMessageAPIType[]) => void
-type statusChangedSubscriberType = (status: statusType) => void
+type EventType = "messagesReceived" | "statusChanged"
+export type StatusType = "pending" | "ready" | "error"
+type MessagesReceivedSubscriberType = (messages: ChatMessageAPIType[]) => void
+type StatusChangedSubscriberType = (status: StatusType) => void
 
 const subscribers = {
-    "messagesReceived": [] as messagesReceivedSubscriberType[],
-    "statusChanged": [] as statusChangedSubscriberType[]
+    "messagesReceived": [] as MessagesReceivedSubscriberType[],
+    "statusChanged": [] as StatusChangedSubscriberType[]
 }
 
 let ws: WebSocket | null = null
 
-const notifySubscribersAboutStatus = (status: statusType) => {
+const notifySubscribersAboutStatus = (status: StatusType) => {
     subscribers["statusChanged"].forEach(s => s(status))
 }
 
@@ -63,7 +63,7 @@ export const chatAPI = {
     },
     // subscribe - подписаться на новые сообщения // добавить подписчика в массив подписчиков
     // callback - функция, которая принимает массив новых сообщений, не возвращает ничего // почему это подписчик?
-    subscribe(eventName: eventType, callback: messagesReceivedSubscriberType | statusChangedSubscriberType) {
+    subscribe(eventName: EventType, callback: MessagesReceivedSubscriberType | StatusChangedSubscriberType) {
         // @ts-ignore
         subscribers[eventName].push(callback)
         return () => {
@@ -71,7 +71,7 @@ export const chatAPI = {
             subscribers[eventName] = subscribers[eventName].filter(s => s !== callback)
         }
     },
-    unsubscribe(eventName: eventType, callback: messagesReceivedSubscriberType | statusChangedSubscriberType) {
+    unsubscribe(eventName: EventType, callback: MessagesReceivedSubscriberType | StatusChangedSubscriberType) {
         // @ts-ignore
         subscribers[eventName] = subscribers[eventName].filter(s => s !== callback)
     },

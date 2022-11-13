@@ -21,7 +21,6 @@ export const fetchUsers = (currentPageNumber: number, pageSize: number, filter: 
 
 export const followUser = (userId: number) => {
     return async (dispatch: AppDispatchType) => {
-        debugger
         dispatch(usersSlice.actions.setFollowingInProgress({isInProgress: true, userId}))
         const data = await usersAPI.followUser(userId)
         if (data.resultCode === resultCodeEnum.success) {

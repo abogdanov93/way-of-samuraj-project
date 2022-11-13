@@ -1,13 +1,13 @@
 import React, {FC} from "react"
 import style from "./LoginForm.module.css"
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {getCaptchaURL} from "../../../redux/selectors/loginSelectors"
-import {logInThunk} from "../../../redux/reducers/authSlice"
 import {PrimaryButton} from "../../Utils/PrimaryButton/PrimaryButton"
 import {MyInput} from "../../Utils/MyInput/MyInput"
 import {SecondaryButton} from "../../Utils/SecondaryButton/SecondaryButton"
 import {useAppDispatch} from "../../../hooks/redux"
+import {logInThunk} from "../../../redux/actions/authActions"
 
 export type Inputs = {
     email: string

@@ -1,8 +1,6 @@
-import {Action} from "redux"
-import {configureStore, combineReducers} from "@reduxjs/toolkit"
-import {ThunkAction} from "redux-thunk"
+import {combineReducers, configureStore} from "@reduxjs/toolkit"
 import auth from "./reducers/authSlice"
-import chatReducer from "./reducers/chatReducer"
+import chat from "./reducers/chatSlice"
 import dialogs from "./reducers/dialogsSlice"
 import app from "./reducers/appSlice"
 import friends from "./reducers/friendsSlice"
@@ -15,7 +13,7 @@ const rootReducer = combineReducers({
     profilePage,
     users,
     dialogs,
-    chat: chatReducer,
+    chat,
     auth,
     friends
 })
@@ -31,6 +29,3 @@ export const store = setupStore()
 export type StateType = ReturnType<typeof rootReducer>
 export type AppStoreType = ReturnType<typeof setupStore>
 export type AppDispatchType = AppStoreType["dispatch"]
-
-export type baseThunkType<A extends Action, R = Promise<void>> = ThunkAction<R, StateType, unknown, A>
-export type baseActionType<T> = T extends { [key: string]: (...args: any[]) => infer U } ? U : never
