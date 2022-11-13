@@ -1,5 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 import {UsersType} from "../../types/types";
+import {fetchUsers} from "../actions/usersActions";
 
 type InitialStateType = {
     users: Array<UsersType>
@@ -57,19 +58,19 @@ export const usersSlice = createSlice({
         // + toggle is fetching
         // + set following in progress
     },
-    // extraReducers {
-    //     [setUsers.pending.type]: (state) => {
-    //         state.isFetching = true
-    //     },
-    //     [setUsers.fulfilled.type]: (state) => {
-    //         state.isFetching = false
-    //         state.users = action.payload
-    //     },
-    //     [setUsers.rejected.type]: (state) => {
-    //         state.isFetching = false
-    //         console.log("Error")
-    //     },
-    // }
+    extraReducers: {
+        [fetchUsers.pending.type]: (state) => {
+            state.isFetching = true
+        },
+        [fetchUsers.fulfilled.type]: (state, action: PayloadAction<UsersType[]>) => {
+            state.isFetching = false
+            state.users = action.payload
+        },
+        [fetchUsers.rejected.type]: (state) => {
+            state.isFetching = false
+            console.log("Error")
+        }
+    }
 })
 
 export default usersSlice.reducer

@@ -26,7 +26,7 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
 
         <h1>{profile?.fullName}</h1>
 
-        {isOwner && <div onClick={activateEditMode} className={style.edit}>Edit</div>}
+        {isOwner && <button onClick={activateEditMode} className={style.edit}>Edit</button>}
 
         <Status className={style.status} isOwner={isOwner}/>
 

@@ -1,7 +1,7 @@
 import React, {FC} from 'react'
 import {Contact} from "../Contact/Contact"
 import {ContactsType} from "../../../../types/types"
-import {useAppDispatch, useAppSelector} from "../../../../hooks/redux"
+import {useAppSelector} from "../../../../hooks/redux"
 import style from "./ProfileData.module.css"
 
 type PropsType = {

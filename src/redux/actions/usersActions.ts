@@ -4,16 +4,16 @@ import {createAsyncThunk} from "@reduxjs/toolkit"
 
 export const fetchUsers = createAsyncThunk (
     "users/fetchUsers",
-    async (_, thunkAPI) => {
-        try {
-            // dispatch(usersSlice.actions.setCurrentPageNumber(currentPageNumber))
-            // dispatch(usersSlice.actions.setFilter(filter))
-            // const data = await usersAPI.getUsersAPI(currentPageNumber, pageSize, filter.term, filter.friend)
-            // dispatch(usersSlice.actions.setUsers(data.items))
-            // dispatch(usersSlice.actions.setTotalUsersCount(data.totalCount))
-        } catch (e) {
-            return thunkAPI.rejectWithValue("Error")
-        }
+    async (arg, thunkAPI) => {
+        // try {
+        //     thunkAPI.dispatch(usersSlice.actions.setCurrentPageNumber(arg.currentPageNumber))
+        //     thunkAPI.dispatch(usersSlice.actions.setFilter(arg.filter))
+        //     const data = await usersAPI.getUsersAPI(arg.currentPageNumber, arg.pageSize, arg.filter.term, arg.filter.friend)
+        //     thunkAPI.dispatch(usersSlice.setUsers(data.items))
+        //     thunkAPI.dispatch(usersSlice.actions.setTotalUsersCount(data.totalCount))
+        // } catch (e) {
+        //     return thunkAPI.rejectWithValue("Error")
+        // }
     }
 )
 

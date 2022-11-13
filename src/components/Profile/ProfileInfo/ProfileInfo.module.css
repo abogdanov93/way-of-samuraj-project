@@ -32,12 +32,6 @@ h1 {
     align-self: center;
 }
 
-.edit:hover {
-    cursor: pointer;
-    color: rgba(29, 111, 195, 1);
-    font-weight: bold;
-}
-
 .status {
     grid-area: status;
 }
@@ -54,18 +48,27 @@ h1 {
     .profileInfo {
         height: auto;
         grid-template-columns: auto 1fr;
-        grid-template-rows: auto 1fr auto auto;
+        grid-template-rows: auto auto 1fr auto;
         grid-template-areas:
-"avatar nickName edit"
-"avatar status status"
 "avatar openToWork openToWork"
+"avatar nickName nickName"
+"avatar status status"
+"edit edit edit"
 "data data data";
     }
 
     .edit {
         color: rgba(29, 111, 195, 1);
+        justify-self: center;
+        width: 100%;
         font-weight: bold;
         align-self: center;
+        background-color: transparent;
+        border-radius: 19px;
+        margin-top: 1em;
+        height: 30px;
+        cursor: pointer;
+        border: solid 1px rgba(29, 111, 195, 1);
     }
 
     .status {
@@ -81,9 +84,10 @@ h1 {
         display: flex;
         grid-gap: 3px;
         align-items: center;
+        justify-self: right;
         font-weight: lighter;
         font-size: 85%;
-        color: rgba(0, 0, 0, 0.45);
+        color: rgba(37, 160, 30, 0.84);
     }
 }
 
