@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from "react"
-import {BrowserRouter, Route, Routes, useLocation} from "react-router-dom"
+import {BrowserRouter, HashRouter, Route, Routes, useLocation} from "react-router-dom"
 import {Provider, useDispatch, useSelector} from "react-redux"
 import 'antd/dist/antd.css'
 import commonStyles from "./App.module.css"
@@ -62,11 +62,11 @@ const App: FC = () => {
 
 
 const AppRouter: FC = () => {
-    return <BrowserRouter>
+    return <HashRouter>
         <Provider store={store}>
             <App/>
         </Provider>
-    </BrowserRouter>
+    </HashRouter>
 }
 
 export default AppRouter

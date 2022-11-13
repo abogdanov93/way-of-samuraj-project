@@ -1,7 +1,6 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit"
+import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 import {UsersType} from "../../types/types"
-import {friendsAPI} from "../../api/friendsAPI"
-import {fetchFriendsThunk} from "../actions/friendsActions";
+import {fetchFriendsThunk} from "../actions/friendsActions"
 
 type initialStateType = {
     friends: Array<UsersType>
