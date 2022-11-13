@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/way-of-samuraj-project/static/css/main.84c5b96d.css",
-    "main.js": "/way-of-samuraj-project/static/js/main.b4e83658.js",
+    "main.js": "/way-of-samuraj-project/static/js/main.1d020087.js",
     "static/css/598.980b0d68.chunk.css": "/way-of-samuraj-project/static/css/598.980b0d68.chunk.css",
     "static/js/598.c189effe.chunk.js": "/way-of-samuraj-project/static/js/598.c189effe.chunk.js",
     "static/media/logo.png": "/way-of-samuraj-project/static/media/logo.e798c61d3e070123ba3c.png",
@@ -10,12 +10,12 @@
     "static/media/vk-icon.svg": "/way-of-samuraj-project/static/media/vk-icon.ffd1a6c876aff0b5ec525e8ce9f782c5.svg",
     "index.html": "/way-of-samuraj-project/index.html",
     "main.84c5b96d.css.map": "/way-of-samuraj-project/static/css/main.84c5b96d.css.map",
-    "main.b4e83658.js.map": "/way-of-samuraj-project/static/js/main.b4e83658.js.map",
+    "main.1d020087.js.map": "/way-of-samuraj-project/static/js/main.1d020087.js.map",
     "598.980b0d68.chunk.css.map": "/way-of-samuraj-project/static/css/598.980b0d68.chunk.css.map",
     "598.c189effe.chunk.js.map": "/way-of-samuraj-project/static/js/598.c189effe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.84c5b96d.css",
-    "static/js/main.b4e83658.js"
+    "static/js/main.1d020087.js"
   ]
 }
