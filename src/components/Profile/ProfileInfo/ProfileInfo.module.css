@@ -30,6 +30,13 @@ h1 {
     width: 30px;
     color: rgba(0, 0, 0, 0.45);
     align-self: center;
+    background-color: transparent;
+    border: transparent;
+}
+
+.edit:hover {
+    color: rgba(29, 111, 195, 1);
+    font-weight: bold;
 }
 
 .status {
