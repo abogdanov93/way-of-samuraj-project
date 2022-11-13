@@ -1,6 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
-import {UsersType} from "../../types/types";
-import {fetchUsers} from "../actions/usersActions";
+import {UsersType} from "../../types/types"
 
 type InitialStateType = {
     users: Array<UsersType>
@@ -35,9 +34,9 @@ export const usersSlice = createSlice({
     name: "users",
     initialState,
     reducers: {
-        // setUsers(state, action: PayloadAction<UsersType[]>) {
-        //     state.users = action.payload
-        // },
+        setUsers(state, action: PayloadAction<UsersType[]>) {
+            state.users = action.payload
+        },
         setFilter(state, action: PayloadAction<FilterType>) {
             state.filter = action.payload
         },
@@ -54,23 +53,29 @@ export const usersSlice = createSlice({
         unfollowUser(state, action: PayloadAction<number>) {
             const userIndex = state.users.findIndex((user => user.id == action.payload))
             state.users[userIndex].followed = false
+        },
+        toggleIsFetching(state, action: PayloadAction<boolean>) {
+            state.isFetching = action.payload
+        },
+        setFollowingInProgress(state, action: PayloadAction<{ isInProgress: boolean, userId: number }>) {
+            action.payload.isInProgress
+                ? state.followingInProgress.push(action.payload.userId)
+                : state.followingInProgress.filter(id => id !== action.payload.userId)
         }
-        // + toggle is fetching
-        // + set following in progress
     },
-    extraReducers: {
-        [fetchUsers.pending.type]: (state) => {
-            state.isFetching = true
-        },
-        [fetchUsers.fulfilled.type]: (state, action: PayloadAction<UsersType[]>) => {
-            state.isFetching = false
-            state.users = action.payload
-        },
-        [fetchUsers.rejected.type]: (state) => {
-            state.isFetching = false
-            console.log("Error")
-        }
-    }
+    // extraReducers: {
+    //     [fetchUsers.pending.type]: (state) => {
+    //         state.isFetching = true
+    //     },
+    //     [fetchUsers.fulfilled.type]: (state, action: PayloadAction<UsersType[]>) => {
+    //         state.isFetching = false
+    //         state.users = action.payload
+    //     },
+    //     [fetchUsers.rejected.type]: (state) => {
+    //         state.isFetching = false
+    //         console.log("Error")
+    //     }
+    // }
 })
 
 export default usersSlice.reducer

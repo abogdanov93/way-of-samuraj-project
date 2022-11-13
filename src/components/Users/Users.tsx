@@ -4,15 +4,16 @@ import commonStyles from "./../../App.module.css"
 import MyPagination from "../Utils/Pagination/MyPagination"
 import User from "./User/User"
 import UsersSearchForm from "./UsersSearchForm/UsersSearchForm"
-import {filterType, followUser, requestUsers, unfollowUser} from "../../redux/reducers/usersReducer"
 import Preloader from "../Utils/Preloader/Preloader"
 import {useNavigate, useSearchParams} from "react-router-dom"
 import {useAppDispatch, useAppSelector} from "../../hooks/redux"
+import {fetchUsers, followUser, unfollowUser} from "../../redux/actions/usersActions"
+import {FilterType} from "../../redux/reducers/usersSlice"
 
 const Users: FC = () => {
 
     const {users, filter, totalUsersCount, currentPageNumber, pageSize, isFetching, followingInProgress} =
-        useAppSelector(state => state.usersPage)
+        useAppSelector(state => state.users)
 
     const navigate = useNavigate()
     const [searchParams] = useSearchParams()
@@ -20,10 +21,10 @@ const Users: FC = () => {
     const dispatch = useAppDispatch()
 
     const onPageChange = (pageNumber: number) => {
-        dispatch(requestUsers(pageNumber, pageSize, filter))
+        dispatch(fetchUsers(pageNumber, pageSize, filter))
     }
-    const onFilterChange = (filter: filterType) => {
-        dispatch(requestUsers(1, pageSize, filter))
+    const onFilterChange = (filter: FilterType) => {
+        dispatch(fetchUsers(1, pageSize, filter))
     }
     const follow = (userId: number) => {
         dispatch(followUser(userId))
@@ -32,7 +33,6 @@ const Users: FC = () => {
         dispatch(unfollowUser(userId))
     }
 
-    // получает данные из url и отправляет их в redux
     useEffect(() => {
         // @ts-ignore
         const urlParams = Object.fromEntries([...searchParams])
@@ -47,10 +47,9 @@ const Users: FC = () => {
             friend: urlParams.friend === "null" ? null : urlParams.friend = !!"true"
         }
 
-        dispatch(requestUsers(urlCurrentPageNumber, pageSize, urlFilter))
+        dispatch(fetchUsers(urlCurrentPageNumber, pageSize, urlFilter))
     }, [])
 
-    // устанавливает в url данные из redux
     useEffect(() => {
         navigate({
             pathname: '/users',

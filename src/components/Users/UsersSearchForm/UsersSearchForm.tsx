@@ -1,16 +1,16 @@
 import React, {FC} from "react"
 import {Formik} from 'formik'
-import {filterType} from "../../../redux/reducers/usersReducer"
 import {Field} from "formik"
 import {useSelector} from "react-redux"
 import {getUsersFilter} from "../../../redux/selectors/usersSelectors"
 import style from "./UserSearchForm.module.css"
 import {PrimaryButton} from "../../Utils/PrimaryButton/PrimaryButton"
+import {FilterType} from "../../../redux/reducers/usersSlice"
 
 // with Formik
 
 type propsType = {
-    onFilterChange: (filter: filterType) => void
+    onFilterChange: (filter: FilterType) => void
 }
 
 const UsersSearchForm: FC<propsType> = ({onFilterChange}) => {
