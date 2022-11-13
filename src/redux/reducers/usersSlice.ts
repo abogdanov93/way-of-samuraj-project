@@ -60,7 +60,7 @@ export const usersSlice = createSlice({
         setFollowingInProgress(state, action: PayloadAction<{ isInProgress: boolean, userId: number }>) {
             action.payload.isInProgress
                 ? state.followingInProgress.push(action.payload.userId)
-                : state.followingInProgress.filter(id => id !== action.payload.userId)
+                : state.followingInProgress = state.followingInProgress.filter(id => id !== action.payload.userId)
         }
     },
     // extraReducers: {
