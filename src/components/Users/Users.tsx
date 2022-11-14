@@ -26,12 +26,6 @@ const Users: FC = () => {
     const onFilterChange = (filter: FilterType) => {
         dispatch(fetchUsers(1, pageSize, filter))
     }
-    const follow = (userId: number) => {
-        dispatch(followUser(userId))
-    }
-    const unfollow = (userId: number) => {
-        dispatch(unfollowUser(userId))
-    }
 
     useEffect(() => {
         // @ts-ignore
@@ -65,8 +59,6 @@ const Users: FC = () => {
 
         {users.map(u => <User key={u.id}
                               user={u}
-                              follow={follow}
-                              unfollow={unfollow}
                               followingInProgress={followingInProgress}/>
         )}
 

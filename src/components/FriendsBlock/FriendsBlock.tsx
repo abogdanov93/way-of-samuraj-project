@@ -13,6 +13,7 @@ import {fetchUsers} from "../../redux/actions/usersActions"
 const FriendsBlock: FC = () => {
 
     const {friends, isLoading, error} = useAppSelector(state => state.friends)
+    const isAuth = useAppSelector(state => state.auth.isAuth)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
@@ -20,10 +21,9 @@ const FriendsBlock: FC = () => {
         dispatch(fetchFriendsThunk())
     }, [])
 
-    // todo: ререндер при добавлении и удалении друга
-    // useEffect(() => {
-    //     dispatch(requestFriends())
-    // }, [friends.length])
+    useEffect(() => {
+        dispatch(fetchFriendsThunk())
+    }, [isAuth])
 
     const showFriends = () => {
         navigate("/users")

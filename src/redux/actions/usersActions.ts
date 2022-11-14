@@ -2,6 +2,8 @@ import {usersAPI} from "../../api/usersAPI"
 import {FilterType, usersSlice} from "../reducers/usersSlice"
 import {AppDispatchType} from "../store"
 import {resultCodeEnum} from "../../api/api"
+import {friendsSlice} from "../reducers/friendsSlice";
+import {fetchFriendsThunk} from "./friendsActions";
 
 export const fetchUsers = (currentPageNumber: number, pageSize: number, filter: FilterType) =>
     async (dispatch: AppDispatchType) => {
@@ -27,6 +29,7 @@ export const followUser = (userId: number) => {
             dispatch(usersSlice.actions.followUser(userId))
         }
         dispatch(usersSlice.actions.setFollowingInProgress({isInProgress: false, userId}))
+        dispatch(fetchFriendsThunk())
     }
 }
 
@@ -38,6 +41,7 @@ export const unfollowUser = (userId: number) => {
             dispatch(usersSlice.actions.unfollowUser(userId))
         }
         dispatch(usersSlice.actions.setFollowingInProgress({isInProgress: false, userId}))
+        dispatch(fetchFriendsThunk())
     }
 }
 

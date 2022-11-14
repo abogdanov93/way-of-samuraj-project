@@ -4,16 +4,19 @@ import style from "./User.module.css"
 import {NavLink} from "react-router-dom"
 import {UsersType} from "../../../types/types"
 import {SecondaryButton} from "../../Utils/SecondaryButton/SecondaryButton"
+import {followUser, unfollowUser} from "../../../redux/actions/usersActions"
+import {useAppDispatch} from "../../../hooks/redux"
 
 type propsType = {
     user: UsersType
-    follow: (id: number) => void
-    unfollow: (id: number) => void
     followingInProgress: Array<number>
 }
 
-const User: FC<propsType> = ({user, follow, unfollow, followingInProgress}) => {
+const User: FC<propsType> = ({user, followingInProgress}) => {
 
+    const dispatch = useAppDispatch()
+    const follow = (userId: number) => dispatch(followUser(userId))
+    const unfollow = (userId: number) => dispatch(unfollowUser(userId))
 
     return <div className={style.userPage}>
 
