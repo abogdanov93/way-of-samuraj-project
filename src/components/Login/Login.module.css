@@ -17,7 +17,7 @@
     grid-area: block;
 }
 
-@media (max-width: 687px) {
+@media (max-width: 500px) {
     .login {
         display: grid;
         grid-template-columns: 1fr;

@@ -28,7 +28,7 @@
     font-size: 12px;
 }
 
-@media (max-width: 687px) {
+@media (max-width: 500px) {
     .form {
         margin: 0;
         gap: 3vw;

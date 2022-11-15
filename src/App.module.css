@@ -1,7 +1,7 @@
 .App {
     min-height: 100vh;
     width: 100vw;
-    padding: 1% 10% 1% 15%;
+    padding: 1% 12% 1% 12%;
     display: grid;
     grid-template-rows: auto 1fr;
     grid-template-columns: 1fr 5fr 2fr;
@@ -27,7 +27,29 @@
     color: #475156;
 }
 
-@media (max-width: 687px){
+@media (max-width: 1230px){
+    .App{
+        padding: 1% 7% 1% 7%;
+    }
+}
+
+@media (max-width: 1023px){
+    .App{
+        padding: 1em 2em;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            "header"
+            "content";
+    }
+    .whiteBlock {
+        box-sizing: border-box;
+        padding: 1em;
+    }
+}
+
+
+@media (max-width: 500px){
     .App{
         padding: 1em 0;
         grid-gap: 1em 0;

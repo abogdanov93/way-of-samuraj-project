@@ -52,7 +52,7 @@ h1 {
     display: none;
 }
 
-@media (max-width: 687px) {
+@media (max-width: 500px) {
     .profileInfo {
         height: auto;
         grid-template-columns: auto 1fr;
@@ -140,7 +140,7 @@ h1 {
     border-radius: 10px;
 }
 
-@media (max-width: 687px) {
+@media (max-width: 500px) {
     .modalWindow {
         margin: 2vw;
     }

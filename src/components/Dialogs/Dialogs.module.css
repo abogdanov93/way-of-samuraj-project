@@ -26,7 +26,7 @@
     grid-area: newMessage;
 }
 
-@media (max-width: 687px) {
+@media (max-width: 500px) {
     .dialogs {
         margin-bottom: 4em;
         width: 100vw;

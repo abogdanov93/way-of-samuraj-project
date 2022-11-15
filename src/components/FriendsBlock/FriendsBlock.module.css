@@ -1,10 +1,10 @@
 .friendsBlock {
     max-width: 100%;
     grid-area: friends;
-    height: 366px;
+    height: fit-content;
 }
 
-@media (max-width: 687px) {
+@media (max-width: 1023px) {
     .friendsBlock {
         display: none;
     }

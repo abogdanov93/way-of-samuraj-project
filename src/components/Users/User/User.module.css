@@ -7,7 +7,7 @@
     border-bottom: 1px solid #E8E8E8;
 }
 
-@media (max-width: 687px) {
+@media (max-width: 500px) {
     .userPage {
         margin: 1em 0;
     }

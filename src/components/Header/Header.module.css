@@ -21,6 +21,7 @@
     grid-template-columns: auto auto;
     align-items: center;
     cursor: pointer;
+    margin-right: 5px;
 }
 
 .avatar {
@@ -35,7 +36,7 @@
 }
 
 
-@media (max-width: 687px) {
+@media (max-width: 500px) {
     .logo img {
         width: 11em;
     }

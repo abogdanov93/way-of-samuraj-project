@@ -3,7 +3,7 @@
     gap: 20px;
 }
 
-@media (max-width: 687px) {
+@media (max-width: 500px) {
     .chat {
         box-sizing: border-box;
         width: 100vw;
