@@ -32,7 +32,7 @@ const FriendsBlock: FC = () => {
 
     const searchFriends = () => {
         navigate("/users")
-        dispatch(fetchUsers(1, 5, {term: "", friend: null}))
+        dispatch(fetchUsers(1, 5, {term: "", friend: undefined}))
     }
 
     return <div className={`${style.friendsBlock} ${commonStyles.whiteBlock}`}>

@@ -40,7 +40,7 @@ return <div>
                 <Field className={style.select}
                        name="friend"
                        as="select">
-                    <option value="null">All users</option>
+                    <option value={undefined}>All users</option>
                     <option value="true">Followed</option>
                     <option value="false">Unfollowed</option>
                 </Field>

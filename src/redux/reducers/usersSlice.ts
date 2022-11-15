@@ -13,7 +13,7 @@ type InitialStateType = {
 
 export type FilterType = {
     term: string
-    friend: null | boolean
+    friend: undefined| boolean
 }
 
 
@@ -26,7 +26,7 @@ const initialState: InitialStateType = {
     followingInProgress: [],
     filter: {
         term: "",
-        friend: null
+        friend: undefined
     }
 }
 

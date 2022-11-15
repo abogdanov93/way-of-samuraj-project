@@ -2,8 +2,7 @@ import {usersAPI} from "../../api/usersAPI"
 import {FilterType, usersSlice} from "../reducers/usersSlice"
 import {AppDispatchType} from "../store"
 import {resultCodeEnum} from "../../api/api"
-import {friendsSlice} from "../reducers/friendsSlice";
-import {fetchFriendsThunk} from "./friendsActions";
+import {fetchFriendsThunk} from "./friendsActions"
 
 export const fetchUsers = (currentPageNumber: number, pageSize: number, filter: FilterType) =>
     async (dispatch: AppDispatchType) => {

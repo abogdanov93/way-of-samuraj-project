@@ -9,6 +9,7 @@ import {useNavigate, useSearchParams} from "react-router-dom"
 import {useAppDispatch, useAppSelector} from "../../hooks/redux"
 import {fetchUsers, followUser, unfollowUser} from "../../redux/actions/usersActions"
 import {FilterType} from "../../redux/reducers/usersSlice"
+import {WithAuthRedirect} from "../../hocs/withAuthRedirect";
 
 const Users: FC = () => {
 
@@ -38,7 +39,7 @@ const Users: FC = () => {
         if (urlParams.term) urlFilter = {...filter, term: urlParams.term}
         if (urlParams.friend) urlFilter = {
             ...filter,
-            friend: urlParams.friend === "null" ? null : urlParams.friend = !!"true"
+            friend: urlParams.friend = !!"true"
         }
 
         dispatch(fetchUsers(urlCurrentPageNumber, pageSize, urlFilter))
@@ -50,6 +51,7 @@ const Users: FC = () => {
             search: `?term=${filter.term}&friends=${filter.friend}&page=${currentPageNumber}`
         })
     }, [filter, currentPageNumber])
+
 
     return <div className={`${style.users} ${commonStyles.whiteBlock}`}>
 
@@ -72,4 +74,4 @@ const Users: FC = () => {
     </div>
 }
 
-export default Users
+export default WithAuthRedirect(Users)
