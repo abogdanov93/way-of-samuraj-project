@@ -31,29 +31,27 @@ export const UserAvatar: FC<PropsType> = ({isOwner}) => {
 
     return <div className={style.avatar}>
 
-            {profile?.lookingForAJob
-                ? <Badge.Ribbon text="Open to work" color="green" className={style.badge}>
-                    <img src={profile.photos.large || largeAvatar}/>
-                </Badge.Ribbon>
-                : <Badge.Ribbon text="Do not open to work" className={style.badge}>
-                    <img src={profile?.photos.large || largeAvatar}/>
-                </Badge.Ribbon>
-            }
+        <Badge.Ribbon text={profile?.lookingForAJob ? "Open to work" : "Do not open to work"}
+                      className={style.badge}
+                      color={profile?.lookingForAJob ? "green" : undefined}
+        >
+            <img src={profile?.photos.large || largeAvatar} alt="User's avatar"/>
+        </Badge.Ribbon>
 
-            {isOwner &&
-                <div className={style.input}>
-                    <input
-                        ref={inputRef}
-                        type="file"
-                        onChange={onPhotoSelected}
-                        hidden
-                    />
-                    <Button className={style.avatarButton}
-                            shape="circle"
-                            onClick={handleSelect}
-                            icon={<CameraOutlined/>}/>
-                </div>
-            }
+        {isOwner &&
+            <div className={style.input}>
+                <input
+                    ref={inputRef}
+                    type="file"
+                    onChange={onPhotoSelected}
+                    hidden
+                />
+                <Button className={style.avatarButton}
+                        shape="circle"
+                        onClick={handleSelect}
+                        icon={<CameraOutlined/>}/>
+            </div>
+        }
 
-        </div>
+    </div>
 }

@@ -1,12 +1,19 @@
+.avatar {
+    width: 210px;
+}
+
 .avatar img {
     border-radius: 9%;
     max-width: 100%;
 }
 
+.avatarButton {
+    position: relative;
+    bottom: 38px;
+    left: 170px;
+}
+
 .avatar button {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     color: dimgray;
     background-color: gainsboro;
 }
@@ -22,6 +29,10 @@
 }
 
 @media (max-width: 687px){
+
+    .avatar {
+        width: 100%;
+    }
 
     .avatar img {
         border-radius: 50%;
