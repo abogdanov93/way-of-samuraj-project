@@ -6,11 +6,4 @@
 
 .posts {
     display: grid;
-    margin-bottom: 20px;
-}
-
-@media (max-width: 687px) {
-.profile {
-    width: 100vw;
-}
 }

@@ -4,6 +4,7 @@ import {resultCodeEnum, resultCodeForCaptchaEnum} from "../../api/api"
 import {profileAPI} from "../../api/profileAPI"
 import {securityAPI} from "../../api/securityAPI"
 import {authSlice} from "../reducers/authSlice"
+import {useNavigate} from "react-router-dom";
 
 export const getAuthUserData = () => async (dispatch: AppDispatchType) => {
     const authData = await authAPI.getAuthData()

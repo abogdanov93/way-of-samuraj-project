@@ -1,4 +1,5 @@
 .friendsBlock {
+    max-width: 100%;
     grid-area: friends;
     height: 366px;
 }

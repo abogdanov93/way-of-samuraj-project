@@ -10,10 +10,11 @@ const Header: FC = () => {
 
     const {isAuth, ownersAvatar} = useAppSelector(state => state.auth)
     const dispatch = useAppDispatch()
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const logOut = () => {
         dispatch(signOut())
-        navigate("/login")
+        // navigate("/login")
+        // console.log("Sign out")
     }
 
 
@@ -26,9 +27,9 @@ const Header: FC = () => {
         <div className={style.loginArea}>
             {isAuth
                 ? <div className={style.loginArea}>
-                    <NavLink to={"/profile"}>
+                    {/*<NavLink to={"/profile"}>*/}
                         <img className={style.avatar} src={ownersAvatar as string}/>
-                    </NavLink>
+                    {/*</NavLink>*/}
                     <div onClick={logOut}>Sign out</div>
                 </div>
                 : <NavLink className={style.loginArea} to={"/login"}>

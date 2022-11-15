@@ -5,14 +5,17 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo"
 import {profileSlice} from "../../redux/reducers/profileSlice"
 import {useSelector} from "react-redux"
 import {getPosts, getUserId} from "../../redux/selectors/profileSelectors"
-import {useParams} from "react-router-dom"
+import {useNavigate, useParams} from "react-router-dom"
 import MyMessage from "../Utils/MyMessage/MyMessage"
 import {MyMessageForm} from "../Utils/MyMessageForm/MyMessageForm"
-import {useAppDispatch} from "../../hooks/redux"
+import {useAppDispatch, useAppSelector} from "../../hooks/redux"
 import {PostType} from "../../types/types"
 import {getStatusThunk, getProfileThunk} from "../../redux/actions/profileActions"
+import {WithAuthRedirect} from "../../hocs/withAuthRedirect";
 
 const Profile: FC = () => {
+    const isAuth = useAppSelector(state => state.auth.isAuth)
+    const navigate = useNavigate()
     const posts = useSelector(getPosts)
     const userId = useSelector(getUserId)
     const dispatch = useAppDispatch()
@@ -55,4 +58,4 @@ const Profile: FC = () => {
             </div>
 }
 
-export default Profile
+export default WithAuthRedirect(Profile)

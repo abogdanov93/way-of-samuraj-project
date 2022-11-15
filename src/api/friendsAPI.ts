@@ -7,7 +7,6 @@ type GetFriendsResponseType = {
 
 export const friendsAPI = {
     getFriendsAPI() {
-        debugger
         return instance.get<GetFriendsResponseType>(`users?friend=${true}`)
             .then(response => response.data.items)
     }

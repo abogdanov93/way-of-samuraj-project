@@ -7,6 +7,7 @@ import {getDialogs} from "../../redux/selectors/dialogsSelectors"
 import MyMessage from "../Utils/MyMessage/MyMessage"
 import {addMessage, deleteMessage} from "../../redux/reducers/dialogsSlice"
 import {MyMessageForm} from "../Utils/MyMessageForm/MyMessageForm"
+import {WithAuthRedirect} from "../../hocs/withAuthRedirect";
 
 const Dialogs: FC = () => {
 
@@ -43,4 +44,4 @@ const Dialogs: FC = () => {
     )
 }
 
-export default Dialogs
+export default WithAuthRedirect(Dialogs)
