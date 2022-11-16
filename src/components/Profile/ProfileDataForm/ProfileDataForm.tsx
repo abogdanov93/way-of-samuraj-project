@@ -1,12 +1,13 @@
 import React, {FC} from "react"
 import style from "./ProfileDataForm.module.css"
 import {ProfileType} from "../../../types/types"
-import {SubmitHandler, useForm} from "react-hook-form"
+import {SubmitHandler, useForm, Controller} from "react-hook-form"
 import {profileSlice} from "../../../redux/reducers/profileSlice"
 import {MyPrimaryButton} from "../../Utils/MyPrimaryButton/MyPrimaryButton"
 import {MySecondaryButton} from "../../Utils/MySecondaryButton/MySecondaryButton"
 import {saveProfileDataThunk} from "../../../redux/actions/profileActions"
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux"
+import {Switch} from "antd"
 
 /* IMPLEMENTED WITH REACT HOOK FORM */
 
@@ -17,7 +18,8 @@ export const ProfileDataForm: FC = () => {
     const dispatch = useAppDispatch()
     const profile = useAppSelector(state => state.profilePage.profile)
 
-    const {register, handleSubmit, formState: {errors}} = useForm<Inputs>({mode: "onBlur"})
+    const {register, handleSubmit, formState: {errors}, control} = useForm<Inputs>({mode: "onBlur"})
+
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         dispatch(saveProfileDataThunk(data))
     }
@@ -25,22 +27,13 @@ export const ProfileDataForm: FC = () => {
 
 
     return <form onSubmit={handleSubmit(onSubmit)} className={style.profileDataForm}>
-        <h3>
-            Edit profile information
-        </h3>
+        <h3>Edit profile information</h3>
+
         <div>
             <input {...register("fullName", {required: true})}
                    placeholder="Your name"
                    defaultValue={profile?.fullName}/>
             {errors.fullName && <label>This field is required</label>}
-        </div>
-
-        <div>
-            <input {...register("lookingForAJob", {required: true})}
-                   placeholder="Are you looking for a job?"
-                   defaultValue={profile?.lookingForAJob.toString()}/>
-
-            {errors.lookingForAJob && <label>This field is required</label>}
         </div>
 
         <div>
@@ -55,6 +48,23 @@ export const ProfileDataForm: FC = () => {
                    placeholder="About you"
                    defaultValue={profile?.aboutMe}/>
             {errors.aboutMe && <label>This field is required</label>}
+        </div>
+
+        <div style={{margin: "8px"}}>
+            <span style={{marginRight: "1em", fontStyle: "italic", fontSize: "small"}}>
+                Are you looking for a job?
+            </span>
+            <Controller
+                name="lookingForAJob"
+                control={control}
+                render={({ field }) =>
+                    <Switch size="small"
+                            defaultChecked={profile?.lookingForAJob as boolean}
+                            {...field}
+                    />}
+            />
+
+            {errors.lookingForAJob && <label>This field is required</label>}
         </div>
 
         <div>

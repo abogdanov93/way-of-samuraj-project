@@ -1,5 +1,5 @@
 import {UsersType} from "../types/types"
-import {instance, responseType} from "./api"
+import {instance, ResponseType} from "./api"
 
 type getUserResponseType = {
     items: Array<UsersType>
@@ -14,11 +14,11 @@ export const usersAPI = {
             .then(response => response.data)
     },
     followUser(userId: number) {
-        return instance.post<responseType>(`follow/${userId}`)
+        return instance.post<ResponseType>(`follow/${userId}`)
             .then(response => response.data)
     },
     unfollowUser(userId: number) {
-        return instance.delete<responseType>(`follow/${userId}`)
+        return instance.delete<ResponseType>(`follow/${userId}`)
             .then(response => response.data)
     }
 }

@@ -9,7 +9,7 @@ export enum resultCodeForCaptchaEnum {
     captchaIsRequired = 10
 }
 
-export type responseType<D = {}, RC = resultCodeEnum> = { // по умолчанию data пустой объект, result code без капчи
+export type ResponseType<D = {}, RC = resultCodeEnum> = { // по умолчанию data пустой объект, result code без капчи
     data: D
     resultCode: RC
     messages: Array<string>
