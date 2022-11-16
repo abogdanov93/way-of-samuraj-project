@@ -9,6 +9,8 @@ import {SecondaryButton} from "../../Utils/SecondaryButton/SecondaryButton"
 import {useAppDispatch} from "../../../hooks/redux"
 import {logInThunk} from "../../../redux/actions/authActions"
 
+/* IMPLEMENTED WITH REACT HOOK FORM */
+
 export type Inputs = {
     email: string
     password: string

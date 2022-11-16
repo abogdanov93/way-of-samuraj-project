@@ -1,5 +1,4 @@
-import {AppDispatchType} from "../store"
-import {chatAPI, ChatMessageAPIType, StatusType} from "../../api/chatAPI"
+import {ChatMessageAPIType, StatusType} from "../../api/chatAPI"
 import {v1} from "uuid"
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 

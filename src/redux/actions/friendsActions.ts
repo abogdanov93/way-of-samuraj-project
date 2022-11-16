@@ -1,8 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
 import {friendsAPI} from "../../api/friendsAPI"
 
-// RTK with createAsyncThunk
-// allows to catch fulfilled, pending and rejected cases in slice
+/* IMPLEMENTED WITH CREATE ASYNC THUNK FROM REDUX TOOLKIT */
 
 export const fetchFriendsThunk = createAsyncThunk(
     "friend/request",

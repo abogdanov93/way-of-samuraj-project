@@ -7,7 +7,7 @@ import style from "./UserSearchForm.module.css"
 import {PrimaryButton} from "../../Utils/PrimaryButton/PrimaryButton"
 import {FilterType} from "../../../redux/reducers/usersSlice"
 
-// with Formik
+/* IMPLEMENTED WITH FORMIK */
 
 type propsType = {
     onFilterChange: (filter: FilterType) => void

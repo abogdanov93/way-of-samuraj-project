@@ -7,9 +7,9 @@ import UsersSearchForm from "./UsersSearchForm/UsersSearchForm"
 import Preloader from "../Utils/Preloader/Preloader"
 import {useNavigate, useSearchParams} from "react-router-dom"
 import {useAppDispatch, useAppSelector} from "../../hooks/redux"
-import {fetchUsers, followUser, unfollowUser} from "../../redux/actions/usersActions"
+import {fetchUsers} from "../../redux/actions/usersActions"
 import {FilterType} from "../../redux/reducers/usersSlice"
-import {WithAuthRedirect} from "../../hocs/withAuthRedirect";
+import {WithAuthRedirect} from "../../hocs/withAuthRedirect"
 
 const Users: FC = () => {
 

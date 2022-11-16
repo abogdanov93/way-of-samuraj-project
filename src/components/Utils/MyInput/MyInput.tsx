@@ -22,6 +22,5 @@ export const MyInput: FC<ownPropsType> = ({name, register, errors, required, typ
         />
 
         {errors.name && <div className={style.errorWarning}>{errors?.name?.message}</div>}
-
     </>
 }

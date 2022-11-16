@@ -8,6 +8,8 @@ import {SecondaryButton} from "../../Utils/SecondaryButton/SecondaryButton"
 import {saveProfileDataThunk} from "../../../redux/actions/profileActions"
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux"
 
+/* IMPLEMENTED WITH REACT HOOK FORM */
+
 type Inputs = ProfileType
 
 export const ProfileDataForm: FC = () => {
