@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FC, useState} from 'react'
 import style from "./MyMessageForm.module.css"
 import {useDispatch} from "react-redux"
-import {PrimaryButton} from "../PrimaryButton/PrimaryButton"
+import {MyPrimaryButton} from "../MyPrimaryButton/MyPrimaryButton"
 
 type propsType = {
     placeholder: string
@@ -36,7 +36,7 @@ export const MyMessageForm: FC<propsType> = ({placeholder, sendMessage, disabled
                   onChange={handleChange}/>
 
         <div className={style.button}>
-            <PrimaryButton onClick={() => sendMessageHandler(message)} disabled={disabled || error}>Send</PrimaryButton>
+            <MyPrimaryButton onClick={() => sendMessageHandler(message)} disabled={disabled || error}>Send</MyPrimaryButton>
         </div>
 
         {error && (<label className={style.error} htmlFor="message">{error}</label>)}

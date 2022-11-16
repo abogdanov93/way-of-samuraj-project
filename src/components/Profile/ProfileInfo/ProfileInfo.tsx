@@ -1,6 +1,6 @@
 import React, {FC} from "react"
 import style from "./ProfileInfo.module.css"
-import Preloader from "../../Utils/Preloader/Preloader"
+import MyPreloader from "../../Utils/MyPreloader/MyPreloader"
 import {ProfileDataForm} from "../ProfileDataForm/ProfileDataForm"
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux"
 import {UserAvatar} from "./UserAvatar/UserAvatar"
@@ -17,7 +17,7 @@ const ProfileInfo: FC<{ isOwner: boolean }> = ({isOwner}) => {
     const activateEditMode = () => setEditMode(true)
 
     if (!profile) {
-        return <Preloader/>
+        return <MyPreloader/>
     }
 
     return <div className={style.profileInfo}>

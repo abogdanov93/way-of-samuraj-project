@@ -1,10 +1,10 @@
 import React, {FC, useEffect} from "react"
 import style from "./Users.module.css"
 import commonStyles from "./../../App.module.css"
-import MyPagination from "../Utils/Pagination/MyPagination"
+import MyPagination from "../Utils/MyPagination/MyPagination"
 import User from "./User/User"
 import UsersSearchForm from "./UsersSearchForm/UsersSearchForm"
-import Preloader from "../Utils/Preloader/Preloader"
+import MyPreloader from "../Utils/MyPreloader/MyPreloader"
 import {useNavigate, useSearchParams} from "react-router-dom"
 import {useAppDispatch, useAppSelector} from "../../hooks/redux"
 import {fetchUsers} from "../../redux/actions/usersActions"
@@ -55,7 +55,7 @@ const Users: FC = () => {
 
     return <div className={`${style.users} ${commonStyles.whiteBlock}`}>
 
-        {isFetching && <Preloader/>}
+        {isFetching && <MyPreloader/>}
 
         <UsersSearchForm onFilterChange={onFilterChange}/>
 

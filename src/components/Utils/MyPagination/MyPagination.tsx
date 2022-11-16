@@ -1,4 +1,4 @@
-import React, {FC, MouseEventHandler, useState} from "react"
+import React, {FC} from "react"
 import style from "./MyPagination.module.css"
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
@@ -15,7 +15,7 @@ const MyPagination: FC<propsType> = ({totalItemsCount, pageSize, onPageChange, c
 
     let pagesCount = Math.ceil(totalItemsCount / pageSize)
 
-    // without lib version
+    // CUSTOM VERSION
     // let pages = []
     // for (let i = 1; i <= pagesCount; i++) {
     //     pages.push(i)
@@ -37,7 +37,7 @@ const MyPagination: FC<propsType> = ({totalItemsCount, pageSize, onPageChange, c
             />
         </Stack>
 
-        {/* without lib version*/}
+        {/* CUSTOM VERSION */}
         {/*{portionNumber > 1 &&*/}
         {/*    <div>*/}
         {/*        <div onClick={() => {*/}

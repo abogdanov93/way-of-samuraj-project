@@ -1,5 +1,5 @@
 import React, {FC, ReactNode} from "react"
-import style from "./SecondaryButton.module.css"
+import style from "./MySecondaryButton.module.css"
 
 type propsType = {
     children: ReactNode
@@ -8,6 +8,6 @@ type propsType = {
     onClick?: any
 }
 
-export const SecondaryButton: FC<propsType> = ({children, ...props}) => {
+export const MySecondaryButton: FC<propsType> = ({children, ...props}) => {
     return <button className={style.myButton} {...props}>{children}</button>
 }

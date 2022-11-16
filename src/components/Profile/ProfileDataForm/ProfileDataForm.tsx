@@ -3,8 +3,8 @@ import style from "./ProfileDataForm.module.css"
 import {ProfileType} from "../../../types/types"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {profileSlice} from "../../../redux/reducers/profileSlice"
-import {PrimaryButton} from "../../Utils/PrimaryButton/PrimaryButton"
-import {SecondaryButton} from "../../Utils/SecondaryButton/SecondaryButton"
+import {MyPrimaryButton} from "../../Utils/MyPrimaryButton/MyPrimaryButton"
+import {MySecondaryButton} from "../../Utils/MySecondaryButton/MySecondaryButton"
 import {saveProfileDataThunk} from "../../../redux/actions/profileActions"
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux"
 
@@ -114,8 +114,8 @@ export const ProfileDataForm: FC = () => {
         </div>
 
         <div className={style.buttons}>
-            <PrimaryButton type="submit">Edit</PrimaryButton>
-            <SecondaryButton onClick={deactivateEditMode}>Reset</SecondaryButton>
+            <MyPrimaryButton type="submit">Edit</MyPrimaryButton>
+            <MySecondaryButton onClick={deactivateEditMode}>Reset</MySecondaryButton>
         </div>
 
     </form>

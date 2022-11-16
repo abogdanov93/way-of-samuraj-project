@@ -73,7 +73,7 @@ export const usersSlice = createSlice({
     //     },
     //     [fetchUsers.rejected.type]: (state) => {
     //         state.isFetching = false
-    //         console.log("Error")
+    //         console.log("MyErrorMessage")
     //     }
     // }
 })

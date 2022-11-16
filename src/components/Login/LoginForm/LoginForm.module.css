@@ -1,3 +1,11 @@
+.loginInput {
+    margin-bottom: 10px;
+}
+
+.warning {
+    grid-area: warning;
+}
+
 .rememberMe {
     grid-area: rememberMe;
     display: flex;
@@ -8,11 +16,12 @@
 
 }
 
-.rememberMe input {
-    width: auto;
+.buttons {
+    display: flex;
+    gap: 1em;
 }
 
-.buttons {
+.captcha {
     display: flex;
     gap: 1em;
 }

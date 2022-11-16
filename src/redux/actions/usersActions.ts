@@ -61,7 +61,7 @@ export const unfollowUser = (userId: number) => {
 //             thunkAPI.dispatch(usersSlice.actions.setTotalUsersCount(data.totalCount))
 //             return data
 //         } catch (e) {
-//             return thunkAPI.rejectWithValue("Error")
+//             return thunkAPI.rejectWithValue("MyErrorMessage")
 //         }
 //     }
 // )
@@ -73,7 +73,7 @@ export const unfollowUser = (userId: number) => {
 //             const response = await axios.get<IUser[]>("https://jsonplaceholder.typicode.com/users");
 //             return response.data;
 //         } catch (e: any) {
-//             return thunkAPI.rejectWithValue("Error");
+//             return thunkAPI.rejectWithValue("MyErrorMessage");
 //         }
 //     }
 // )

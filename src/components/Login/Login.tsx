@@ -12,7 +12,6 @@ const Login: FC = () => {
     const isAuth = useSelector(getIsAuth)
 
     useEffect(() => {
-        console.log("useEffect", isAuth)
         if (isAuth) navigate("/profile")
     }, [isAuth])
 

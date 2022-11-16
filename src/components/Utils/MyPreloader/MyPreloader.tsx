@@ -1,12 +1,12 @@
 import React, {FC} from "react"
-import style from "./Preloader.module.css"
+import style from "./MyPreloader.module.css"
 import preloader from "../../../uploads/images/yellowPreloader.svg"
 
-type propsType = {
+type PropsType = {
     style?: any
 }
 
-let Preloader: FC<propsType> = (props) => {
+const MyPreloader: FC<PropsType> = (props) => {
     return <div className={style.preloader}>
         <div style={props.style}>
             <img src={preloader}/>
@@ -14,4 +14,4 @@ let Preloader: FC<propsType> = (props) => {
     </div>
 }
 
-export default Preloader
+export default MyPreloader

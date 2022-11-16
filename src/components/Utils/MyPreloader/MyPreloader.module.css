@@ -1,7 +1,6 @@
 .preloader {
     display: grid;
     justify-content: center;
-    /*height: 100%;*/
 }
 
 .preloader img {

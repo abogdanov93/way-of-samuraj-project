@@ -5,7 +5,7 @@ import 'antd/dist/antd.css'
 import commonStyles from "./App.module.css"
 import Navbar from "./components/Navbar/Navbar"
 import FriendsBlock from "./components/FriendsBlock/FriendsBlock"
-import Preloader from "./components/Utils/Preloader/Preloader"
+import MyPreloader from "./components/Utils/MyPreloader/MyPreloader"
 import Header from "./components/Header/Header"
 import {getInitialized} from "./redux/selectors/appSelectors"
 import {store} from "./redux/store"
@@ -29,7 +29,7 @@ const App: FC = () => {
     }, [])
 
     if (!initialized) {
-        return <Preloader/>
+        return <MyPreloader/>
     }
 
     return <div className={commonStyles.App}>
@@ -37,7 +37,7 @@ const App: FC = () => {
         <Navbar/>
         <FriendsBlock/>
         <div className={commonStyles.content}>
-            <React.Suspense fallback={<Preloader/>}>
+            <React.Suspense fallback={<MyPreloader/>}>
                 <Routes>
                     <Route path="/profile/*"
                            element={<Profile/>}/>

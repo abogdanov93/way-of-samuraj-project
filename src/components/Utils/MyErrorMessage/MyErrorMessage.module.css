@@ -4,7 +4,8 @@
     align-items: center;
     color: rgba(0, 0, 0, 0.45);
     font-weight: lighter;
-    margin-top: 40px;
+    align-self: center;
+    margin: 2em 0;
 }
 
 .error h4 {

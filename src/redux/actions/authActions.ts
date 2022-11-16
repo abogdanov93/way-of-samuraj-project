@@ -22,19 +22,16 @@ export const getAuthUserData = () => async (dispatch: AppDispatchType) => {
 
 export const logInThunk = (email: string, password: string, rememberMe: boolean, captcha: string) =>
     async (dispatch: AppDispatchType) => {
-        try {
+
             const data = await authAPI.logIn(email, password, rememberMe, captcha)
             if (data.resultCode === resultCodeEnum.success) {
                 await dispatch(getAuthUserData())
+            } else if (data.resultCode === resultCodeForCaptchaEnum.captchaIsRequired) {
+                await dispatch(getCaptchaURL())
             } else {
-                alert(JSON.stringify(data))
-                if (data.resultCode === resultCodeForCaptchaEnum.captchaIsRequired) {
-                    await dispatch(getCaptchaURL())
-                }
+                await dispatch(authSlice.actions.setErrorMessage(data.messages.toString()))
+                console.log(data.messages)
             }
-        } catch (e) {
-            alert(JSON.stringify(e))
-        }
     }
 
 export const signOut = () => async (dispatch: AppDispatchType) => {
